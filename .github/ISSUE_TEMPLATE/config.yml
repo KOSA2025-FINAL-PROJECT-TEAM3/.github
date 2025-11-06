@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 프로젝트 문서
+    url: https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/main/README.md
+    about: 프로젝트 전체 문서 및 가이드를 확인하세요
+  - name: 🏗️ 시스템 아키텍처
+    url: https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/main/ARCHITECTURE.md
+    about: 마이크로서비스 아키텍처 및 시스템 구조
+  - name: 🚀 빠른 시작 가이드
+    url: https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/main/QUICKSTART.md
+    about: 프로젝트 설치 및 실행 가이드
+  - name: 📋 MVP & DTO 명세
+    url: https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/main/MVP_DTO_SPECIFICATION.md
+    about: API 엔드포인트 및 데이터 구조 문서
