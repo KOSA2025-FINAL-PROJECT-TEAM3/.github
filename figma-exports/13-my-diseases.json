@@ -1,0 +1,290 @@
+{
+  "name": "내 질병 관리",
+  "type": "FRAME",
+  "width": 1200,
+  "height": 800,
+  "layoutMode": "VERTICAL",
+  "primaryAxisSizingMode": "FIXED",
+  "counterAxisSizingMode": "FIXED",
+  "paddingTop": 0,
+  "paddingRight": 0,
+  "paddingBottom": 0,
+  "paddingLeft": 0,
+  "itemSpacing": 0,
+  "fills": [{"type": "SOLID", "color": {"r": 0.98, "g": 0.98, "b": 0.98}}],
+  "children": [
+    {
+      "name": "Header",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 80,
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "SPACE_BETWEEN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 20,
+      "paddingRight": 40,
+      "paddingBottom": 20,
+      "paddingLeft": 40,
+      "itemSpacing": 16,
+      "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}],
+      "strokes": [{"type": "SOLID", "color": {"r": 0.9, "g": 0.9, "b": 0.9}}],
+      "strokeWeight": 1,
+      "children": [
+        {
+          "name": "Left Section",
+          "type": "FRAME",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "🩺 내 질병 관리",
+              "fontSize": 24,
+              "fontName": {"family": "Inter", "style": "Bold"},
+              "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]
+            }
+          ]
+        },
+        {
+          "name": "Add Button",
+          "type": "FRAME",
+          "width": 48,
+          "height": 48,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "cornerRadius": 24,
+          "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}],
+          "children": [
+            {
+              "name": "+",
+              "type": "TEXT",
+              "characters": "+",
+              "fontSize": 24,
+              "fontName": {"family": "Inter", "style": "Bold"},
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Main Content",
+      "type": "FRAME",
+      "width": 1200,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "FIXED",
+      "paddingTop": 40,
+      "paddingRight": 40,
+      "paddingBottom": 40,
+      "paddingLeft": 40,
+      "itemSpacing": 24,
+      "fills": [],
+      "children": [
+        {
+          "name": "Disease Card",
+          "type": "FRAME",
+          "width": 1120,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "paddingTop": 24,
+          "paddingBottom": 24,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "itemSpacing": 20,
+          "cornerRadius": 12,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}],
+          "strokes": [{"type": "SOLID", "color": {"r": 0.9, "g": 0.9, "b": 0.9}}],
+          "strokeWeight": 1,
+          "children": [
+            {
+              "name": "Disease Header",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "RECTANGLE",
+                  "width": 48,
+                  "height": 48,
+                  "cornerRadius": 8,
+                  "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]
+                },
+                {
+                  "name": "Disease Info",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 4,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Disease Name",
+                      "type": "TEXT",
+                      "characters": "고혈압",
+                      "fontSize": 18,
+                      "fontName": {"family": "Inter", "style": "Bold"},
+                      "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]
+                    },
+                    {
+                      "name": "Diagnosed Date",
+                      "type": "TEXT",
+                      "characters": "진단일: 2024.01.15",
+                      "fontSize": 13,
+                      "fontName": {"family": "Inter", "style": "Regular"},
+                      "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Restrictions",
+              "type": "FRAME",
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "itemSpacing": 12,
+              "paddingTop": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Restricted Foods Section",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 8,
+                  "paddingTop": 12,
+                  "paddingBottom": 12,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "cornerRadius": 8,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.95, "b": 0.95}}],
+                  "children": [
+                    {
+                      "name": "Section Title",
+                      "type": "TEXT",
+                      "characters": "🚫 피해야 할 음식",
+                      "fontSize": 14,
+                      "fontName": {"family": "Inter", "style": "SemiBold"},
+                      "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]
+                    },
+                    {
+                      "name": "Food Tags",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 8,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "Tag 1",
+                          "type": "FRAME",
+                          "paddingTop": 6,
+                          "paddingBottom": 6,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO",
+                          "cornerRadius": 12,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.9, "b": 0.9}}],
+                          "children": [
+                            {
+                              "name": "Text",
+                              "type": "TEXT",
+                              "characters": "짠 음식",
+                              "fontSize": 12,
+                              "fontName": {"family": "Inter", "style": "Medium"},
+                              "fills": [{"type": "SOLID", "color": {"r": 0.8, "g": 0.2, "b": 0.2}}]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Tag 2",
+                          "type": "FRAME",
+                          "paddingTop": 6,
+                          "paddingBottom": 6,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO",
+                          "cornerRadius": 12,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.9, "b": 0.9}}],
+                          "children": [
+                            {
+                              "name": "Text",
+                              "type": "TEXT",
+                              "characters": "가공식품",
+                              "fontSize": 12,
+                              "fontName": {"family": "Inter", "style": "Medium"},
+                              "fills": [{"type": "SOLID", "color": {"r": 0.8, "g": 0.2, "b": 0.2}}]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Restricted Meds Section",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 8,
+                  "paddingTop": 12,
+                  "paddingBottom": 12,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "cornerRadius": 8,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.97, "b": 0.92}}],
+                  "children": [
+                    {
+                      "name": "Section Title",
+                      "type": "TEXT",
+                      "characters": "⚠️ 주의해야 할 약",
+                      "fontSize": 14,
+                      "fontName": {"family": "Inter", "style": "SemiBold"},
+                      "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0}}]
+                    },
+                    {
+                      "name": "Med Text",
+                      "type": "TEXT",
+                      "characters": "소염진통제 (이부프로펜 등)",
+                      "fontSize": 13,
+                      "fontName": {"family": "Inter", "style": "Regular"},
+                      "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
