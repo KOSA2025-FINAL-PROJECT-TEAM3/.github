@@ -1,0 +1,916 @@
+{
+  "version": "7.0",
+  "description": "실버케어 Part 3A - 약국상담 + 질병관리 + 식단 + 리뷰 (Glassmorphism)",
+  "screens": [
+    {
+      "name": "13_약국_상담_추천",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.98, "b": 0.97}}],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.2}}],
+          "effects": [{"type": "LAYER_BLUR", "radius": 20}],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 1,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "CENTER",
+          "paddingLeft": 40,
+          "children": [
+            {"name": "Title", "type": "TEXT", "characters": "약국 상담 추천", "fontSize": 24, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]}
+          ]
+        },
+        {
+          "name": "Questions Section",
+          "type": "FRAME",
+          "width": 1120,
+          "height": 280,
+          "x": 40,
+          "y": 100,
+          "cornerRadius": 20,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "effects": [
+            {"type": "LAYER_BLUR", "radius": 40},
+            {"type": "DROP_SHADOW", "color": {"r": 0, "g": 0, "b": 0, "a": 0.08}, "offset": {"x": 0, "y": 4}, "radius": 20, "spread": 0}
+          ],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 2,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 16,
+          "paddingTop": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 40,
+          "paddingRight": 40,
+          "children": [
+            {"name": "Section Title", "type": "TEXT", "characters": "자주 묻는 질문", "fontSize": 18, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+            {
+              "name": "Question 1",
+              "type": "FRAME",
+              "width": 1040,
+              "height": 60,
+              "cornerRadius": 12,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "itemSpacing": 16,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+              "strokeWeight": 1,
+              "children": [
+                {"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}]},
+                {"name": "Text", "type": "TEXT", "characters": "아모디핀과 자몽주스를 함께 먹어도 되나요?", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+              ]
+            },
+            {
+              "name": "Question 2",
+              "type": "FRAME",
+              "width": 1040,
+              "height": 60,
+              "cornerRadius": 12,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "itemSpacing": 16,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+              "strokeWeight": 1,
+              "children": [
+                {"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31, "a": 0.2}}]},
+                {"name": "Text", "type": "TEXT", "characters": "메트포르민 복용 후 속이 메스꺼워요", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+              ]
+            },
+            {
+              "name": "Question 3",
+              "type": "FRAME",
+              "width": 1040,
+              "height": 60,
+              "cornerRadius": 12,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "itemSpacing": 16,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+              "strokeWeight": 1,
+              "children": [
+                {"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0, "a": 0.2}}]},
+                {"name": "Text", "type": "TEXT", "characters": "약을 깜빡하고 안 먹었는데 어떻게 하나요?", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Nearby Pharmacies",
+          "type": "FRAME",
+          "width": 1120,
+          "height": 310,
+          "x": 40,
+          "y": 400,
+          "cornerRadius": 20,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "effects": [
+            {"type": "LAYER_BLUR", "radius": 40},
+            {"type": "DROP_SHADOW", "color": {"r": 0, "g": 0, "b": 0, "a": 0.08}, "offset": {"x": 0, "y": 4}, "radius": 20, "spread": 0}
+          ],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 2,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 16,
+          "paddingTop": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 40,
+          "paddingRight": 40,
+          "children": [
+            {"name": "Section Title", "type": "TEXT", "characters": "근처 약국", "fontSize": 18, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+            {
+              "name": "Pharmacy 1",
+              "type": "FRAME",
+              "width": 1040,
+              "height": 70,
+              "cornerRadius": 14,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "itemSpacing": 20,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.6}}],
+              "strokeWeight": 1,
+              "children": [
+                {"name": "Icon", "type": "RECTANGLE", "width": 48, "height": 48, "cornerRadius": 12, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31, "a": 0.2}}]},
+                {
+                  "name": "Info",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": 4,
+                  "fills": [],
+                  "children": [
+                    {"name": "Name", "type": "TEXT", "characters": "서울약국", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+                    {"name": "Address", "type": "TEXT", "characters": "서울시 강남구 역삼동 123-45 · 도보 5분", "fontSize": 13, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                  ]
+                },
+                {
+                  "name": "Call Button",
+                  "type": "FRAME",
+                  "width": 80,
+                  "height": 40,
+                  "cornerRadius": 10,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}],
+                  "children": [
+                    {"name": "Text", "type": "TEXT", "characters": "전화", "fontSize": 13, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95}}]}
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Pharmacy 2",
+              "type": "FRAME",
+              "width": 1040,
+              "height": 70,
+              "cornerRadius": 14,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "itemSpacing": 20,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.6}}],
+              "strokeWeight": 1,
+              "children": [
+                {"name": "Icon", "type": "RECTANGLE", "width": 48, "height": 48, "cornerRadius": 12, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}]},
+                {
+                  "name": "Info",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": 4,
+                  "fills": [],
+                  "children": [
+                    {"name": "Name", "type": "TEXT", "characters": "건강약국", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+                    {"name": "Address", "type": "TEXT", "characters": "서울시 강남구 삼성동 456-78 · 차량 10분", "fontSize": 13, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                  ]
+                },
+                {
+                  "name": "Call Button",
+                  "type": "FRAME",
+                  "width": 80,
+                  "height": 40,
+                  "cornerRadius": 10,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}],
+                  "children": [
+                    {"name": "Text", "type": "TEXT", "characters": "전화", "fontSize": 13, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95}}]}
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Pharmacy 3",
+              "type": "FRAME",
+              "width": 1040,
+              "height": 70,
+              "cornerRadius": 14,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "itemSpacing": 20,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.6}}],
+              "strokeWeight": 1,
+              "children": [
+                {"name": "Icon", "type": "RECTANGLE", "width": 48, "height": 48, "cornerRadius": 12, "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0, "a": 0.2}}]},
+                {
+                  "name": "Info",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": 4,
+                  "fills": [],
+                  "children": [
+                    {"name": "Name", "type": "TEXT", "characters": "우리약국", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+                    {"name": "Address", "type": "TEXT", "characters": "서울시 강남구 논현동 789-12 · 도보 8분", "fontSize": 13, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                  ]
+                },
+                {
+                  "name": "Call Button",
+                  "type": "FRAME",
+                  "width": 80,
+                  "height": 40,
+                  "cornerRadius": 10,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}],
+                  "children": [
+                    {"name": "Text", "type": "TEXT", "characters": "전화", "fontSize": 13, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95}}]}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bottom Nav",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "y": 720,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.2}}],
+          "effects": [{"type": "LAYER_BLUR", "radius": 20}],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 1,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 80,
+          "paddingLeft": 100,
+          "paddingRight": 100,
+          "children": [
+            {"name": "Home Active", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}]}, {"name": "Label", "type": "TEXT", "characters": "홈", "fontSize": 12, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}]}]},
+            {"name": "Meds", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "약관리", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Family", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "가족", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Settings", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "설정", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "14_내_질병_관리",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "fills": [{"type": "SOLID", "color": {"r": 0.97, "g": 0.96, "b": 0.98}}],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.2}}],
+          "effects": [{"type": "LAYER_BLUR", "radius": 20}],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 1,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "CENTER",
+          "paddingLeft": 40,
+          "children": [
+            {"name": "Title", "type": "TEXT", "characters": "내 질병 관리", "fontSize": 24, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]}
+          ]
+        },
+        {
+          "name": "Disease Cards",
+          "type": "FRAME",
+          "width": 1120,
+          "height": 600,
+          "x": 40,
+          "y": 100,
+          "layoutMode": "VERTICAL",
+          "itemSpacing": 24,
+          "fills": [],
+          "children": [
+            {
+              "name": "Disease Card 1",
+              "type": "FRAME",
+              "width": 1120,
+              "height": 280,
+              "cornerRadius": 24,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.35}}],
+              "effects": [
+                {"type": "LAYER_BLUR", "radius": 40},
+                {"type": "DROP_SHADOW", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.15}, "offset": {"x": 0, "y": 6}, "radius": 24, "spread": 0}
+              ],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+              "strokeWeight": 2,
+              "layoutMode": "VERTICAL",
+              "itemSpacing": 20,
+              "paddingTop": 40,
+              "paddingBottom": 40,
+              "paddingLeft": 50,
+              "paddingRight": 50,
+              "children": [
+                {
+                  "name": "Header Row",
+                  "type": "FRAME",
+                  "width": 1020,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 20,
+                  "fills": [],
+                  "children": [
+                    {"name": "Icon", "type": "ELLIPSE", "width": 80, "height": 80, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "itemSpacing": 8,
+                      "fills": [],
+                      "children": [
+                        {"name": "Name", "type": "TEXT", "characters": "고혈압", "fontSize": 26, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]},
+                        {"name": "Since", "type": "TEXT", "characters": "2020년 3월부터", "fontSize": 14, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Restrictions",
+                  "type": "FRAME",
+                  "width": 1020,
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": 12,
+                  "fills": [],
+                  "children": [
+                    {"name": "Section Title", "type": "TEXT", "characters": "주의사항", "fontSize": 16, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]},
+                    {
+                      "name": "Restrictions Grid",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 12,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "Food Restriction",
+                          "type": "FRAME",
+                          "width": 320,
+                          "height": 70,
+                          "cornerRadius": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisAlignItems": "CENTER",
+                          "itemSpacing": 12,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+                          "children": [
+                            {"name": "Icon", "type": "RECTANGLE", "width": 40, "height": 40, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0, "a": 0.2}}]},
+                            {
+                              "name": "Text",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 4,
+                              "fills": [],
+                              "children": [
+                                {"name": "Label", "type": "TEXT", "characters": "제한 음식", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]},
+                                {"name": "Count", "type": "TEXT", "characters": "12개", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0}}]}
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ingredient Restriction",
+                          "type": "FRAME",
+                          "width": 320,
+                          "height": 70,
+                          "cornerRadius": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisAlignItems": "CENTER",
+                          "itemSpacing": 12,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+                          "children": [
+                            {"name": "Icon", "type": "RECTANGLE", "width": 40, "height": 40, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}]},
+                            {
+                              "name": "Text",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 4,
+                              "fills": [],
+                              "children": [
+                                {"name": "Label", "type": "TEXT", "characters": "제한 성분", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]},
+                                {"name": "Count", "type": "TEXT", "characters": "5개", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95}}]}
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Med Restriction",
+                          "type": "FRAME",
+                          "width": 320,
+                          "height": 70,
+                          "cornerRadius": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisAlignItems": "CENTER",
+                          "itemSpacing": 12,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+                          "children": [
+                            {"name": "Icon", "type": "RECTANGLE", "width": 40, "height": 40, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                            {
+                              "name": "Text",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 4,
+                              "fills": [],
+                              "children": [
+                                {"name": "Label", "type": "TEXT", "characters": "제한 약물", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]},
+                                {"name": "Count", "type": "TEXT", "characters": "3개", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]}
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Disease Card 2",
+              "type": "FRAME",
+              "width": 1120,
+              "height": 280,
+              "cornerRadius": 24,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.35}}],
+              "effects": [
+                {"type": "LAYER_BLUR", "radius": 40},
+                {"type": "DROP_SHADOW", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.15}, "offset": {"x": 0, "y": 6}, "radius": 24, "spread": 0}
+              ],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+              "strokeWeight": 2,
+              "layoutMode": "VERTICAL",
+              "itemSpacing": 20,
+              "paddingTop": 40,
+              "paddingBottom": 40,
+              "paddingLeft": 50,
+              "paddingRight": 50,
+              "children": [
+                {
+                  "name": "Header Row",
+                  "type": "FRAME",
+                  "width": 1020,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 20,
+                  "fills": [],
+                  "children": [
+                    {"name": "Icon", "type": "ELLIPSE", "width": 80, "height": 80, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}]},
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "itemSpacing": 8,
+                      "fills": [],
+                      "children": [
+                        {"name": "Name", "type": "TEXT", "characters": "당뇨병", "fontSize": 26, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95}}]},
+                        {"name": "Since", "type": "TEXT", "characters": "2019년 8월부터", "fontSize": 14, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Restrictions",
+                  "type": "FRAME",
+                  "width": 1020,
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": 12,
+                  "fills": [],
+                  "children": [
+                    {"name": "Section Title", "type": "TEXT", "characters": "주의사항", "fontSize": 16, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]},
+                    {
+                      "name": "Restrictions Grid",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "itemSpacing": 12,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "Food Restriction",
+                          "type": "FRAME",
+                          "width": 320,
+                          "height": 70,
+                          "cornerRadius": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisAlignItems": "CENTER",
+                          "itemSpacing": 12,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+                          "children": [
+                            {"name": "Icon", "type": "RECTANGLE", "width": 40, "height": 40, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0, "a": 0.2}}]},
+                            {
+                              "name": "Text",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 4,
+                              "fills": [],
+                              "children": [
+                                {"name": "Label", "type": "TEXT", "characters": "제한 음식", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]},
+                                {"name": "Count", "type": "TEXT", "characters": "18개", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0}}]}
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Ingredient Restriction",
+                          "type": "FRAME",
+                          "width": 320,
+                          "height": 70,
+                          "cornerRadius": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisAlignItems": "CENTER",
+                          "itemSpacing": 12,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+                          "children": [
+                            {"name": "Icon", "type": "RECTANGLE", "width": 40, "height": 40, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95, "a": 0.2}}]},
+                            {
+                              "name": "Text",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 4,
+                              "fills": [],
+                              "children": [
+                                {"name": "Label", "type": "TEXT", "characters": "제한 성분", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]},
+                                {"name": "Count", "type": "TEXT", "characters": "7개", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95}}]}
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Med Restriction",
+                          "type": "FRAME",
+                          "width": 320,
+                          "height": 70,
+                          "cornerRadius": 12,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisAlignItems": "CENTER",
+                          "itemSpacing": 12,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.4}}],
+                          "children": [
+                            {"name": "Icon", "type": "RECTANGLE", "width": 40, "height": 40, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                            {
+                              "name": "Text",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 4,
+                              "fills": [],
+                              "children": [
+                                {"name": "Label", "type": "TEXT", "characters": "제한 약물", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]},
+                                {"name": "Count", "type": "TEXT", "characters": "4개", "fontSize": 16, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]}
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bottom Nav",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "y": 720,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.2}}],
+          "effects": [{"type": "LAYER_BLUR", "radius": 20}],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 1,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 80,
+          "paddingLeft": 100,
+          "paddingRight": 100,
+          "children": [
+            {"name": "Home", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "홈", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Meds", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "약관리", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Family", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "가족", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Settings Active", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}]}, {"name": "Label", "type": "TEXT", "characters": "설정", "fontSize": 12, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}]}]}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "15_질병_제한사항_상세",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.97, "b": 0.99}}],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.2}}],
+          "effects": [{"type": "LAYER_BLUR", "radius": 20}],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 1,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "CENTER",
+          "paddingLeft": 40,
+          "children": [
+            {"name": "Title", "type": "TEXT", "characters": "고혈압 - 제한사항", "fontSize": 24, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]}
+          ]
+        },
+        {
+          "name": "Content Container",
+          "type": "FRAME",
+          "width": 1120,
+          "height": 600,
+          "x": 40,
+          "y": 100,
+          "layoutMode": "HORIZONTAL",
+          "itemSpacing": 30,
+          "fills": [],
+          "children": [
+            {
+              "name": "Foods Section",
+              "type": "FRAME",
+              "width": 530,
+              "height": 600,
+              "cornerRadius": 20,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+              "effects": [
+                {"type": "LAYER_BLUR", "radius": 40},
+                {"type": "DROP_SHADOW", "color": {"r": 1, "g": 0.6, "b": 0, "a": 0.12}, "offset": {"x": 0, "y": 4}, "radius": 20, "spread": 0}
+              ],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+              "strokeWeight": 2,
+              "layoutMode": "VERTICAL",
+              "itemSpacing": 16,
+              "paddingTop": 30,
+              "paddingBottom": 30,
+              "paddingLeft": 30,
+              "paddingRight": 30,
+              "children": [
+                {"name": "Title", "type": "TEXT", "characters": "제한 음식", "fontSize": 20, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 1, "g": 0.6, "b": 0}}]},
+                {
+                  "name": "Food Item 1",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 60,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 36, "height": 36, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {"name": "Text", "type": "TEXT", "characters": "고염분 식품 (젓갈, 장아찌)", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+                  ]
+                },
+                {
+                  "name": "Food Item 2",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 60,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 36, "height": 36, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {"name": "Text", "type": "TEXT", "characters": "가공식품 (라면, 햄)", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+                  ]
+                },
+                {
+                  "name": "Food Item 3",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 60,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 36, "height": 36, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {"name": "Text", "type": "TEXT", "characters": "자몽주스", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+                  ]
+                },
+                {
+                  "name": "Food Item 4",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 60,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 36, "height": 36, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {"name": "Text", "type": "TEXT", "characters": "술 (과음)", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+                  ]
+                },
+                {
+                  "name": "Food Item 5",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 60,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "paddingLeft": 16,
+                  "paddingRight": 16,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 36, "height": 36, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {"name": "Text", "type": "TEXT", "characters": "카페인 음료 (과다섭취)", "fontSize": 15, "fontName": {"family": "Inter", "style": "Medium"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.3, "b": 0.3}}]}
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Meds Section",
+              "type": "FRAME",
+              "width": 530,
+              "height": 600,
+              "cornerRadius": 20,
+              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+              "effects": [
+                {"type": "LAYER_BLUR", "radius": 40},
+                {"type": "DROP_SHADOW", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.12}, "offset": {"x": 0, "y": 4}, "radius": 20, "spread": 0}
+              ],
+              "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+              "strokeWeight": 2,
+              "layoutMode": "VERTICAL",
+              "itemSpacing": 16,
+              "paddingTop": 30,
+              "paddingBottom": 30,
+              "paddingLeft": 30,
+              "paddingRight": 30,
+              "children": [
+                {"name": "Title", "type": "TEXT", "characters": "제한 약물", "fontSize": 20, "fontName": {"family": "Inter", "style": "Bold"}, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]},
+                {
+                  "name": "Med Item 1",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 80,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 48, "height": 48, "cornerRadius": 10, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "itemSpacing": 4,
+                      "fills": [],
+                      "children": [
+                        {"name": "Name", "type": "TEXT", "characters": "NSAIDs (비스테로이드성 소염제)", "fontSize": 15, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+                        {"name": "Reason", "type": "TEXT", "characters": "혈압 상승 위험", "fontSize": 13, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Med Item 2",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 80,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 48, "height": 48, "cornerRadius": 10, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "itemSpacing": 4,
+                      "fills": [],
+                      "children": [
+                        {"name": "Name", "type": "TEXT", "characters": "감기약 (일부 성분)", "fontSize": 15, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+                        {"name": "Reason", "type": "TEXT", "characters": "약물 상호작용", "fontSize": 13, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Med Item 3",
+                  "type": "FRAME",
+                  "width": 470,
+                  "height": 80,
+                  "cornerRadius": 12,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.5}}],
+                  "children": [
+                    {"name": "Icon", "type": "RECTANGLE", "width": 48, "height": 48, "cornerRadius": 10, "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21, "a": 0.2}}]},
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "itemSpacing": 4,
+                      "fills": [],
+                      "children": [
+                        {"name": "Name", "type": "TEXT", "characters": "스테로이드", "fontSize": 15, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]},
+                        {"name": "Reason", "type": "TEXT", "characters": "혈압 상승 가능", "fontSize": 13, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.5, "g": 0.5, "b": 0.5}}]}
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bottom Nav",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "y": 720,
+          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.2}}],
+          "effects": [{"type": "LAYER_BLUR", "radius": 20}],
+          "strokes": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1, "a": 0.3}}],
+          "strokeWeight": 1,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 80,
+          "paddingLeft": 100,
+          "paddingRight": 100,
+          "children": [
+            {"name": "Home", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "홈", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Meds", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "약관리", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Family", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.7, "g": 0.7, "b": 0.7, "a": 0.5}}]}, {"name": "Label", "type": "TEXT", "characters": "가족", "fontSize": 12, "fontName": {"family": "Inter", "style": "Regular"}, "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]}]},
+            {"name": "Settings Active", "type": "FRAME", "layoutMode": "VERTICAL", "primaryAxisAlignItems": "CENTER", "itemSpacing": 8, "fills": [], "children": [{"name": "Icon", "type": "RECTANGLE", "width": 32, "height": 32, "cornerRadius": 8, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}]}, {"name": "Label", "type": "TEXT", "characters": "설정", "fontSize": 12, "fontName": {"family": "Inter", "style": "SemiBold"}, "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}]}]}
+          ]
+        }
+      ]
+    }
+  ]
+}
