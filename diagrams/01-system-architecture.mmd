@@ -30,9 +30,9 @@ graph TB
     end
 
     subgraph "Real-time Sync Layer"
-        H[Hocuspocus Server<br/>WebSocket Sync]
-        H1[Y.js CRDT<br/>Conflict Resolution]
-        H --> H1
+        WS[Spring WebSocket/STOMP<br/>Real-time Messaging]
+        MSG[Message Broker<br/>In-Memory/RabbitMQ]
+        WS --> MSG
     end
 
     subgraph "Event Processing"
@@ -51,7 +51,6 @@ graph TB
     subgraph "Database Layer"
         DB[(MySQL 8.0<br/>Main DB)]
         R[(Redis<br/>Cache/Session)]
-        SYNC[(Hocuspocus DB<br/>Sync Storage)]
     end
 
     subgraph "External Services"
@@ -63,7 +62,7 @@ graph TB
 
     %% Frontend connections
     A -->|HTTP/REST| GW
-    A -->|WebSocket| H
+    A -->|WebSocket/STOMP| WS
 
     %% API Gateway connections
     GW --> EUR
@@ -107,14 +106,16 @@ graph TB
     DIET -->|Publish| K1
     NOTI -->|Consume| K2
 
-    %% Kafka to Hocuspocus (Real-time Sync)
-    K1 -->|Sync Events| H
-    K3 -->|Family Events| H
-    K4 -->|State Changes| H
+    %% Kafka to WebSocket (Real-time Sync)
+    K1 -->|Sync Events| WS
+    K3 -->|Family Events| WS
+    K4 -->|State Changes| WS
 
-    %% Hocuspocus connections
-    H <-->|Persist| SYNC
-    H -->|Read/Write| DB
+    %% WebSocket connections
+    WS -->|Session Storage| R
+    MED -->|Publish Events| WS
+    FAM -->|Publish Events| WS
+    DIET -->|Publish Events| WS
 
     %% External API connections
     MED --> E1
@@ -140,10 +141,9 @@ graph TB
     style NOTI fill:#6db33f,stroke:#333,stroke-width:2px
     style OCR fill:#6db33f,stroke:#333,stroke-width:2px
 
-    style H fill:#ff6b35,stroke:#333,stroke-width:3px
-    style H1 fill:#ff6b35,stroke:#333,stroke-width:2px
+    style WS fill:#ff6b35,stroke:#333,stroke-width:3px
+    style MSG fill:#ff6b35,stroke:#333,stroke-width:2px
 
     style K fill:#231f20,color:#fff,stroke:#fff,stroke-width:2px
     style DB fill:#4479a1,stroke:#333,stroke-width:2px
     style R fill:#dc382d,stroke:#333,stroke-width:2px
-    style SYNC fill:#ff9500,stroke:#333,stroke-width:2px

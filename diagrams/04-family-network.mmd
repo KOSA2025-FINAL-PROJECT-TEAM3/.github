@@ -14,18 +14,18 @@ graph LR
     end
 
     subgraph "Real-time Sync"
-        HCS[Hocuspocus Server]
+        WS[Spring WebSocket/STOMP<br/>+ Kafka Events]
     end
 
-    P1 -->|읽기/쓰기| HCS
-    P2 -->|읽기/쓰기| HCS
-    C1 -->|읽기/쓰기| HCS
-    C2 -->|읽기/쓰기| HCS
+    P1 -->|WebSocket 연결| WS
+    P2 -->|WebSocket 연결| WS
+    C1 -->|WebSocket 연결| WS
+    C2 -->|WebSocket 연결| WS
 
-    HCS <--> M
-    HCS <--> S
-    HCS <--> L
-    HCS <--> D
+    WS <--> M
+    WS <--> S
+    WS <--> L
+    WS <--> D
 
     style P1 fill:#ffd1dc
     style P2 fill:#ffd1dc

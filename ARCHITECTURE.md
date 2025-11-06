@@ -11,7 +11,7 @@
 | `01-system-architecture.mmd` | 전체 시스템 구조 | Frontend, Backend, Database, External Services |
 | `02-data-flow.mmd` | 데이터 흐름도 | 시니어-자녀 간 실시간 동기화 시퀀스 |
 | `03-drug-food-interaction.mmd` | 약-음식 충돌 감지 | 충돌 검사 및 경고 플로우차트 |
-| `04-family-network.mmd` | 가족 돌봄 네트워크 | Hocuspocus 기반 실시간 공유 구조 |
+| `04-family-network.mmd` | 가족 돌봄 네트워크 | Spring WebSocket/STOMP 기반 실시간 공유 구조 |
 | `05-ocr-pipeline.mmd` | OCR 처리 파이프라인 | 약봉지 인식 → 자동 등록 플로우 |
 | `06-notification-system.mmd` | 알림 시스템 | Kafka 이벤트 기반 알림 아키텍처 |
 | `07-database-erd.mmd` | 데이터베이스 ERD | Mermaid 버전 (간략) |
@@ -179,8 +179,9 @@ graph TB
 ### 주요 구성 요소
 
 #### Frontend Layer
-- **React 18 + Vite**: JSX only (React Native 사용 금지)
-- **TipTap + Hocuspocus Provider**: 실시간 협업 편집
+- **React 19 + Vite**: JSX only (React Native 사용 금지)
+- **STOMP WebSocket Client**: 실시간 양방향 통신
+- **TipTap Editor**: 리치 텍스트 편집기
 
 #### Spring Cloud Infrastructure (🆕 추가)
 - **API Gateway (Spring Cloud Gateway)**: 단일 진입점, 라우팅, 인증/인가
@@ -196,18 +197,19 @@ graph TB
 6. **OCR Service**: 약봉지 OCR 처리, Google Vision API 연동
 
 #### Real-time Sync Layer (🔥 핵심 차별점)
-- **Hocuspocus Server**: WebSocket 기반 실시간 동기화
-- **Y.js CRDT**: 충돌 없는 협업 편집, 가족 간 데이터 실시간 공유
-- **Kafka 연동**: 백엔드 이벤트 → Hocuspocus → Frontend Push
+- **Spring WebSocket/STOMP**: WebSocket 기반 실시간 양방향 통신
+- **Message Broker**: In-Memory 또는 RabbitMQ를 통한 메시지 라우팅
+- **Kafka 연동**: 백엔드 이벤트 → Kafka → WebSocket → Frontend Push
+- **Session Management**: Redis 기반 WebSocket 세션 관리
 
 #### Event Processing
 - **Apache Kafka**: 이벤트 기반 비동기 처리
 - **토픽 분리**: Medication Events, Notification Events, Family Events, Sync Events
 
 #### Database Layer
-- **MySQL 8.0**: 메인 데이터베이스
-- **Redis**: 세션, 캐시, 실시간 데이터
-- **Hocuspocus DB**: Y.js 문서 영구 저장 (SQLite/PostgreSQL)
+- **MySQL 8.0**: 메인 데이터베이스 (트랜잭션 데이터)
+- **MyBatis**: SQL Mapper 프레임워크 (동적 쿼리, 복잡한 조인)
+- **Redis 7+**: 세션, 캐시, WebSocket 세션 관리
 
 #### External Services
 - **식약처 API**: 의약품안전나라 공공 API
@@ -406,8 +408,9 @@ graph LR
 ### 핵심 가치
 
 - 떨어져 있어도 부모님 건강 관리 가능
-- 실시간 양방향 동기화 (WebSocket)
+- 실시간 양방향 동기화 (Spring WebSocket/STOMP)
 - 권한 관리 (읽기/쓰기 분리 가능)
+- Kafka 이벤트 기반 실시간 알림
 
 ---
 
@@ -528,8 +531,9 @@ erDiagram
     USERS ||--o{ NOTIFICATIONS : receives
 ```
 
-### 주요 테이블 (10개)
+### 주요 테이블 (22개)
 
+#### 핵심 테이블 (기존)
 1. `users` - 사용자 정보
 2. `family_groups` - 가족 그룹
 3. `family_members` - 가족 구성원 매핑
@@ -540,6 +544,18 @@ erDiagram
 8. `diet_logs` - 식단 기록
 9. `diet_warnings` - 식단-약 충돌 경고
 10. `notifications` - 알림
+
+#### 신규 테이블 (확장 기능)
+11. `medication_reviews` - 약/성분 리뷰 및 후기
+12. `symptom_searches` - 증상 검색 이력
+13. `suspected_diseases` - 의심 질환 및 약국 상담 추천
+14. `disease_info` - 질병 정보 마스터 데이터
+15. `user_diseases` - 사용자 질병 관리
+16. `disease_restricted_foods` - 질병별 기피 음식
+17. `disease_restricted_ingredients` - 질병별 기피 성분
+18. `disease_restricted_medications` - 질병별 기피 약
+19. `hospital_diet_resources` - 병원 공식 식단 자료
+20. `hospital_diet_items` - 병원 식단 상세 항목
 
 ---
 
@@ -932,12 +948,14 @@ Mermaid 코드 블록을 복사해서 붙여넣기
 
 ## 📝 참고 사항
 
-- **실시간 동기화**: Hocuspocus (WebSocket)
+- **실시간 동기화**: Spring WebSocket/STOMP + Kafka
 - **이벤트 기반**: Kafka (비동기 처리)
 - **OCR**: Google Vision → Tesseract Fallback
 - **약-음식 충돌**: 룰 베이스 시스템
 - **알림**: Phase 1 필수, Phase 2 선택
 - **React Native 금지**: 웹 앱만 사용
+- **ORM**: MyBatis (동적 SQL 지원)
+- **인프라**: Kubernetes + Docker Compose
 
 ---
 
