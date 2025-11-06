@@ -8,6 +8,18 @@ erDiagram
     DIET_LOGS ||--o{ DIET_WARNINGS : generates
     MEDICATIONS ||--o{ DIET_WARNINGS : causes
     USERS ||--o{ NOTIFICATIONS : receives
+    USERS ||--o{ MEDICATION_REVIEWS : writes
+    MEDICATIONS ||--o{ MEDICATION_REVIEWS : has
+    USERS ||--o{ SYMPTOM_SEARCHES : performs
+    SYMPTOM_SEARCHES ||--o{ SUSPECTED_DISEASES : suggests
+    SUSPECTED_DISEASES ||--o{ DISEASE_INFO : references
+    USERS ||--o{ USER_DISEASES : manages
+    USER_DISEASES ||--o{ DISEASE_INFO : has
+    DISEASE_INFO ||--o{ DISEASE_RESTRICTED_FOODS : restricts
+    DISEASE_INFO ||--o{ DISEASE_RESTRICTED_INGREDIENTS : restricts
+    DISEASE_INFO ||--o{ DISEASE_RESTRICTED_MEDICATIONS : restricts
+    HOSPITAL_DIET_RESOURCES ||--o{ HOSPITAL_DIET_ITEMS : contains
+    DISEASE_INFO ||--o{ HOSPITAL_DIET_RESOURCES : recommends
 
     USERS {
         int id PK
@@ -78,4 +90,87 @@ erDiagram
         string title
         text message
         boolean read
+    }
+
+    MEDICATION_REVIEWS {
+        int id PK
+        int user_id FK
+        int medication_id FK
+        int rating
+        text review_content
+        text ingredient_comment
+        timestamp created_at
+    }
+
+    SYMPTOM_SEARCHES {
+        int id PK
+        int user_id FK
+        text symptoms
+        timestamp searched_at
+    }
+
+    SUSPECTED_DISEASES {
+        int id PK
+        int symptom_search_id FK
+        int disease_id FK
+        float confidence_score
+        text pharmacist_advice
+    }
+
+    DISEASE_INFO {
+        int id PK
+        string disease_name
+        string disease_code
+        text description
+        text symptoms
+        text treatment_info
+        string source_link
+    }
+
+    USER_DISEASES {
+        int id PK
+        int user_id FK
+        int disease_id FK
+        date diagnosed_date
+        text notes
+    }
+
+    DISEASE_RESTRICTED_FOODS {
+        int id PK
+        int disease_id FK
+        string food_name
+        enum severity
+        text reason
+    }
+
+    DISEASE_RESTRICTED_INGREDIENTS {
+        int id PK
+        int disease_id FK
+        string ingredient_name
+        enum severity
+        text reason
+    }
+
+    DISEASE_RESTRICTED_MEDICATIONS {
+        int id PK
+        int disease_id FK
+        string medication_name
+        enum severity
+        text reason
+    }
+
+    HOSPITAL_DIET_RESOURCES {
+        int id PK
+        string hospital_name
+        string resource_title
+        string resource_url
+        date published_date
+    }
+
+    HOSPITAL_DIET_ITEMS {
+        int id PK
+        int hospital_diet_resource_id FK
+        string food_name
+        text nutrition_info
+        text benefits
     }
