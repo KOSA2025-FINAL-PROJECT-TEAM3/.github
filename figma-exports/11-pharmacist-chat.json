@@ -1,5 +1,5 @@
 {
-  "name": "약사 채팅",
+  "name": "약사 채팅 메인",
   "type": "FRAME",
   "width": 1200,
   "height": 800,
@@ -11,7 +11,16 @@
   "paddingBottom": 0,
   "paddingLeft": 0,
   "itemSpacing": 0,
-  "fills": [{"type": "SOLID", "color": {"r": 0.98, "g": 0.98, "b": 0.98}}],
+  "fills": [
+    {
+      "type": "SOLID",
+      "color": {
+        "r": 0.98,
+        "g": 0.98,
+        "b": 0.98
+      }
+    }
+  ],
   "children": [
     {
       "name": "Header",
@@ -28,28 +37,142 @@
       "paddingBottom": 20,
       "paddingLeft": 40,
       "itemSpacing": 16,
-      "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}],
-      "strokes": [{"type": "SOLID", "color": {"r": 0.9, "g": 0.9, "b": 0.9}}],
-      "strokeWeight": 1,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.08
+          },
+          "offset": {
+            "x": 0,
+            "y": 2
+          },
+          "radius": 8,
+          "visible": true
+        }
+      ],
       "children": [
         {
-          "name": "Left Section",
+          "name": "Logo Group",
           "type": "FRAME",
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "AUTO",
           "counterAxisSizingMode": "AUTO",
-          "primaryAxisAlignItems": "CENTER",
           "counterAxisAlignItems": "CENTER",
-          "itemSpacing": 16,
+          "itemSpacing": 12,
           "fills": [],
           "children": [
             {
-              "name": "Title",
+              "name": "Logo",
+              "type": "ELLIPSE",
+              "width": 40,
+              "height": 40,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientStops": [
+                    {
+                      "position": 0,
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31,
+                        "a": 1
+                      }
+                    },
+                    {
+                      "position": 1,
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.55,
+                        "b": 0.25,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "실버케어",
               "type": "TEXT",
-              "characters": "💬 약사 상담",
+              "characters": "실버케어",
               "fontSize": 24,
-              "fontName": {"family": "Inter", "style": "Bold"},
-              "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "User Info Group",
+          "type": "FRAME",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "김철수 님",
+              "type": "TEXT",
+              "characters": "김철수 님",
+              "fontSize": 18,
+              "fontName": {
+                "family": "Inter",
+                "style": "SemiBold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.3,
+                    "g": 0.3,
+                    "b": 0.3
+                  }
+                }
+              ]
+            },
+            {
+              "name": "User Avatar",
+              "type": "ELLIPSE",
+              "width": 36,
+              "height": 36,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.85,
+                    "g": 0.85,
+                    "b": 0.85
+                  }
+                }
+              ]
             }
           ]
         }
@@ -59,155 +182,994 @@
       "name": "Main Content",
       "type": "FRAME",
       "width": 1200,
+      "height": 720,
       "layoutMode": "VERTICAL",
-      "primaryAxisSizingMode": "AUTO",
+      "primaryAxisSizingMode": "FIXED",
       "counterAxisSizingMode": "FIXED",
       "paddingTop": 40,
-      "paddingRight": 40,
+      "paddingRight": 60,
       "paddingBottom": 40,
-      "paddingLeft": 40,
-      "itemSpacing": 20,
+      "paddingLeft": 60,
+      "itemSpacing": 32,
       "fills": [],
       "children": [
         {
-          "name": "Chat Room 1",
+          "name": "Page Header",
           "type": "FRAME",
-          "width": 1120,
-          "height": 100,
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "FIXED",
-          "counterAxisSizingMode": "FIXED",
-          "primaryAxisAlignItems": "CENTER",
-          "counterAxisAlignItems": "CENTER",
-          "paddingTop": 20,
-          "paddingRight": 24,
-          "paddingBottom": 20,
-          "paddingLeft": 24,
-          "itemSpacing": 20,
-          "cornerRadius": 12,
-          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}],
-          "strokes": [{"type": "SOLID", "color": {"r": 0.9, "g": 0.9, "b": 0.9}}],
-          "strokeWeight": 1,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 8,
+          "fills": [],
           "children": [
             {
-              "name": "Avatar",
-              "type": "ELLIPSE",
-              "width": 60,
-              "height": 60,
-              "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}]
-            },
-            {
-              "name": "Chat Info",
-              "type": "FRAME",
-              "layoutMode": "VERTICAL",
-              "primaryAxisSizingMode": "AUTO",
-              "counterAxisSizingMode": "AUTO",
-              "itemSpacing": 8,
-              "fills": [],
-              "children": [
+              "name": "💬 약사 채팅",
+              "type": "TEXT",
+              "characters": "💬 약사 채팅",
+              "fontSize": 32,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
                 {
-                  "name": "Name",
-                  "type": "TEXT",
-                  "characters": "김약사 (서울약국)",
-                  "fontSize": 16,
-                  "fontName": {"family": "Inter", "style": "SemiBold"},
-                  "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]
-                },
-                {
-                  "name": "Last Message",
-                  "type": "TEXT",
-                  "characters": "혈압약은 아침 식전에 드시는 게 좋습니다",
-                  "fontSize": 14,
-                  "fontName": {"family": "Inter", "style": "Regular"},
-                  "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
                 }
               ]
             },
             {
-              "name": "Badge",
-              "type": "ELLIPSE",
-              "width": 24,
-              "height": 24,
-              "fills": [{"type": "SOLID", "color": {"r": 0.96, "g": 0.26, "b": 0.21}}]
-            }
-          ]
-        },
-        {
-          "name": "Chat Room 2",
-          "type": "FRAME",
-          "width": 1120,
-          "height": 100,
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "FIXED",
-          "counterAxisSizingMode": "FIXED",
-          "primaryAxisAlignItems": "CENTER",
-          "counterAxisAlignItems": "CENTER",
-          "paddingTop": 20,
-          "paddingRight": 24,
-          "paddingBottom": 20,
-          "paddingLeft": 24,
-          "itemSpacing": 20,
-          "cornerRadius": 12,
-          "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}],
-          "strokes": [{"type": "SOLID", "color": {"r": 0.9, "g": 0.9, "b": 0.9}}],
-          "strokeWeight": 1,
-          "children": [
-            {
-              "name": "Avatar",
-              "type": "ELLIPSE",
-              "width": 60,
-              "height": 60,
-              "fills": [{"type": "SOLID", "color": {"r": 0.13, "g": 0.59, "b": 0.95}}]
-            },
-            {
-              "name": "Chat Info",
-              "type": "FRAME",
-              "layoutMode": "VERTICAL",
-              "primaryAxisSizingMode": "AUTO",
-              "counterAxisSizingMode": "AUTO",
-              "itemSpacing": 8,
-              "fills": [],
-              "children": [
+              "name": "약사와 실시간 상담을 시작하세요",
+              "type": "TEXT",
+              "characters": "약사와 실시간 상담을 시작하세요",
+              "fontSize": 16,
+              "fontName": {
+                "family": "Inter",
+                "style": "Regular"
+              },
+              "fills": [
                 {
-                  "name": "Name",
-                  "type": "TEXT",
-                  "characters": "박약사 (강남약국)",
-                  "fontSize": 16,
-                  "fontName": {"family": "Inter", "style": "SemiBold"},
-                  "fills": [{"type": "SOLID", "color": {"r": 0.2, "g": 0.2, "b": 0.2}}]
-                },
-                {
-                  "name": "Last Message",
-                  "type": "TEXT",
-                  "characters": "네, 궁금하신 점이 있으시면 언제든 문의하세요",
-                  "fontSize": 14,
-                  "fontName": {"family": "Inter", "style": "Regular"},
-                  "fills": [{"type": "SOLID", "color": {"r": 0.6, "g": 0.6, "b": 0.6}}]
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.5,
+                    "g": 0.5,
+                    "b": 0.5
+                  }
                 }
               ]
             }
           ]
         },
         {
-          "name": "New Chat Button",
+          "name": "Chat Rooms List",
           "type": "FRAME",
-          "width": 180,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "Chat Room Card 1",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 110,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 20,
+              "paddingRight": 24,
+              "paddingBottom": 20,
+              "paddingLeft": 24,
+              "itemSpacing": 20,
+              "cornerRadius": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 4
+                  },
+                  "radius": 12,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Left Content",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Pharmacist Avatar",
+                      "type": "ELLIPSE",
+                      "width": 60,
+                      "height": 60,
+                      "fills": [
+                        {
+                          "type": "GRADIENT_LINEAR",
+                          "gradientStops": [
+                            {
+                              "position": 0,
+                              "color": {
+                                "r": 0.4,
+                                "g": 0.6,
+                                "b": 1,
+                                "a": 1
+                              }
+                            },
+                            {
+                              "position": 1,
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.45,
+                                "b": 0.85,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Chat Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 6,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "Pharmacist Name",
+                          "type": "TEXT",
+                          "characters": "박지민 약사",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Pharmacy Name",
+                          "type": "TEXT",
+                          "characters": "서울중앙약국",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Last Message",
+                          "type": "TEXT",
+                          "characters": "네, 그 약은 식후 30분에 복용하시면 됩니다.",
+                          "fontSize": 15,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Right Content",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "END",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Timestamp",
+                      "type": "TEXT",
+                      "characters": "오후 3:24",
+                      "fontSize": 13,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.6,
+                            "g": 0.6,
+                            "b": 0.6
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Unread Badge",
+                      "type": "FRAME",
+                      "width": 24,
+                      "height": 24,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "2",
+                          "type": "TEXT",
+                          "characters": "2",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chat Room Card 2",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 110,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 20,
+              "paddingRight": 24,
+              "paddingBottom": 20,
+              "paddingLeft": 24,
+              "itemSpacing": 20,
+              "cornerRadius": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 4
+                  },
+                  "radius": 12,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Left Content",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Pharmacist Avatar",
+                      "type": "ELLIPSE",
+                      "width": 60,
+                      "height": 60,
+                      "fills": [
+                        {
+                          "type": "GRADIENT_LINEAR",
+                          "gradientStops": [
+                            {
+                              "position": 0,
+                              "color": {
+                                "r": 0.8,
+                                "g": 0.4,
+                                "b": 0.9,
+                                "a": 1
+                              }
+                            },
+                            {
+                              "position": 1,
+                              "color": {
+                                "r": 0.65,
+                                "g": 0.3,
+                                "b": 0.75,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Chat Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 6,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "Pharmacist Name",
+                          "type": "TEXT",
+                          "characters": "이수연 약사",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Pharmacy Name",
+                          "type": "TEXT",
+                          "characters": "행복드림약국",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Last Message",
+                          "type": "TEXT",
+                          "characters": "감사합니다. 또 궁금하신 점 있으시면 연락주세요!",
+                          "fontSize": 15,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Right Content",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "END",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Timestamp",
+                      "type": "TEXT",
+                      "characters": "오전 11:42",
+                      "fontSize": 13,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.6,
+                            "g": 0.6,
+                            "b": 0.6
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chat Room Card 3",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 110,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 20,
+              "paddingRight": 24,
+              "paddingBottom": 20,
+              "paddingLeft": 24,
+              "itemSpacing": 20,
+              "cornerRadius": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 4
+                  },
+                  "radius": 12,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Left Content",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Pharmacist Avatar",
+                      "type": "ELLIPSE",
+                      "width": 60,
+                      "height": 60,
+                      "fills": [
+                        {
+                          "type": "GRADIENT_LINEAR",
+                          "gradientStops": [
+                            {
+                              "position": 0,
+                              "color": {
+                                "r": 1,
+                                "g": 0.7,
+                                "b": 0.3,
+                                "a": 1
+                              }
+                            },
+                            {
+                              "position": 1,
+                              "color": {
+                                "r": 0.85,
+                                "g": 0.55,
+                                "b": 0.2,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Chat Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 6,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "Pharmacist Name",
+                          "type": "TEXT",
+                          "characters": "최민호 약사",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Pharmacy Name",
+                          "type": "TEXT",
+                          "characters": "건강플러스약국",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Last Message",
+                          "type": "TEXT",
+                          "characters": "처방전 사진 보내주시면 확인해드리겠습니다.",
+                          "fontSize": 15,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Right Content",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "END",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Timestamp",
+                      "type": "TEXT",
+                      "characters": "어제",
+                      "fontSize": 13,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.6,
+                            "g": 0.6,
+                            "b": 0.6
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Unread Badge",
+                      "type": "FRAME",
+                      "width": 24,
+                      "height": 24,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "1",
+                          "type": "TEXT",
+                          "characters": "1",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chat Room Card 4",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 110,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 20,
+              "paddingRight": 24,
+              "paddingBottom": 20,
+              "paddingLeft": 24,
+              "itemSpacing": 20,
+              "cornerRadius": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 4
+                  },
+                  "radius": 12,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Left Content",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Pharmacist Avatar",
+                      "type": "ELLIPSE",
+                      "width": 60,
+                      "height": 60,
+                      "fills": [
+                        {
+                          "type": "GRADIENT_LINEAR",
+                          "gradientStops": [
+                            {
+                              "position": 0,
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.8,
+                                "b": 0.7,
+                                "a": 1
+                              }
+                            },
+                            {
+                              "position": 1,
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.65,
+                                "b": 0.55,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Chat Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 6,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "Pharmacist Name",
+                          "type": "TEXT",
+                          "characters": "정서연 약사",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Pharmacy Name",
+                          "type": "TEXT",
+                          "characters": "365온누리약국",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Last Message",
+                          "type": "TEXT",
+                          "characters": "약국 운영시간은 평일 오전 9시부터 오후 8시까지입니다.",
+                          "fontSize": 15,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Right Content",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "END",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Timestamp",
+                      "type": "TEXT",
+                      "characters": "11/4",
+                      "fontSize": 13,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.6,
+                            "g": 0.6,
+                            "b": 0.6
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Floating Action Button",
+          "type": "FRAME",
+          "width": 200,
           "height": 56,
           "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "FIXED",
-          "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "CENTER",
           "counterAxisAlignItems": "CENTER",
-          "cornerRadius": 8,
-          "fills": [{"type": "SOLID", "color": {"r": 0.3, "g": 0.69, "b": 0.31}}],
+          "cornerRadius": 28,
+          "fills": [
+            {
+              "type": "GRADIENT_LINEAR",
+              "gradientStops": [
+                {
+                  "position": 0,
+                  "color": {
+                    "r": 0.3,
+                    "g": 0.69,
+                    "b": 0.31,
+                    "a": 1
+                  }
+                },
+                {
+                  "position": 1,
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.55,
+                    "b": 0.25,
+                    "a": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0.3,
+                "g": 0.69,
+                "b": 0.31,
+                "a": 0.4
+              },
+              "offset": {
+                "x": 0,
+                "y": 6
+              },
+              "radius": 16,
+              "visible": true
+            }
+          ],
           "children": [
             {
-              "name": "Button Text",
+              "name": "✨ 새 상담 시작",
               "type": "TEXT",
-              "characters": "➕ 새 상담 시작",
+              "characters": "✨ 새 상담 시작",
               "fontSize": 16,
-              "fontName": {"family": "Inter", "style": "Bold"},
-              "fills": [{"type": "SOLID", "color": {"r": 1, "g": 1, "b": 1}}]
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ]
             }
           ]
         }

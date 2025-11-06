@@ -1,0 +1,1404 @@
+{
+  "name": "증상 검색",
+  "type": "FRAME",
+  "width": 1200,
+  "height": 800,
+  "layoutMode": "VERTICAL",
+  "primaryAxisSizingMode": "FIXED",
+  "counterAxisSizingMode": "FIXED",
+  "paddingTop": 0,
+  "paddingRight": 0,
+  "paddingBottom": 0,
+  "paddingLeft": 0,
+  "itemSpacing": 0,
+  "fills": [
+    {
+      "type": "SOLID",
+      "color": {
+        "r": 0.98,
+        "g": 0.98,
+        "b": 0.98
+      }
+    }
+  ],
+  "children": [
+    {
+      "name": "Header",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 80,
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "SPACE_BETWEEN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 20,
+      "paddingRight": 40,
+      "paddingBottom": 20,
+      "paddingLeft": 40,
+      "itemSpacing": 16,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.08
+          },
+          "offset": {
+            "x": 0,
+            "y": 2
+          },
+          "radius": 8,
+          "visible": true
+        }
+      ],
+      "children": [
+        {
+          "name": "Logo Group",
+          "type": "FRAME",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 12,
+          "fills": [],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 32,
+              "height": 32,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "cornerRadius": 8,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.95,
+                    "g": 0.95,
+                    "b": 0.95
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.3,
+                        "b": 0.3
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "증상 검색",
+              "type": "TEXT",
+              "characters": "증상 검색",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "User Avatar",
+          "type": "ELLIPSE",
+          "width": 36,
+          "height": 36,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.85,
+                "g": 0.85,
+                "b": 0.85
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Main Content",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 720,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "paddingTop": 40,
+      "paddingRight": 60,
+      "paddingBottom": 40,
+      "paddingLeft": 60,
+      "itemSpacing": 32,
+      "fills": [],
+      "children": [
+        {
+          "name": "Search Section",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Search Input Area",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 120,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "paddingTop": 24,
+              "paddingRight": 24,
+              "paddingBottom": 24,
+              "paddingLeft": 24,
+              "itemSpacing": 16,
+              "cornerRadius": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.12
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 4
+                  },
+                  "radius": 16,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "🔍 어떤 증상이 있으신가요?",
+                  "type": "TEXT",
+                  "characters": "🔍 어떤 증상이 있으신가요?",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Search Input",
+                  "type": "FRAME",
+                  "width": 1032,
+                  "height": 48,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "SPACE_BETWEEN",
+                  "counterAxisAlignItems": "CENTER",
+                  "paddingTop": 12,
+                  "paddingRight": 20,
+                  "paddingBottom": 12,
+                  "paddingLeft": 20,
+                  "cornerRadius": 24,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.96,
+                        "g": 0.96,
+                        "b": 0.96
+                      }
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "예: 두통, 복통, 기침...",
+                      "type": "TEXT",
+                      "characters": "예: 두통, 복통, 기침...",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.6,
+                            "g": 0.6,
+                            "b": 0.6
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Search Icon",
+                      "type": "FRAME",
+                      "width": 32,
+                      "height": 32,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 16,
+                      "fills": [
+                        {
+                          "type": "GRADIENT_LINEAR",
+                          "gradientStops": [
+                            {
+                              "position": 0,
+                              "color": {
+                                "r": 0.4,
+                                "g": 0.6,
+                                "b": 1,
+                                "a": 1
+                              }
+                            },
+                            {
+                              "position": 1,
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.7,
+                                "b": 1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🔍",
+                          "type": "TEXT",
+                          "characters": "🔍",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Info Card",
+              "type": "FRAME",
+              "width": 1080,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 16,
+              "paddingRight": 20,
+              "paddingBottom": 16,
+              "paddingLeft": 20,
+              "itemSpacing": 12,
+              "cornerRadius": 12,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.95,
+                    "g": 0.97,
+                    "b": 1
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "ℹ️",
+                  "type": "TEXT",
+                  "characters": "ℹ️",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.6,
+                        "b": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "증상을 검색하시면 AI가 의심되는 질환을 분석해드립니다. 이는 의학적 진단이 아니며, 정확한 진단을 위해서는 의료 전문가와 상담하세요.",
+                  "type": "TEXT",
+                  "characters": "증상을 검색하시면 AI가 의심되는 질환을 분석해드립니다. 이는 의학적 진단이 아니며, 정확한 진단을 위해서는 의료 전문가와 상담하세요.",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.4,
+                        "b": 0.6
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Recent Searches",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "최근 검색",
+              "type": "TEXT",
+              "characters": "최근 검색",
+              "fontSize": 18,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Tags Container",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "itemSpacing": 12,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Tag - 두통",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "paddingTop": 10,
+                  "paddingRight": 20,
+                  "paddingBottom": 10,
+                  "paddingLeft": 20,
+                  "cornerRadius": 20,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.85,
+                        "g": 0.85,
+                        "b": 0.85
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "children": [
+                    {
+                      "name": "두통",
+                      "type": "TEXT",
+                      "characters": "두통",
+                      "fontSize": 15,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Tag - 복통",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "paddingTop": 10,
+                  "paddingRight": 20,
+                  "paddingBottom": 10,
+                  "paddingLeft": 20,
+                  "cornerRadius": 20,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.85,
+                        "g": 0.85,
+                        "b": 0.85
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "children": [
+                    {
+                      "name": "복통",
+                      "type": "TEXT",
+                      "characters": "복통",
+                      "fontSize": 15,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Tag - 가려움증",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "paddingTop": 10,
+                  "paddingRight": 20,
+                  "paddingBottom": 10,
+                  "paddingLeft": 20,
+                  "cornerRadius": 20,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.85,
+                        "g": 0.85,
+                        "b": 0.85
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "children": [
+                    {
+                      "name": "가려움증",
+                      "type": "TEXT",
+                      "characters": "가려움증",
+                      "fontSize": 15,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Popular Symptoms",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "인기 증상",
+              "type": "TEXT",
+              "characters": "인기 증상",
+              "fontSize": 18,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Symptoms Grid",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "itemSpacing": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Column 1",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Symptom Card 1",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🤒",
+                          "type": "TEXT",
+                          "characters": "🤒",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "발열",
+                          "type": "TEXT",
+                          "characters": "발열",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Symptom Card 2",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🤧",
+                          "type": "TEXT",
+                          "characters": "🤧",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "콧물",
+                          "type": "TEXT",
+                          "characters": "콧물",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Column 2",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Symptom Card 3",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "😫",
+                          "type": "TEXT",
+                          "characters": "😫",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "두통",
+                          "type": "TEXT",
+                          "characters": "두통",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Symptom Card 4",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "😷",
+                          "type": "TEXT",
+                          "characters": "😷",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "기침",
+                          "type": "TEXT",
+                          "characters": "기침",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Column 3",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Symptom Card 5",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🤢",
+                          "type": "TEXT",
+                          "characters": "🤢",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "메스꺼움",
+                          "type": "TEXT",
+                          "characters": "메스꺼움",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Symptom Card 6",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "😣",
+                          "type": "TEXT",
+                          "characters": "😣",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "복통",
+                          "type": "TEXT",
+                          "characters": "복통",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Column 4",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Symptom Card 7",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "😴",
+                          "type": "TEXT",
+                          "characters": "😴",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "피로감",
+                          "type": "TEXT",
+                          "characters": "피로감",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Symptom Card 8",
+                      "type": "FRAME",
+                      "width": 260,
+                      "height": 100,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 24,
+                      "paddingBottom": 20,
+                      "paddingLeft": 24,
+                      "itemSpacing": 8,
+                      "cornerRadius": 14,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1
+                          }
+                        }
+                      ],
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 4
+                          },
+                          "radius": 12,
+                          "visible": true
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🥵",
+                          "type": "TEXT",
+                          "characters": "🥵",
+                          "fontSize": 32,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "어지러움",
+                          "type": "TEXT",
+                          "characters": "어지러움",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
