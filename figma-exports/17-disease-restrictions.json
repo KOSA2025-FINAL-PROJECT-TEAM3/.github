@@ -1,0 +1,2216 @@
+{
+  "name": "질병별 제한사항 상세보기",
+  "type": "FRAME",
+  "width": 1200,
+  "height": 800,
+  "layoutMode": "VERTICAL",
+  "primaryAxisSizingMode": "FIXED",
+  "counterAxisSizingMode": "FIXED",
+  "paddingTop": 0,
+  "paddingRight": 0,
+  "paddingBottom": 0,
+  "paddingLeft": 0,
+  "itemSpacing": 0,
+  "fills": [
+    {
+      "type": "SOLID",
+      "color": {
+        "r": 0.98,
+        "g": 0.98,
+        "b": 0.98
+      }
+    }
+  ],
+  "children": [
+    {
+      "name": "Header",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 80,
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "SPACE_BETWEEN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 20,
+      "paddingRight": 40,
+      "paddingBottom": 20,
+      "paddingLeft": 40,
+      "itemSpacing": 16,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.88,
+            "g": 0.88,
+            "b": 0.88
+          }
+        }
+      ],
+      "strokeWeight": 2,
+      "children": [
+        {
+          "name": "Disease Info",
+          "type": "FRAME",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "TEXT",
+              "characters": "←",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Regular"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.4,
+                    "g": 0.4,
+                    "b": 0.4
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Icon",
+              "type": "RECTANGLE",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 10,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.96,
+                    "g": 0.26,
+                    "b": 0.21
+                  }
+                }
+              ]
+            },
+            {
+              "name": "고혈압 상세정보",
+              "type": "TEXT",
+              "characters": "고혈압 상세정보",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Main Content",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 640,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "paddingTop": 40,
+      "paddingRight": 60,
+      "paddingBottom": 40,
+      "paddingLeft": 60,
+      "itemSpacing": 32,
+      "fills": [],
+      "children": [
+        {
+          "name": "Prohibited Foods Section",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Section Title",
+              "type": "TEXT",
+              "characters": "🚫 금지 음식",
+              "fontSize": 22,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.96,
+                    "g": 0.26,
+                    "b": 0.21
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Food Items Grid",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "itemSpacing": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Food Card 1",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.96,
+                        "g": 0.26,
+                        "b": 0.21
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "짠 음식",
+                      "type": "TEXT",
+                      "characters": "짠 음식",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "나트륨 함량이 높아 혈압 상승",
+                      "type": "TEXT",
+                      "characters": "나트륨 함량이 높아 혈압 상승",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "위험",
+                          "type": "TEXT",
+                          "characters": "위험",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 2",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.96,
+                        "g": 0.26,
+                        "b": 0.21
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "가공육",
+                      "type": "TEXT",
+                      "characters": "가공육",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "베이컨, 소시지 등",
+                      "type": "TEXT",
+                      "characters": "베이컨, 소시지 등",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "위험",
+                          "type": "TEXT",
+                          "characters": "위험",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 3",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.96,
+                        "g": 0.26,
+                        "b": 0.21
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "튀김류",
+                      "type": "TEXT",
+                      "characters": "튀김류",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "포화지방 과다",
+                      "type": "TEXT",
+                      "characters": "포화지방 과다",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.95,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "주의",
+                          "type": "TEXT",
+                          "characters": "주의",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 0.6,
+                                "b": 0
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 4",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.96,
+                        "g": 0.26,
+                        "b": 0.21
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "치즈",
+                      "type": "TEXT",
+                      "characters": "치즈",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "나트륨, 포화지방 높음",
+                      "type": "TEXT",
+                      "characters": "나트륨, 포화지방 높음",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.95,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "주의",
+                          "type": "TEXT",
+                          "characters": "주의",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 0.6,
+                                "b": 0
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 5",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.96,
+                        "g": 0.26,
+                        "b": 0.21
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "알코올",
+                      "type": "TEXT",
+                      "characters": "알코올",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "혈압 상승 및 약물 상호작용",
+                      "type": "TEXT",
+                      "characters": "혈압 상승 및 약물 상호작용",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "위험",
+                          "type": "TEXT",
+                          "characters": "위험",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Caution Medications Section",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "Section Title",
+              "type": "TEXT",
+              "characters": "⚠️ 주의 약물",
+              "fontSize": 22,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 0.6,
+                    "b": 0
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Medication Cards",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "itemSpacing": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Med Card 1",
+                  "type": "FRAME",
+                  "width": 340,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 10,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.6,
+                        "b": 0
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "NSAIDs",
+                      "type": "TEXT",
+                      "characters": "NSAIDs",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "이부프로펜, 나프록센 등 비스테로이드성 소염진통제",
+                      "type": "TEXT",
+                      "characters": "이부프로펜, 나프록센 등 비스테로이드성 소염진통제",
+                      "fontSize": 13,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.97,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "의사 상담 필수",
+                          "type": "TEXT",
+                          "characters": "의사 상담 필수",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 0.6,
+                                "b": 0
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Med Card 2",
+                  "type": "FRAME",
+                  "width": 340,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 10,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.6,
+                        "b": 0
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "감기약",
+                      "type": "TEXT",
+                      "characters": "감기약",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "충혈 완화제 포함된 제품은 혈압 상승 가능",
+                      "type": "TEXT",
+                      "characters": "충혈 완화제 포함된 제품은 혈압 상승 가능",
+                      "fontSize": 13,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.97,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "주의",
+                          "type": "TEXT",
+                          "characters": "주의",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 0.6,
+                                "b": 0
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Med Card 3",
+                  "type": "FRAME",
+                  "width": 340,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 10,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.6,
+                        "b": 0
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "일부 항우울제",
+                      "type": "TEXT",
+                      "characters": "일부 항우울제",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "MAO 억제제 등은 혈압약과 상호작용",
+                      "type": "TEXT",
+                      "characters": "MAO 억제제 등은 혈압약과 상호작용",
+                      "fontSize": 13,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Severity Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.97,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "의사 상담 필수",
+                          "type": "TEXT",
+                          "characters": "의사 상담 필수",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 0.6,
+                                "b": 0
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Recommended Foods Section",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "Section Title",
+              "type": "TEXT",
+              "characters": "✅ 추천 음식",
+              "fontSize": 22,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.3,
+                    "g": 0.69,
+                    "b": 0.31
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Recommended Foods Grid",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "itemSpacing": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Food Card 1",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "저염식",
+                      "type": "TEXT",
+                      "characters": "저염식",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "나트륨 섭취 감소로 혈압 조절",
+                      "type": "TEXT",
+                      "characters": "나트륨 섭취 감소로 혈압 조절",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Benefit Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.93,
+                            "g": 0.98,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "권장",
+                          "type": "TEXT",
+                          "characters": "권장",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 2",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "야채/과일",
+                      "type": "TEXT",
+                      "characters": "야채/과일",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "칼륨 함유, 혈압 강하 효과",
+                      "type": "TEXT",
+                      "characters": "칼륨 함유, 혈압 강하 효과",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Benefit Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.93,
+                            "g": 0.98,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "권장",
+                          "type": "TEXT",
+                          "characters": "권장",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 3",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "통곡물",
+                      "type": "TEXT",
+                      "characters": "통곡물",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "식이섬유 풍부, 혈압 관리",
+                      "type": "TEXT",
+                      "characters": "식이섬유 풍부, 혈압 관리",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Benefit Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.93,
+                            "g": 0.98,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "권장",
+                          "type": "TEXT",
+                          "characters": "권장",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 4",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "등푸른 생선",
+                      "type": "TEXT",
+                      "characters": "등푸른 생선",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "오메가3 함유, 심혈관 건강",
+                      "type": "TEXT",
+                      "characters": "오메가3 함유, 심혈관 건강",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Benefit Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.93,
+                            "g": 0.98,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "권장",
+                          "type": "TEXT",
+                          "characters": "권장",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                },
+                {
+                  "name": "Food Card 5",
+                  "type": "FRAME",
+                  "width": 200,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "paddingTop": 20,
+                  "paddingRight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "itemSpacing": 12,
+                  "cornerRadius": 12,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.06
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 8,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "저지방 유제품",
+                      "type": "TEXT",
+                      "characters": "저지방 유제품",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.2,
+                            "g": 0.2,
+                            "b": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "칼슘 보충, 지방 섭취 감소",
+                      "type": "TEXT",
+                      "characters": "칼슘 보충, 지방 섭취 감소",
+                      "fontSize": 12,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Benefit Badge",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 6,
+                      "paddingRight": 12,
+                      "paddingBottom": 6,
+                      "paddingLeft": 12,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.93,
+                            "g": 0.98,
+                            "b": 0.93
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "권장",
+                          "type": "TEXT",
+                          "characters": "권장",
+                          "fontSize": 12,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bottom Navigation",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 80,
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "SPACE_BETWEEN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 16,
+      "paddingRight": 40,
+      "paddingBottom": 16,
+      "paddingLeft": 40,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.88,
+            "g": 0.88,
+            "b": 0.88
+          }
+        }
+      ],
+      "strokeWeight": 2,
+      "children": [
+        {
+          "name": "🏠 홈",
+          "type": "TEXT",
+          "characters": "🏠 홈",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.6,
+                "g": 0.6,
+                "b": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "name": "💊 약 관리",
+          "type": "TEXT",
+          "characters": "💊 약 관리",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.6,
+                "g": 0.6,
+                "b": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "name": "🩺 질병 관리",
+          "type": "TEXT",
+          "characters": "🩺 질병 관리",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Bold"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.3,
+                "g": 0.69,
+                "b": 0.31
+              }
+            }
+          ]
+        },
+        {
+          "name": "⚙️ 설정",
+          "type": "TEXT",
+          "characters": "⚙️ 설정",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.6,
+                "g": 0.6,
+                "b": 0.6
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1172 @@
+{
+  "name": "설정: 내 질병 관리",
+  "type": "FRAME",
+  "width": 1200,
+  "height": 800,
+  "layoutMode": "VERTICAL",
+  "primaryAxisSizingMode": "FIXED",
+  "counterAxisSizingMode": "FIXED",
+  "paddingTop": 0,
+  "paddingRight": 0,
+  "paddingBottom": 0,
+  "paddingLeft": 0,
+  "itemSpacing": 0,
+  "fills": [
+    {
+      "type": "SOLID",
+      "color": {
+        "r": 0.98,
+        "g": 0.98,
+        "b": 0.98
+      }
+    }
+  ],
+  "children": [
+    {
+      "name": "Header",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 80,
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "SPACE_BETWEEN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 20,
+      "paddingRight": 40,
+      "paddingBottom": 20,
+      "paddingLeft": 40,
+      "itemSpacing": 16,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.88,
+            "g": 0.88,
+            "b": 0.88
+          }
+        }
+      ],
+      "strokeWeight": 2,
+      "children": [
+        {
+          "name": "Header Left",
+          "type": "FRAME",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": 16,
+          "fills": [],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "TEXT",
+              "characters": "←",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Regular"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.4,
+                    "g": 0.4,
+                    "b": 0.4
+                  }
+                }
+              ]
+            },
+            {
+              "name": "내 질병 관리",
+              "type": "TEXT",
+              "characters": "내 질병 관리",
+              "fontSize": 28,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Main Content",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 640,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "paddingTop": 40,
+      "paddingRight": 60,
+      "paddingBottom": 40,
+      "paddingLeft": 60,
+      "itemSpacing": 0,
+      "fills": [],
+      "children": [
+        {
+          "name": "Diseases List",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "itemSpacing": 0,
+          "fills": [],
+          "children": [
+            {
+              "name": "Disease Item 1",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 100,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 24,
+              "paddingRight": 28,
+              "paddingBottom": 24,
+              "paddingLeft": 28,
+              "itemSpacing": 20,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "Disease Info",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Icon",
+                      "type": "RECTANGLE",
+                      "width": 48,
+                      "height": 48,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.96,
+                            "g": 0.26,
+                            "b": 0.21
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 8,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "고혈압",
+                          "type": "TEXT",
+                          "characters": "고혈압",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "2023.03.15 진단 • 금지 음식 5개 • 주의 약 2개",
+                          "type": "TEXT",
+                          "characters": "2023.03.15 진단 • 금지 음식 5개 • 주의 약 2개",
+                          "fontSize": 13,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Controls",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Edit Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.95,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "✏️",
+                          "type": "TEXT",
+                          "characters": "✏️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.4,
+                                "g": 0.4,
+                                "b": 0.4
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Delete Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🗑️",
+                          "type": "TEXT",
+                          "characters": "🗑️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Divider 1",
+              "type": "RECTANGLE",
+              "width": 1080,
+              "height": 1,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.9,
+                    "g": 0.9,
+                    "b": 0.9
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Disease Item 2",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 100,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 24,
+              "paddingRight": 28,
+              "paddingBottom": 24,
+              "paddingLeft": 28,
+              "itemSpacing": 20,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "Disease Info",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Icon",
+                      "type": "RECTANGLE",
+                      "width": 48,
+                      "height": 48,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.13,
+                            "g": 0.59,
+                            "b": 0.95
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 8,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "당뇨병 (제2형)",
+                          "type": "TEXT",
+                          "characters": "당뇨병 (제2형)",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "2022.08.22 진단 • 금지 음식 6개 • 주의 약 3개",
+                          "type": "TEXT",
+                          "characters": "2022.08.22 진단 • 금지 음식 6개 • 주의 약 3개",
+                          "fontSize": 13,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Controls",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Edit Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.95,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "✏️",
+                          "type": "TEXT",
+                          "characters": "✏️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.4,
+                                "g": 0.4,
+                                "b": 0.4
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Delete Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🗑️",
+                          "type": "TEXT",
+                          "characters": "🗑️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Divider 2",
+              "type": "RECTANGLE",
+              "width": 1080,
+              "height": 1,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.9,
+                    "g": 0.9,
+                    "b": 0.9
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Disease Item 3",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 100,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 24,
+              "paddingRight": 28,
+              "paddingBottom": 24,
+              "paddingLeft": 28,
+              "itemSpacing": 20,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "Disease Info",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Icon",
+                      "type": "RECTANGLE",
+                      "width": 48,
+                      "height": 48,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.6,
+                            "b": 0
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 8,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "고지혈증",
+                          "type": "TEXT",
+                          "characters": "고지혈증",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "2021.05.10 진단 • 금지 음식 4개 • 주의 약 1개",
+                          "type": "TEXT",
+                          "characters": "2021.05.10 진단 • 금지 음식 4개 • 주의 약 1개",
+                          "fontSize": 13,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Controls",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Edit Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.95,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "✏️",
+                          "type": "TEXT",
+                          "characters": "✏️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.4,
+                                "g": 0.4,
+                                "b": 0.4
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Delete Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🗑️",
+                          "type": "TEXT",
+                          "characters": "🗑️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Divider 3",
+              "type": "RECTANGLE",
+              "width": 1080,
+              "height": 1,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.9,
+                    "g": 0.9,
+                    "b": 0.9
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Disease Item 4",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 100,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "paddingTop": 24,
+              "paddingRight": 28,
+              "paddingBottom": 24,
+              "paddingLeft": 28,
+              "itemSpacing": 20,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "Disease Info",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 16,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Icon",
+                      "type": "RECTANGLE",
+                      "width": 48,
+                      "height": 48,
+                      "cornerRadius": 12,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.69,
+                            "b": 0.31
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 8,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "갑상선 기능 저하증",
+                          "type": "TEXT",
+                          "characters": "갑상선 기능 저하증",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.2,
+                                "g": 0.2,
+                                "b": 0.2
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "2024.01.18 진단 • 금지 음식 3개 • 주의 약 2개",
+                          "type": "TEXT",
+                          "characters": "2024.01.18 진단 • 금지 음식 3개 • 주의 약 2개",
+                          "fontSize": 13,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Controls",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "counterAxisAlignItems": "CENTER",
+                  "itemSpacing": 12,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Edit Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.95,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "✏️",
+                          "type": "TEXT",
+                          "characters": "✏️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.4,
+                                "g": 0.4,
+                                "b": 0.4
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Delete Button",
+                      "type": "FRAME",
+                      "width": 36,
+                      "height": 36,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 8,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.95,
+                            "b": 0.95
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "🗑️",
+                          "type": "TEXT",
+                          "characters": "🗑️",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Add Button",
+          "type": "FRAME",
+          "width": 1080,
+          "height": 60,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "cornerRadius": 12,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.13,
+                "g": 0.59,
+                "b": 0.95
+              }
+            }
+          ],
+          "children": [
+            {
+              "name": "+ 질병 추가",
+              "type": "TEXT",
+              "characters": "+ 질병 추가",
+              "fontSize": 18,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO"
+        }
+      ]
+    },
+    {
+      "name": "Bottom Navigation",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 80,
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "SPACE_BETWEEN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 16,
+      "paddingRight": 40,
+      "paddingBottom": 16,
+      "paddingLeft": 40,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.88,
+            "g": 0.88,
+            "b": 0.88
+          }
+        }
+      ],
+      "strokeWeight": 2,
+      "children": [
+        {
+          "name": "🏠 홈",
+          "type": "TEXT",
+          "characters": "🏠 홈",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.6,
+                "g": 0.6,
+                "b": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "name": "💊 약 관리",
+          "type": "TEXT",
+          "characters": "💊 약 관리",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.6,
+                "g": 0.6,
+                "b": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "name": "👨‍👩‍👧 가족",
+          "type": "TEXT",
+          "characters": "👨‍👩‍👧 가족",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.6,
+                "g": 0.6,
+                "b": 0.6
+              }
+            }
+          ]
+        },
+        {
+          "name": "⚙️ 설정",
+          "type": "TEXT",
+          "characters": "⚙️ 설정",
+          "fontSize": 16,
+          "fontName": {
+            "family": "Inter",
+            "style": "Bold"
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.3,
+                "g": 0.69,
+                "b": 0.31
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
