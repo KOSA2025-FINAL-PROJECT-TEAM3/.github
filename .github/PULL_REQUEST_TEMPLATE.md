@@ -41,51 +41,14 @@ Related to #
 - [ ] 📦 의존성 업데이트 (Dependencies)
 - [ ] 🔀 병합/충돌 해결 (Merge/Conflict resolution)
 
-
-## 🔍 영향 범위
-
-<!-- 해당하는 컴포넌트에 [x]로 표시해주세요 -->
-
-### Frontend
-- [ ] 🔐 Auth (인증)
-- [ ] 💊 Medication (약 관리)
-- [ ] 👨‍👩‍👧 Family (가족 네트워크)
-- [ ] 🍽️ Diet (식단 관리)
-- [ ] 🔔 Notification (알림)
-- [ ] 📊 Dashboard (대시보드)
-- [ ] 📸 OCR (약봉지 인식)
-- [ ] ⚙️ Settings (설정)
-
-### Backend
-- [ ] 🔐 Auth Service
-- [ ] 💊 Medication Service
-- [ ] 👨‍👩‍👧 Family Service
-- [ ] 🍽️ Diet Service
-- [ ] 🔔 Notification Service
-- [ ] 📸 OCR Service
-- [ ] 🌐 API Gateway
-- [ ] 🔍 Eureka Server
-- [ ] ⚙️ Config Server
-
-### Infrastructure
-- [ ] 🗄️ Database (MySQL/PostgreSQL)
-- [ ] 🐳 Docker
-- [ ] 📊 Kafka
-- [ ] 🔴 Redis
-
-
 ## ✅ 테스트
 
 ### 테스트 완료 항목
 <!-- 수행한 테스트를 체크해주세요 -->
 
 - [ ] 로컬 환경에서 정상 동작 확인
-- [ ] 기존 테스트 통과 확인
-- [ ] 새로운 테스트 코드 작성
 - [ ] 브라우저 테스트 (Chrome, Safari, Firefox 등)
 - [ ] 모바일 반응형 테스트
-- [ ] 에러 케이스 테스트
-- [ ] 성능 테스트
 
 ### 테스트 시나리오
 <!-- 어떻게 테스트했는지 구체적으로 작성해주세요 -->
@@ -107,18 +70,6 @@ Related to #
 ### After
 <!-- 변경 후 -->
 
-
-
-## 🔄 Breaking Changes
-
-<!-- 기존 코드나 API와 호환되지 않는 변경이 있나요? -->
-
-- [ ] 이 PR은 breaking changes를 포함합니다
-
-<!-- breaking changes가 있다면 자세히 설명해주세요 -->
-
-
-
 ## 📚 추가 문서
 
 <!-- 업데이트가 필요한 문서나 추가 설명이 필요한 부분이 있나요? -->
@@ -129,21 +80,6 @@ Related to #
 - [ ] 주석/코멘트 추가 완료
 - [ ] 별도 문서 작성 완료
 
-
-## 🚀 배포 고려사항
-
-<!-- 배포 시 주의할 점이나 특별한 절차가 필요한가요? -->
-
-- [ ] 데이터베이스 마이그레이션 필요
-- [ ] 환경 변수 추가/변경 필요
-- [ ] 외부 API 키 설정 필요
-- [ ] 서버 재시작 필요
-- [ ] 캐시 클리어 필요
-- [ ] 특별한 배포 순서 필요 (아래에 설명)
-
-
-
-
 ## ✅ 체크리스트
 
 <!-- PR 제출 전 확인해주세요! -->
@@ -151,11 +87,7 @@ Related to #
 - [ ] 코드가 스타일 가이드를 따릅니다
 - [ ] 자체 코드 리뷰를 완료했습니다
 - [ ] 주석을 추가했습니다 (특히 복잡한 로직)
-- [ ] 관련 문서를 업데이트했습니다
-- [ ] 테스트를 작성/업데이트했습니다
-- [ ] 모든 테스트가 통과합니다
 - [ ] 관련 이슈를 링크했습니다
-- [ ] Breaking changes가 있다면 명확히 표시했습니다
 - [ ] 커밋 메시지가 명확합니다
 
 
