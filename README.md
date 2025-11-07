@@ -178,6 +178,7 @@ npm run dev
 | **시스템 아키텍처** | Mermaid 다이어그램 (9개), 기술 스택 선정 이유 | [ARCHITECTURE.md](./ARCHITECTURE.md) |
 | **9-Stack 마이크로서비스** | MySQL/PostgreSQL 분리, Docker Compose, 서비스별 API | [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md) |
 | **소스 구조 가이드** | Frontend/Backend 디렉토리 구조, SOLID 원칙, AOP 패턴 | [SRC_STRUCTURE.md](./SRC_STRUCTURE.md) |
+| **프론트엔드 컴포넌트 정의서** | 화면별 컴포넌트 트리, Props 명세, API 연동, 라우팅 구조 | [FRONTEND_COMPONENTS_SPECIFICATION.md](./FRONTEND_COMPONENTS_SPECIFICATION.md) |
 
 ### 🗄️ 데이터베이스
 
@@ -194,6 +195,12 @@ npm run dev
 | **와이어프레임 설명** | 10개 화면 구성 및 기능 설명 | [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) |
 | **Figma Import 가이드** | JSON 파일 Figma로 가져오는 방법 | [FIGMA_IMPORT_GUIDE.md](./FIGMA_IMPORT_GUIDE.md) |
 | **프로토타입 플로우 가이드** | Figma 화살표 연결 가이드 | [피그마_화살표_가이드.md](./피그마_화살표_가이드.md) |
+
+### 📏 개발 규칙 및 컨벤션
+
+| 문서 | 설명 | 링크 |
+|------|------|------|
+| **프로젝트 컨벤션** | Git 브랜치 전략, 커밋 규칙, 코드 네이밍 규칙 (React, Java, DB) | [CONVENTIONS.md](./CONVENTIONS.md) |
 
 ### 📊 다이어그램 파일
 
