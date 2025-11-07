@@ -3665,361 +3665,6 @@
           "cornerRadius": 30
         },
         {
-          "name": "Navigation",
-          "type": "FRAME",
-          "width": 1200,
-          "height": 80,
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "FIXED",
-          "counterAxisSizingMode": "FIXED",
-          "primaryAxisAlignItems": "CENTER",
-          "counterAxisAlignItems": "CENTER",
-          "paddingTop": 16,
-          "paddingRight": 300,
-          "paddingBottom": 16,
-          "paddingLeft": 300,
-          "itemSpacing": 0,
-          "fills": [
-            {
-              "type": "SOLID",
-              "color": {
-                "r": 1,
-                "g": 1,
-                "b": 1,
-                "a": 0.85
-              }
-            }
-          ],
-          "strokes": [
-            {
-              "type": "SOLID",
-              "color": {
-                "r": 0.88,
-                "g": 0.88,
-                "b": 0.88
-              }
-            }
-          ],
-          "strokeWeight": 2,
-          "children": [
-            {
-              "name": "홈 버튼",
-              "type": "FRAME",
-              "width": 150,
-              "height": 48,
-              "layoutMode": "VERTICAL",
-              "primaryAxisSizingMode": "FIXED",
-              "counterAxisSizingMode": "FIXED",
-              "primaryAxisAlignItems": "CENTER",
-              "counterAxisAlignItems": "CENTER",
-              "itemSpacing": 2,
-              "fills": [],
-              "children": [
-                {
-                  "name": "Icon",
-                  "type": "TEXT",
-                  "characters": "🏠",
-                  "fontSize": 20,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                },
-                {
-                  "name": "홈",
-                  "type": "TEXT",
-                  "characters": "홈",
-                  "fontSize": 13,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                }
-              ],
-              "cornerRadius": 25,
-              "effects": [
-                {
-                  "type": "DROP_SHADOW",
-                  "color": {
-                    "r": 0,
-                    "g": 0.48,
-                    "b": 1,
-                    "a": 0.4
-                  },
-                  "offset": {
-                    "x": 0,
-                    "y": 5
-                  },
-                  "radius": 20,
-                  "visible": true
-                }
-              ]
-            },
-            {
-              "name": "약 관리 버튼",
-              "type": "FRAME",
-              "width": 150,
-              "height": 48,
-              "layoutMode": "VERTICAL",
-              "primaryAxisSizingMode": "FIXED",
-              "counterAxisSizingMode": "FIXED",
-              "primaryAxisAlignItems": "CENTER",
-              "counterAxisAlignItems": "CENTER",
-              "itemSpacing": 2,
-              "fills": [],
-              "children": [
-                {
-                  "name": "Icon",
-                  "type": "TEXT",
-                  "characters": "💊",
-                  "fontSize": 20,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                },
-                {
-                  "name": "약 관리",
-                  "type": "TEXT",
-                  "characters": "약 관리",
-                  "fontSize": 13,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                }
-              ],
-              "cornerRadius": 25,
-              "effects": [
-                {
-                  "type": "DROP_SHADOW",
-                  "color": {
-                    "r": 0,
-                    "g": 0.48,
-                    "b": 1,
-                    "a": 0.4
-                  },
-                  "offset": {
-                    "x": 0,
-                    "y": 5
-                  },
-                  "radius": 20,
-                  "visible": true
-                }
-              ]
-            },
-            {
-              "name": "가족 버튼",
-              "type": "FRAME",
-              "width": 150,
-              "height": 48,
-              "layoutMode": "VERTICAL",
-              "primaryAxisSizingMode": "FIXED",
-              "counterAxisSizingMode": "FIXED",
-              "primaryAxisAlignItems": "CENTER",
-              "counterAxisAlignItems": "CENTER",
-              "itemSpacing": 2,
-              "fills": [],
-              "children": [
-                {
-                  "name": "Icon",
-                  "type": "TEXT",
-                  "characters": "👨‍👩‍👧",
-                  "fontSize": 20,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                },
-                {
-                  "name": "가족",
-                  "type": "TEXT",
-                  "characters": "가족",
-                  "fontSize": 13,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                }
-              ],
-              "cornerRadius": 25,
-              "effects": [
-                {
-                  "type": "DROP_SHADOW",
-                  "color": {
-                    "r": 0,
-                    "g": 0.48,
-                    "b": 1,
-                    "a": 0.4
-                  },
-                  "offset": {
-                    "x": 0,
-                    "y": 5
-                  },
-                  "radius": 20,
-                  "visible": true
-                }
-              ]
-            },
-            {
-              "name": "설정 버튼",
-              "type": "FRAME",
-              "width": 150,
-              "height": 48,
-              "layoutMode": "VERTICAL",
-              "primaryAxisSizingMode": "FIXED",
-              "counterAxisSizingMode": "FIXED",
-              "primaryAxisAlignItems": "CENTER",
-              "counterAxisAlignItems": "CENTER",
-              "itemSpacing": 2,
-              "fills": [],
-              "children": [
-                {
-                  "name": "Icon",
-                  "type": "TEXT",
-                  "characters": "⚙️",
-                  "fontSize": 20,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                },
-                {
-                  "name": "설정",
-                  "type": "TEXT",
-                  "characters": "설정",
-                  "fontSize": 13,
-                  "fontName": {
-                    "family": "Inter",
-                    "style": "Regular"
-                  },
-                  "fills": [
-                    {
-                      "type": "SOLID",
-                      "color": {
-                        "r": 0.5,
-                        "g": 0.5,
-                        "b": 0.5
-                      }
-                    }
-                  ]
-                }
-              ],
-              "cornerRadius": 25,
-              "effects": [
-                {
-                  "type": "DROP_SHADOW",
-                  "color": {
-                    "r": 0,
-                    "g": 0.48,
-                    "b": 1,
-                    "a": 0.4
-                  },
-                  "offset": {
-                    "x": 0,
-                    "y": 5
-                  },
-                  "radius": 20,
-                  "visible": true
-                }
-              ]
-            }
-          ],
-          "cornerRadius": 30,
-          "effects": [
-            {
-              "type": "BACKGROUND_BLUR",
-              "radius": 20,
-              "visible": true
-            },
-            {
-              "type": "DROP_SHADOW",
-              "color": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 0.08
-              },
-              "offset": {
-                "x": 0,
-                "y": 4
-              },
-              "radius": 20,
-              "visible": true
-            }
-          ]
-        },
-        {
           "name": "Bottom Navigation",
           "type": "FRAME",
           "width": 1200,
@@ -4329,8 +3974,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -4420,7 +4064,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -4580,24 +4224,24 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
               "name": "Button - 새 상담 시작",
               "type": "FRAME",
               "width": 1140,
-              "height": 50,
+              "height": 60,
               "layoutMode": "HORIZONTAL",
               "primaryAxisAlignItems": "CENTER",
               "counterAxisAlignItems": "CENTER",
@@ -4661,7 +4305,7 @@
                   "name": "새 상담 시작",
                   "type": "TEXT",
                   "characters": "새 상담 시작",
-                  "fontSize": 16,
+                  "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
                     "style": "SemiBold"
@@ -5194,8 +4838,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -5349,7 +4992,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -5509,17 +5152,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -5804,8 +5447,8 @@
                 {
                   "name": "Button - 전송",
                   "type": "FRAME",
-                  "width": 100,
-                  "height": 50,
+                  "width": 120,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -5869,7 +5512,7 @@
                       "name": "전송",
                       "type": "TEXT",
                       "characters": "전송",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "SemiBold"
@@ -6116,8 +5759,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -6271,7 +5913,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -6431,19 +6073,188 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
+            {
+              "name": "Search Container",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 60,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 20,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Search Input",
+                  "type": "FRAME",
+                  "width": 900,
+                  "height": 60,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "FIXED",
+                  "counterAxisSizingMode": "FIXED",
+                  "primaryAxisAlignItems": "MIN",
+                  "counterAxisAlignItems": "CENTER",
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 0.9
+                      }
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "INNER_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0.05
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 2
+                      },
+                      "radius": 4,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "Placeholder",
+                      "type": "TEXT",
+                      "characters": "증상을 입력하세요 (예: 두통, 복통, 어지러움)",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Regular"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.7,
+                            "g": 0.7,
+                            "b": 0.7,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Button - 검색",
+                  "type": "FRAME",
+                  "width": 200,
+                  "height": 60,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "FIXED",
+                  "counterAxisSizingMode": "FIXED",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "GRADIENT_LINEAR",
+                      "gradientTransform": [
+                        [
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0
+                        ]
+                      ],
+                      "gradientStops": [
+                        {
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          },
+                          "position": 0
+                        },
+                        {
+                          "color": {
+                            "r": 0.35,
+                            "g": 0.8,
+                            "b": 0.98,
+                            "a": 1
+                          },
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.3
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 4
+                      },
+                      "radius": 12,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "Label",
+                      "type": "TEXT",
+                      "characters": "검색",
+                      "fontSize": 18,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "name": "Search Box",
               "type": "FRAME",
@@ -6939,8 +6750,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -7137,7 +6947,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -7297,17 +7107,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -7437,8 +7247,8 @@
                 {
                   "name": "Button - 자세히 보기",
                   "type": "FRAME",
-                  "width": 150,
-                  "height": 50,
+                  "width": 200,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -7502,7 +7312,7 @@
                       "name": "자세히 보기",
                       "type": "TEXT",
                       "characters": "자세히 보기",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "SemiBold"
@@ -7650,8 +7460,8 @@
                 {
                   "name": "Button - 자세히 보기",
                   "type": "FRAME",
-                  "width": 150,
-                  "height": 50,
+                  "width": 200,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -7715,7 +7525,7 @@
                       "name": "자세히 보기",
                       "type": "TEXT",
                       "characters": "자세히 보기",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "SemiBold"
@@ -7919,8 +7729,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [

@@ -33,7 +33,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -193,17 +193,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -321,7 +321,7 @@
               "name": "Button - 약사와 상담하기",
               "type": "FRAME",
               "width": 1140,
-              "height": 50,
+              "height": 60,
               "layoutMode": "HORIZONTAL",
               "primaryAxisAlignItems": "CENTER",
               "counterAxisAlignItems": "CENTER",
@@ -385,7 +385,7 @@
                   "name": "약사와 상담하기",
                   "type": "TEXT",
                   "characters": "약사와 상담하기",
-                  "fontSize": 16,
+                  "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
                     "style": "SemiBold"
@@ -717,8 +717,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -829,7 +828,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -989,24 +988,24 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
               "name": "Button - 새 질병 추가",
               "type": "FRAME",
               "width": 1140,
-              "height": 50,
+              "height": 60,
               "layoutMode": "HORIZONTAL",
               "primaryAxisAlignItems": "CENTER",
               "counterAxisAlignItems": "CENTER",
@@ -1070,7 +1069,7 @@
                   "name": "새 질병 추가",
                   "type": "TEXT",
                   "characters": "새 질병 추가",
-                  "fontSize": 16,
+                  "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
                     "style": "SemiBold"
@@ -1652,8 +1651,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -1764,7 +1762,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -1924,17 +1922,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -2416,8 +2414,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -2528,7 +2525,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -2688,17 +2685,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -2807,8 +2804,8 @@
                 {
                   "name": "Button - 다운로드",
                   "type": "FRAME",
-                  "width": 150,
-                  "height": 50,
+                  "width": 200,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -2872,7 +2869,7 @@
                       "name": "다운로드",
                       "type": "TEXT",
                       "characters": "다운로드",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "SemiBold"
@@ -2999,8 +2996,8 @@
                 {
                   "name": "Button - 다운로드",
                   "type": "FRAME",
-                  "width": 150,
-                  "height": 50,
+                  "width": 200,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -3064,7 +3061,7 @@
                       "name": "다운로드",
                       "type": "TEXT",
                       "characters": "다운로드",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "SemiBold"
@@ -3191,8 +3188,8 @@
                 {
                   "name": "Button - 다운로드",
                   "type": "FRAME",
-                  "width": 150,
-                  "height": 50,
+                  "width": 200,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -3256,7 +3253,7 @@
                       "name": "다운로드",
                       "type": "TEXT",
                       "characters": "다운로드",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "SemiBold"
@@ -3546,8 +3543,7 @@
                       },
                       "position": 1
                     }
-                  ],
-                  "color": null
+                  ]
                 }
               ],
               "children": [
@@ -3658,7 +3654,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -3818,17 +3814,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -4542,7 +4538,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -4702,17 +4698,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -4937,7 +4933,7 @@
               "name": "Button - 리뷰 보기",
               "type": "FRAME",
               "width": 1140,
-              "height": 50,
+              "height": 60,
               "layoutMode": "HORIZONTAL",
               "primaryAxisAlignItems": "CENTER",
               "counterAxisAlignItems": "CENTER",
@@ -5001,7 +4997,7 @@
                   "name": "리뷰 보기",
                   "type": "TEXT",
                   "characters": "리뷰 보기",
-                  "fontSize": 16,
+                  "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
                     "style": "SemiBold"
@@ -5401,7 +5397,7 @@
           "name": "Header",
           "type": "FRAME",
           "width": 1200,
-          "height": 90,
+          "height": 80,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -5561,17 +5557,17 @@
           "name": "Content",
           "type": "FRAME",
           "width": 1200,
-          "height": 710,
+          "height": 640,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "paddingTop": 30,
-          "paddingRight": 30,
-          "paddingBottom": 30,
-          "paddingLeft": 30,
-          "itemSpacing": 20,
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 40,
           "fills": [],
           "children": [
             {
@@ -5813,7 +5809,7 @@
               "name": "Button - 월간 상세 리포트 보기",
               "type": "FRAME",
               "width": 1140,
-              "height": 50,
+              "height": 60,
               "layoutMode": "HORIZONTAL",
               "primaryAxisAlignItems": "CENTER",
               "counterAxisAlignItems": "CENTER",
@@ -5877,7 +5873,7 @@
                   "name": "월간 상세 리포트 보기",
                   "type": "TEXT",
                   "characters": "월간 상세 리포트 보기",
-                  "fontSize": 16,
+                  "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
                     "style": "SemiBold"
