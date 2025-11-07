@@ -1080,7 +1080,7 @@
               "type": "FRAME",
               "width": 1120,
               "layoutMode": "HORIZONTAL",
-              "primaryAxisAlignItems": "FLEX_END",
+              "primaryAxisAlignItems": "MAX",
               "fills": [],
               "children": [
                 {
