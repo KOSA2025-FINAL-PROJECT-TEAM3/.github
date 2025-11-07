@@ -82,7 +82,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -138,9 +138,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -388,7 +388,7 @@
                   "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
-                    "style": "SemiBold"
+                    "style": "Bold"
                   },
                   "fills": [
                     {
@@ -877,7 +877,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -933,9 +933,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -1072,7 +1072,7 @@
                   "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
-                    "style": "SemiBold"
+                    "style": "Bold"
                   },
                   "fills": [
                     {
@@ -1811,7 +1811,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -1867,9 +1867,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -2574,7 +2574,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -2630,9 +2630,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -2872,7 +2872,7 @@
                       "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
-                        "style": "SemiBold"
+                        "style": "Bold"
                       },
                       "fills": [
                         {
@@ -3064,7 +3064,7 @@
                       "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
-                        "style": "SemiBold"
+                        "style": "Bold"
                       },
                       "fills": [
                         {
@@ -3256,7 +3256,7 @@
                       "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
-                        "style": "SemiBold"
+                        "style": "Bold"
                       },
                       "fills": [
                         {
@@ -3703,7 +3703,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -3759,9 +3759,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -4587,7 +4587,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -4643,9 +4643,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -5000,7 +5000,7 @@
                   "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
-                    "style": "SemiBold"
+                    "style": "Bold"
                   },
                   "fills": [
                     {
@@ -5446,7 +5446,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -5502,9 +5502,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -5876,7 +5876,7 @@
                   "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
-                    "style": "SemiBold"
+                    "style": "Bold"
                   },
                   "fills": [
                     {

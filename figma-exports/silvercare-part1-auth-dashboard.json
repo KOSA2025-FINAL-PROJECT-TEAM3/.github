@@ -141,7 +141,7 @@
               "name": "Kakao Button",
               "type": "FRAME",
               "width": 350,
-              "height": 50,
+              "height": 60,
               "layoutMode": "HORIZONTAL",
               "primaryAxisAlignItems": "CENTER",
               "counterAxisAlignItems": "CENTER",
@@ -188,18 +188,18 @@
                   "name": "카카오 로그인",
                   "type": "TEXT",
                   "characters": "카카오 로그인",
-                  "fontSize": 16,
+                  "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
-                    "style": "SemiBold"
+                    "style": "Bold"
                   },
                   "fills": [
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.1,
-                        "b": 0,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -432,7 +432,7 @@
                   "name": "Kakao Login Button",
                   "type": "FRAME",
                   "width": 350,
-                  "height": 56,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisSizingMode": "FIXED",
                   "counterAxisSizingMode": "FIXED",
@@ -482,7 +482,7 @@
                       "name": "카카오톡으로 계속하기",
                       "type": "TEXT",
                       "characters": "🗨 카카오톡으로 계속하기",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "Bold"
@@ -491,9 +491,10 @@
                         {
                           "type": "SOLID",
                           "color": {
-                            "r": 0.2,
-                            "g": 0.2,
-                            "b": 0.2
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
                           }
                         }
                       ]
@@ -589,7 +590,7 @@
                   "name": "Email Login Button",
                   "type": "FRAME",
                   "width": 350,
-                  "height": 56,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisSizingMode": "FIXED",
                   "counterAxisSizingMode": "FIXED",
@@ -649,7 +650,7 @@
                       "name": "이메일로 로그인",
                       "type": "TEXT",
                       "characters": "이메일로 로그인",
-                      "fontSize": 16,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "Bold"
@@ -658,9 +659,10 @@
                         {
                           "type": "SOLID",
                           "color": {
-                            "r": 0.3,
-                            "g": 0.69,
-                            "b": 0.31
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
                           }
                         }
                       ]
@@ -1012,7 +1014,7 @@
                       "name": "Select Button",
                       "type": "FRAME",
                       "width": 280,
-                      "height": 48,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisSizingMode": "FIXED",
                       "counterAxisSizingMode": "FIXED",
@@ -1061,7 +1063,7 @@
                           "name": "선택",
                           "type": "TEXT",
                           "characters": "선택",
-                          "fontSize": 16,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -1073,7 +1075,7 @@
                                 "r": 1,
                                 "g": 1,
                                 "b": 1,
-                                "a": 0.85
+                                "a": 1
                               }
                             }
                           ]
@@ -1203,7 +1205,7 @@
                       "name": "Select Button",
                       "type": "FRAME",
                       "width": 280,
-                      "height": 48,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisSizingMode": "FIXED",
                       "counterAxisSizingMode": "FIXED",
@@ -1252,7 +1254,7 @@
                           "name": "선택",
                           "type": "TEXT",
                           "characters": "선택",
-                          "fontSize": 16,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -1264,7 +1266,7 @@
                                 "r": 1,
                                 "g": 1,
                                 "b": 1,
-                                "a": 0.85
+                                "a": 1
                               }
                             }
                           ]
@@ -1827,7 +1829,7 @@
                       "name": "Status Button - Completed",
                       "type": "FRAME",
                       "width": 150,
-                      "height": 40,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisAlignItems": "CENTER",
                       "counterAxisAlignItems": "CENTER",
@@ -1885,7 +1887,7 @@
                           "name": "복용 완료 ✓",
                           "type": "TEXT",
                           "characters": "복용 완료 ✓",
-                          "fontSize": 14,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -1894,9 +1896,10 @@
                             {
                               "type": "SOLID",
                               "color": {
-                                "r": 0.3,
-                                "g": 0.69,
-                                "b": 0.31
+                                "r": 1,
+                                "g": 1,
+                                "b": 1,
+                                "a": 1
                               }
                             }
                           ]
@@ -2111,7 +2114,7 @@
                       "name": "Status Button - Action",
                       "type": "FRAME",
                       "width": 150,
-                      "height": 40,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisAlignItems": "CENTER",
                       "counterAxisAlignItems": "CENTER",
@@ -2158,7 +2161,7 @@
                           "name": "지금 복용하기",
                           "type": "TEXT",
                           "characters": "지금 복용하기",
-                          "fontSize": 14,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -2170,7 +2173,7 @@
                                 "r": 1,
                                 "g": 1,
                                 "b": 1,
-                                "a": 0.85
+                                "a": 1
                               }
                             }
                           ]
@@ -2386,7 +2389,7 @@
                       "name": "Status Button - Scheduled",
                       "type": "FRAME",
                       "width": 150,
-                      "height": 40,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisAlignItems": "CENTER",
                       "counterAxisAlignItems": "CENTER",
@@ -2444,7 +2447,7 @@
                           "name": "예정",
                           "type": "TEXT",
                           "characters": "예정",
-                          "fontSize": 14,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -2453,9 +2456,10 @@
                             {
                               "type": "SOLID",
                               "color": {
-                                "r": 0.6,
-                                "g": 0.6,
-                                "b": 0.6
+                                "r": 1,
+                                "g": 1,
+                                "b": 1,
+                                "a": 1
                               }
                             }
                           ]
@@ -3276,7 +3280,7 @@
                   "name": "Call Button",
                   "type": "FRAME",
                   "width": 120,
-                  "height": 40,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -3323,7 +3327,7 @@
                       "name": "전화하기",
                       "type": "TEXT",
                       "characters": "전화하기",
-                      "fontSize": 14,
+                      "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
                         "style": "Bold"
@@ -3335,7 +3339,7 @@
                             "r": 1,
                             "g": 1,
                             "b": 1,
-                            "a": 0.85
+                            "a": 1
                           }
                         }
                       ]
@@ -4513,7 +4517,8 @@
           ],
           "primaryAxisSizingMode": "AUTO",
           "counterAxisSizingMode": "AUTO",
-          "cornerRadius": 30
+          "cornerRadius": 30,
+          "height": 640
         },
         {
           "name": "Bottom Navigation",
@@ -5054,7 +5059,7 @@
                   "name": "Add Button",
                   "type": "FRAME",
                   "width": 240,
-                  "height": 50,
+                  "height": 60,
                   "layoutMode": "HORIZONTAL",
                   "primaryAxisAlignItems": "CENTER",
                   "counterAxisAlignItems": "CENTER",
@@ -5113,7 +5118,7 @@
                             "r": 1,
                             "g": 1,
                             "b": 1,
-                            "a": 0.85
+                            "a": 1
                           }
                         }
                       ]
@@ -5246,7 +5251,7 @@
                       "name": "Scan Button",
                       "type": "FRAME",
                       "width": 180,
-                      "height": 40,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisAlignItems": "CENTER",
                       "counterAxisAlignItems": "CENTER",
@@ -5293,7 +5298,7 @@
                           "name": "스캔 시작하기",
                           "type": "TEXT",
                           "characters": "스캔 시작하기",
-                          "fontSize": 15,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -5305,7 +5310,7 @@
                                 "r": 1,
                                 "g": 1,
                                 "b": 1,
-                                "a": 0.85
+                                "a": 1
                               }
                             }
                           ]
@@ -5604,7 +5609,7 @@
                       "name": "Submit Button",
                       "type": "FRAME",
                       "width": 160,
-                      "height": 40,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisAlignItems": "CENTER",
                       "counterAxisAlignItems": "CENTER",
@@ -5651,7 +5656,7 @@
                           "name": "등록하기",
                           "type": "TEXT",
                           "characters": "등록하기",
-                          "fontSize": 15,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -5663,7 +5668,7 @@
                                 "r": 1,
                                 "g": 1,
                                 "b": 1,
-                                "a": 0.85
+                                "a": 1
                               }
                             }
                           ]
@@ -5990,7 +5995,7 @@
                               "name": "Edit Button",
                               "type": "FRAME",
                               "width": 80,
-                              "height": 30,
+                              "height": 60,
                               "layoutMode": "HORIZONTAL",
                               "primaryAxisAlignItems": "CENTER",
                               "counterAxisAlignItems": "CENTER",
@@ -6047,17 +6052,22 @@
                                   "name": "수정",
                                   "type": "TEXT",
                                   "characters": "수정",
-                                  "fontSize": 13,
+                                  "fontSize": 18,
                                   "fills": [
                                     {
                                       "type": "SOLID",
                                       "color": {
-                                        "r": 0.4,
-                                        "g": 0.4,
-                                        "b": 0.4
+                                        "r": 1,
+                                        "g": 1,
+                                        "b": 1,
+                                        "a": 1
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
                                 }
                               ],
                               "primaryAxisSizingMode": "AUTO",
@@ -6084,7 +6094,7 @@
                               "name": "Delete Button",
                               "type": "FRAME",
                               "width": 80,
-                              "height": 30,
+                              "height": 60,
                               "layoutMode": "HORIZONTAL",
                               "primaryAxisAlignItems": "CENTER",
                               "counterAxisAlignItems": "CENTER",
@@ -6141,17 +6151,22 @@
                                   "name": "삭제",
                                   "type": "TEXT",
                                   "characters": "삭제",
-                                  "fontSize": 13,
+                                  "fontSize": 18,
                                   "fills": [
                                     {
                                       "type": "SOLID",
                                       "color": {
-                                        "r": 0.96,
-                                        "g": 0.26,
-                                        "b": 0.21
+                                        "r": 1,
+                                        "g": 1,
+                                        "b": 1,
+                                        "a": 1
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
                                 }
                               ],
                               "primaryAxisSizingMode": "AUTO",
@@ -6391,7 +6406,7 @@
                               "name": "Edit Button",
                               "type": "FRAME",
                               "width": 80,
-                              "height": 30,
+                              "height": 60,
                               "layoutMode": "HORIZONTAL",
                               "primaryAxisAlignItems": "CENTER",
                               "counterAxisAlignItems": "CENTER",
@@ -6448,17 +6463,22 @@
                                   "name": "수정",
                                   "type": "TEXT",
                                   "characters": "수정",
-                                  "fontSize": 13,
+                                  "fontSize": 18,
                                   "fills": [
                                     {
                                       "type": "SOLID",
                                       "color": {
-                                        "r": 0.4,
-                                        "g": 0.4,
-                                        "b": 0.4
+                                        "r": 1,
+                                        "g": 1,
+                                        "b": 1,
+                                        "a": 1
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
                                 }
                               ],
                               "primaryAxisSizingMode": "AUTO",
@@ -6485,7 +6505,7 @@
                               "name": "Delete Button",
                               "type": "FRAME",
                               "width": 80,
-                              "height": 30,
+                              "height": 60,
                               "layoutMode": "HORIZONTAL",
                               "primaryAxisAlignItems": "CENTER",
                               "counterAxisAlignItems": "CENTER",
@@ -6542,17 +6562,22 @@
                                   "name": "삭제",
                                   "type": "TEXT",
                                   "characters": "삭제",
-                                  "fontSize": 13,
+                                  "fontSize": 18,
                                   "fills": [
                                     {
                                       "type": "SOLID",
                                       "color": {
-                                        "r": 0.96,
-                                        "g": 0.26,
-                                        "b": 0.21
+                                        "r": 1,
+                                        "g": 1,
+                                        "b": 1,
+                                        "a": 1
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
                                 }
                               ],
                               "primaryAxisSizingMode": "AUTO",

@@ -1385,7 +1385,7 @@
                       "name": "Copy Button",
                       "type": "FRAME",
                       "width": 120,
-                      "height": 40,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisAlignItems": "CENTER",
                       "counterAxisAlignItems": "CENTER",
@@ -1432,7 +1432,7 @@
                           "name": "복사하기",
                           "type": "TEXT",
                           "characters": "복사하기",
-                          "fontSize": 14,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -1444,7 +1444,7 @@
                                 "r": 1,
                                 "g": 1,
                                 "b": 1,
-                                "a": 0.85
+                                "a": 1
                               }
                             }
                           ]
@@ -1474,7 +1474,7 @@
                       "name": "New Code Button",
                       "type": "FRAME",
                       "width": 160,
-                      "height": 40,
+                      "height": 60,
                       "layoutMode": "HORIZONTAL",
                       "primaryAxisAlignItems": "CENTER",
                       "counterAxisAlignItems": "CENTER",
@@ -1532,7 +1532,7 @@
                           "name": "새 코드 생성",
                           "type": "TEXT",
                           "characters": "새 코드 생성",
-                          "fontSize": 14,
+                          "fontSize": 18,
                           "fontName": {
                             "family": "Inter",
                             "style": "Bold"
@@ -1541,9 +1541,10 @@
                             {
                               "type": "SOLID",
                               "color": {
-                                "r": 0.3,
-                                "g": 0.69,
-                                "b": 0.31
+                                "r": 1,
+                                "g": 1,
+                                "b": 1,
+                                "a": 1
                               }
                             }
                           ]
@@ -1881,7 +1882,7 @@
                               "name": "Manage Button",
                               "type": "FRAME",
                               "width": 90,
-                              "height": 35,
+                              "height": 60,
                               "layoutMode": "HORIZONTAL",
                               "primaryAxisAlignItems": "CENTER",
                               "counterAxisAlignItems": "CENTER",
@@ -1938,17 +1939,22 @@
                                   "name": "관리",
                                   "type": "TEXT",
                                   "characters": "관리",
-                                  "fontSize": 13,
+                                  "fontSize": 18,
                                   "fills": [
                                     {
                                       "type": "SOLID",
                                       "color": {
-                                        "r": 0.4,
-                                        "g": 0.4,
-                                        "b": 0.4
+                                        "r": 1,
+                                        "g": 1,
+                                        "b": 1,
+                                        "a": 1
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
                                 }
                               ],
                               "primaryAxisSizingMode": "AUTO",
@@ -1975,7 +1981,7 @@
                               "name": "Remove Button",
                               "type": "FRAME",
                               "width": 90,
-                              "height": 35,
+                              "height": 60,
                               "layoutMode": "HORIZONTAL",
                               "primaryAxisAlignItems": "CENTER",
                               "counterAxisAlignItems": "CENTER",
@@ -2032,17 +2038,22 @@
                                   "name": "제거",
                                   "type": "TEXT",
                                   "characters": "제거",
-                                  "fontSize": 13,
+                                  "fontSize": 18,
                                   "fills": [
                                     {
                                       "type": "SOLID",
                                       "color": {
-                                        "r": 0.96,
-                                        "g": 0.26,
-                                        "b": 0.21
+                                        "r": 1,
+                                        "g": 1,
+                                        "b": 1,
+                                        "a": 1
                                       }
                                     }
-                                  ]
+                                  ],
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
                                 }
                               ],
                               "primaryAxisSizingMode": "AUTO",
@@ -4113,7 +4124,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -4169,9 +4180,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -4308,7 +4319,7 @@
                   "fontSize": 18,
                   "fontName": {
                     "family": "Inter",
-                    "style": "SemiBold"
+                    "style": "Bold"
                   },
                   "fills": [
                     {
@@ -5041,7 +5052,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -5097,9 +5108,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -5515,7 +5526,7 @@
                       "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
-                        "style": "SemiBold"
+                        "style": "Bold"
                       },
                       "fills": [
                         {
@@ -5962,7 +5973,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -6018,9 +6029,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -6996,7 +7007,7 @@
               "name": "Back Button",
               "type": "FRAME",
               "width": 40,
-              "height": 40,
+              "height": 60,
               "cornerRadius": 25,
               "fills": [
                 {
@@ -7052,9 +7063,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.2,
-                        "g": 0.2,
-                        "b": 0.2,
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
                         "a": 1
                       }
                     }
@@ -7315,7 +7326,7 @@
                       "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
-                        "style": "SemiBold"
+                        "style": "Bold"
                       },
                       "fills": [
                         {
@@ -7528,7 +7539,7 @@
                       "fontSize": 18,
                       "fontName": {
                         "family": "Inter",
-                        "style": "SemiBold"
+                        "style": "Bold"
                       },
                       "fills": [
                         {
