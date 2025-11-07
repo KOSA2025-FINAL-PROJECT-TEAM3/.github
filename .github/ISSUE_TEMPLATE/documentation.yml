@@ -1,0 +1,152 @@
+name: 📝 문서 개선
+description: 문서 오류나 개선 사항을 제안해주세요
+title: "[DOCS] "
+labels: ["documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📝 문서 개선
+        문서를 더 좋게 만들어주셔서 감사합니다! 어떤 부분을 개선하면 좋을지 알려주세요.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: 문서 유형
+      description: 어떤 종류의 문서 개선인가요?
+      options:
+        - 📄 README 수정
+        - 🔧 API 문서
+        - 🏗️ 아키텍처 문서
+        - 🚀 설치/실행 가이드
+        - 📖 사용자 가이드
+        - 👨‍💻 개발자 가이드
+        - 📊 DTO/스키마 문서
+        - 🎨 UI/UX 가이드
+        - 🔒 보안 문서
+        - 📋 기타 문서
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: 문서 위치
+      description: 개선이 필요한 문서의 경로를 입력해주세요
+      placeholder: "예: README.md, docs/API.md, ARCHITECTURE.md:line-45"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: 문제 유형
+      description: 어떤 종류의 문제인가요?
+      options:
+        - ❌ 오타/맞춤법
+        - 🔗 깨진 링크
+        - ❓ 설명 누락
+        - 🤔 이해하기 어려운 설명
+        - 📅 오래된 정보
+        - 🧩 예제 코드 오류
+        - 🖼️ 이미지/다이어그램 오류
+        - 🌐 번역 오류
+        - 📋 구조/포맷 개선
+        - ➕ 새로운 문서 추가
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 현재 내용
+      description: 문제가 있는 현재 내용을 복사해주세요
+      placeholder: |
+        예시:
+        ```
+        ## 실행 방법
+        npm start
+        ```
+      render: markdown
+
+  - type: textarea
+    id: proposed
+    attributes:
+      label: 제안하는 내용
+      description: 어떻게 수정하면 좋을까요?
+      placeholder: |
+        예시:
+        ```
+        ## 실행 방법
+
+        개발 서버를 시작하려면:
+
+        ```bash
+        npm install  # 의존성 설치
+        npm run dev  # 개발 서버 시작 (포트 5173)
+        ```
+
+        브라우저에서 http://localhost:5173 을 열어주세요.
+        ```
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 개선 이유
+      description: 왜 이렇게 수정하는 것이 더 좋은가요?
+      placeholder: |
+        예시:
+        - 초보자가 이해하기 쉽게 단계별 설명 추가
+        - 포트 번호 명시로 혼란 방지
+        - 의존성 설치 과정 포함
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 긴급도
+      description: 얼마나 빨리 수정되어야 할까요?
+      options:
+        - 🔴 High - 중요한 오류/누락
+        - 🟡 Medium - 개선이 필요
+        - 🟢 Low - 사소한 개선
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 추가 정보
+      description: 그 외 도움이 될 만한 정보가 있다면 작성해주세요
+      placeholder: |
+        - 참고 자료 링크
+        - 다른 문서의 좋은 예시
+        - 관련된 다른 문서들
+
+  - type: checkboxes
+    id: willingness
+    attributes:
+      label: 기여 의향
+      description: 직접 수정하시겠어요?
+      options:
+        - label: 제가 직접 PR을 작성할 수 있습니다
+          required: false
+        - label: 누군가 수정해주시면 검토할 수 있습니다
+          required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 체크리스트
+      description: 제출 전 확인해주세요!
+      options:
+        - label: 최신 버전의 문서를 확인했습니다
+          required: true
+        - label: 다른 문서에도 유사한 문제가 있는지 확인했습니다
+          required: false
