@@ -1,0 +1,3828 @@
+{
+  "version": "6.0",
+  "description": "실버케어 Part 3 - 질병관리 & 리포트 (Vision Pro 스타일)",
+  "screens": [
+    {
+      "name": "약국 상담 추천",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "약사 상담이 필요합니다",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Warning",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 200,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "⚠️",
+                  "type": "TEXT",
+                  "characters": "⚠️",
+                  "fontSize": 48
+                },
+                {
+                  "name": "증상이 심각할 수 있습니다",
+                  "type": "TEXT",
+                  "characters": "증상이 심각할 수 있습니다",
+                  "fontSize": 22,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "약사 또는 의사와 상담을 권장드립니다",
+                  "type": "TEXT",
+                  "characters": "약사 또는 의사와 상담을 권장드립니다",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Button - 약사와 상담하기",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 50,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "약사와 상담하기",
+                  "type": "TEXT",
+                  "characters": "약사와 상담하기",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "나중에 하기",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 50,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.95,
+                    "g": 0.95,
+                    "b": 0.95,
+                    "a": 1
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "name": "나중에 하기",
+                  "type": "TEXT",
+                  "characters": "나중에 하기",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Medium"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "내 질병 관리",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "내 질병 관리",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Button - 새 질병 추가",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 50,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "새 질병 추가",
+                  "type": "TEXT",
+                  "characters": "새 질병 추가",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Disease Item 1",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 140,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "고혈압",
+                  "type": "TEXT",
+                  "characters": "고혈압",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "진단일: 2023.03.15",
+                  "type": "TEXT",
+                  "characters": "진단일: 2023.03.15",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "복용중인 약: 아모디핀",
+                  "type": "TEXT",
+                  "characters": "복용중인 약: 아모디핀",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "식이 제한: 염분 섭취 주의",
+                  "type": "TEXT",
+                  "characters": "식이 제한: 염분 섭취 주의",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Medium"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.4,
+                        "b": 0,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Disease Item 2",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 140,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "당뇨병",
+                  "type": "TEXT",
+                  "characters": "당뇨병",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "진단일: 2022.11.20",
+                  "type": "TEXT",
+                  "characters": "진단일: 2022.11.20",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "복용중인 약: 메트포르민",
+                  "type": "TEXT",
+                  "characters": "복용중인 약: 메트포르민",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "식이 제한: 당분 섭취 주의",
+                  "type": "TEXT",
+                  "characters": "식이 제한: 당분 섭취 주의",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Medium"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.4,
+                        "b": 0,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "질병 제한사항 상세",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "고혈압 관리 정보",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Restrictions",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 600,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "식이 제한사항",
+                  "type": "TEXT",
+                  "characters": "식이 제한사항",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "피해야 할 음식",
+                  "type": "TEXT",
+                  "characters": "피해야 할 음식",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "• 짠 음식 (국, 찌개, 젓갈 등)\n• 가공식품 (햄, 소시지, 라면 등)\n• 패스트푸드\n• 과도한 카페인",
+                  "type": "TEXT",
+                  "characters": "• 짠 음식 (국, 찌개, 젓갈 등)\n• 가공식품 (햄, 소시지, 라면 등)\n• 패스트푸드\n• 과도한 카페인",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "권장 음식",
+                  "type": "TEXT",
+                  "characters": "권장 음식",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "• 신선한 채소와 과일\n• 저지방 단백질 (생선, 닭가슴살)\n• 통곡물\n• 저염 식품",
+                  "type": "TEXT",
+                  "characters": "• 신선한 채소와 과일\n• 저지방 단백질 (생선, 닭가슴살)\n• 통곡물\n• 저염 식품",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.6,
+                        "b": 0.3,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "생활 습관 권장사항",
+                  "type": "TEXT",
+                  "characters": "생활 습관 권장사항",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "• 규칙적인 운동 (주 3-5회, 30분)\n• 금연 및 절주\n• 스트레스 관리\n• 정기적인 혈압 측정",
+                  "type": "TEXT",
+                  "characters": "• 규칙적인 운동 (주 3-5회, 30분)\n• 금연 및 절주\n• 스트레스 관리\n• 정기적인 혈압 측정",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "병원 식단 자료",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "추천 식단 자료",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Diet Guide 1",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 120,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "고혈압 환자를 위한 저염 식단",
+                  "type": "TEXT",
+                  "characters": "고혈압 환자를 위한 저염 식단",
+                  "fontSize": 18,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "서울대학교병원 영양팀",
+                  "type": "TEXT",
+                  "characters": "서울대학교병원 영양팀",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Button - 다운로드",
+                  "type": "FRAME",
+                  "width": 150,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "GRADIENT_LINEAR",
+                      "gradientTransform": [
+                        [
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0
+                        ]
+                      ],
+                      "gradientStops": [
+                        {
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          },
+                          "position": 0
+                        },
+                        {
+                          "color": {
+                            "r": 0.35,
+                            "g": 0.8,
+                            "b": 0.98,
+                            "a": 1
+                          },
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.4
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 5
+                      },
+                      "radius": 20,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "다운로드",
+                      "type": "TEXT",
+                      "characters": "다운로드",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Diet Guide 2",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 120,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "당뇨병 환자 1주일 식단표",
+                  "type": "TEXT",
+                  "characters": "당뇨병 환자 1주일 식단표",
+                  "fontSize": 18,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "삼성서울병원 당뇨센터",
+                  "type": "TEXT",
+                  "characters": "삼성서울병원 당뇨센터",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Button - 다운로드",
+                  "type": "FRAME",
+                  "width": 150,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "GRADIENT_LINEAR",
+                      "gradientTransform": [
+                        [
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0
+                        ]
+                      ],
+                      "gradientStops": [
+                        {
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          },
+                          "position": 0
+                        },
+                        {
+                          "color": {
+                            "r": 0.35,
+                            "g": 0.8,
+                            "b": 0.98,
+                            "a": 1
+                          },
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.4
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 5
+                      },
+                      "radius": 20,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "다운로드",
+                      "type": "TEXT",
+                      "characters": "다운로드",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Diet Guide 3",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 120,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "노인 건강 균형 식단 가이드",
+                  "type": "TEXT",
+                  "characters": "노인 건강 균형 식단 가이드",
+                  "fontSize": 18,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "대한노인병학회",
+                  "type": "TEXT",
+                  "characters": "대한노인병학회",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Button - 다운로드",
+                  "type": "FRAME",
+                  "width": 150,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "GRADIENT_LINEAR",
+                      "gradientTransform": [
+                        [
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0
+                        ]
+                      ],
+                      "gradientStops": [
+                        {
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          },
+                          "position": 0
+                        },
+                        {
+                          "color": {
+                            "r": 0.35,
+                            "g": 0.8,
+                            "b": 0.98,
+                            "a": 1
+                          },
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.4
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 5
+                      },
+                      "radius": 20,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "다운로드",
+                      "type": "TEXT",
+                      "characters": "다운로드",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "약 리뷰 게시판",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "복용 후기",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Review 1",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 150,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Review Header",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 15,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Avatar",
+                      "type": "ELLIPSE",
+                      "width": 50,
+                      "height": 50,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "User Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 5,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "김**",
+                          "type": "TEXT",
+                          "characters": "김**",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "SemiBold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.1,
+                                "g": 0.1,
+                                "b": 0.1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "⭐⭐⭐⭐⭐ • 2024.01.15",
+                          "type": "TEXT",
+                          "characters": "⭐⭐⭐⭐⭐ • 2024.01.15",
+                          "fontSize": 13,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "혈압약으로 효과가 좋습니다. 부작용 없이 잘 복용중입니다.",
+                  "type": "TEXT",
+                  "characters": "혈압약으로 효과가 좋습니다. 부작용 없이 잘 복용중입니다.",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Review 2",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 150,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Review Header",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 15,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Avatar",
+                      "type": "ELLIPSE",
+                      "width": 50,
+                      "height": 50,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "User Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 5,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "이**",
+                          "type": "TEXT",
+                          "characters": "이**",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "SemiBold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.1,
+                                "g": 0.1,
+                                "b": 0.1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "⭐⭐⭐⭐ • 2024.01.10",
+                          "type": "TEXT",
+                          "characters": "⭐⭐⭐⭐ • 2024.01.10",
+                          "fontSize": 13,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "처음엔 어지러움이 있었으나 적응 후 괜찮습니다.",
+                  "type": "TEXT",
+                  "characters": "처음엔 어지러움이 있었으나 적응 후 괜찮습니다.",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "약 상세 정보",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "아모디핀",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Basic Info",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 250,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "기본 정보",
+                  "type": "TEXT",
+                  "characters": "기본 정보",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "성분명: Amlodipine\n효능: 고혈압, 협심증 치료\n제조사: 한국화이자제약\n복용법: 1일 1회, 식후 복용",
+                  "type": "TEXT",
+                  "characters": "성분명: Amlodipine\n효능: 고혈압, 협심증 치료\n제조사: 한국화이자제약\n복용법: 1일 1회, 식후 복용",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.3,
+                        "b": 0.3,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Side Effects",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 180,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "주의사항 및 부작용",
+                  "type": "TEXT",
+                  "characters": "주의사항 및 부작용",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "• 어지러움, 두통\n• 부종(발목, 발)\n• 심계항진\n• 피로감",
+                  "type": "TEXT",
+                  "characters": "• 어지러움, 두통\n• 부종(발목, 발)\n• 심계항진\n• 피로감",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 0.3,
+                        "b": 0,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Button - 리뷰 보기",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 50,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "리뷰 보기",
+                  "type": "TEXT",
+                  "characters": "리뷰 보기",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "복약 순응도 리포트",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "이번 달 복약 현황",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Overall Stats",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 150,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "전체 순응도",
+                  "type": "TEXT",
+                  "characters": "전체 순응도",
+                  "fontSize": 18,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "92%",
+                  "type": "TEXT",
+                  "characters": "92%",
+                  "fontSize": 48,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "지난 달 대비 +5%",
+                  "type": "TEXT",
+                  "characters": "지난 달 대비 +5%",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Medium"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.6,
+                        "b": 0.3,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Detailed Stats",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 250,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "상세 통계",
+                  "type": "TEXT",
+                  "characters": "상세 통계",
+                  "fontSize": 18,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "총 복용 횟수: 28/30회\n놓친 복용: 2회\n연속 복용: 14일\n가장 잘 지킨 시간대: 아침",
+                  "type": "TEXT",
+                  "characters": "총 복용 횟수: 28/30회\n놓친 복용: 2회\n연속 복용: 14일\n가장 잘 지킨 시간대: 아침",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.3,
+                        "b": 0.3,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "lineHeight": {
+                    "value": 150,
+                    "unit": "PERCENT"
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Button - 월간 상세 리포트 보기",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 50,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "월간 상세 리포트 보기",
+                  "type": "TEXT",
+                  "characters": "월간 상세 리포트 보기",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5794 @@
+{
+  "version": "6.0",
+  "description": "실버케어 Part 2 - 약관리 & 채팅 (Vision Pro 스타일)",
+  "screens": [
+    {
+      "name": "약 등록",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.85
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "SPACE_BETWEEN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 20,
+          "paddingRight": 40,
+          "paddingBottom": 20,
+          "paddingLeft": 40,
+          "itemSpacing": 16,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.88,
+                "g": 0.88,
+                "b": 0.88
+              }
+            }
+          ],
+          "strokeWeight": 2,
+          "children": [
+            {
+              "name": "실버케어",
+              "type": "TEXT",
+              "characters": "← 약 관리",
+              "fontSize": 20,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.3,
+                    "g": 0.3,
+                    "b": 0.3
+                  }
+                }
+              ]
+            },
+            {
+              "name": "김철수 님 (시니어)",
+              "type": "TEXT",
+              "characters": "김철수 님 (시니어)",
+              "fontSize": 16,
+              "fontName": {
+                "family": "Inter",
+                "style": "Regular"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.5,
+                    "g": 0.5,
+                    "b": 0.5
+                  }
+                }
+              ]
+            }
+          ],
+          "cornerRadius": 30,
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 720,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 60,
+          "paddingRight": 300,
+          "paddingBottom": 60,
+          "paddingLeft": 300,
+          "itemSpacing": 40,
+          "fills": [],
+          "children": [
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "새 약 등록",
+              "fontSize": 28,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.2,
+                    "g": 0.2,
+                    "b": 0.2
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Form",
+              "type": "FRAME",
+              "width": 600,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "itemSpacing": 24,
+              "fills": [],
+              "children": [
+                {
+                  "name": "약 이름",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Label",
+                      "type": "TEXT",
+                      "characters": "약 이름 *",
+                      "fontSize": 14,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Input",
+                      "type": "FRAME",
+                      "width": 600,
+                      "height": 48,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 14,
+                      "paddingRight": 16,
+                      "paddingBottom": 14,
+                      "paddingLeft": 16,
+                      "cornerRadius": 12.0,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.98,
+                            "g": 0.98,
+                            "b": 0.98,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.85,
+                            "g": 0.85,
+                            "b": 0.85
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "예: 아스피린",
+                          "type": "TEXT",
+                          "characters": "예: 아스피린",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.7,
+                                "g": 0.7,
+                                "b": 0.7
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "복용 시간",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Label",
+                      "type": "TEXT",
+                      "characters": "복용 시간 *",
+                      "fontSize": 14,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Time Select",
+                      "type": "FRAME",
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 12,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "아침 식후",
+                          "type": "FRAME",
+                          "width": 140,
+                          "height": 48,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisSizingMode": "FIXED",
+                          "counterAxisSizingMode": "FIXED",
+                          "primaryAxisAlignItems": "CENTER",
+                          "counterAxisAlignItems": "CENTER",
+                          "cornerRadius": 12.0,
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ],
+                          "children": [
+                            {
+                              "name": "아침 식후",
+                              "type": "TEXT",
+                              "characters": "아침 식후",
+                              "fontSize": 14,
+                              "fontName": {
+                                "family": "Inter",
+                                "style": "Bold"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1,
+                                    "a": 0.85
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "점심 식후",
+                          "type": "FRAME",
+                          "width": 140,
+                          "height": 48,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisSizingMode": "FIXED",
+                          "counterAxisSizingMode": "FIXED",
+                          "primaryAxisAlignItems": "CENTER",
+                          "counterAxisAlignItems": "CENTER",
+                          "cornerRadius": 12.0,
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.95,
+                                "g": 0.95,
+                                "b": 0.95,
+                                "a": 0.85
+                              }
+                            }
+                          ],
+                          "children": [
+                            {
+                              "name": "점심 식후",
+                              "type": "TEXT",
+                              "characters": "점심 식후",
+                              "fontSize": 14,
+                              "fontName": {
+                                "family": "Inter",
+                                "style": "Regular"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.5,
+                                    "g": 0.5,
+                                    "b": 0.5
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "저녁 식후",
+                          "type": "FRAME",
+                          "width": 140,
+                          "height": 48,
+                          "layoutMode": "HORIZONTAL",
+                          "primaryAxisSizingMode": "FIXED",
+                          "counterAxisSizingMode": "FIXED",
+                          "primaryAxisAlignItems": "CENTER",
+                          "counterAxisAlignItems": "CENTER",
+                          "cornerRadius": 12.0,
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.95,
+                                "g": 0.95,
+                                "b": 0.95,
+                                "a": 0.85
+                              }
+                            }
+                          ],
+                          "children": [
+                            {
+                              "name": "저녁 식후",
+                              "type": "TEXT",
+                              "characters": "저녁 식후",
+                              "fontSize": 14,
+                              "fontName": {
+                                "family": "Inter",
+                                "style": "Regular"
+                              },
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.5,
+                                    "g": 0.5,
+                                    "b": 0.5
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "복용량",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Label",
+                      "type": "TEXT",
+                      "characters": "복용량",
+                      "fontSize": 14,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Input",
+                      "type": "FRAME",
+                      "width": 600,
+                      "height": 48,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 14,
+                      "paddingRight": 16,
+                      "paddingBottom": 14,
+                      "paddingLeft": 16,
+                      "cornerRadius": 12.0,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.98,
+                            "g": 0.98,
+                            "b": 0.98,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.85,
+                            "g": 0.85,
+                            "b": 0.85
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "1알",
+                          "type": "TEXT",
+                          "characters": "1알",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.7,
+                                "g": 0.7,
+                                "b": 0.7
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "메모",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 8,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Label",
+                      "type": "TEXT",
+                      "characters": "메모 (선택사항)",
+                      "fontSize": 14,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.3,
+                            "b": 0.3
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Textarea",
+                      "type": "FRAME",
+                      "width": 600,
+                      "height": 100,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "paddingTop": 14,
+                      "paddingRight": 16,
+                      "paddingBottom": 14,
+                      "paddingLeft": 16,
+                      "cornerRadius": 12.0,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.98,
+                            "g": 0.98,
+                            "b": 0.98,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.85,
+                            "g": 0.85,
+                            "b": 0.85
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "추가 정보를 입력하세요",
+                          "type": "TEXT",
+                          "characters": "추가 정보를 입력하세요",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.7,
+                                "g": 0.7,
+                                "b": 0.7
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "cornerRadius": 30
+            },
+            {
+              "name": "Buttons",
+              "type": "FRAME",
+              "width": 600,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "AUTO",
+              "primaryAxisAlignItems": "SPACE_BETWEEN",
+              "itemSpacing": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Cancel",
+                  "type": "FRAME",
+                  "width": 292,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "FIXED",
+                  "counterAxisSizingMode": "FIXED",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 12.0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.95,
+                        "g": 0.95,
+                        "b": 0.95,
+                        "a": 0.85
+                      }
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "취소",
+                      "type": "TEXT",
+                      "characters": "취소",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.5,
+                            "g": 0.5,
+                            "b": 0.5
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Save",
+                  "type": "FRAME",
+                  "width": 292,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "FIXED",
+                  "counterAxisSizingMode": "FIXED",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 12.0,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31
+                      }
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "저장",
+                      "type": "TEXT",
+                      "characters": "저장",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "Bold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "cornerRadius": 25,
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            }
+          ],
+          "cornerRadius": 30
+        }
+      ],
+      "effects": [
+        {
+          "type": "BACKGROUND_BLUR",
+          "radius": 20,
+          "visible": true
+        },
+        {
+          "type": "DROP_SHADOW",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.08
+          },
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "radius": 20,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "가족 관리",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.85
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "SPACE_BETWEEN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 20,
+          "paddingRight": 40,
+          "paddingBottom": 20,
+          "paddingLeft": 40,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.88,
+                "g": 0.88,
+                "b": 0.88
+              }
+            }
+          ],
+          "strokeWeight": 2,
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "cornerRadius": 30,
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ]
+        },
+        {
+          "name": "Main Content",
+          "type": "FRAME",
+          "layoutMode": "VERTICAL",
+          "paddingTop": 40,
+          "paddingRight": 60,
+          "paddingBottom": 40,
+          "paddingLeft": 60,
+          "itemSpacing": 30,
+          "fills": [],
+          "children": [
+            {
+              "name": "Page Header",
+              "type": "FRAME",
+              "layoutMode": "VERTICAL",
+              "itemSpacing": 8,
+              "fills": [],
+              "children": [
+                {
+                  "name": "가족 관리",
+                  "type": "TEXT",
+                  "characters": "가족 관리",
+                  "fontSize": 32,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  }
+                },
+                {
+                  "name": "우리 가족을 초대하고 함께 돌봄을 공유하세요",
+                  "type": "TEXT",
+                  "characters": "우리 가족을 초대하고 함께 돌봄을 공유하세요",
+                  "fontSize": 16,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.6,
+                        "g": 0.6,
+                        "b": 0.6
+                      }
+                    }
+                  ]
+                }
+              ],
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO"
+            },
+            {
+              "name": "Invite Card",
+              "type": "FRAME",
+              "width": 1080,
+              "height": 140,
+              "layoutMode": "VERTICAL",
+              "paddingTop": 25,
+              "paddingRight": 30,
+              "paddingBottom": 25,
+              "paddingLeft": 30,
+              "itemSpacing": 15,
+              "cornerRadius": 18.0,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "strokes": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.3,
+                    "g": 0.69,
+                    "b": 0.31
+                  }
+                }
+              ],
+              "strokeWeight": 2,
+              "children": [
+                {
+                  "name": "가족 초대하기",
+                  "type": "TEXT",
+                  "characters": "가족 초대하기",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.18,
+                        "g": 0.49,
+                        "b": 0.2
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "아래 초대 코드를 가족에게 공유하면 우리 가족 그룹에 참여할 수 있습니다",
+                  "type": "TEXT",
+                  "characters": "아래 초대 코드를 가족에게 공유하면 우리 가족 그룹에 참여할 수 있습니다",
+                  "fontSize": 14,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.33,
+                        "g": 0.55,
+                        "b": 0.18
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Invite Actions",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "itemSpacing": 20,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Code Box",
+                      "type": "FRAME",
+                      "width": 300,
+                      "height": 50,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 9.0,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.69,
+                            "b": 0.31
+                          }
+                        }
+                      ],
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "name": "ABC-DEF-123",
+                          "type": "TEXT",
+                          "characters": "ABC-DEF-123",
+                          "fontSize": 24,
+                          "fontName": {
+                            "family": "Courier",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO"
+                    },
+                    {
+                      "name": "Copy Button",
+                      "type": "FRAME",
+                      "width": 120,
+                      "height": 40,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 25,
+                      "fills": [
+                        {
+                          "type": "GRADIENT_LINEAR",
+                          "gradientTransform": [
+                            [
+                              0,
+                              1,
+                              0
+                            ],
+                            [
+                              1,
+                              0,
+                              0
+                            ]
+                          ],
+                          "gradientStops": [
+                            {
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 1
+                              },
+                              "position": 0
+                            },
+                            {
+                              "color": {
+                                "r": 0.35,
+                                "g": 0.8,
+                                "b": 0.98,
+                                "a": 1
+                              },
+                              "position": 1
+                            }
+                          ]
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "복사하기",
+                          "type": "TEXT",
+                          "characters": "복사하기",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1,
+                                "a": 0.85
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.4
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 5
+                          },
+                          "radius": 20,
+                          "visible": true
+                        }
+                      ]
+                    },
+                    {
+                      "name": "New Code Button",
+                      "type": "FRAME",
+                      "width": 160,
+                      "height": 40,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 25,
+                      "fills": [
+                        {
+                          "type": "GRADIENT_LINEAR",
+                          "gradientTransform": [
+                            [
+                              0,
+                              1,
+                              0
+                            ],
+                            [
+                              1,
+                              0,
+                              0
+                            ]
+                          ],
+                          "gradientStops": [
+                            {
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 1
+                              },
+                              "position": 0
+                            },
+                            {
+                              "color": {
+                                "r": 0.35,
+                                "g": 0.8,
+                                "b": 0.98,
+                                "a": 1
+                              },
+                              "position": 1
+                            }
+                          ]
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.3,
+                            "g": 0.69,
+                            "b": 0.31
+                          }
+                        }
+                      ],
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "name": "새 코드 생성",
+                          "type": "TEXT",
+                          "characters": "새 코드 생성",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Bold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.69,
+                                "b": 0.31
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.4
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 5
+                          },
+                          "radius": 20,
+                          "visible": true
+                        }
+                      ]
+                    },
+                    {
+                      "name": "유효기간: 7일 (2025.11.12 까지)",
+                      "type": "TEXT",
+                      "characters": "유효기간: 7일 (2025.11.12 까지)",
+                      "fontSize": 13,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.4,
+                            "g": 0.4,
+                            "b": 0.4
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "cornerRadius": 25,
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.4
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 5
+                      },
+                      "radius": 20,
+                      "visible": true
+                    }
+                  ]
+                }
+              ],
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Family Members Section",
+              "type": "FRAME",
+              "layoutMode": "VERTICAL",
+              "itemSpacing": 20,
+              "fills": [],
+              "children": [
+                {
+                  "name": "가족 구성원 (3명)",
+                  "type": "TEXT",
+                  "characters": "가족 구성원 (3명)",
+                  "fontSize": 24,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  }
+                },
+                {
+                  "name": "Member List",
+                  "type": "FRAME",
+                  "layoutMode": "VERTICAL",
+                  "itemSpacing": 15,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Member Card - Father",
+                      "type": "COMPONENT",
+                      "width": 1080,
+                      "height": 100,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "cornerRadius": 13.5,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.9
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.88,
+                            "g": 0.88,
+                            "b": 0.88
+                          }
+                        }
+                      ],
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "name": "Member Info",
+                          "type": "FRAME",
+                          "layoutMode": "HORIZONTAL",
+                          "counterAxisAlignItems": "CENTER",
+                          "itemSpacing": 20,
+                          "fills": [],
+                          "children": [
+                            {
+                              "name": "Avatar",
+                              "type": "ELLIPSE",
+                              "width": 70,
+                              "height": 70,
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.89,
+                                    "g": 0.95,
+                                    "b": 0.99
+                                  }
+                                }
+                              ],
+                              "strokes": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.13,
+                                    "g": 0.59,
+                                    "b": 0.95
+                                  }
+                                }
+                              ],
+                              "strokeWeight": 3
+                            },
+                            {
+                              "name": "Info",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 6,
+                              "fills": [],
+                              "children": [
+                                {
+                                  "name": "김철수 (아버지)",
+                                  "type": "TEXT",
+                                  "characters": "김철수 (아버지)",
+                                  "fontSize": 20,
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
+                                },
+                                {
+                                  "name": "70세 · 시니어 · 등록 약 3개",
+                                  "type": "TEXT",
+                                  "characters": "70세 · 시니어 · 등록 약 3개",
+                                  "fontSize": 14,
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 0.4,
+                                        "g": 0.4,
+                                        "b": 0.4
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO"
+                            }
+                          ],
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO"
+                        },
+                        {
+                          "name": "Actions",
+                          "type": "FRAME",
+                          "layoutMode": "HORIZONTAL",
+                          "itemSpacing": 10,
+                          "fills": [],
+                          "children": [
+                            {
+                              "name": "Role Badge",
+                              "type": "FRAME",
+                              "width": 100,
+                              "height": 35,
+                              "layoutMode": "HORIZONTAL",
+                              "primaryAxisAlignItems": "CENTER",
+                              "counterAxisAlignItems": "CENTER",
+                              "cornerRadius": 6.0,
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1,
+                                    "a": 0.85
+                                  }
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "name": "시니어",
+                                  "type": "TEXT",
+                                  "characters": "시니어",
+                                  "fontSize": 13,
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  },
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 0.13,
+                                        "g": 0.59,
+                                        "b": 0.95
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO"
+                            },
+                            {
+                              "name": "Status Badge",
+                              "type": "FRAME",
+                              "width": 100,
+                              "height": 35,
+                              "layoutMode": "HORIZONTAL",
+                              "primaryAxisAlignItems": "CENTER",
+                              "counterAxisAlignItems": "CENTER",
+                              "cornerRadius": 6.0,
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1,
+                                    "a": 0.85
+                                  }
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "name": "활성",
+                                  "type": "TEXT",
+                                  "characters": "활성",
+                                  "fontSize": 13,
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  },
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 0.3,
+                                        "g": 0.69,
+                                        "b": 0.31
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO"
+                            },
+                            {
+                              "name": "Manage Button",
+                              "type": "FRAME",
+                              "width": 90,
+                              "height": 35,
+                              "layoutMode": "HORIZONTAL",
+                              "primaryAxisAlignItems": "CENTER",
+                              "counterAxisAlignItems": "CENTER",
+                              "cornerRadius": 25,
+                              "fills": [
+                                {
+                                  "type": "GRADIENT_LINEAR",
+                                  "gradientTransform": [
+                                    [
+                                      0,
+                                      1,
+                                      0
+                                    ],
+                                    [
+                                      1,
+                                      0,
+                                      0
+                                    ]
+                                  ],
+                                  "gradientStops": [
+                                    {
+                                      "color": {
+                                        "r": 0,
+                                        "g": 0.48,
+                                        "b": 1,
+                                        "a": 1
+                                      },
+                                      "position": 0
+                                    },
+                                    {
+                                      "color": {
+                                        "r": 0.35,
+                                        "g": 0.8,
+                                        "b": 0.98,
+                                        "a": 1
+                                      },
+                                      "position": 1
+                                    }
+                                  ]
+                                }
+                              ],
+                              "strokes": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.8,
+                                    "g": 0.8,
+                                    "b": 0.8
+                                  }
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "name": "관리",
+                                  "type": "TEXT",
+                                  "characters": "관리",
+                                  "fontSize": 13,
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 0.4,
+                                        "g": 0.4,
+                                        "b": 0.4
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO",
+                              "effects": [
+                                {
+                                  "type": "DROP_SHADOW",
+                                  "color": {
+                                    "r": 0,
+                                    "g": 0.48,
+                                    "b": 1,
+                                    "a": 0.4
+                                  },
+                                  "offset": {
+                                    "x": 0,
+                                    "y": 5
+                                  },
+                                  "radius": 20,
+                                  "visible": true
+                                }
+                              ]
+                            },
+                            {
+                              "name": "Remove Button",
+                              "type": "FRAME",
+                              "width": 90,
+                              "height": 35,
+                              "layoutMode": "HORIZONTAL",
+                              "primaryAxisAlignItems": "CENTER",
+                              "counterAxisAlignItems": "CENTER",
+                              "cornerRadius": 25,
+                              "fills": [
+                                {
+                                  "type": "GRADIENT_LINEAR",
+                                  "gradientTransform": [
+                                    [
+                                      0,
+                                      1,
+                                      0
+                                    ],
+                                    [
+                                      1,
+                                      0,
+                                      0
+                                    ]
+                                  ],
+                                  "gradientStops": [
+                                    {
+                                      "color": {
+                                        "r": 0,
+                                        "g": 0.48,
+                                        "b": 1,
+                                        "a": 1
+                                      },
+                                      "position": 0
+                                    },
+                                    {
+                                      "color": {
+                                        "r": 0.35,
+                                        "g": 0.8,
+                                        "b": 0.98,
+                                        "a": 1
+                                      },
+                                      "position": 1
+                                    }
+                                  ]
+                                }
+                              ],
+                              "strokes": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.96,
+                                    "g": 0.26,
+                                    "b": 0.21
+                                  }
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "name": "제거",
+                                  "type": "TEXT",
+                                  "characters": "제거",
+                                  "fontSize": 13,
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 0.96,
+                                        "g": 0.26,
+                                        "b": 0.21
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO",
+                              "effects": [
+                                {
+                                  "type": "DROP_SHADOW",
+                                  "color": {
+                                    "r": 0,
+                                    "g": 0.48,
+                                    "b": 1,
+                                    "a": 0.4
+                                  },
+                                  "offset": {
+                                    "x": 0,
+                                    "y": 5
+                                  },
+                                  "radius": 20,
+                                  "visible": true
+                                }
+                              ]
+                            }
+                          ],
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO",
+                          "cornerRadius": 25,
+                          "effects": [
+                            {
+                              "type": "DROP_SHADOW",
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 0.4
+                              },
+                              "offset": {
+                                "x": 0,
+                                "y": 5
+                              },
+                              "radius": 20,
+                              "visible": true
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.08
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 8
+                          },
+                          "radius": 25,
+                          "visible": true
+                        },
+                        {
+                          "type": "INNER_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "radius": 2,
+                          "spread": 1,
+                          "visible": true
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Member Card - Mother",
+                      "type": "COMPONENT",
+                      "width": 1080,
+                      "height": 100,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "cornerRadius": 13.5,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.9
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.88,
+                            "g": 0.88,
+                            "b": 0.88
+                          }
+                        }
+                      ],
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "name": "Member Info",
+                          "type": "FRAME",
+                          "layoutMode": "HORIZONTAL",
+                          "counterAxisAlignItems": "CENTER",
+                          "itemSpacing": 20,
+                          "fills": [],
+                          "children": [
+                            {
+                              "name": "Avatar",
+                              "type": "ELLIPSE",
+                              "width": 70,
+                              "height": 70,
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.99,
+                                    "g": 0.89,
+                                    "b": 0.92
+                                  }
+                                }
+                              ],
+                              "strokes": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 0.91,
+                                    "g": 0.12,
+                                    "b": 0.39
+                                  }
+                                }
+                              ],
+                              "strokeWeight": 3
+                            },
+                            {
+                              "name": "Info",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 6,
+                              "fills": [],
+                              "children": [
+                                {
+                                  "name": "박순자 (어머니)",
+                                  "type": "TEXT",
+                                  "characters": "박순자 (어머니)",
+                                  "fontSize": 20,
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
+                                },
+                                {
+                                  "name": "68세 · 시니어 · 등록 약 2개",
+                                  "type": "TEXT",
+                                  "characters": "68세 · 시니어 · 등록 약 2개",
+                                  "fontSize": 14,
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 0.4,
+                                        "g": 0.4,
+                                        "b": 0.4
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO"
+                            }
+                          ],
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO"
+                        },
+                        {
+                          "name": "Actions",
+                          "type": "FRAME",
+                          "layoutMode": "HORIZONTAL",
+                          "itemSpacing": 10,
+                          "fills": [],
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO",
+                          "cornerRadius": 25,
+                          "effects": [
+                            {
+                              "type": "DROP_SHADOW",
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 0.4
+                              },
+                              "offset": {
+                                "x": 0,
+                                "y": 5
+                              },
+                              "radius": 20,
+                              "visible": true
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.08
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 8
+                          },
+                          "radius": 25,
+                          "visible": true
+                        },
+                        {
+                          "type": "INNER_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "radius": 2,
+                          "spread": 1,
+                          "visible": true
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Member Card - Self (Admin)",
+                      "type": "COMPONENT",
+                      "width": 1080,
+                      "height": 100,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "cornerRadius": 13.5,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.95,
+                            "b": 0.88
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 0.6,
+                            "b": 0
+                          }
+                        }
+                      ],
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "name": "Member Info",
+                          "type": "FRAME",
+                          "layoutMode": "HORIZONTAL",
+                          "counterAxisAlignItems": "CENTER",
+                          "itemSpacing": 20,
+                          "fills": [],
+                          "children": [
+                            {
+                              "name": "Avatar",
+                              "type": "ELLIPSE",
+                              "width": 70,
+                              "height": 70,
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.95,
+                                    "b": 0.88
+                                  }
+                                }
+                              ],
+                              "strokes": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 0.6,
+                                    "b": 0
+                                  }
+                                }
+                              ],
+                              "strokeWeight": 3
+                            },
+                            {
+                              "name": "Info",
+                              "type": "FRAME",
+                              "layoutMode": "VERTICAL",
+                              "itemSpacing": 6,
+                              "fills": [],
+                              "children": [
+                                {
+                                  "name": "김영희 (본인)",
+                                  "type": "TEXT",
+                                  "characters": "김영희 (본인)",
+                                  "fontSize": 20,
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  }
+                                },
+                                {
+                                  "name": "45세 · 보호자 · 관리자",
+                                  "type": "TEXT",
+                                  "characters": "45세 · 보호자 · 관리자",
+                                  "fontSize": 14,
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 0.4,
+                                        "g": 0.4,
+                                        "b": 0.4
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO"
+                            }
+                          ],
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO"
+                        },
+                        {
+                          "name": "Actions",
+                          "type": "FRAME",
+                          "layoutMode": "HORIZONTAL",
+                          "itemSpacing": 10,
+                          "fills": [],
+                          "children": [
+                            {
+                              "name": "Role Badge",
+                              "type": "FRAME",
+                              "width": 100,
+                              "height": 35,
+                              "layoutMode": "HORIZONTAL",
+                              "primaryAxisAlignItems": "CENTER",
+                              "counterAxisAlignItems": "CENTER",
+                              "cornerRadius": 6.0,
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1,
+                                    "a": 0.85
+                                  }
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "name": "보호자",
+                                  "type": "TEXT",
+                                  "characters": "보호자",
+                                  "fontSize": 13,
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  },
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 1,
+                                        "g": 0.6,
+                                        "b": 0
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO"
+                            },
+                            {
+                              "name": "Admin Badge",
+                              "type": "FRAME",
+                              "width": 120,
+                              "height": 35,
+                              "layoutMode": "HORIZONTAL",
+                              "primaryAxisAlignItems": "CENTER",
+                              "counterAxisAlignItems": "CENTER",
+                              "cornerRadius": 6.0,
+                              "fills": [
+                                {
+                                  "type": "SOLID",
+                                  "color": {
+                                    "r": 1,
+                                    "g": 1,
+                                    "b": 1,
+                                    "a": 0.85
+                                  }
+                                }
+                              ],
+                              "children": [
+                                {
+                                  "name": "👑 관리자",
+                                  "type": "TEXT",
+                                  "characters": "👑 관리자",
+                                  "fontSize": 13,
+                                  "fontName": {
+                                    "family": "Inter",
+                                    "style": "Bold"
+                                  },
+                                  "fills": [
+                                    {
+                                      "type": "SOLID",
+                                      "color": {
+                                        "r": 1,
+                                        "g": 1,
+                                        "b": 1,
+                                        "a": 0.85
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "primaryAxisSizingMode": "AUTO",
+                              "counterAxisSizingMode": "AUTO"
+                            }
+                          ],
+                          "primaryAxisSizingMode": "AUTO",
+                          "counterAxisSizingMode": "AUTO",
+                          "cornerRadius": 25,
+                          "effects": [
+                            {
+                              "type": "DROP_SHADOW",
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 0.4
+                              },
+                              "offset": {
+                                "x": 0,
+                                "y": 5
+                              },
+                              "radius": 20,
+                              "visible": true
+                            }
+                          ]
+                        }
+                      ],
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "effects": [
+                        {
+                          "type": "DROP_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0.08
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 8
+                          },
+                          "radius": 25,
+                          "visible": true
+                        },
+                        {
+                          "type": "INNER_SHADOW",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.1
+                          },
+                          "offset": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "radius": 2,
+                          "spread": 1,
+                          "visible": true
+                        }
+                      ]
+                    }
+                  ],
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO"
+                }
+              ],
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO"
+            }
+          ],
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO"
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisAlignItems": "SPACE_BETWEEN",
+          "counterAxisAlignItems": "CENTER",
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.85
+              }
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.88,
+                "g": 0.88,
+                "b": 0.88
+              }
+            }
+          ],
+          "strokeWeight": 2,
+          "children": [
+            {
+              "name": "🏠 홈",
+              "type": "TEXT",
+              "characters": "🏠 홈",
+              "fontSize": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.6,
+                    "g": 0.6,
+                    "b": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "name": "💊 약 관리",
+              "type": "TEXT",
+              "characters": "💊 약 관리",
+              "fontSize": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.6,
+                    "g": 0.6,
+                    "b": 0.6
+                  }
+                }
+              ]
+            },
+            {
+              "name": "👨‍👩‍👧 가족",
+              "type": "TEXT",
+              "characters": "👨‍👩‍👧 가족",
+              "fontSize": 16,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.3,
+                    "g": 0.69,
+                    "b": 0.31
+                  }
+                }
+              ]
+            },
+            {
+              "name": "⚙️ 설정",
+              "type": "TEXT",
+              "characters": "⚙️ 설정",
+              "fontSize": 16,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.6,
+                    "g": 0.6,
+                    "b": 0.6
+                  }
+                }
+              ]
+            }
+          ],
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "cornerRadius": 30,
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": 4
+              },
+              "radius": 20,
+              "visible": true
+            }
+          ]
+        }
+      ],
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO",
+      "effects": [
+        {
+          "type": "BACKGROUND_BLUR",
+          "radius": 20,
+          "visible": true
+        },
+        {
+          "type": "DROP_SHADOW",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.08
+          },
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "radius": 20,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "설정",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 0.85
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "SPACE_BETWEEN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 20,
+          "paddingRight": 40,
+          "paddingBottom": 20,
+          "paddingLeft": 40,
+          "itemSpacing": 16,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.88,
+                "g": 0.88,
+                "b": 0.88
+              }
+            }
+          ],
+          "strokeWeight": 2,
+          "children": [
+            {
+              "name": "Logo Group",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 10,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Logo",
+                  "type": "ELLIPSE",
+                  "width": 40,
+                  "height": 40,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.3,
+                        "g": 0.69,
+                        "b": 0.31
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "실버케어",
+                  "type": "TEXT",
+                  "characters": "실버케어",
+                  "fontSize": 24,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "User Info",
+              "type": "FRAME",
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 16,
+              "fills": [],
+              "children": [
+                {
+                  "name": "🔔",
+                  "type": "TEXT",
+                  "characters": "🔔",
+                  "fontSize": 24,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "김철수 님 (시니어)",
+                  "type": "TEXT",
+                  "characters": "김철수 님 (시니어)",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "cornerRadius": 30,
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 640,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "paddingTop": 40,
+          "paddingRight": 100,
+          "paddingBottom": 40,
+          "paddingLeft": 100,
+          "itemSpacing": 0,
+          "fills": [],
+          "children": [
+            {
+              "name": "Settings Content",
+              "type": "FRAME",
+              "width": 1000,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "itemSpacing": 30,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Title",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 28,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Settings List",
+                  "type": "FRAME",
+                  "width": 1000,
+                  "layoutMode": "VERTICAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "FIXED",
+                  "itemSpacing": 0,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Profile Settings",
+                      "type": "FRAME",
+                      "width": 1000,
+                      "height": 70,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.9,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "프로필 설정",
+                          "type": "TEXT",
+                          "characters": "프로필 설정",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": ">",
+                          "type": "TEXT",
+                          "characters": ">",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "cornerRadius": 30
+                    },
+                    {
+                      "name": "Notification Settings",
+                      "type": "FRAME",
+                      "width": 1000,
+                      "height": 70,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.9,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "알림 설정",
+                          "type": "TEXT",
+                          "characters": "알림 설정",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": ">",
+                          "type": "TEXT",
+                          "characters": ">",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "cornerRadius": 30
+                    },
+                    {
+                      "name": "Account Settings",
+                      "type": "FRAME",
+                      "width": 1000,
+                      "height": 70,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.9,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "계정 관리",
+                          "type": "TEXT",
+                          "characters": "계정 관리",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": ">",
+                          "type": "TEXT",
+                          "characters": ">",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "cornerRadius": 30
+                    },
+                    {
+                      "name": "Privacy Settings",
+                      "type": "FRAME",
+                      "width": 1000,
+                      "height": 70,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.9,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "개인정보 보호",
+                          "type": "TEXT",
+                          "characters": "개인정보 보호",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": ">",
+                          "type": "TEXT",
+                          "characters": ">",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "cornerRadius": 30
+                    },
+                    {
+                      "name": "Help",
+                      "type": "FRAME",
+                      "width": 1000,
+                      "height": 70,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.9,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "도움말",
+                          "type": "TEXT",
+                          "characters": "도움말",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.3,
+                                "g": 0.3,
+                                "b": 0.3
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": ">",
+                          "type": "TEXT",
+                          "characters": ">",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.6,
+                                "g": 0.6,
+                                "b": 0.6
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "cornerRadius": 30
+                    },
+                    {
+                      "name": "Logout",
+                      "type": "FRAME",
+                      "width": 1000,
+                      "height": 70,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisSizingMode": "FIXED",
+                      "counterAxisSizingMode": "FIXED",
+                      "primaryAxisAlignItems": "SPACE_BETWEEN",
+                      "counterAxisAlignItems": "CENTER",
+                      "paddingTop": 20,
+                      "paddingRight": 20,
+                      "paddingBottom": 20,
+                      "paddingLeft": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 0.85
+                          }
+                        }
+                      ],
+                      "strokes": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.9,
+                            "g": 0.9,
+                            "b": 0.9
+                          }
+                        }
+                      ],
+                      "strokeWeight": 1,
+                      "children": [
+                        {
+                          "name": "로그아웃",
+                          "type": "TEXT",
+                          "characters": "로그아웃",
+                          "fontSize": 16,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.96,
+                                "g": 0.26,
+                                "b": 0.21
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "cornerRadius": 30
+                    }
+                  ],
+                  "cornerRadius": 30
+                }
+              ],
+              "cornerRadius": 30
+            }
+          ],
+          "cornerRadius": 30
+        },
+        {
+          "name": "Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 16,
+          "paddingRight": 300,
+          "paddingBottom": 16,
+          "paddingLeft": 300,
+          "itemSpacing": 0,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.85
+              }
+            }
+          ],
+          "strokes": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 0.88,
+                "g": 0.88,
+                "b": 0.88
+              }
+            }
+          ],
+          "strokeWeight": 2,
+          "children": [
+            {
+              "name": "홈 버튼",
+              "type": "FRAME",
+              "width": 150,
+              "height": 48,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 2,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "홈",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 13,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                }
+              ],
+              "cornerRadius": 25,
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "약 관리 버튼",
+              "type": "FRAME",
+              "width": 150,
+              "height": 48,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 2,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "약 관리",
+                  "type": "TEXT",
+                  "characters": "약 관리",
+                  "fontSize": 13,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                }
+              ],
+              "cornerRadius": 25,
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "가족 버튼",
+              "type": "FRAME",
+              "width": 150,
+              "height": 48,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 2,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "👨‍👩‍👧",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "가족",
+                  "type": "TEXT",
+                  "characters": "가족",
+                  "fontSize": 13,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                }
+              ],
+              "cornerRadius": 25,
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "설정 버튼",
+              "type": "FRAME",
+              "width": 150,
+              "height": 48,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 2,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "설정",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 13,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.5,
+                        "g": 0.5,
+                        "b": 0.5
+                      }
+                    }
+                  ]
+                }
+              ],
+              "cornerRadius": 25,
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            }
+          ],
+          "cornerRadius": 30,
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": 4
+              },
+              "radius": 20,
+              "visible": true
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "type": "BACKGROUND_BLUR",
+          "radius": 20,
+          "visible": true
+        },
+        {
+          "type": "DROP_SHADOW",
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.08
+          },
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "radius": 20,
+          "visible": true
+        }
+      ]
+    },
+    {
+      "name": "약사 채팅 목록",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "약사 상담",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Button - 새 상담 시작",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 50,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "새 상담 시작",
+                  "type": "TEXT",
+                  "characters": "새 상담 시작",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chat Item 1",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 100,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Chat Info",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 15,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Avatar",
+                      "type": "ELLIPSE",
+                      "width": 50,
+                      "height": 50,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 5,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "김약사",
+                          "type": "TEXT",
+                          "characters": "김약사",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "SemiBold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.1,
+                                "g": 0.1,
+                                "b": 0.1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Last Message",
+                          "type": "TEXT",
+                          "characters": "복용 방법에 대해 안내드렸습니다",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Chat Item 2",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 100,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Chat Info",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 15,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Avatar",
+                      "type": "ELLIPSE",
+                      "width": 50,
+                      "height": 50,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.2
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Info",
+                      "type": "FRAME",
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "itemSpacing": 5,
+                      "fills": [],
+                      "children": [
+                        {
+                          "name": "이약사",
+                          "type": "TEXT",
+                          "characters": "이약사",
+                          "fontSize": 18,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "SemiBold"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.1,
+                                "g": 0.1,
+                                "b": 0.1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "name": "Last Message",
+                          "type": "TEXT",
+                          "characters": "부작용 문의에 답변드렸습니다",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.5,
+                                "g": 0.5,
+                                "b": 0.5,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "약사 1:1 대화",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "김약사와 대화",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Message Container",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 550,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "Message Pharmacist",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "primaryAxisAlignItems": "MIN",
+                  "itemSpacing": 10,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Avatar",
+                      "type": "ELLIPSE",
+                      "width": 40,
+                      "height": 40,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.3
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Message Bubble",
+                      "type": "FRAME",
+                      "width": 400,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "paddingTop": 15,
+                      "paddingRight": 20,
+                      "paddingBottom": 15,
+                      "paddingLeft": 20,
+                      "cornerRadius": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0.95,
+                            "g": 0.95,
+                            "b": 0.95,
+                            "a": 1
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "안녕하세요, 무엇을 도와드릴까요?",
+                          "type": "TEXT",
+                          "characters": "안녕하세요, 무엇을 도와드릴까요?",
+                          "fontSize": 15,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0.1,
+                                "g": 0.1,
+                                "b": 0.1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Message Mine",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "primaryAxisAlignItems": "MAX",
+                  "itemSpacing": 10,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "Message Bubble",
+                      "type": "FRAME",
+                      "width": 400,
+                      "layoutMode": "VERTICAL",
+                      "primaryAxisSizingMode": "AUTO",
+                      "counterAxisSizingMode": "AUTO",
+                      "paddingTop": 15,
+                      "paddingRight": 20,
+                      "paddingBottom": 15,
+                      "paddingLeft": 20,
+                      "cornerRadius": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "혈압약 복용 시간 문의드립니다",
+                          "type": "TEXT",
+                          "characters": "혈압약 복용 시간 문의드립니다",
+                          "fontSize": 15,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Regular"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 1,
+                                "g": 1,
+                                "b": 1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Input Container",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 60,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 15,
+              "paddingTop": 10,
+              "paddingRight": 10,
+              "paddingBottom": 10,
+              "paddingLeft": 10,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "메시지를 입력하세요...",
+                  "type": "TEXT",
+                  "characters": "메시지를 입력하세요...",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.6,
+                        "g": 0.6,
+                        "b": 0.6,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "layoutGrow": 1
+                },
+                {
+                  "name": "Button - 전송",
+                  "type": "FRAME",
+                  "width": 100,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "GRADIENT_LINEAR",
+                      "gradientTransform": [
+                        [
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0
+                        ]
+                      ],
+                      "gradientStops": [
+                        {
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          },
+                          "position": 0
+                        },
+                        {
+                          "color": {
+                            "r": 0.35,
+                            "g": 0.8,
+                            "b": 0.98,
+                            "a": 1
+                          },
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.4
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 5
+                      },
+                      "radius": 20,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "전송",
+                      "type": "TEXT",
+                      "characters": "전송",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "증상 검색",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "증상으로 질병 찾기",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Search Box",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 60,
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "paddingLeft": 25,
+              "paddingRight": 25,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "BACKGROUND_BLUR",
+                  "radius": 20,
+                  "visible": true
+                },
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "증상을 입력하세요 (예: 두통, 어지러움)",
+                  "type": "TEXT",
+                  "characters": "증상을 입력하세요 (예: 두통, 어지러움)",
+                  "fontSize": 16,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.6,
+                        "g": 0.6,
+                        "b": 0.6,
+                        "a": 1
+                      }
+                    }
+                  ],
+                  "layoutGrow": 1
+                }
+              ]
+            },
+            {
+              "name": "Common Symptoms",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 250,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "자주 검색하는 증상",
+                  "type": "TEXT",
+                  "characters": "자주 검색하는 증상",
+                  "fontSize": 18,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Symptom Tags",
+                  "type": "FRAME",
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisSizingMode": "AUTO",
+                  "counterAxisSizingMode": "AUTO",
+                  "itemSpacing": 12,
+                  "fills": [],
+                  "children": [
+                    {
+                      "name": "두통",
+                      "type": "FRAME",
+                      "width": 100,
+                      "height": 40,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.1
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "두통",
+                          "type": "TEXT",
+                          "characters": "두통",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Medium"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "어지러움",
+                      "type": "FRAME",
+                      "width": 120,
+                      "height": 40,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.1
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "어지러움",
+                          "type": "TEXT",
+                          "characters": "어지러움",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Medium"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "복통",
+                      "type": "FRAME",
+                      "width": 100,
+                      "height": 40,
+                      "layoutMode": "HORIZONTAL",
+                      "primaryAxisAlignItems": "CENTER",
+                      "counterAxisAlignItems": "CENTER",
+                      "cornerRadius": 20,
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 0.1
+                          }
+                        }
+                      ],
+                      "children": [
+                        {
+                          "name": "복통",
+                          "type": "TEXT",
+                          "characters": "복통",
+                          "fontSize": 14,
+                          "fontName": {
+                            "family": "Inter",
+                            "style": "Medium"
+                          },
+                          "fills": [
+                            {
+                              "type": "SOLID",
+                              "color": {
+                                "r": 0,
+                                "g": 0.48,
+                                "b": 1,
+                                "a": 1
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "의심 질환 결과",
+      "type": "FRAME",
+      "width": 1200,
+      "height": 800,
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "FIXED",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "itemSpacing": 0,
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.96,
+            "g": 0.97,
+            "b": 0.98,
+            "a": 1
+          }
+        }
+      ],
+      "children": [
+        {
+          "name": "Header",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 90,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 30,
+          "paddingBottom": 0,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.05
+              },
+              "offset": {
+                "x": 0,
+                "y": 1
+              },
+              "radius": 0,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Back Button",
+              "type": "FRAME",
+              "width": 40,
+              "height": 40,
+              "cornerRadius": 25,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 1
+                      },
+                      "position": 1
+                    }
+                  ]
+                }
+              ],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "children": [
+                {
+                  "name": "←",
+                  "type": "TEXT",
+                  "characters": "←",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.2,
+                        "g": 0.2,
+                        "b": 0.2,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.4
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 5
+                  },
+                  "radius": 20,
+                  "visible": true
+                }
+              ]
+            },
+            {
+              "name": "Title",
+              "type": "TEXT",
+              "characters": "검색 결과",
+              "fontSize": 24,
+              "fontName": {
+                "family": "Inter",
+                "style": "Bold"
+              },
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.1,
+                    "g": 0.1,
+                    "b": 0.1,
+                    "a": 1
+                  }
+                }
+              ],
+              "layoutGrow": 1
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 710,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 30,
+          "paddingRight": 30,
+          "paddingBottom": 30,
+          "paddingLeft": 30,
+          "itemSpacing": 20,
+          "fills": [],
+          "children": [
+            {
+              "name": "Disease Result 1",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 150,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "편두통",
+                  "type": "TEXT",
+                  "characters": "편두통",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "일치도: 85%",
+                  "type": "TEXT",
+                  "characters": "일치도: 85%",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Medium"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "머리 한쪽이 맥박에 따라 지끈거리는 통증",
+                  "type": "TEXT",
+                  "characters": "머리 한쪽이 맥박에 따라 지끈거리는 통증",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Button - 자세히 보기",
+                  "type": "FRAME",
+                  "width": 150,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "GRADIENT_LINEAR",
+                      "gradientTransform": [
+                        [
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0
+                        ]
+                      ],
+                      "gradientStops": [
+                        {
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          },
+                          "position": 0
+                        },
+                        {
+                          "color": {
+                            "r": 0.35,
+                            "g": 0.8,
+                            "b": 0.98,
+                            "a": 1
+                          },
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.4
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 5
+                      },
+                      "radius": 20,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "자세히 보기",
+                      "type": "TEXT",
+                      "characters": "자세히 보기",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Disease Result 2",
+              "type": "FRAME",
+              "width": 1140,
+              "height": 150,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "paddingTop": 25,
+              "paddingRight": 25,
+              "paddingBottom": 25,
+              "paddingLeft": 25,
+              "itemSpacing": 15,
+              "cornerRadius": 30,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 0.9
+                  }
+                }
+              ],
+              "effects": [
+                {
+                  "type": "DROP_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0.08
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 8
+                  },
+                  "radius": 25,
+                  "visible": true
+                },
+                {
+                  "type": "INNER_SHADOW",
+                  "color": {
+                    "r": 0,
+                    "g": 0.48,
+                    "b": 1,
+                    "a": 0.1
+                  },
+                  "offset": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "radius": 2,
+                  "spread": 1,
+                  "visible": true
+                }
+              ],
+              "children": [
+                {
+                  "name": "긴장성 두통",
+                  "type": "TEXT",
+                  "characters": "긴장성 두통",
+                  "fontSize": 20,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Bold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.1,
+                        "g": 0.1,
+                        "b": 0.1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "일치도: 72%",
+                  "type": "TEXT",
+                  "characters": "일치도: 72%",
+                  "fontSize": 14,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Medium"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "머리 전체를 조이는 듯한 압박감",
+                  "type": "TEXT",
+                  "characters": "머리 전체를 조이는 듯한 압박감",
+                  "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "Button - 자세히 보기",
+                  "type": "FRAME",
+                  "width": 150,
+                  "height": 50,
+                  "layoutMode": "HORIZONTAL",
+                  "primaryAxisAlignItems": "CENTER",
+                  "counterAxisAlignItems": "CENTER",
+                  "cornerRadius": 25,
+                  "fills": [
+                    {
+                      "type": "GRADIENT_LINEAR",
+                      "gradientTransform": [
+                        [
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0
+                        ]
+                      ],
+                      "gradientStops": [
+                        {
+                          "color": {
+                            "r": 0,
+                            "g": 0.48,
+                            "b": 1,
+                            "a": 1
+                          },
+                          "position": 0
+                        },
+                        {
+                          "color": {
+                            "r": 0.35,
+                            "g": 0.8,
+                            "b": 0.98,
+                            "a": 1
+                          },
+                          "position": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "type": "DROP_SHADOW",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.4
+                      },
+                      "offset": {
+                        "x": 0,
+                        "y": 5
+                      },
+                      "radius": 20,
+                      "visible": true
+                    }
+                  ],
+                  "children": [
+                    {
+                      "name": "자세히 보기",
+                      "type": "TEXT",
+                      "characters": "자세히 보기",
+                      "fontSize": 16,
+                      "fontName": {
+                        "family": "Inter",
+                        "style": "SemiBold"
+                      },
+                      "fills": [
+                        {
+                          "type": "SOLID",
+                          "color": {
+                            "r": 1,
+                            "g": 1,
+                            "b": 1,
+                            "a": 1
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
