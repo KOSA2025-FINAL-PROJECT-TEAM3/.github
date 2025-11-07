@@ -1,149 +1,127 @@
 graph TB
-    subgraph "Frontend Layer"
-        A[React Web App]
-        A1[Auth Components]
-        A2[Family Components]
-        A3[Medication Components]
-        A4[Diet Components]
-        A5[Dashboard]
+%% ===== FRONTEND =====
+subgraph FRONTEND["🖥️ Frontend Layer"]
+    A[React Web App]
+    A1[Auth Components]
+    A2[Family Components]
+    A3[Medication Components]
+    A4[Diet Components]
+    A5[Dashboard]
 
-        A --> A1
-        A --> A2
-        A --> A3
-        A --> A4
-        A --> A5
-    end
+    A --> A1 & A2 & A3 & A4 & A5
+end
 
-    subgraph "Spring Cloud Infrastructure"
-        GW[API Gateway<br/>Spring Cloud Gateway]
-        EUR[Eureka Server<br/>Service Discovery]
-        CFG[Config Server<br/>중앙 설정 관리]
-    end
+%% ===== CLOUD INFRA =====
+subgraph CLOUD["☁️ Spring Cloud Infrastructure"]
+    GW[API Gateway<br/>Spring Cloud Gateway]
+    EUR[Eureka Server<br/>Service Discovery]
+    CFG[Config Server<br/>Central Config]
+end
 
-    subgraph "Microservices"
-        AUTH[Auth Service<br/>인증/인가/JWT]
-        MED[Medication Service<br/>약 관리]
-        FAM[Family Service<br/>가족 네트워크]
-        DIET[Diet Service<br/>식단 관리]
-        NOTI[Notification Service<br/>알림]
-        OCR[OCR Service<br/>약봉지 인식]
-    end
+%% ===== MICROSERVICES =====
+subgraph MS["🧩 Microservices"]
+    AUTH[Auth Service<br/>인증/인가/JWT]
+    MED[Medication Service<br/>약 관리]
+    FAM[Family Service<br/>가족 네트워크]
+    DIET[Diet Service<br/>식단 관리]
+    NOTI[Notification Service<br/>알림]
+    OCR[OCR Service<br/>약봉지 인식]
+end
 
-    subgraph "Real-time Sync Layer"
-        WS[Spring WebSocket/STOMP<br/>Real-time Messaging]
-        MSG[Message Broker<br/>In-Memory/RabbitMQ]
-        WS --> MSG
-    end
+%% ===== REALTIME =====
+subgraph REALTIME["⚡ Real-time Sync Layer"]
+    WS[WebSocket/STOMP<br/>실시간 메시징]
+    MSG[Message Broker<br/>Redis PubSub / RabbitMQ]
+    WS --> MSG
+end
 
-    subgraph "Event Processing"
-        K[Apache Kafka]
-        K1[Medication Events]
-        K2[Notification Events]
-        K3[Family Events]
-        K4[Sync Events]
+%% ===== EVENT PROCESSING =====
+subgraph EVENT["🌀 Event Processing (Kafka)"]
+    K[Apache Kafka]
+    K1[Medication Events]
+    K2[Notification Events]
+    K3[Family Events]
+    K4[Sync Events]
+    K --> K1 & K2 & K3 & K4
+end
 
-        K --> K1
-        K --> K2
-        K --> K3
-        K --> K4
-    end
+%% ===== DATABASE =====
+subgraph DBLAYER["🗄️ Database Layer"]
+    DB[(MySQL 8.0<br/>Main DB)]
+    R[(Redis<br/>Cache / Session)]
+end
 
-    subgraph "Database Layer"
-        DB[(MySQL 8.0<br/>Main DB)]
-        R[(Redis<br/>Cache/Session)]
-    end
+%% ===== EXTERNAL =====
+subgraph EXT["🌍 External Services"]
+    E1[식약처 API<br/>의약품안전나라]
+    E2[Google Vision OCR<br/>약봉지 인식]
+    E3[카카오톡 API<br/>알림톡]
+    E4[n8n Workflow<br/>자동화]
+end
 
-    subgraph "External Services"
-        E1[식약처 API<br/>의약품안전나라]
-        E2[Google Vision OCR<br/>약봉지 인식]
-        E3[카카오톡 API<br/>알림톡]
-        E4[n8n Workflow<br/>자동화]
-    end
+%% ===== CONNECTIONS =====
+A -->|HTTP/REST| GW
+A -->|WebSocket| WS
 
-    %% Frontend connections
-    A -->|HTTP/REST| GW
-    A -->|WebSocket/STOMP| WS
+GW --> EUR & CFG
+GW --> AUTH & MED & FAM & DIET & NOTI & OCR
 
-    %% API Gateway connections
-    GW --> EUR
-    GW --> AUTH
-    GW --> MED
-    GW --> FAM
-    GW --> DIET
-    GW --> NOTI
-    GW --> OCR
+EUR -.->|Service Register| AUTH & MED & FAM & DIET & NOTI & OCR
+CFG -.->|Load Config| AUTH & MED & FAM & DIET & NOTI & OCR
 
-    %% Service Discovery
-    EUR -.->|Register| AUTH
-    EUR -.->|Register| MED
-    EUR -.->|Register| FAM
-    EUR -.->|Register| DIET
-    EUR -.->|Register| NOTI
-    EUR -.->|Register| OCR
+%% DB & CACHE
+AUTH --> DB & R
+MED --> DB & R
+FAM --> DB & R
+DIET --> DB
+NOTI --> DB
+OCR --> DB
 
-    %% Config Server
-    CFG -.->|Config| AUTH
-    CFG -.->|Config| MED
-    CFG -.->|Config| FAM
-    CFG -.->|Config| DIET
-    CFG -.->|Config| NOTI
-    CFG -.->|Config| OCR
+%% KAFKA
+MED -->|Publish| K
+FAM -->|Publish| K
+DIET -->|Publish| K
+NOTI -->|Consume| K
+K -->|Event Stream| WS
 
-    %% Microservices to Database
-    AUTH --> DB
-    AUTH --> R
-    MED --> DB
-    MED --> R
-    FAM --> DB
-    FAM --> R
-    DIET --> DB
-    NOTI --> DB
-    OCR --> DB
+%% REALTIME
+WS -->|Session| R
+MED -->|Push Events| WS
+FAM -->|Push Events| WS
+DIET -->|Push Events| WS
 
-    %% Microservices to Kafka
-    MED -->|Publish| K1
-    FAM -->|Publish| K3
-    DIET -->|Publish| K1
-    NOTI -->|Consume| K2
+%% EXTERNAL
+MED --> E1
+OCR --> E2
+NOTI --> E3
+K --> E4
 
-    %% Kafka to WebSocket (Real-time Sync)
-    K1 -->|Sync Events| WS
-    K3 -->|Family Events| WS
-    K4 -->|State Changes| WS
+%% FEIGN CLIENTS
+MED -.->|Feign| FAM
+DIET -.->|Feign| MED
+NOTI -.->|Feign| FAM
 
-    %% WebSocket connections
-    WS -->|Session Storage| R
-    MED -->|Publish Events| WS
-    FAM -->|Publish Events| WS
-    DIET -->|Publish Events| WS
+%% ===== STYLING =====
+style A fill:#61dafb,stroke:#333,stroke-width:2px,font-weight:bold
+style GW fill:#68bc00,stroke:#333,stroke-width:3px
+style EUR fill:#68bc00,stroke:#333,stroke-width:2px
+style CFG fill:#68bc00,stroke:#333,stroke-width:2px
 
-    %% External API connections
-    MED --> E1
-    OCR --> E2
-    NOTI --> E3
-    K --> E4
+style AUTH fill:#6db33f,stroke:#333,stroke-width:2px
+style MED fill:#6db33f,stroke:#333,stroke-width:2px
+style FAM fill:#6db33f,stroke:#333,stroke-width:2px
+style DIET fill:#6db33f,stroke:#333,stroke-width:2px
+style NOTI fill:#6db33f,stroke:#333,stroke-width:2px
+style OCR fill:#6db33f,stroke:#333,stroke-width:2px
 
-    %% Service-to-Service communication
-    MED -.->|Feign Client| FAM
-    DIET -.->|Feign Client| MED
-    NOTI -.->|Feign Client| FAM
+style WS fill:#ff6b35,stroke:#333,stroke-width:3px,color:#fff
+style MSG fill:#ff6b35,stroke:#333,stroke-width:2px,color:#fff
 
-    %% Styling
-    style A fill:#61dafb,stroke:#333,stroke-width:2px
-    style GW fill:#68bc00,stroke:#333,stroke-width:3px
-    style EUR fill:#68bc00,stroke:#333,stroke-width:2px
-    style CFG fill:#68bc00,stroke:#333,stroke-width:2px
+style K fill:#231f20,stroke:#fff,stroke-width:2px,color:#fff
+style DB fill:#4479a1,stroke:#333,stroke-width:2px,color:#fff
+style R fill:#dc382d,stroke:#333,stroke-width:2px,color:#fff
 
-    style AUTH fill:#6db33f,stroke:#333,stroke-width:2px
-    style MED fill:#6db33f,stroke:#333,stroke-width:2px
-    style FAM fill:#6db33f,stroke:#333,stroke-width:2px
-    style DIET fill:#6db33f,stroke:#333,stroke-width:2px
-    style NOTI fill:#6db33f,stroke:#333,stroke-width:2px
-    style OCR fill:#6db33f,stroke:#333,stroke-width:2px
-
-    style WS fill:#ff6b35,stroke:#333,stroke-width:3px
-    style MSG fill:#ff6b35,stroke:#333,stroke-width:2px
-
-    style K fill:#231f20,color:#fff,stroke:#fff,stroke-width:2px
-    style DB fill:#4479a1,stroke:#333,stroke-width:2px
-    style R fill:#dc382d,stroke:#333,stroke-width:2px
+style E1 fill:#b0b0b0,stroke:#333,stroke-width:2px
+style E2 fill:#b0b0b0,stroke:#333,stroke-width:2px
+style E3 fill:#b0b0b0,stroke:#333,stroke-width:2px
+style E4 fill:#b0b0b0,stroke:#333,stroke-width:2px
