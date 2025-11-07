@@ -449,6 +449,352 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 40,
+          "paddingBottom": 0,
+          "paddingLeft": 40,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "radius": 10,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Nav - 홈",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 증상검색",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🔍",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "증상검색",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약사상담",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💬",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약사상담",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 질병관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.15
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 0.15
+                      },
+                      "position": 1
+                    }
+                  ],
+                  "color": null
+                }
+              ],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏥",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "질병관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 설정",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1038,6 +1384,352 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 40,
+          "paddingBottom": 0,
+          "paddingLeft": 40,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "radius": 10,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Nav - 홈",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 증상검색",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🔍",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "증상검색",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약사상담",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💬",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약사상담",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 질병관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.15
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 0.15
+                      },
+                      "position": 1
+                    }
+                  ],
+                  "color": null
+                }
+              ],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏥",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "질병관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 설정",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1437,6 +2129,352 @@
                   "type": "TEXT",
                   "characters": "• 규칙적인 운동 (주 3-5회, 30분)\n• 금연 및 절주\n• 스트레스 관리\n• 정기적인 혈압 측정",
                   "fontSize": 15,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 40,
+          "paddingBottom": 0,
+          "paddingLeft": 40,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "radius": 10,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Nav - 홈",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 증상검색",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🔍",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "증상검색",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약사상담",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💬",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약사상담",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 질병관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.15
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 0.15
+                      },
+                      "position": 1
+                    }
+                  ],
+                  "color": null
+                }
+              ],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏥",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "질병관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 설정",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 12,
                   "fontName": {
                     "family": "Inter",
                     "style": "Regular"
@@ -2240,6 +3278,352 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 40,
+          "paddingBottom": 0,
+          "paddingLeft": 40,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "radius": 10,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Nav - 홈",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 증상검색",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🔍",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "증상검색",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약사상담",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💬",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약사상담",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 질병관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.15
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 0.15
+                      },
+                      "position": 1
+                    }
+                  ],
+                  "color": null
+                }
+              ],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏥",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "질병관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 설정",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2778,6 +4162,352 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 40,
+          "paddingBottom": 0,
+          "paddingLeft": 40,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "radius": 10,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Nav - 홈",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.15
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 0.15
+                      },
+                      "position": 1
+                    }
+                  ],
+                  "color": null
+                }
+              ],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 증상검색",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🔍",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "증상검색",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약사상담",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💬",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약사상담",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 질병관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏥",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "질병관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 설정",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -3283,6 +5013,352 @@
                         "r": 1,
                         "g": 1,
                         "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 40,
+          "paddingBottom": 0,
+          "paddingLeft": 40,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "radius": 10,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Nav - 홈",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.15
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 0.15
+                      },
+                      "position": 1
+                    }
+                  ],
+                  "color": null
+                }
+              ],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 증상검색",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🔍",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "증상검색",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약사상담",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💬",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약사상담",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 질병관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏥",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "질병관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 설정",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
                         "a": 1
                       }
                     }
@@ -3813,6 +5889,352 @@
                         "r": 1,
                         "g": 1,
                         "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bottom Navigation",
+          "type": "FRAME",
+          "width": 1200,
+          "height": 80,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": 0,
+          "paddingRight": 40,
+          "paddingBottom": 0,
+          "paddingLeft": 40,
+          "itemSpacing": 20,
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 0.7
+              }
+            }
+          ],
+          "effects": [
+            {
+              "type": "BACKGROUND_BLUR",
+              "radius": 20,
+              "visible": true
+            },
+            {
+              "type": "DROP_SHADOW",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0.08
+              },
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "radius": 10,
+              "visible": true
+            }
+          ],
+          "children": [
+            {
+              "name": "Nav - 홈",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [
+                {
+                  "type": "GRADIENT_LINEAR",
+                  "gradientTransform": [
+                    [
+                      0,
+                      1,
+                      0
+                    ],
+                    [
+                      1,
+                      0,
+                      0
+                    ]
+                  ],
+                  "gradientStops": [
+                    {
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 0.15
+                      },
+                      "position": 0
+                    },
+                    {
+                      "color": {
+                        "r": 0.35,
+                        "g": 0.8,
+                        "b": 0.98,
+                        "a": 0.15
+                      },
+                      "position": 1
+                    }
+                  ],
+                  "color": null
+                }
+              ],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏠",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "홈",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "SemiBold"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0,
+                        "g": 0.48,
+                        "b": 1,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💊",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 증상검색",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🔍",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "증상검색",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 약사상담",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "💬",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "약사상담",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 질병관리",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "🏥",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "질병관리",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
+                        "a": 1
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Nav - 설정",
+              "type": "FRAME",
+              "width": 160,
+              "height": 60,
+              "layoutMode": "VERTICAL",
+              "primaryAxisSizingMode": "FIXED",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "CENTER",
+              "counterAxisAlignItems": "CENTER",
+              "itemSpacing": 4,
+              "cornerRadius": 15,
+              "fills": [],
+              "children": [
+                {
+                  "name": "Icon",
+                  "type": "TEXT",
+                  "characters": "⚙️",
+                  "fontSize": 24
+                },
+                {
+                  "name": "Label",
+                  "type": "TEXT",
+                  "characters": "설정",
+                  "fontSize": 12,
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Regular"
+                  },
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "color": {
+                        "r": 0.4,
+                        "g": 0.4,
+                        "b": 0.4,
                         "a": 1
                       }
                     }
