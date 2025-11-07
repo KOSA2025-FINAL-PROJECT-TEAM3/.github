@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import json
-import copy
+
 
 def has_keyword(name, keywords):
     """Check if any keyword is in the frame name (case-insensitive)"""
