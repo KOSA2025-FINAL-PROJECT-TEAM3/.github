@@ -182,6 +182,11 @@ async function createFrame(data: any): Promise<FrameNode> {
     if (data.strokeWeight) frame.strokeWeight = data.strokeWeight;
   }
 
+  // Effects (BACKGROUND_BLUR, DROP_SHADOW, INNER_SHADOW, etc.)
+  if (data.effects && data.effects.length > 0) {
+    frame.effects = convertEffects(data.effects);
+  }
+
   // Children
   if (data.children && data.children.length > 0) {
     for (const childData of data.children) {
@@ -244,6 +249,11 @@ async function createComponent(data: any): Promise<ComponentNode> {
   if (data.strokes && data.strokes.length > 0) {
     component.strokes = convertStrokes(data.strokes);
     if (data.strokeWeight) component.strokeWeight = data.strokeWeight;
+  }
+
+  // Effects (BACKGROUND_BLUR, DROP_SHADOW, INNER_SHADOW, etc.)
+  if (data.effects && data.effects.length > 0) {
+    component.effects = convertEffects(data.effects);
   }
 
   // Children
@@ -325,6 +335,11 @@ async function createRectangle(data: any): Promise<RectangleNode> {
     if (data.strokeWeight) rect.strokeWeight = data.strokeWeight;
   }
 
+  // Effects
+  if (data.effects && data.effects.length > 0) {
+    rect.effects = convertEffects(data.effects);
+  }
+
   return rect;
 }
 
@@ -350,6 +365,11 @@ async function createEllipse(data: any): Promise<EllipseNode> {
     if (data.strokeWeight) ellipse.strokeWeight = data.strokeWeight;
   }
 
+  // Effects
+  if (data.effects && data.effects.length > 0) {
+    ellipse.effects = convertEffects(data.effects);
+  }
+
   return ellipse;
 }
 
@@ -364,8 +384,22 @@ function convertFills(fills: any[]): Paint[] {
           g: fill.color.g,
           b: fill.color.b
         },
-        opacity: fill.opacity !== undefined ? fill.opacity : 1
+        opacity: fill.color.a !== undefined ? fill.color.a : (fill.opacity !== undefined ? fill.opacity : 1)
       } as SolidPaint;
+    } else if (fill.type === 'GRADIENT_LINEAR') {
+      return {
+        type: 'GRADIENT_LINEAR',
+        gradientTransform: fill.gradientTransform || [[1, 0, 0], [0, 1, 0]],
+        gradientStops: fill.gradientStops.map((stop: any) => ({
+          color: {
+            r: stop.color.r,
+            g: stop.color.g,
+            b: stop.color.b,
+            a: stop.color.a !== undefined ? stop.color.a : 1
+          },
+          position: stop.position
+        }))
+      } as GradientPaint;
     }
     return fill;
   });
@@ -374,6 +408,62 @@ function convertFills(fills: any[]): Paint[] {
 // Convert strokes from JSON format to Figma format
 function convertStrokes(strokes: any[]): Paint[] {
   return convertFills(strokes); // Same format as fills
+}
+
+// Convert effects from JSON format to Figma format
+function convertEffects(effects: any[]): Effect[] {
+  return effects.map(effect => {
+    if (effect.type === 'BACKGROUND_BLUR') {
+      return {
+        type: 'BACKGROUND_BLUR',
+        radius: effect.radius || 0,
+        visible: effect.visible !== undefined ? effect.visible : true
+      } as BlurEffect;
+    } else if (effect.type === 'LAYER_BLUR') {
+      return {
+        type: 'LAYER_BLUR',
+        radius: effect.radius || 0,
+        visible: effect.visible !== undefined ? effect.visible : true
+      } as BlurEffect;
+    } else if (effect.type === 'DROP_SHADOW') {
+      return {
+        type: 'DROP_SHADOW',
+        color: {
+          r: effect.color?.r || 0,
+          g: effect.color?.g || 0,
+          b: effect.color?.b || 0,
+          a: effect.color?.a || 0.25
+        },
+        offset: {
+          x: effect.offset?.x || 0,
+          y: effect.offset?.y || 4
+        },
+        radius: effect.radius || 4,
+        spread: effect.spread || 0,
+        visible: effect.visible !== undefined ? effect.visible : true,
+        blendMode: effect.blendMode || 'NORMAL'
+      } as DropShadowEffect;
+    } else if (effect.type === 'INNER_SHADOW') {
+      return {
+        type: 'INNER_SHADOW',
+        color: {
+          r: effect.color?.r || 0,
+          g: effect.color?.g || 0,
+          b: effect.color?.b || 0,
+          a: effect.color?.a || 0.25
+        },
+        offset: {
+          x: effect.offset?.x || 0,
+          y: effect.offset?.y || 0
+        },
+        radius: effect.radius || 4,
+        spread: effect.spread || 0,
+        visible: effect.visible !== undefined ? effect.visible : true,
+        blendMode: effect.blendMode || 'NORMAL'
+      } as DropShadowEffect;
+    }
+    return effect;
+  }).filter(Boolean);
 }
 
 // Apply prototype flows (화살표 연결)

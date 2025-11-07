@@ -180,6 +180,10 @@ function createFrame(data) {
             if (data.strokeWeight)
                 frame.strokeWeight = data.strokeWeight;
         }
+        // Effects (BACKGROUND_BLUR, DROP_SHADOW, INNER_SHADOW, etc.)
+        if (data.effects && data.effects.length > 0) {
+            frame.effects = convertEffects(data.effects);
+        }
         // Children
         if (data.children && data.children.length > 0) {
             for (const childData of data.children) {
@@ -241,6 +245,10 @@ function createComponent(data) {
             component.strokes = convertStrokes(data.strokes);
             if (data.strokeWeight)
                 component.strokeWeight = data.strokeWeight;
+        }
+        // Effects (BACKGROUND_BLUR, DROP_SHADOW, INNER_SHADOW, etc.)
+        if (data.effects && data.effects.length > 0) {
+            component.effects = convertEffects(data.effects);
         }
         // Children
         if (data.children && data.children.length > 0) {
@@ -315,6 +323,10 @@ function createRectangle(data) {
             if (data.strokeWeight)
                 rect.strokeWeight = data.strokeWeight;
         }
+        // Effects
+        if (data.effects && data.effects.length > 0) {
+            rect.effects = convertEffects(data.effects);
+        }
         return rect;
     });
 }
@@ -338,6 +350,10 @@ function createEllipse(data) {
             if (data.strokeWeight)
                 ellipse.strokeWeight = data.strokeWeight;
         }
+        // Effects
+        if (data.effects && data.effects.length > 0) {
+            ellipse.effects = convertEffects(data.effects);
+        }
         return ellipse;
     });
 }
@@ -352,7 +368,22 @@ function convertFills(fills) {
                     g: fill.color.g,
                     b: fill.color.b
                 },
-                opacity: fill.opacity !== undefined ? fill.opacity : 1
+                opacity: fill.color.a !== undefined ? fill.color.a : (fill.opacity !== undefined ? fill.opacity : 1)
+            };
+        }
+        else if (fill.type === 'GRADIENT_LINEAR') {
+            return {
+                type: 'GRADIENT_LINEAR',
+                gradientTransform: fill.gradientTransform || [[1, 0, 0], [0, 1, 0]],
+                gradientStops: fill.gradientStops.map((stop) => ({
+                    color: {
+                        r: stop.color.r,
+                        g: stop.color.g,
+                        b: stop.color.b,
+                        a: stop.color.a !== undefined ? stop.color.a : 1
+                    },
+                    position: stop.position
+                }))
             };
         }
         return fill;
@@ -361,6 +392,65 @@ function convertFills(fills) {
 // Convert strokes from JSON format to Figma format
 function convertStrokes(strokes) {
     return convertFills(strokes); // Same format as fills
+}
+// Convert effects from JSON format to Figma format
+function convertEffects(effects) {
+    return effects.map(effect => {
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+        if (effect.type === 'BACKGROUND_BLUR') {
+            return {
+                type: 'BACKGROUND_BLUR',
+                radius: effect.radius || 0,
+                visible: effect.visible !== undefined ? effect.visible : true
+            };
+        }
+        else if (effect.type === 'LAYER_BLUR') {
+            return {
+                type: 'LAYER_BLUR',
+                radius: effect.radius || 0,
+                visible: effect.visible !== undefined ? effect.visible : true
+            };
+        }
+        else if (effect.type === 'DROP_SHADOW') {
+            return {
+                type: 'DROP_SHADOW',
+                color: {
+                    r: ((_a = effect.color) === null || _a === void 0 ? void 0 : _a.r) || 0,
+                    g: ((_b = effect.color) === null || _b === void 0 ? void 0 : _b.g) || 0,
+                    b: ((_c = effect.color) === null || _c === void 0 ? void 0 : _c.b) || 0,
+                    a: ((_d = effect.color) === null || _d === void 0 ? void 0 : _d.a) || 0.25
+                },
+                offset: {
+                    x: ((_e = effect.offset) === null || _e === void 0 ? void 0 : _e.x) || 0,
+                    y: ((_f = effect.offset) === null || _f === void 0 ? void 0 : _f.y) || 4
+                },
+                radius: effect.radius || 4,
+                spread: effect.spread || 0,
+                visible: effect.visible !== undefined ? effect.visible : true,
+                blendMode: effect.blendMode || 'NORMAL'
+            };
+        }
+        else if (effect.type === 'INNER_SHADOW') {
+            return {
+                type: 'INNER_SHADOW',
+                color: {
+                    r: ((_g = effect.color) === null || _g === void 0 ? void 0 : _g.r) || 0,
+                    g: ((_h = effect.color) === null || _h === void 0 ? void 0 : _h.g) || 0,
+                    b: ((_j = effect.color) === null || _j === void 0 ? void 0 : _j.b) || 0,
+                    a: ((_k = effect.color) === null || _k === void 0 ? void 0 : _k.a) || 0.25
+                },
+                offset: {
+                    x: ((_l = effect.offset) === null || _l === void 0 ? void 0 : _l.x) || 0,
+                    y: ((_m = effect.offset) === null || _m === void 0 ? void 0 : _m.y) || 0
+                },
+                radius: effect.radius || 4,
+                spread: effect.spread || 0,
+                visible: effect.visible !== undefined ? effect.visible : true,
+                blendMode: effect.blendMode || 'NORMAL'
+            };
+        }
+        return effect;
+    }).filter(Boolean);
 }
 // Apply prototype flows (화살표 연결)
 function applyPrototypeFlows(flows, frameMap) {
