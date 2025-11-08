@@ -50,8 +50,8 @@
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
-| POST | `/api/auth/signup` | 회원가입 | ✅ |
-| POST | `/api/auth/login` | 로그인 | ✅ |
+| POST | `/api/auth/kakao/login` | 카카오 OAuth 로그인 | ✅ |
+| POST | `/api/auth/kakao/signup` | OAuth 후 추가 정보 입력 (최초 1회) | ✅ |
 | POST | `/api/auth/logout` | 로그아웃 | ✅ |
 | POST | `/api/auth/refresh` | 토큰 갱신 | ✅ |
 | GET | `/api/users/me` | 내 정보 조회 | ✅ |
@@ -125,28 +125,26 @@
 
 ### 1. Auth/User (인증/사용자)
 
-#### 1.1 LoginRequest
+#### 1.1 KakaoLoginRequest
 
 ```json
 {
-  "email": "senior@example.com",
-  "password": "password123",
-  "rememberMe": false
+  "authorizationCode": "abc123xyz...",
+  "redirectUri": "http://localhost:5173/auth/callback"
 }
 ```
 
 **필드 설명**
-- `email` (string, required): 이메일 (이메일 형식 검증)
-- `password` (string, required): 비밀번호
-- `rememberMe` (boolean, optional): 자동 로그인 여부 (기본값: false)
+- `authorizationCode` (string, required): 카카오 OAuth 인증 코드
+- `redirectUri` (string, required): 리다이렉트 URI
 
 **Validation**
-- email: `@Email`, `@NotBlank`
-- password: `@NotBlank`
+- authorizationCode: `@NotBlank`
+- redirectUri: `@NotBlank`, `@URL`
 
 ---
 
-#### 1.2 LoginResponse
+#### 1.2 LoginResponse (카카오 OAuth 후)
 
 ```json
 {
@@ -172,32 +170,35 @@
 
 ---
 
-#### 1.3 SignupRequest
+#### 1.3 KakaoSignupRequest (OAuth 후 추가 정보 입력)
 
 ```json
 {
-  "email": "caregiver@example.com",
-  "password": "SecureP@ss123",
-  "name": "이자녀",
+  "kakaoId": "1234567890",
   "phone": "010-1234-5678",
-  "role": "caregiver"
+  "role": "caregiver",
+  "agreeTerms": true,
+  "agreePrivacy": true
 }
 ```
 
 **필드 설명**
-- `email` (string, required): 이메일
-- `password` (string, required): 비밀번호 (8자 이상)
-- `name` (string, required): 이름
-- `phone` (string, optional): 전화번호
+- `kakaoId` (string, required): 카카오 사용자 ID (OAuth에서 받은 값)
+- `phone` (string, required): 전화번호
 - `role` (enum, required): 사용자 역할
   - `senior`: 시니어 (약 복용자)
   - `caregiver`: 자녀/보호자
+- `agreeTerms` (boolean, required): 이용약관 동의
+- `agreePrivacy` (boolean, required): 개인정보 처리방침 동의
 
 **Validation**
-- email: `@Email`, `@NotBlank`, unique
-- password: `@Size(min=8)`, `@Pattern` (영문+숫자+특수문자)
-- name: `@NotBlank`
+- kakaoId: `@NotBlank`
+- phone: `@Pattern(regexp="^01[0-9]-\\d{3,4}-\\d{4}$")`
 - role: `@NotNull`
+- agreeTerms: `@AssertTrue` (반드시 true)
+- agreePrivacy: `@AssertTrue` (반드시 true)
+
+**참고**: 이메일과 이름은 카카오 OAuth에서 자동으로 가져옴
 
 ---
 

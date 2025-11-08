@@ -57,7 +57,8 @@ graph TB
     end
 
     subgraph "Real-time Sync Layer"
-        H[Hocuspocus Server<br/>WebSocket Sync]
+        WS[Spring WebSocket/STOMP<br/>실시간 채팅]
+        H[Hocuspocus Server (선택)<br/>공동편집 에디터]
         H1[Y.js CRDT<br/>Conflict Resolution]
         H --> H1
     end
@@ -90,7 +91,8 @@ graph TB
 
     %% Frontend connections
     A -->|HTTP/REST| GW
-    A -->|WebSocket| H
+    A -->|WebSocket (채팅)| WS
+    A -->|WebSocket (편집)| H
 
     %% API Gateway connections
     GW --> EUR
@@ -197,10 +199,11 @@ graph TB
 6. **OCR Service**: 약봉지 OCR 처리, Google Vision API 연동
 
 #### Real-time Sync Layer (🔥 핵심 차별점)
-- **Spring WebSocket/STOMP**: WebSocket 기반 실시간 양방향 통신
-- **Message Broker**: In-Memory 또는 RabbitMQ를 통한 메시지 라우팅
+- **Spring WebSocket/STOMP**: WebSocket 기반 실시간 양방향 통신 (실시간 채팅용)
+- **Message Broker**: In-Memory SimpleBroker 사용
 - **Kafka 연동**: 백엔드 이벤트 → Kafka → WebSocket → Frontend Push
 - **Session Management**: Redis 기반 WebSocket 세션 관리
+- **Hocuspocus (선택)**: 공동편집 게시글 에디터 전용 (Y.js CRDT 지원)
 
 #### Event Processing
 - **Apache Kafka**: 이벤트 기반 비동기 처리
@@ -408,9 +411,10 @@ graph LR
 ### 핵심 가치
 
 - 떨어져 있어도 부모님 건강 관리 가능
-- 실시간 양방향 동기화 (Spring WebSocket/STOMP)
+- 실시간 양방향 통신 (Spring WebSocket/STOMP + Kafka)
 - 권한 관리 (읽기/쓰기 분리 가능)
 - Kafka 이벤트 기반 실시간 알림
+- 공동편집 (선택): Hocuspocus Y.js CRDT (게시글 작성 시)
 
 ---
 
@@ -610,7 +614,7 @@ gantt
 mindmap
   root((실버케어<br/>Tech Stack))
     Frontend
-      React 18
+      React 19
       Vite
       TipTap
       Hocuspocus Provider
@@ -948,8 +952,9 @@ Mermaid 코드 블록을 복사해서 붙여넣기
 
 ## 📝 참고 사항
 
-- **실시간 동기화**: Spring WebSocket/STOMP + Kafka
-- **이벤트 기반**: Kafka (비동기 처리)
+- **실시간 통신**: Spring WebSocket/STOMP (메인 채팅) + Kafka (이벤트 기반)
+- **공동편집 (선택)**: Hocuspocus + Y.js CRDT (게시글 작성용)
+- **메시지 브로커**: In-Memory SimpleBroker (RabbitMQ 사용 안 함)
 - **OCR**: Google Vision → Tesseract Fallback
 - **약-음식 충돌**: 룰 베이스 시스템
 - **알림**: Phase 1 필수, Phase 2 선택

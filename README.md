@@ -50,7 +50,7 @@
 
 ### 1. 가족 돌봄 네트워크 (MVP 1순위)
 - 자녀가 원격으로 부모님 약 스케줄 등록
-- 실시간 복용 현황 모니터링 (Hocuspocus WebSocket)
+- 실시간 복용 현황 모니터링 (Spring WebSocket/STOMP)
 - 약 미복용 시 자녀에게 즉시 알림
 
 ### 2. 약-음식 충돌 경고 (MVP 2순위)
@@ -78,7 +78,8 @@
 
 ### Frontend
 - **Framework**: React 19 + Vite (JSX only)
-- **실시간 동기화**: Hocuspocus + TipTap + Y.js CRDT
+- **실시간 통신**: STOMP WebSocket Client (채팅)
+- **공동편집 (선택)**: Hocuspocus + TipTap + Y.js CRDT (게시글 편집용)
 - **스타일링**: SCSS / CSS Modules
 
 ### Backend (Microservices Architecture)
@@ -102,15 +103,16 @@
 5. **Notification Service** (8085): 알림 발송
 6. **OCR Service** (8086): 약봉지 OCR 처리
 
-### Real-time Sync Layer
-- **Hocuspocus Server** (1234): WebSocket 기반 실시간 동기화
+### Real-time Communication
+- **Spring WebSocket/STOMP**: 실시간 채팅 및 알림 (메인)
+- **Hocuspocus Server (선택)** (1234): 공동편집 게시글 에디터
 - **Y.js CRDT**: 충돌 없는 협업 편집
-- **Kafka Integration**: 백엔드 이벤트 → Hocuspocus → Frontend Push
+- **Kafka Integration**: 백엔드 이벤트 → WebSocket/Kafka → Frontend Push
 
-### Database (이중화 구조)
-- **트랜잭션 DB**: MySQL 8.0 (사용자, 약, 가족, 식단)
-- **실시간 동기화 DB**: PostgreSQL 16 (Hocuspocus Y.js CRDT)
-- **캐싱**: Redis 7+
+### Database
+- **메인 DB**: MySQL 8.0 (사용자, 약, 가족, 식단, 채팅)
+- **공동편집 DB (선택)**: PostgreSQL 16 (Hocuspocus Y.js CRDT - 게시글 편집용)
+- **캐싱**: Redis 7+ (세션, JWT Refresh Token)
 - **상세 설명**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-데이터베이스-분리-전략)
 
 ### External API
