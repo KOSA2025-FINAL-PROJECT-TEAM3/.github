@@ -14,7 +14,7 @@
 | `04-family-network.mmd` | 가족 돌봄 네트워크 | Spring WebSocket/STOMP 기반 실시간 공유 구조 |
 | `05-ocr-pipeline.mmd` | OCR 처리 파이프라인 | 약봉지 인식 → 자동 등록 플로우 |
 | `06-notification-system.mmd` | 알림 시스템 | Kafka 이벤트 기반 알림 아키텍처 |
-| `07-database-erd.mmd` | 데이터베이스 ERD | Mermaid 버전 (간략) |
+| `07-database-erd-v2.mmd` | 데이터베이스 ERD | Mermaid 버전 (간략) |
 | `08-development-timeline.mmd` | 7주 개발 타임라인 | Gantt 차트 |
 | `09-tech-stack.mmd` | 기술 스택 | Mindmap 형식 |
 
@@ -518,7 +518,7 @@ graph TB
 
 ## 7️⃣ 데이터베이스 ERD
 
-**파일**: `diagrams/07-database-erd.mmd`
+**파일**: `07-database-erd-v2.mmd`
 
 상세한 ERD는 `database-erd.dbml` 파일 참조 (dbdiagram.io 형식)
 
