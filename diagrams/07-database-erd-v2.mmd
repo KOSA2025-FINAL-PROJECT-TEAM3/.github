@@ -1,0 +1,238 @@
+erDiagram
+
+    사용자 ||--o{ 사용자_역할 : ""
+    역할 ||--o{ 사용자_역할 : ""
+
+    사용자 ||--o{ OAuth_계정 : ""
+    사용자 ||--o{ 리프레시토큰 : ""
+    사용자 ||--o{ 가족구성원 : ""
+    사용자 ||--o{ 약 : ""
+    사용자 ||--o{ 약복용기록 : ""
+    사용자 ||--o{ 식단 : ""
+    사용자 ||--o{ 식단경고 : ""
+    사용자 ||--o{ OCR기록 : ""
+    사용자 ||--o{ 알림 : ""
+    사용자 ||--o{ 리포트 : ""
+    사용자 ||--o{ 채팅방 : "생성자"
+    사용자 ||--o{ 채팅방 : "상담자"
+    사용자 ||--o{ 채팅메시지 : ""
+    사용자 ||--o{ 감사로그 : ""
+
+    가족그룹 ||--o{ 가족구성원 : ""
+    알림 ||--o{ 가족알림 : ""
+    가족구성원 ||--o{ 채팅멤버 : ""
+    약 ||--o{ 약스케줄 : ""
+    약 ||--o{ 약복용기록 : ""
+    식단 ||--o{ 식단경고 : ""
+    약 ||--o{ 식단경고 : ""
+    채팅방 ||--o{ 채팅멤버 : ""
+    채팅방 ||--o{ 채팅메시지 : ""
+
+
+    사용자 {
+        bigint 사용자ID PK
+        varchar 이메일
+        varchar 이름
+        varchar 전화번호
+        varchar 카카오ID
+        varchar 비밀번호해시
+        boolean 활성여부
+        timestamp 생성일
+    }
+
+    역할 {
+        bigint 역할ID PK
+        varchar 역할이름
+        varchar 설명
+    }
+
+    사용자_역할 {
+        bigint 사용자ID FK
+        bigint 역할ID FK
+        timestamp 역할부여일
+    }
+
+    OAuth_계정 {
+        bigint ID PK
+        bigint 사용자ID FK
+        varchar 제공자
+        varchar 제공자계정ID
+        text 액세스토큰
+        text 리프레시토큰
+        timestamp 만료일
+        timestamp 생성일
+    }
+
+    리프레시토큰 {
+        bigint ID PK
+        bigint 사용자ID FK
+        varchar 토큰해시
+        varchar 디바이스ID
+        varchar IP주소
+        timestamp 만료일
+        timestamp 폐기일
+        timestamp 생성일
+    }
+
+    가족그룹 {
+        bigint 그룹ID PK
+        varchar 이름
+        bigint 생성자ID FK
+        varchar 초대코드
+        timestamp 생성일
+    }
+
+    가족구성원 {
+        bigint 구성원ID PK
+        bigint 그룹ID FK
+        bigint 사용자ID FK
+        varchar 가족역할
+        varchar 초대상태
+        timestamp 가입일
+        timestamp 생성일
+    }
+
+    약 {
+        bigint 약ID PK
+        bigint 사용자ID FK
+        varchar 약이름
+        varchar 성분
+        varchar 복용량
+        varchar 복용시간대
+        date 시작일
+        date 종료일
+        int 총수량
+        int 남은수량
+        date 유통기한
+        timestamp 생성일
+    }
+
+    약스케줄 {
+        bigint 스케줄ID PK
+        bigint 약ID FK
+        time 복용시간
+        varchar 요일
+        boolean 활성여부
+        timestamp 생성일
+    }
+
+    약복용기록 {
+        bigint 기록ID PK
+        bigint 약ID FK
+        bigint 사용자ID FK
+        timestamp 예정시간
+        timestamp 실제복용시간
+        boolean 완료여부
+        timestamp 생성일
+    }
+
+    식단 {
+        bigint 식단ID PK
+        bigint 사용자ID FK
+        varchar 식사종류
+        varchar 음식명
+        int 칼로리
+        timestamp 기록일
+        timestamp 생성일
+    }
+
+    식단경고 {
+        bigint 경고ID PK
+        bigint 사용자ID FK
+        bigint 식단ID FK
+        bigint 약ID FK
+        varchar 심각도
+        text 경고메시지
+        timestamp 생성일
+    }
+
+    상호작용 {
+        bigint 상호작용ID PK
+        varchar 약이름
+        varchar 약성분
+        varchar 음식명
+        varchar 충돌성분
+        text 이유
+        varchar 심각도
+        text 대체음식
+        varchar 출처
+        timestamp 생성일
+    }
+
+    OCR기록 {
+        bigint ID PK
+        bigint 사용자ID FK
+        text 이미지URL
+        varchar OCR엔진
+        text 추출텍스트
+        json 파싱약정보
+        decimal 신뢰도
+        float 처리시간
+        timestamp 생성일
+    }
+
+    알림 {
+        bigint 알림ID PK
+        bigint 사용자ID FK
+        varchar 유형
+        varchar 제목
+        text 내용
+        boolean 읽음여부
+        timestamp 생성일
+    }
+
+    가족알림 {
+        bigint ID PK
+        bigint 알림ID FK
+        bigint 가족구성원ID FK
+        boolean 확인여부
+        timestamp 읽은시각
+        timestamp 생성일
+    }
+
+    리포트 {
+        bigint 리포트ID PK
+        bigint 사용자ID FK
+        date 시작일
+        date 종료일
+        decimal 전체복약률
+        json 리포트데이터
+        timestamp 생성일
+    }
+
+    채팅방 {
+        bigint 방ID PK
+        bigint 사용자ID FK
+        bigint 상담자ID FK
+        varchar 유형
+        varchar 상태
+        timestamp 생성일
+    }
+
+    채팅멤버 {
+        bigint ID PK
+        bigint 방ID FK
+        bigint 가족구성원ID FK
+        timestamp 가입일
+    }
+
+    채팅메시지 {
+        bigint 메시지ID PK
+        bigint 방ID FK
+        bigint 보낸사람ID FK
+        varchar 보낸사람종류
+        text 내용
+        varchar 메시지타입
+        varchar AI모델
+        decimal AI신뢰도
+        timestamp 생성일
+    }
+
+    감사로그 {
+        bigint 로그ID PK
+        bigint 사용자ID FK
+        varchar 작업
+        varchar 엔티티종류
+        varchar IP주소
+        timestamp 생성일
+    }
