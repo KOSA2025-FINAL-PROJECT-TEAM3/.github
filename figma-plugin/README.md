@@ -1,4 +1,4 @@
-# 실버케어 JSON Importer - Figma 플러그인
+# 뭐냑? JSON Importer - Figma 플러그인
 
 JSON 와이어프레임을 Figma에 Auto Layout이 적용된 프레임으로 자동 변환하는 플러그인입니다.
 
@@ -40,7 +40,7 @@ cd Front/figma-plugin
 Figma Organization 계정이 있다면 가장 편리합니다:
 
 1. **Figma Desktop에서 플러그인 열기**
-   - Plugins → Development → 실버케어 JSON Importer
+   - Plugins → Development → 뭐냑? JSON Importer
 
 2. **퍼블리시 준비**
    - 플러그인 우클릭 → **Publish new release...**
@@ -50,7 +50,7 @@ Figma Organization 계정이 있다면 가장 편리합니다:
 
 3. **팀원 설치 (초간단!)**
    - Figma에서 Plugins → Find more plugins
-   - "실버케어 JSON Importer" 검색
+   - "뭐냑? JSON Importer" 검색
    - **Install** 버튼 클릭
    - 끝!
 
@@ -66,7 +66,7 @@ Git을 사용하지 않는 팀원에게는 ZIP 파일로 공유:
 
 2. **생성된 ZIP 파일 전송**
    - Slack, 이메일, Google Drive 등으로 공유
-   - 파일명: `silvercare-json-importer-[날짜].zip`
+   - 파일명: `amapill-json-importer-[날짜].zip`
 
 3. **팀원 설치**
    - ZIP 압축 해제
@@ -121,7 +121,7 @@ npx tsc code.ts --target es6
 #### Step 3: 플러그인 실행
 
 1. Figma 파일 열기 (또는 새 파일 생성)
-2. **Plugins → Development → 실버케어 JSON Importer** 클릭
+2. **Plugins → Development → 뭐냑? JSON Importer** 클릭
 3. 플러그인 UI가 나타납니다
 
 ---
@@ -207,7 +207,7 @@ cat figma-exports/01-dashboard-senior.json
 tsc code.ts --target es6
 
 # Figma에서 플러그인 새로고침
-# Plugins → Development → 실버케어 JSON Importer (우클릭) → Reload plugin
+# Plugins → Development → 뭐냑? JSON Importer (우클릭) → Reload plugin
 ```
 
 ### UI 수정하기
@@ -302,4 +302,4 @@ tsc code.ts --target es6 --skipLibCheck
 
 ---
 
-Made with ❤️ for 실버케어 프로젝트
+Made with ❤️ for 뭐냑? 프로젝트

@@ -1,4 +1,4 @@
-# 🚀 실버케어 JSON Importer - 빠른 설치 가이드
+# 🚀 뭐냑? JSON Importer - 빠른 설치 가이드
 
 ## 3분 안에 설치 완료!
 
@@ -38,7 +38,7 @@ npx tsc code.ts --target es6
 1. Figma 파일 열기 (아무거나)
 2. 메뉴:
    ```
-   Plugins → Development → 실버케어 JSON Importer
+   Plugins → Development → 뭐냑? JSON Importer
    ```
 3. 플러그인 UI가 나타나면 성공! 🎉
 
@@ -88,13 +88,13 @@ npx tsc code.ts --target es6
 2. TypeScript 재컴파일 (code.ts가 변경된 경우)
 3. Figma에서:
    ```
-   Plugins → Development → 실버케어 JSON Importer (우클릭) → Reload plugin
+   Plugins → Development → 뭐냑? JSON Importer (우클릭) → Reload plugin
    ```
 
 ### 플러그인 삭제하기
 Figma에서:
 ```
-Plugins → Development → 실버케어 JSON Importer (우클릭) → Remove
+Plugins → Development → 뭐냑? JSON Importer (우클릭) → Remove
 ```
 
 ---
