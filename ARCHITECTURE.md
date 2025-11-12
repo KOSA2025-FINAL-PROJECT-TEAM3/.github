@@ -191,12 +191,9 @@ graph TB
 - **Config Server**: 중앙 설정 관리, Git 기반 외부 설정
 
 #### Microservices (도메인별 분리)
-1. **Auth Service**: 사용자 인증/인가, JWT 토큰 발급/검증
-2. **Medication Service**: 약 관리, 복용 일정, 복용 기록
-3. **Family Service**: 가족 그룹 관리, 권한 관리
-4. **Diet Service**: 식단 관리, 약-음식 충돌 검사
-5. **Notification Service**: 알림 발송, 카카오톡 알림톡 연동
-6. **OCR Service**: 약봉지 OCR 처리, Google Vision API 연동
+6개의 독립적인 마이크로서비스로 구성됩니다.
+
+**상세 내용**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-9-stack-구성) 참조
 
 #### Real-time Sync Layer (🔥 핵심 차별점)
 - **Spring WebSocket/STOMP**: WebSocket 기반 실시간 양방향 통신 (실시간 채팅용)
@@ -211,8 +208,10 @@ graph TB
 
 #### Database Layer
 - **MySQL 8.0**: 메인 데이터베이스 (트랜잭션 데이터)
-- **MyBatis**: SQL Mapper 프레임워크 (동적 쿼리, 복잡한 조인)
+- **PostgreSQL 16**: 실시간 동기화 (Hocuspocus Y.js CRDT - 선택)
 - **Redis 7+**: 세션, 캐시, WebSocket 세션 관리
+
+**데이터베이스 분리 전략**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-데이터베이스-분리-전략) 참조
 
 #### External Services
 - **식약처 API**: 의약품안전나라 공공 API
@@ -689,13 +688,7 @@ spring:
 ```
 
 #### 포트 구성
-- API Gateway: `8080` (외부 노출)
-- Auth Service: `8081`
-- Medication Service: `8082`
-- Family Service: `8083`
-- Diet Service: `8084`
-- Notification Service: `8085`
-- OCR Service: `8086`
+**전체 포트 목록**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-9-stack-구성) 참조
 
 ---
 

@@ -78,88 +78,55 @@
 
 ### Frontend
 - **Framework**: React 19 + Vite (JSX only)
-- **실시간 통신**: STOMP WebSocket Client (채팅)
-- **공동편집 (선택)**: Hocuspocus + TipTap + Y.js CRDT (게시글 편집용)
+- **실시간 통신**: STOMP WebSocket Client
 - **스타일링**: SCSS / CSS Modules
 
 ### Backend (Microservices Architecture)
-- **Language**: Java 21 LTS (Virtual Threads, ZGC)
+- **Language**: Java 21 LTS
 - **Framework**: Spring Boot 3.4.7
-- **Cloud**: Spring Cloud 2024.0.2 (Moorgate)
+- **Cloud**: Spring Cloud 2024.0.2 (API Gateway, Eureka, Config Server)
 - **보안**: Spring Security (JWT)
 - **메시징**: Apache Kafka
 
-#### Spring Cloud Components
-- **API Gateway**: Spring Cloud Gateway (라우팅, 인증, 로드 밸런싱)
-- **Service Discovery**: Eureka Server (서비스 등록/조회)
-- **Config Server**: 중앙 설정 관리 (Git 기반)
-- **Service Communication**: OpenFeign (마이크로서비스 간 통신)
-
-#### Microservices
-1. **Auth Service** (8081): 인증/인가, JWT 토큰 관리
-2. **Medication Service** (8082): 약 관리, 복용 일정
-3. **Family Service** (8083): 가족 네트워크, 권한 관리
-4. **Diet Service** (8084): 식단 관리, 약-음식 충돌 검사
-5. **Notification Service** (8085): 알림 발송
-6. **OCR Service** (8086): 약봉지 OCR 처리
-
-### Real-time Communication
-- **Spring WebSocket/STOMP**: 실시간 채팅 및 알림 (메인)
-- **Hocuspocus Server (선택)** (1234): 공동편집 게시글 에디터
-- **Y.js CRDT**: 충돌 없는 협업 편집
-- **Kafka Integration**: 백엔드 이벤트 → WebSocket/Kafka → Frontend Push
+**6개 마이크로서비스**: Auth, Medication, Family, Diet, Notification, OCR
 
 ### Database
-- **메인 DB**: MySQL 8.0 (사용자, 약, 가족, 식단, 채팅)
-- **공동편집 DB (선택)**: PostgreSQL 16 (Hocuspocus Y.js CRDT - 게시글 편집용)
-- **캐싱**: Redis 7+ (세션, JWT Refresh Token)
-- **상세 설명**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-데이터베이스-분리-전략)
+- **메인 DB**: MySQL 8.0 (트랜잭션 데이터)
+- **동기화 DB**: PostgreSQL 16 (실시간 협업 - 선택)
+- **캐싱**: Redis 7+ (세션, 토큰)
 
 ### External API
 - **OCR**: Google Vision API / Tesseract.js
 - **약 정보**: 식약처 의약품안전나라 API
-- **알림**: 카카오톡 알림톡 (Phase 2)
-- **워크플로우**: n8n Automation
+
+**상세 정보**: [ARCHITECTURE.md](./ARCHITECTURE.md) | [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md)
 
 ---
 
 ## 🚀 시작하기
 
-### Prerequisites
+### 빠른 실행 (5분)
 
 ```bash
-# Frontend
-Node.js 18+
-npm 9+
-
-# Backend
-Java 21 LTS
-Maven 3.8+
-MySQL 8.0
-Redis 7+
-```
-
-### Installation
-
-```bash
-# Clone repository
+# 1. 저장소 클론
 git clone https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front.git
 cd Front
 
-# Install dependencies
-npm install
+# 2. Docker Compose로 전체 스택 실행
+docker-compose up -d
 
-# Start development server
+# 3. Frontend 개발 서버 시작
+npm install
 npm run dev
 ```
 
-### Available Scripts
+**접속**: http://localhost:5173
 
-- `npm install` – Install dependencies
-- `npm run dev` – Start local development server
-- `npm run build` – Build production bundle
-- `npm run preview` – Preview production build
-- `npm run lint` – Lint JavaScript and JSX files
+### 상세 가이드
+
+- **빠른 시작**: [QUICKSTART.md](./QUICKSTART.md)
+- **마이크로서비스 설정**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md)
+- **개발 로드맵**: [DEVELOPMENT_ROADMAP.md](./DEVELOPMENT_ROADMAP.md)
 
 ---
 
@@ -195,8 +162,7 @@ npm run dev
 | 문서 | 설명 | 링크 |
 |------|------|------|
 | **와이어프레임 설명** | 10개 화면 구성 및 기능 설명 | [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) |
-| **Figma Import 가이드** | JSON 파일 Figma로 가져오는 방법 | [FIGMA_IMPORT_GUIDE.md](./FIGMA_IMPORT_GUIDE.md) |
-| **프로토타입 플로우 가이드** | Figma 화살표 연결 가이드 | [피그마_화살표_가이드.md](./피그마_화살표_가이드.md) |
+| **Figma 가이드** | 플러그인 설치, JSON Import, 화살표 연결 확인 | [FIGMA_GUIDE.md](./FIGMA_GUIDE.md) |
 
 ### 📏 개발 규칙 및 컨벤션
 
