@@ -1658,7 +1658,9 @@ export class FamilySyncService {
 - [SRC_STRUCTURE.md](./SRC_STRUCTURE.md) - 전체 소스 구조
 - [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) - 와이어프레임 명세
 - [MVP_DTO_SPECIFICATION.md](./MVP_DTO_SPECIFICATION.md) - API 및 DTO 명세
+- [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md) - 채팅 API 명세 (의사/AI 챗봇)
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - 시스템 아키텍처
+- [CONVENTIONS.md](./CONVENTIONS.md) - 프로젝트 컨벤션
 - [Figma Exports](./figma-exports/v2/) - 디자인 파일
 
 ---

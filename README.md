@@ -138,6 +138,7 @@ npm run dev
 |------|------|------|
 | **프로젝트 명세서** | 전체 프로젝트 요구사항, 기능 정의, 기술 스택 결정 | [PROJECT_SPECIFICATION.md](./PROJECT_SPECIFICATION.md) |
 | **MVP & DTO 명세** | MVP 기능 우선순위, API 엔드포인트, DTO 정의 (40개 이상) | [MVP_DTO_SPECIFICATION.md](./MVP_DTO_SPECIFICATION.md) |
+| **채팅 API 명세** | 의사/AI 챗봇 상담 기능, WebSocket 프로토콜, REST API 정의 | [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md) |
 | **개발 로드맵** | 7주 개발 일정, 마일스톤, 팀 역할 분담 | [DEVELOPMENT_ROADMAP.md](./DEVELOPMENT_ROADMAP.md) |
 
 ### 🏗️ 아키텍처 및 설계
