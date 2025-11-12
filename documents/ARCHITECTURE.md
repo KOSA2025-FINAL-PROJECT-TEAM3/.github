@@ -517,7 +517,7 @@ graph TB
 
 ## 7️⃣ 데이터베이스 ERD
 
-**파일**: `07-database-erd-v2.mmd`
+**파일**: `07-database-erd-v5.mmd`
 
 상세한 ERD는 `database-erd.dbml` 파일 참조 (dbdiagram.io 형식)
 
