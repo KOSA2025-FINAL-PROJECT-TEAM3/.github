@@ -1,6 +1,6 @@
-# 🚀 실버케어 빠른 시작 가이드
+# 🚀 뭐냑? 빠른 시작 가이드
 
-> 5분 안에 실버케어 개발 환경 구축하기
+> 5분 안에 뭐냑? 개발 환경 구축하기
 
 ---
 
@@ -54,21 +54,21 @@ npm run dev
 
 ```bash
 # Docker 컨테이너에서 스키마 실행
-docker exec -i silvercare-mysql mysql -u root -psilvercare_root_2025 silvercare < database-schema-mysql.sql
+docker exec -i amapill-mysql mysql -u root -pamapill_root_2025 amapill < database-schema-mysql.sql
 
 # 또는 MySQL 클라이언트로 직접 연결
-mysql -h localhost -P 3306 -u silvercare_app -psilvercare_pass_2025 silvercare < database-schema-mysql.sql
+mysql -h localhost -P 3306 -u amapill_app -pamapill_pass_2025 amapill < database-schema-mysql.sql
 ```
 
 ### PostgreSQL (실시간 동기화 DB)
 
 ```bash
 # Docker 컨테이너에서 스키마 실행
-docker exec -i silvercare-postgresql psql -U silvercare_sync_app -d silvercare_sync -f /docker-entrypoint-initdb.d/01-schema.sql
+docker exec -i amapill-postgresql psql -U amapill_sync_app -d amapill_sync -f /docker-entrypoint-initdb.d/01-schema.sql
 
 # 또는 psql 클라이언트로 직접 연결
-psql -h localhost -p 5432 -U silvercare_sync_app -d silvercare_sync -f database-schema-postgresql.sql
-# 비밀번호: silvercare_sync_pass_2025
+psql -h localhost -p 5432 -U amapill_sync_app -d amapill_sync -f database-schema-postgresql.sql
+# 비밀번호: amapill_sync_pass_2025
 ```
 
 ---
@@ -95,13 +95,13 @@ curl http://localhost:8761/eureka/apps
 
 ```bash
 # MySQL
-docker exec -it silvercare-mysql mysql -u silvercare_app -psilvercare_pass_2025 -e "USE silvercare; SHOW TABLES;"
+docker exec -it amapill-mysql mysql -u amapill_app -pamapill_pass_2025 -e "USE amapill; SHOW TABLES;"
 
 # PostgreSQL
-docker exec -it silvercare-postgresql psql -U silvercare_sync_app -d silvercare_sync -c "\dt"
+docker exec -it amapill-postgresql psql -U amapill_sync_app -d amapill_sync -c "\dt"
 
 # Redis
-docker exec -it silvercare-redis redis-cli ping
+docker exec -it amapill-redis redis-cli ping
 ```
 
 ---
@@ -181,7 +181,7 @@ npm run dev
 curl -X POST http://localhost:8080/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "test@silvercare.com",
+    "email": "test@amapill.com",
     "password": "password123",
     "name": "테스트 사용자",
     "role": "senior"
@@ -194,7 +194,7 @@ curl -X POST http://localhost:8080/api/auth/register \
 curl -X POST http://localhost:8080/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "test@silvercare.com",
+    "email": "test@amapill.com",
     "password": "password123"
   }'
 ```
@@ -250,4 +250,4 @@ npm install
 ---
 
 **최종 수정일**: 2025-11-06
-**작성자**: 실버케어 개발팀
+**작성자**: 뭐냑? 개발팀

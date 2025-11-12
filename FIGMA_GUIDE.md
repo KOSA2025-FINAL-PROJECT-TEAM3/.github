@@ -1,4 +1,4 @@
-# 🎨 실버케어 Figma 가이드
+# 🎨 뭐냑? Figma 가이드
 
 > 플러그인 설치부터 화살표 연결까지 - 완벽 가이드
 
@@ -54,10 +54,10 @@ figma-exports/
 ### 2단계: 플러그인 Import
 1. 메뉴: `Plugins → Development → Import plugin from manifest...`
 2. 이 프로젝트의 `figma-plugin/manifest.json` 선택
-3. ✅ "실버케어 JSON Importer" 플러그인이 개발 플러그인 목록에 추가됨
+3. ✅ "뭐냑? JSON Importer" 플러그인이 개발 플러그인 목록에 추가됨
 
 ### 3단계: 완료!
-이제 `Plugins → Development → 실버케어 JSON Importer` 클릭하면 바로 실행됩니다.
+이제 `Plugins → Development → 뭐냑? JSON Importer` 클릭하면 바로 실행됩니다.
 
 ---
 
@@ -73,7 +73,7 @@ cat figma-exports/all-screens-with-flows.json | xclip -selection clipboard  # Li
 # Windows: 파일을 열어서 Ctrl+A → Ctrl+C
 
 # 2. 피그마 플러그인 열기
-# Plugins → Development → 실버케어 JSON Importer
+# Plugins → Development → 뭐냑? JSON Importer
 
 # 3. 자동으로 클립보드에서 JSON 감지! ✨
 # 바로 🚀 Import 버튼만 누르면 됨!
@@ -361,4 +361,4 @@ python3 -m http.server 8000
 **버전**: 4.0 (통합본)
 **상태**: ✅ 완료
 
-Made with ❤️ for 실버케어 프로젝트
+Made with ❤️ for 뭐냑? 프로젝트

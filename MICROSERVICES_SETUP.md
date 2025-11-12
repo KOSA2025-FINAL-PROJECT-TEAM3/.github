@@ -1,4 +1,4 @@
-# 🏗️ 실버케어 9-Stack 마이크로서비스 아키텍처
+# 🏗️ 뭐냑? 9-Stack 마이크로서비스 아키텍처
 
 > MySQL + PostgreSQL 분리 구조 및 Spring Cloud 기반 마이크로서비스 설정 가이드
 
@@ -18,7 +18,7 @@
 
 ## 🎯 아키텍처 개요
 
-실버케어는 **9개의 독립적인 서비스**로 구성된 마이크로서비스 아키텍처를 채택합니다.
+뭐냑?는 **9개의 독립적인 서비스**로 구성된 마이크로서비스 아키텍처를 채택합니다.
 
 ### 핵심 원칙
 
@@ -65,12 +65,12 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      실버케어 데이터 레이어                    │
+│                      뭐냑? 데이터 레이어                    │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌─────────────────────┐        ┌─────────────────────┐     │
 │  │   MySQL 8.0         │        │  PostgreSQL 16      │     │
-│  │   (silvercare)      │        │  (silvercare_sync)  │     │
+│  │   (amapill)      │        │  (amapill_sync)  │     │
 │  ├─────────────────────┤        ├─────────────────────┤     │
 │  │ • users             │        │ • documents         │     │
 │  │ • medications       │        │ • sessions          │     │
@@ -379,10 +379,10 @@ spring:
 # 원인: 컨테이너 간 네트워크 문제
 # 해결:
 docker network ls
-docker network inspect silvercare-network
+docker network inspect amapill-network
 
 # JDBC URL 확인
-jdbc:mysql://mysql:3306/silvercare  # 컨테이너 이름 사용
+jdbc:mysql://mysql:3306/amapill  # 컨테이너 이름 사용
 ```
 
 ### 4. PostgreSQL 초기화 실패
@@ -444,7 +444,7 @@ GET http://localhost:8081/actuator/prometheus
 # Elasticsearch로 로그 전송
 logstash:
   hosts: ["localhost:5044"]
-  index: "silvercare-logs-%{+YYYY.MM.dd}"
+  index: "amapill-logs-%{+YYYY.MM.dd}"
 
 # Kibana 대시보드
 http://localhost:5601
@@ -474,4 +474,4 @@ http://localhost:5601
 
 **최종 수정일**: 2025-11-06
 **버전**: 1.0
-**작성자**: 실버케어 개발팀
+**작성자**: 뭐냑? 개발팀

@@ -1,4 +1,4 @@
-# 실버케어 시스템 아키텍처
+# 뭐냑? 시스템 아키텍처
 
 > 가족 돌봄 네트워크 기반 약 관리 플랫폼
 
@@ -568,7 +568,7 @@ erDiagram
 
 ```mermaid
 gantt
-    title 실버케어 개발 로드맵 (7주)
+    title 뭐냑? 개발 로드맵 (7주)
     dateFormat YYYY-MM-DD
     section 인프라
     프로젝트 초기 설정      :2025-11-05, 7d
@@ -611,7 +611,7 @@ gantt
 
 ```mermaid
 mindmap
-  root((실버케어<br/>Tech Stack))
+  root((뭐냑?<br/>Tech Stack))
     Frontend
       React 19
       Vite
@@ -846,19 +846,19 @@ version: '3.8'
 
 services:
   eureka-server:
-    image: silvercare/eureka-server:latest
+    image: amapill/eureka-server:latest
     ports:
       - "8761:8761"
 
   config-server:
-    image: silvercare/config-server:latest
+    image: amapill/config-server:latest
     ports:
       - "8888:8888"
     depends_on:
       - eureka-server
 
   api-gateway:
-    image: silvercare/api-gateway:latest
+    image: amapill/api-gateway:latest
     ports:
       - "8080:8080"
     depends_on:
@@ -866,7 +866,7 @@ services:
       - config-server
 
   auth-service:
-    image: silvercare/auth-service:latest
+    image: amapill/auth-service:latest
     ports:
       - "8081:8081"
     depends_on:
@@ -875,7 +875,7 @@ services:
       - mysql
 
   medication-service:
-    image: silvercare/medication-service:latest
+    image: amapill/medication-service:latest
     ports:
       - "8082:8082"
     depends_on:
@@ -885,7 +885,7 @@ services:
       - kafka
 
   family-service:
-    image: silvercare/family-service:latest
+    image: amapill/family-service:latest
     ports:
       - "8083:8083"
     depends_on:
@@ -894,7 +894,7 @@ services:
       - mysql
 
   hocuspocus-server:
-    image: silvercare/hocuspocus-server:latest
+    image: amapill/hocuspocus-server:latest
     ports:
       - "1234:1234"
     depends_on:
@@ -906,7 +906,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: silvercare
+      MYSQL_DATABASE: amapill
 
   redis:
     image: redis:7

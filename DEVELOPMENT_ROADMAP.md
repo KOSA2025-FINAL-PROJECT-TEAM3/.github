@@ -1,4 +1,4 @@
-# 실버케어 개발 로드맵 - 실전 가이드
+# 뭐냑? 개발 로드맵 - 실전 가이드
 
 ## 🎯 핵심 질문: 프론트엔드 vs 백엔드, 뭘 먼저?
 
@@ -52,7 +52,7 @@ npm install @tiptap/react @hocuspocus/provider
 
 ```bash
 # Backend
-backend/src/main/java/com/silvercare/
+backend/src/main/java/com/amapill/
 ├── domain/          # Entity, Repository
 ├── application/     # Service, DTO
 ├── infrastructure/  # 구현체
@@ -74,9 +74,9 @@ frontend/src/
 #### 1. MySQL 설치 & DB 생성
 
 ```sql
-CREATE DATABASE silvercare CHARACTER SET utf8mb4;
-CREATE USER 'silvercare_dev'@'localhost' IDENTIFIED BY 'dev_password';
-GRANT ALL PRIVILEGES ON silvercare.* TO 'silvercare_dev'@'localhost';
+CREATE DATABASE amapill CHARACTER SET utf8mb4;
+CREATE USER 'amapill_dev'@'localhost' IDENTIFIED BY 'dev_password';
+GRANT ALL PRIVILEGES ON amapill.* TO 'amapill_dev'@'localhost';
 ```
 
 #### 2. application.yml 설정
@@ -84,8 +84,8 @@ GRANT ALL PRIVILEGES ON silvercare.* TO 'silvercare_dev'@'localhost';
 ```yaml
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/silvercare
-    username: silvercare_dev
+    url: jdbc:mysql://localhost:3306/amapill
+    username: amapill_dev
     password: dev_password
   jpa:
     hibernate:
@@ -630,4 +630,4 @@ http.cors().configurationSource(request -> {
 
 **작성일**: 2025-11-05
 **버전**: 1.0
-**작성자**: SilverCare Development Team
+**작성자**: AMApill Development Team
