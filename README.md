@@ -247,7 +247,7 @@ npm run dev
 ## 📞 연락처
 
 - **GitHub Repository**: [KOSA2025-FINAL-PROJECT-TEAM3/Front](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front)
-- **Backend Repository**: (Backend 저장소 URL)
+- **Backend Repository**: [KOSA2025-FINAL-PROJECT-TEAM3/spring-boot](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot)
 
 ---
 
