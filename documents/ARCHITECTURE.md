@@ -519,7 +519,7 @@ graph TB
 
 **파일**: `07-database-erd-v5.mmd`
 
-상세한 ERD는 `database-erd.dbml` 파일 참조 (dbdiagram.io 형식)
+상세한 ERD는 `07-database-erd-v5.mmd` 파일 참조 (dbdiagram.io 형식)
 
 ```mermaid
 erDiagram
