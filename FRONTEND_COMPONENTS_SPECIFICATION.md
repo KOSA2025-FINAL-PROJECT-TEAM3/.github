@@ -1,6 +1,6 @@
-# 실버케어 프론트엔드 컴포넌트 정의서
+# 뭐냑? 프론트엔드 컴포넌트 정의서
 
-> Frontend Components Specification for SilverCare Platform
+> Frontend Components Specification for AMApill Platform
 >
 > React 19 + Vite + JSX Architecture
 
@@ -1658,12 +1658,14 @@ export class FamilySyncService {
 - [SRC_STRUCTURE.md](./SRC_STRUCTURE.md) - 전체 소스 구조
 - [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) - 와이어프레임 명세
 - [MVP_DTO_SPECIFICATION.md](./MVP_DTO_SPECIFICATION.md) - API 및 DTO 명세
+- [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md) - 채팅 API 명세 (의사/AI 챗봇)
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - 시스템 아키텍처
+- [CONVENTIONS.md](./CONVENTIONS.md) - 프로젝트 컨벤션
 - [Figma Exports](./figma-exports/v2/) - 디자인 파일
 
 ---
 
 **작성일**: 2025-11-07
 **버전**: 1.0
-**작성자**: 실버케어 개발팀
+**작성자**: 뭐냑? 개발팀
 **상태**: 초안 완성

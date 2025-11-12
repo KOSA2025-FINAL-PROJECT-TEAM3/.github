@@ -1,6 +1,6 @@
-# 실버케어 프로젝트 컨벤션
+# 뭐냑? 프로젝트 컨벤션
 
-> SilverCare Project Conventions & Coding Standards
+> AMApill Project Conventions & Coding Standards
 
 ---
 
@@ -231,7 +231,7 @@ git commit -m "✏️ Comment: MedicationCard 컴포넌트 주석 추가"
 - **규칙**: UPPER_SNAKE_CASE
 - **예시**:
   ```javascript
-  ✅ const API_BASE_URL = "https://api.silvercare.com";
+  ✅ const API_BASE_URL = "https://api.amapill.com";
   ✅ const MAX_FILE_SIZE = 5 * 1024 * 1024;
   ✅ const USER_ROLES = {
     SENIOR: "senior",
@@ -322,10 +322,10 @@ git commit -m "✏️ Comment: MedicationCard 컴포넌트 주석 추가"
 - **규칙**: 소문자 (lowercase)
 - **예시**:
   ```java
-  ✅ package com.silvercare.medication.service;
-  ✅ package com.silvercare.domain.model;
+  ✅ package com.amapill.medication.service;
+  ✅ package com.amapill.domain.model;
 
-  ❌ package com.silvercare.Medication.Service;
+  ❌ package com.amapill.Medication.Service;
   ```
 
 #### 6. Interface
@@ -510,5 +510,5 @@ git commit -m "✏️ Comment: MedicationCard 컴포넌트 주석 추가"
 
 **작성일**: 2025-11-07
 **버전**: 1.0
-**작성자**: 실버케어 개발팀
+**작성자**: 뭐냑? 개발팀
 **적용 범위**: Frontend, Backend, Database, Git

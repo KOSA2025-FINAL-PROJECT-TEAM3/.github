@@ -1,4 +1,4 @@
-# 🏗️ 실버케어 9-Stack 마이크로서비스 아키텍처
+# 🏗️ 뭐냑? 9-Stack 마이크로서비스 아키텍처
 
 > MySQL + PostgreSQL 분리 구조 및 Spring Cloud 기반 마이크로서비스 설정 가이드
 
@@ -18,7 +18,7 @@
 
 ## 🎯 아키텍처 개요
 
-실버케어는 **9개의 독립적인 서비스**로 구성된 마이크로서비스 아키텍처를 채택합니다.
+뭐냑?는 **9개의 독립적인 서비스**로 구성된 마이크로서비스 아키텍처를 채택합니다.
 
 ### 핵심 원칙
 
@@ -65,12 +65,12 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      실버케어 데이터 레이어                    │
+│                      뭐냑? 데이터 레이어                    │
 ├─────────────────────────────────────────────────────────────┤
 │                                                               │
 │  ┌─────────────────────┐        ┌─────────────────────┐     │
 │  │   MySQL 8.0         │        │  PostgreSQL 16      │     │
-│  │   (silvercare)      │        │  (silvercare_sync)  │     │
+│  │   (amapill)      │        │  (amapill_sync)  │     │
 │  ├─────────────────────┤        ├─────────────────────┤     │
 │  │ • users             │        │ • documents         │     │
 │  │ • medications       │        │ • sessions          │     │
@@ -112,123 +112,40 @@
 
 ## 🚀 설치 및 실행
 
-### 1. Prerequisites
+### 빠른 시작
 
 ```bash
-# 필수 소프트웨어
-- Docker 24.0+
-- Docker Compose 2.20+
-- Node.js 18+ (Frontend)
-- Java 21 LTS (Backend)
-- Maven 3.8+
-```
-
-### 2. 전체 스택 실행 (Docker Compose)
-
-```bash
-# 1. 저장소 클론
-git clone https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front.git
-cd Front
-
-# 2. 환경 변수 설정
-cp .env.example .env
-# .env 파일을 열어 필요한 값 수정
-
-# 3. Docker Compose로 전체 스택 실행
+# Docker Compose로 전체 스택 실행
 docker-compose up -d
 
-# 4. 서비스 상태 확인
-docker-compose ps
-
-# 5. 로그 확인
-docker-compose logs -f [service-name]
+# Frontend 개발 서버
+npm install && npm run dev
 ```
 
-### 3. 개별 서비스 실행 (로컬 개발)
+**상세 가이드**: [QUICKSTART.md](./QUICKSTART.md) 참조
 
-```bash
-# Frontend (Vite)
-npm install
-npm run dev
-# http://localhost:5173
-
-# MySQL 스키마 초기화
-docker exec -i silvercare-mysql mysql -u root -psilvercare_root_2025 < database-schema-mysql.sql
-
-# PostgreSQL 스키마 초기화
-docker exec -i silvercare-postgresql psql -U silvercare_sync_app -d silvercare_sync < database-schema-postgresql.sql
-```
-
-### 4. 서비스 접속 URL
+### 주요 서비스 URL
 
 | 서비스 | URL | 설명 |
 |--------|-----|------|
 | Frontend | http://localhost:5173 | React 개발 서버 |
 | API Gateway | http://localhost:8080 | API 진입점 |
 | Eureka Dashboard | http://localhost:8761 | 서비스 목록 확인 |
-| MySQL | localhost:3306 | 데이터베이스 |
-| PostgreSQL | localhost:5432 | 실시간 동기화 DB |
-| Redis | localhost:6379 | 캐시 서버 |
-| Kafka | localhost:9092 | 메시지 브로커 |
-| Hocuspocus | ws://localhost:1234 | WebSocket 서버 |
 
 ---
 
 ## 🔍 서비스별 상세 설명
 
-### 1. API Gateway (8080)
+### Spring Cloud 인프라
 
-**역할**: 모든 클라이언트 요청의 단일 진입점
+**API Gateway, Eureka Server, Config Server 상세 설명**:
+[ARCHITECTURE.md](./ARCHITECTURE.md#-spring-cloud-컴포넌트-상세-설명) 참조
 
-```yaml
-# 주요 기능
-- URL 라우팅: /api/auth/* → Auth Service
-- JWT 검증: 모든 요청의 토큰 유효성 검사
-- Rate Limiting: 사용자당 분당 100 요청 제한
-- CORS 처리: 프론트엔드 도메인 허용
-- 로드 밸런싱: Eureka를 통한 서비스 인스턴스 분산
-```
+---
 
-**라우팅 규칙**:
-```
-/api/auth/**       → Auth Service (8081)
-/api/medications/** → Medication Service (8082)
-/api/family/**     → Family Service (8083)
-/api/diet/**       → Diet Service (8084)
-/api/notifications/** → Notification Service (8085)
-/api/ocr/**        → OCR Service (8086)
-```
+### 비즈니스 서비스
 
-### 2. Eureka Server (8761)
-
-**역할**: 서비스 디스커버리 및 헬스 체크
-
-```yaml
-# 주요 기능
-- 서비스 등록: 각 마이크로서비스가 시작 시 자동 등록
-- 헬스 체크: 30초마다 heartbeat 수신
-- 서비스 조회: API Gateway가 동적으로 서비스 위치 파악
-- 장애 감지: 3번 연속 heartbeat 실패 시 제거
-```
-
-### 3. Config Server (8888)
-
-**역할**: 중앙 집중식 설정 관리
-
-```yaml
-# 설정 파일 위치
-- Git Repository 또는
-- Classpath: /config/application.yml
-
-# 설정 프로필
-- application-dev.yml (개발)
-- application-prod.yml (운영)
-
-# 동적 리프레시
-POST /actuator/refresh → 설정 변경 즉시 반영
-```
-
-### 4. Auth Service (8081)
+### 1. Auth Service (8081)
 
 **역할**: 인증 및 권한 관리
 
@@ -342,23 +259,10 @@ POST /api/ocr/parse      # 텍스트 → 약 정보 파싱
 
 ### Hocuspocus Server (1234)
 
-**역할**: 실시간 협업 동기화
+**역할**: 실시간 협업 동기화 (게시글 공동편집 - 선택 기능)
 
-```yaml
-# 주요 기능
-- WebSocket 서버 (Y.js CRDT 지원)
-- 가족 구성원 간 실시간 커서 공유
-- 약 복용 체크 즉시 반영
-- Offline 지원 (변경 사항 큐잉)
-
-# 데이터베이스
-- PostgreSQL: 문서 영구 저장
-- Redis: 활성 세션 캐싱
-
-# Kafka 통합
-- Hocuspocus 이벤트 → Kafka → Backend
-- Backend 이벤트 → Kafka → Hocuspocus → Frontend
-```
+**상세 아키텍처**:
+[ARCHITECTURE.md](./ARCHITECTURE.md#5️⃣-실시간-동기화-아키텍처) 참조
 
 ---
 
@@ -475,10 +379,10 @@ spring:
 # 원인: 컨테이너 간 네트워크 문제
 # 해결:
 docker network ls
-docker network inspect silvercare-network
+docker network inspect amapill-network
 
 # JDBC URL 확인
-jdbc:mysql://mysql:3306/silvercare  # 컨테이너 이름 사용
+jdbc:mysql://mysql:3306/amapill  # 컨테이너 이름 사용
 ```
 
 ### 4. PostgreSQL 초기화 실패
@@ -540,7 +444,7 @@ GET http://localhost:8081/actuator/prometheus
 # Elasticsearch로 로그 전송
 logstash:
   hosts: ["localhost:5044"]
-  index: "silvercare-logs-%{+YYYY.MM.dd}"
+  index: "amapill-logs-%{+YYYY.MM.dd}"
 
 # Kibana 대시보드
 http://localhost:5601
@@ -570,4 +474,4 @@ http://localhost:5601
 
 **최종 수정일**: 2025-11-06
 **버전**: 1.0
-**작성자**: 실버케어 개발팀
+**작성자**: 뭐냑? 개발팀
