@@ -99,7 +99,7 @@
 - **OCR**: Google Vision API / Tesseract.js
 - **약 정보**: 식약처 의약품안전나라 API
 
-**상세 정보**: [ARCHITECTURE.md](./ARCHITECTURE.md) | [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md)
+**상세 정보**: [ARCHITECTURE.md](./documents/ARCHITECTURE.md) | [MICROSERVICES_SETUP.md](./documents/MICROSERVICES_SETUP.md)
 
 ---
 
@@ -125,95 +125,74 @@ npm run dev
 ### 상세 가이드
 
 - **빠른 시작**: [QUICKSTART.md](./QUICKSTART.md)
-- **마이크로서비스 설정**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md)
-- **개발 로드맵**: [DEVELOPMENT_ROADMAP.md](./DEVELOPMENT_ROADMAP.md)
+- **마이크로서비스 설정**: [MICROSERVICES_SETUP.md](./documents/MICROSERVICES_SETUP.md)
+- **개발 로드맵**: [DEVELOPMENT_ROADMAP.md](./documents/DEVELOPMENT_ROADMAP.md)
 
 ---
 
 ## 📚 문서 가이드
 
-### 📖 프로젝트 기획 및 명세
+### 🚀 빠른 시작 가이드
 
-| 문서 | 설명 | 링크 |
-|------|------|------|
-| **프로젝트 명세서** | 전체 프로젝트 요구사항, 기능 정의, 기술 스택 결정 | [PROJECT_SPECIFICATION.md](./PROJECT_SPECIFICATION.md) |
-| **MVP & DTO 명세** | MVP 기능 우선순위, API 엔드포인트, DTO 정의 (40개 이상) | [MVP_DTO_SPECIFICATION.md](./MVP_DTO_SPECIFICATION.md) |
-| **채팅 API 명세** | 의사/AI 챗봇 상담 기능, WebSocket 프로토콜, REST API 정의 | [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md) |
-| **개발 로드맵** | 7주 개발 일정, 마일스톤, 팀 역할 분담 | [DEVELOPMENT_ROADMAP.md](./DEVELOPMENT_ROADMAP.md) |
+| 문서 | 설명 |
+|------|------|
+| [QUICKSTART.md](./QUICKSTART.md) | 5분 안에 프로젝트 시작하기 - 설치부터 실행까지 |
+| [FIGMA_GUIDE.md](./FIGMA_GUIDE.md) | Figma 플러그인 설치 및 와이어프레임 가져오기 |
+| [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) | 10개 화면 구성 및 기능 설명 |
+| [DB스킬.md](./DB스킬.md) | 데이터베이스 스키마, ERD, DDL 가이드 |
+| [SECURITY_GUIDELINES.md](./SECURITY_GUIDELINES.md) | 보안 및 문서 작성 가이드라인 (KISA Secure Coding 준수) |
 
-### 🏗️ 아키텍처 및 설계
+### 📖 상세 명세서 및 설계 문서
 
-| 문서 | 설명 | 링크 |
-|------|------|------|
-| **시스템 아키텍처** | Mermaid 다이어그램 (9개), 기술 스택 선정 이유 | [ARCHITECTURE.md](./ARCHITECTURE.md) |
-| **9-Stack 마이크로서비스** | MySQL/PostgreSQL 분리, Docker Compose, 서비스별 API | [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md) |
-| **소스 구조 가이드** | Frontend/Backend 디렉토리 구조, SOLID 원칙, AOP 패턴 | [SRC_STRUCTURE.md](./SRC_STRUCTURE.md) |
-| **프론트엔드 컴포넌트 정의서** | 화면별 컴포넌트 트리, Props 명세, API 연동, 라우팅 구조 | [FRONTEND_COMPONENTS_SPECIFICATION.md](./FRONTEND_COMPONENTS_SPECIFICATION.md) |
+모든 상세 명세서는 [`documents/`](./documents/) 폴더에서 확인할 수 있습니다:
 
-### 🗄️ 데이터베이스
+| 카테고리 | 문서 | 설명 |
+|---------|------|------|
+| **프로젝트 기획** | [PROJECT_SPECIFICATION.md](./documents/PROJECT_SPECIFICATION.md) | 전체 요구사항, 기능 정의, 기술 스택 |
+| | [MVP_DTO_SPECIFICATION.md](./documents/MVP_DTO_SPECIFICATION.md) | MVP 우선순위, API 엔드포인트, DTO (40개+) |
+| | [CHAT_API_SPECIFICATION.md](./documents/CHAT_API_SPECIFICATION.md) | 채팅/상담 API, WebSocket 프로토콜 |
+| | [DEVELOPMENT_ROADMAP.md](./documents/DEVELOPMENT_ROADMAP.md) | 7주 개발 일정, 마일스톤 |
+| **아키텍처** | [ARCHITECTURE.md](./documents/ARCHITECTURE.md) | 시스템 구조, Mermaid 다이어그램 9개 |
+| | [MICROSERVICES_SETUP.md](./documents/MICROSERVICES_SETUP.md) | 마이크로서비스 구성, Docker Compose |
+| | [SRC_STRUCTURE.md](./documents/SRC_STRUCTURE.md) | 소스 구조, SOLID 원칙, AOP 패턴 |
+| | [FRONTEND_COMPONENTS_SPECIFICATION.md](./documents/FRONTEND_COMPONENTS_SPECIFICATION.md) | 컴포넌트 트리, Props 명세, 라우팅 |
+| **개발 규칙** | [CONVENTIONS.md](./documents/CONVENTIONS.md) | Git 전략, 커밋 규칙, 네이밍 컨벤션 |
+| **페르소나** | [페르소나설정.md](./documents/페르소나설정.md) | 사용자 페르소나, 시나리오 |
 
-| 문서 | 설명 | 링크 |
-|------|------|------|
-| **ERD (DBML)** | dbdiagram.io 형식 (10개 테이블) | [database-erd.dbml](./database-erd.dbml) |
-| **MySQL Schema** | 트랜잭션 DB - DDL, Triggers, Procedures | [database-schema-mysql.sql](./database-schema-mysql.sql) |
-| **PostgreSQL Schema** | 실시간 동기화 DB - Hocuspocus Y.js CRDT | [database-schema-postgresql.sql](./database-schema-postgresql.sql) |
+📂 **[전체 명세서 모음 보기 →](./documents/)**
 
-### 🎨 디자인 및 와이어프레임
+### 📊 다이어그램 및 리소스
 
-| 문서 | 설명 | 링크 |
-|------|------|------|
-| **와이어프레임 설명** | 10개 화면 구성 및 기능 설명 | [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) |
-| **Figma 가이드** | 플러그인 설치, JSON Import, 화살표 연결 확인 | [FIGMA_GUIDE.md](./FIGMA_GUIDE.md) |
-
-### 📏 개발 규칙 및 컨벤션
-
-| 문서 | 설명 | 링크 |
-|------|------|------|
-| **프로젝트 컨벤션** | Git 브랜치 전략, 커밋 규칙, 코드 네이밍 규칙 (React, Java, DB) | [CONVENTIONS.md](./CONVENTIONS.md) |
-
-### 📊 다이어그램 파일
-
-모든 Mermaid 다이어그램은 [`diagrams/`](./diagrams/) 폴더에 개별 파일로 저장:
-
-1. `01-system-architecture.mmd` - 전체 시스템 구조
-2. `02-data-flow.mmd` - 데이터 흐름 시퀀스
-3. `03-drug-food-interaction.mmd` - 약-음식 충돌 플로우
-4. `04-family-network.mmd` - 가족 네트워크 구조
-5. `05-ocr-pipeline.mmd` - OCR 처리 파이프라인
-6. `06-notification-system.mmd` - 알림 시스템
-7. `07-database-erd.mmd` - ERD (Mermaid)
-8. `08-development-timeline.mmd` - 7주 Gantt 차트
-9. `09-tech-stack.mmd` - 기술 스택 Mindmap
-
-### 📝 회의록 및 이력
-
-| 문서 | 설명 | 링크 |
-|------|------|------|
-| **초기 브레인스토밍** | 2025-11-05 팀 전체 회의록 (기능 논의, 법적 리스크) | [readthis.pdf](./readthis.pdf) |
+| 폴더 | 내용 |
+|------|------|
+| [`diagrams/`](./diagrams/) | Mermaid 다이어그램 9개 (시스템 구조, ERD, Gantt 차트 등) |
+| [`figma-exports/`](./figma-exports/) | Figma 와이어프레임 JSON (10개 화면) |
+| [`figma-plugin/`](./figma-plugin/) | Figma 플러그인 코드 |
 
 ---
 
 ## 📁 프로젝트 구조
 
 ```
-Front/
-├── diagrams/              # Mermaid 다이어그램 파일 (9개)
-├── figma-exports/         # Figma JSON 와이어프레임 (10개 화면)
-├── figma-plugin/          # Figma 플러그인 코드
-├── public/                # 정적 파일
-├── src/                   # React 소스 코드
-│   ├── components/        # 공통 컴포넌트
-│   ├── assets/            # 이미지, 아이콘
-│   ├── App.jsx            # Root 컴포넌트
-│   └── main.jsx           # Entry point
-├── *.md                   # 문서 파일들
-├── database-erd.dbml      # DB ERD (dbdiagram.io)
-├── database-schema-mysql.sql  # MySQL DDL
-├── package.json
-└── vite.config.js
+.github/
+├── documents/             # 📚 상세 명세서 및 설계 문서
+│   ├── PROJECT_SPECIFICATION.md
+│   ├── ARCHITECTURE.md
+│   ├── MICROSERVICES_SETUP.md
+│   └── ... (기타 명세서)
+├── diagrams/              # 📊 Mermaid 다이어그램 파일 (9개)
+├── figma-exports/         # 🎨 Figma JSON 와이어프레임
+├── figma-plugin/          # 🔌 Figma 플러그인 코드
+├── profile/               # 👥 조직 프로필
+├── README.md              # 📖 프로젝트 메인 소개
+├── QUICKSTART.md          # 🚀 빠른 시작 가이드
+├── FIGMA_GUIDE.md         # 🎨 Figma 가이드
+├── WIREFRAME_SCREENS.md   # 📱 화면 설명
+├── DB스킬.md              # 🗄️ 데이터베이스 가이드
+└── SECURITY_GUIDELINES.md # 🔒 보안 가이드라인
 ```
 
-자세한 디렉토리 구조는 [SRC_STRUCTURE.md](./SRC_STRUCTURE.md) 참조
+자세한 디렉토리 구조는 [SRC_STRUCTURE.md](./documents/SRC_STRUCTURE.md) 참조
 
 ---
 
@@ -245,7 +224,7 @@ Front/
 - **약사법 준수**: 약 추천 금지, 정보 제공만
 - **허위/과장 광고 금지**: 식약처 공식 정보만 표시
 
-자세한 내용은 [PROJECT_SPECIFICATION.md](./PROJECT_SPECIFICATION.md) 참조
+자세한 내용은 [PROJECT_SPECIFICATION.md](./documents/PROJECT_SPECIFICATION.md) 참조
 
 ---
 
