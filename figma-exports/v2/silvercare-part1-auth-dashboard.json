@@ -1,6 +1,6 @@
 {
   "version": "6.0",
-  "description": "실버케어 Part 1 - 인증 & 대시보드 (Vision Pro 스타일)",
+  "description": "뭐냑? Part 1 - 인증 & 대시보드 (Vision Pro 스타일)",
   "screens": [
     {
       "name": "로그인",
@@ -88,17 +88,17 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.3,
-                        "g": 0.69,
-                        "b": 0.31
+                        "r": 0.133,
+                        "g": 0.773,
+                        "b": 0.369
                       }
                     }
                   ]
                 },
                 {
-                  "name": "실버케어",
+                  "name": "뭐냑?",
                   "type": "TEXT",
-                  "characters": "실버케어",
+                  "characters": "뭐냑?",
                   "fontSize": 32,
                   "fontName": {
                     "family": "Inter",
@@ -164,9 +164,9 @@
                   "gradientStops": [
                     {
                       "color": {
-                        "r": 0,
-                        "g": 0.48,
-                        "b": 1,
+                        "r": 0.145,
+                        "g": 0.388,
+                        "b": 0.922,
                         "a": 1
                       },
                       "position": 0
@@ -210,9 +210,9 @@
                 {
                   "type": "DROP_SHADOW",
                   "color": {
-                    "r": 0,
-                    "g": 0.48,
-                    "b": 1,
+                    "r": 0.145,
+                    "g": 0.388,
+                    "b": 0.922,
                     "a": 0.4
                   },
                   "offset": {
@@ -369,17 +369,17 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.3,
-                        "g": 0.69,
-                        "b": 0.31
+                        "r": 0.133,
+                        "g": 0.773,
+                        "b": 0.369
                       }
                     }
                   ]
                 },
                 {
-                  "name": "실버케어",
+                  "name": "뭐냑?",
                   "type": "TEXT",
-                  "characters": "실버케어",
+                  "characters": "뭐냑?",
                   "fontSize": 32,
                   "fontName": {
                     "family": "Inter",
@@ -638,9 +638,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.3,
-                        "g": 0.69,
-                        "b": 0.31
+                        "r": 0.133,
+                        "g": 0.773,
+                        "b": 0.369
                       }
                     }
                   ],
@@ -692,7 +692,7 @@
             {
               "name": "Terms",
               "type": "TEXT",
-              "characters": "계속 진행하면 실버케어의 이용약관 및\n개인정보처리방침에 동의하게 됩니다",
+              "characters": "계속 진행하면 뭐냑?의 이용약관 및\n개인정보처리방침에 동의하게 됩니다",
               "fontSize": 12,
               "lineHeight": {
                 "value": 150,
@@ -941,9 +941,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.3,
-                        "g": 0.69,
-                        "b": 0.31
+                        "r": 0.133,
+                        "g": 0.773,
+                        "b": 0.369
                       }
                     }
                   ],
@@ -1312,9 +1312,9 @@
                 {
                   "type": "INNER_SHADOW",
                   "color": {
-                    "r": 0,
-                    "g": 0.48,
-                    "b": 1,
+                    "r": 0.145,
+                    "g": 0.388,
+                    "b": 0.922,
                     "a": 0.1
                   },
                   "offset": {
@@ -1469,17 +1469,17 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.3,
-                        "g": 0.69,
-                        "b": 0.31
+                        "r": 0.133,
+                        "g": 0.773,
+                        "b": 0.369
                       }
                     }
                   ]
                 },
                 {
-                  "name": "실버케어",
+                  "name": "뭐냑?",
                   "type": "TEXT",
-                  "characters": "실버케어",
+                  "characters": "뭐냑?",
                   "fontSize": 24,
                   "fontName": {
                     "family": "Inter",
@@ -2646,9 +2646,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0,
-                        "g": 0.48,
-                        "b": 1,
+                        "r": 0.145,
+                        "g": 0.388,
+                        "b": 0.922,
                         "a": 1
                       }
                     }
@@ -2973,17 +2973,17 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0.3,
-                        "g": 0.69,
-                        "b": 0.31
+                        "r": 0.133,
+                        "g": 0.773,
+                        "b": 0.369
                       }
                     }
                   ]
                 },
                 {
-                  "name": "실버케어",
+                  "name": "뭐냑?",
                   "type": "TEXT",
-                  "characters": "실버케어",
+                  "characters": "뭐냑?",
                   "fontSize": 24,
                   "fontName": {
                     "family": "Inter",
@@ -3387,9 +3387,9 @@
                 {
                   "type": "INNER_SHADOW",
                   "color": {
-                    "r": 0,
-                    "g": 0.48,
-                    "b": 1,
+                    "r": 0.145,
+                    "g": 0.388,
+                    "b": 0.922,
                     "a": 0.1
                   },
                   "offset": {
@@ -4639,9 +4639,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0,
-                        "g": 0.48,
-                        "b": 1,
+                        "r": 0.145,
+                        "g": 0.388,
+                        "b": 0.922,
                         "a": 1
                       }
                     }
@@ -6866,9 +6866,9 @@
                     {
                       "type": "SOLID",
                       "color": {
-                        "r": 0,
-                        "g": 0.48,
-                        "b": 1,
+                        "r": 0.145,
+                        "g": 0.388,
+                        "b": 0.922,
                         "a": 1
                       }
                     }
