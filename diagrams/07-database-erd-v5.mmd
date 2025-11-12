@@ -1,0 +1,222 @@
+erDiagram
+    USERS ||--o{ ADHERENCE_REPORTS : ""
+    USERS ||--o{ AUDIT_LOGS : ""
+    USERS ||--o{ CHAT_ROOMS : ""
+    USERS ||--o{ CHAT_MESSAGES : ""
+    USERS ||--o{ FAMILY_MEMBERS : ""
+    USERS ||--o{ DIET_LOGS : ""
+    USERS ||--o{ MEDICATIONS : ""
+    USERS ||--o{ DIET_WARNINGS : ""
+    USERS ||--o{ MEDICATION_SCHEDULES : ""
+    USERS ||--o{ NOTIFICATIONS : ""
+    USERS ||--o{ OAUTH_PROVIDERS : ""
+    USERS ||--o{ REFRESH_TOKENS : ""
+    USERS ||--o{ USER_ROLES : ""
+    USERS ||--o{ DISEASES : ""
+
+    CHAT_ROOMS ||--o{ CHAT_MESSAGES : ""
+    CHAT_ROOMS ||--o{ CHAT_ROOM_MEMBERS : ""
+
+    FAMILY_GROUPS ||--o{ FAMILY_MEMBERS : ""
+    FAMILY_MEMBERS ||--o{ CHAT_ROOM_MEMBERS : ""
+    FAMILY_MEMBERS ||--o{ FAMILY_NOTIFICATIONS : ""
+
+    MEDICATIONS ||--o{ MEDICATION_SCHEDULES : ""
+    MEDICATIONS ||--o{ DIET_WARNINGS : ""
+
+    MEDICATION_SCHEDULES ||--o{ MEDICATION_LOGS : ""
+    MEDICATION_SCHEDULES ||--o{ NOTIFICATIONS : ""
+
+    NOTIFICATIONS ||--o{ FAMILY_NOTIFICATIONS : ""
+
+    DIET_LOGS ||--o{ DIET_WARNINGS : ""
+
+    ROLES ||--o{ USER_ROLES : ""
+
+    DIET_WARNINGS ||--o{ DISEASES : ""
+
+    USERS {
+        bigint user_id PK "사용자 아이디"
+        string name "이름"
+        string phone_number "전화번호"
+        string kakao_id "카카오아이디"
+        string password_hash "비밀번호해시"
+        tinyint is_active "활성여부"
+        timestamp created_at "생성일시"
+    }
+
+    ADHERENCE_REPORTS {
+        bigint report_id PK "보고서 아이디"
+        bigint user_id FK "사용자 아이디"
+        date start_date "시작날짜"
+        date end_date "종료날짜"
+        decimal adherence_rate "전체복약률"
+        json report_data "보고데이터"
+        timestamp created_at "생성일시"
+    }
+
+    AUDIT_LOGS {
+        bigint log_id PK "로그 아이디"
+        bigint user_id FK "사용자 아이디"
+        string action "작업"
+        string entity_type "엔티티유형"
+        string ip_address "아이피주소"
+        timestamp created_at "생성일시"
+    }
+
+    CHAT_ROOMS {
+        bigint room_id PK "채팅방 아이디"
+        bigint user_id FK "사용자 아이디"
+        bigint counselor_id FK "상담사 아이디"
+        string type "유형"
+        string status "상태"
+        timestamp created_at "생성일시"
+    }
+
+    CHAT_MESSAGES {
+        bigint message_id PK "메시지 아이디"
+        bigint room_id FK "채팅방 아이디"
+        bigint sender_id FK "발신자 아이디"
+        string sender_type "발신자유형"
+        text content "내용"
+        string message_type "메시지유형"
+        string ai_model "AI모델"
+        timestamp created_at "생성일시"
+    }
+
+    FAMILY_GROUPS {
+        bigint group_id PK "그룹 아이디"
+        string name "이름"
+        string invite_code "초대코드"
+        timestamp created_at "생성일시"
+    }
+
+    FAMILY_MEMBERS {
+        bigint member_id PK "구성원 아이디"
+        bigint group_id FK "가족그룹 아이디"
+        bigint user_id FK "사용자 아이디"
+        string role "역할(CAREGIVER|SENIOR)"
+        timestamp joined_at "가입일시"
+        timestamp created_at "생성일시"
+    }
+
+    CHAT_ROOM_MEMBERS {
+        bigint room_member_id PK "채팅방참여자 아이디"
+        bigint room_id FK "채팅방 아이디"
+        bigint member_id FK "가족구성원 아이디"
+        timestamp joined_at "참여일시"
+    }
+
+    DIET_LOGS {
+        bigint log_id PK "기록 아이디"
+        bigint user_id FK "사용자 아이디"
+        string meal_type "식사유형"
+        string food_name "음식명"
+        timestamp recorded_at "기록일시"
+        timestamp created_at "생성일시"
+    }
+
+    MEDICATIONS {
+        bigint medication_id PK "약물 아이디"
+        string name "약이름"
+        string ingredient "성분"
+        string dosage "복용량"
+        string dosage_time "복용시간"
+        date start_date "시작날짜"
+        date end_date "종료날짜"
+        int total_quantity "총수량"
+        int remaining_quantity "남은수량"
+        date expiration_date "유효기간"
+        bigint user_id FK "사용자 아이디"
+        timestamp created_at "생성일시"
+    }
+
+    DIET_WARNINGS {
+        bigint warning_id PK "경고 아이디"
+        bigint user_id FK "사용자 아이디"
+        bigint diet_log_id FK "식단기록 아이디"
+        bigint medication_id FK "복용약물 아이디"
+        string severity "심각도"
+        text warning_message "경고메시지"
+        timestamp created_at "생성일시"
+    }
+
+    MEDICATION_SCHEDULES {
+        bigint schedule_id PK "스케줄 아이디"
+        bigint medication_id FK "약물 아이디"
+        time dosage_time "복용시간"
+        string days_of_week "요일"
+        tinyint is_active "활성여부"
+        bigint user_id FK "사용자 아이디"
+        timestamp created_at "생성일시"
+    }
+
+    NOTIFICATIONS {
+        bigint notification_id PK "알림 아이디"
+        bigint user_id FK "사용자 아이디"
+        string type "유형"
+        string title "제목"
+        text message "메시지"
+        tinyint is_read "읽음여부"
+        bigint schedule_id FK "복용스케줄 아이디"
+        timestamp created_at "생성일시"
+    }
+
+    FAMILY_NOTIFICATIONS {
+        bigint family_notification_id PK "가족알림 아이디"
+        bigint notification_id FK "알림 아이디"
+        bigint member_id FK "가족구성원 아이디"
+        tinyint is_confirmed "확인여부"
+        timestamp read_at "읽은시각"
+        timestamp created_at "생성일시"
+    }
+
+    MEDICATION_LOGS {
+        bigint log_id PK "복용기록 아이디"
+        timestamp scheduled_time "예정시간"
+        timestamp completed_time "완료시간"
+        tinyint is_completed "완료여부"
+        bigint schedule_id FK "복용스케줄 아이디"
+        timestamp created_at "생성일시"
+    }
+
+    OAUTH_PROVIDERS {
+        bigint provider_id PK "제공자 아이디"
+        bigint user_id FK "사용자 아이디"
+        string provider "제공자"
+        string provider_user_id "제공자사용자ID"
+        text access_token "액세스토큰"
+        text refresh_token "리프레시토큰"
+        timestamp expired_at "만료일시"
+        timestamp created_at "생성일시"
+    }
+
+    REFRESH_TOKENS {
+        bigint token_id PK "토큰 아이디"
+        bigint user_id FK "사용자 아이디"
+        string token_hash "토큰해시"
+        string device_id "디바이스ID"
+        string ip_address "아이피주소"
+        timestamp expired_at "만료일시"
+        timestamp revoked_at "취소일시"
+        timestamp created_at "생성일시"
+    }
+
+    ROLES {
+        bigint role_id PK "역할 아이디"
+        string name "이름"
+        string description "설명"
+    }
+
+    USER_ROLES {
+        bigint user_id FK "사용자 아이디"
+        bigint role_id FK "역할 아이디"
+        timestamp assigned_at "부여일시"
+    }
+
+    DISEASES {
+        bigint disease_id PK "질병 아이디"
+        string name "이름"
+        bigint user_id FK "사용자 아이디"
+        bigint warning_id FK "식단경고 아이디"
+    }
