@@ -1,8 +1,9 @@
-# 뭐냑? MVP 기능 및 DTO 명세서
+# AMApill MVP 기능 및 DTO 명세서
 
 > 가족 돌봄 네트워크 기반 약 관리 플랫폼
 > 작성일: 2025-11-05
-> 버전: 1.0
+> 최종 업데이트: 2025-11-14
+> 버전: 2.0 (프론트엔드 실제 구현 반영)
 
 ---
 
@@ -10,15 +11,20 @@
 
 1. [MVP 기능 우선순위](#mvp-기능-우선순위)
 2. [API 엔드포인트 목록](#api-엔드포인트-목록)
-3. [DTO 명세](#dto-명세)
    - [Auth/User](#1-authuser-인증사용자)
-   - [Family](#2-family-가족-관리)
-   - [Medication](#3-medication-약-관리)
-   - [Diet](#4-diet-식단-관리)
-   - [Drug Interaction](#5-drug-interaction-약-음식-충돌)
-   - [OCR](#6-ocr-약봉지-인식)
-   - [Notification](#7-notification-알림)
-   - [Report](#8-report-리포트)
+   - [Family](#2-family-가족-관리---mvp-1순위)
+   - [Medication](#3-medication-약-관리---mvp-필수)
+   - [Diet](#4-diet-식단-관리---mvp-필수)
+   - [Drug Interaction](#5-drug-interaction-약-음식-충돌---mvp-2순위)
+   - [OCR](#6-ocr-약봉지-인식---mvp-3순위)
+   - [Chat](#7-chat-채팅-상담)
+   - [Search](#8-search-검색)
+   - [Disease](#9-disease-질병-관리)
+   - [Counsel](#10-counsel-상담-요청)
+   - [Notification](#11-notification-알림)
+   - [Report](#12-report-리포트---선택)
+3. [DTO 명세](#dto-명세)
+4. [아키텍처 참고사항](#아키텍처-참고사항)
 
 ---
 
@@ -50,44 +56,51 @@
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
-| POST | `/api/auth/kakao/login` | 카카오 OAuth 로그인 | ✅ |
-| POST | `/api/auth/kakao/signup` | OAuth 후 추가 정보 입력 (최초 1회) | ✅ |
+| POST | `/api/auth/login` | 일반 로그인 (이메일/비밀번호) | ✅ |
+| POST | `/api/auth/signup` | 일반 회원가입 | ✅ |
+| POST | `/api/auth/kakao-login` | 카카오 OAuth 로그인 | ✅ |
+| POST | `/api/auth/select-role` | 역할 선택 (시니어/케어기버) | ✅ |
 | POST | `/api/auth/logout` | 로그아웃 | ✅ |
-| POST | `/api/auth/refresh` | 토큰 갱신 | ✅ |
-| GET | `/api/users/me` | 내 정보 조회 | ✅ |
-| PUT | `/api/users/me` | 내 정보 수정 | ✅ |
+| POST | `/api/auth/refresh` | 토큰 갱신 | ⚠️ 예정 |
+
+**참고**:
+- 사용자 정보는 Zustand authStore에서 관리 (별도 조회 불필요)
+- `/api/users/me` 엔드포인트는 authStore.user 사용으로 대체
 
 ### 2. Family (가족 관리) - MVP 1순위
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
-| POST | `/api/family/groups` | 가족 그룹 생성 | ✅ |
-| GET | `/api/family/groups` | 내 가족 그룹 조회 | ✅ |
-| POST | `/api/family/groups/{id}/members` | 가족 구성원 초대 | ✅ |
-| GET | `/api/family/groups/{id}/members` | 가족 구성원 목록 | ✅ |
-| DELETE | `/api/family/members/{id}` | 가족 구성원 제거 | ✅ |
-| GET | `/api/family/members/{userId}/medications` | 가족 구성원 약 조회 (모니터링) | ✅ |
+| GET | `/api/family/` | 가족 그룹 & 멤버 조회 (통합) | ✅ |
+| POST | `/api/family/invite` | 가족 구성원 초대 | ✅ |
+| DELETE | `/api/family/members/{memberId}` | 가족 구성원 제거 | ✅ |
+
+**참고**: Zustand store 최적화를 위해 그룹과 멤버 정보를 한 번의 API 호출로 통합 제공
 
 ### 3. Medication (약 관리) - MVP 필수
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
+| GET | `/api/medications` | 내 약 목록 조회 (스케줄 포함) | ✅ |
 | POST | `/api/medications` | 약 등록 | ✅ |
-| GET | `/api/medications` | 내 약 목록 조회 | ✅ |
-| GET | `/api/medications/{id}` | 약 상세 조회 | ✅ |
-| PUT | `/api/medications/{id}` | 약 수정 | ✅ |
+| PATCH | `/api/medications/{id}` | 약 수정 (부분) | ✅ |
 | DELETE | `/api/medications/{id}` | 약 삭제 | ✅ |
-| POST | `/api/medications/{id}/schedules` | 복용 스케줄 등록 | ✅ |
-| GET | `/api/medications/{id}/schedules` | 복용 스케줄 조회 | ✅ |
-| POST | `/api/medications/logs` | 복용 체크 | ✅ |
-| GET | `/api/medications/logs/today` | 오늘 복용 내역 | ✅ |
+| POST | `/api/medications/logs` | 복용 체크 | ⚠️ 예정 |
+| GET | `/api/medications/logs` | 복용 로그 조회 (날짜 필터) | ⚠️ 예정 |
+
+**참고**:
+- Zustand store에서 medications 배열 관리 (상세 조회 불필요)
+- 스케줄은 medication 객체에 포함되어 반환
+- 오늘 복용 내역은 클라이언트 사이드에서 필터링
 
 ### 4. Diet (식단 관리) - MVP 필수
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
-| POST | `/api/diet/logs` | 식단 기록 | ✅ |
 | GET | `/api/diet/logs` | 식단 내역 조회 | ✅ |
+| POST | `/api/diet/logs` | 식단 기록 | ✅ |
+| PATCH | `/api/diet/logs/{logId}` | 식단 수정 | ✅ |
+| DELETE | `/api/diet/logs/{logId}` | 식단 삭제 | ✅ |
 | GET | `/api/diet/warnings` | 약-음식 충돌 경고 조회 | ✅ |
 
 ### 5. Drug Interaction (약-음식 충돌) - MVP 2순위
@@ -101,18 +114,59 @@
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
-| POST | `/api/ocr/prescription` | 약봉지 OCR 인식 | ✅ |
-| POST | `/api/ocr/pill-search` | 알약 역검색 (식별정보) | ✅ |
+| POST | `/api/ocr/recognize` | 약봉지 OCR 인식 | ✅ |
+| POST | `/api/ocr/pill-search` | 알약 역검색 (식별정보) | ⚠️ 예정 |
 
-### 7. Notification (알림)
+### 7. Chat (채팅 상담)
+
+채팅 API는 별도 문서 참조: [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md)
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
-| GET | `/api/notifications` | 알림 목록 조회 | ✅ |
-| PUT | `/api/notifications/{id}/read` | 알림 읽음 처리 | ✅ |
-| DELETE | `/api/notifications/{id}` | 알림 삭제 | ✅ |
+| GET | `/api/chat/rooms` | 채팅방 목록 조회 | ✅ |
+| POST | `/api/chat/rooms` | 채팅방 생성 (의사/AI 선택) | ✅ |
+| GET | `/api/chat/rooms/{roomId}/messages` | 메시지 히스토리 조회 | ✅ |
+| POST | `/api/chat/rooms/{roomId}/messages` | 메시지 전송 (REST Fallback) | ✅ |
+| PATCH | `/api/chat/rooms/{roomId}/messages/{messageId}/read` | 메시지 읽음 처리 | ✅ |
+| DELETE | `/api/chat/rooms/{roomId}` | 채팅방 나가기 | ✅ |
 
-### 8. Report (리포트) - 선택
+**참고**: 실시간 메시지는 WebSocket (Socket.IO) 사용
+
+### 8. Search (검색)
+
+| Method | Endpoint | 설명 | MVP |
+|--------|----------|------|-----|
+| GET | `/api/search/symptoms` | 증상 자동완성 검색 | ✅ |
+| GET | `/api/search/symptoms/{symptomName}` | 증상 상세 정보 | ✅ |
+
+### 9. Disease (질병 관리)
+
+| Method | Endpoint | 설명 | MVP |
+|--------|----------|------|-----|
+| GET | `/api/disease/me` | 내 질병 목록 조회 | ✅ |
+| GET | `/api/disease/{diseaseId}` | 질병 상세 정보 | ✅ |
+| GET | `/api/disease/restrictions/{diseaseId}` | 질병별 식이/약물 제한 정보 | ✅ |
+
+### 10. Counsel (상담 요청)
+
+| Method | Endpoint | 설명 | MVP |
+|--------|----------|------|-----|
+| POST | `/api/counsel/submit` | 상담 문의 제출 | ✅ |
+
+### 11. Notification (알림)
+
+| Method | Endpoint | 설명 | MVP |
+|--------|----------|------|-----|
+| GET | `/api/notifications` | 알림 히스토리 조회 | ⚠️ 예정 |
+| PATCH | `/api/notifications/{id}/read` | 알림 읽음 처리 | ⚠️ 예정 |
+| DELETE | `/api/notifications/{id}` | 알림 삭제 | ⚠️ 예정 |
+
+**참고**:
+- 실시간 알림: WebSocket (`ws://api.amapill.com/notifications`)
+- Zustand store에서 알림 상태 관리
+- REST API는 과거 알림 조회 및 동기화용
+
+### 12. Report (리포트) - 선택
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
@@ -849,7 +903,38 @@ Authorization: Bearer <accessToken>
 
 ---
 
-**문서 버전**: 1.0
-**최종 수정일**: 2025-11-05
-**작성자**: 뭐냑? 개발팀
+## 📝 변경 이력
+
+| 버전 | 날짜 | 변경 내용 |
+|------|------|----------|
+| 1.0 | 2025-11-05 | 초안 작성 |
+| 2.0 | 2025-11-14 | 프론트엔드 실제 구현 기준으로 업데이트 (Zustand 아키텍처 반영) |
+
+---
+
+**문서 버전**: 2.0
+**최종 수정일**: 2025-11-14
+**작성자**: AMApill 개발팀 (구 뭐냑?)
+**프로젝트명**: AMApill (구 SilverCare)
 **노션 복사 가능**: ✅
+
+---
+
+## 🏗️ 아키텍처 참고사항
+
+### Frontend 상태 관리 (Zustand)
+- **authStore**: 사용자 인증 정보 (user, token, role)
+- **medicationStore**: 약 목록 (medications 배열)
+- **familyStore**: 가족 그룹 & 멤버 (familyGroup, members)
+- **notificationStore** (예정): 알림 목록 & 읽음 상태
+
+### API 최적화 전략
+1. **통합 조회**: 관련 데이터를 한 번의 API 호출로 제공 (예: Family)
+2. **클라이언트 필터링**: 간단한 필터링은 클라이언트에서 처리
+3. **WebSocket 우선**: 실시간 데이터는 WebSocket 사용, REST는 히스토리 조회
+4. **PATCH 사용**: 부분 수정은 PUT 대신 PATCH 사용
+
+### 실시간 통신
+- **Chat**: WebSocket (Socket.IO)
+- **Notification**: WebSocket (향후 구현)
+- **Family 상태**: Hocuspocus + Y.js (향후 구현)
