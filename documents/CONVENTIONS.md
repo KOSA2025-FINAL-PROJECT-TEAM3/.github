@@ -373,6 +373,14 @@ git commit -m "✏️ Comment: MedicationCard 컴포넌트 주석 추가"
   ❌ public class Medication_Request { }
   ```
 
+#### 9. MyBatis 매퍼 명명 규칙 (MyBatis Mapper Naming Convention)
+
+**배경:** 프로젝트의 `build.gradle`은 MyBatis를 사용하지만, 기존 명세서에는 관련 규칙이 명시되어 있지 않아 컨벤션을 새로 정의합니다.
+
+*   **생성 (Creation):** 데이터 생성을 위한 메소드명은 `insert`를 사용합니다. (예: `void insert(User user)`) 이는 실제 실행되는 SQL 구문(`INSERT`)과의 명확한 일치를 위함입니다.
+*   **ID 기반 삭제 (Deletion by ID):** ID를 이용한 데이터 삭제는 `delete(long id)`를 사용합니다. (예: `void delete(long userId)`) 이는 간결하면서도 ID 기반 삭제임을 명확히 합니다.
+*   **기타 (Others):** 수정은 `update`, 단일 조사는 `findById`, 목록 조사는 `findBy...` 등 기존의 명확한 동사 기반 명명 규칙을 따릅니다.
+
 ---
 
 ### Database (MySQL / PostgreSQL)
