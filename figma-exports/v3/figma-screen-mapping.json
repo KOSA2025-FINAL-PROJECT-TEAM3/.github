@@ -1,0 +1,307 @@
+{
+  "version": "3.0.0",
+  "description": "Figma 화면과 Front 컴포넌트 매핑 (v3 기준)",
+  "last_updated": "2025-11-18",
+  "total_screens": 21,
+  "screens": [
+    {
+      "id": "01",
+      "name": "카카오_로그인",
+      "figma_name": "01_카카오_로그인",
+      "feature": "auth",
+      "component_path": "src/features/auth/pages/Login.jsx",
+      "status": "completed",
+      "implementation_date": "2025-11-15",
+      "notes": "Kakao OAuth 2.0 완료, JWT 토큰 관리 구현"
+    },
+    {
+      "id": "02",
+      "name": "역할_선택",
+      "figma_name": "02_역할_선택",
+      "feature": "auth",
+      "component_path": "src/features/auth/pages/RoleSelection.jsx",
+      "status": "completed",
+      "implementation_date": "2025-11-15",
+      "notes": "시니어/보호자 역할 선택 완료"
+    },
+    {
+      "id": "03",
+      "name": "시니어_대시보드",
+      "figma_name": "03_시니어_대시보드",
+      "feature": "dashboard",
+      "component_path": "src/features/dashboard/pages/SeniorDashboard.jsx",
+      "status": "not_started",
+      "priority": "critical",
+      "next_actions": [
+        "SeniorDashboard.jsx 생성",
+        "오늘의 약 위젯 구현",
+        "복약 체크 기능 연동",
+        "통계 카드 컴포넌트 추가"
+      ]
+    },
+    {
+      "id": "04",
+      "name": "보호자_대시보드",
+      "figma_name": "04_보호자_대시보드",
+      "feature": "dashboard",
+      "component_path": "src/features/dashboard/pages/CaregiverDashboard.jsx",
+      "status": "not_started",
+      "priority": "critical",
+      "next_actions": [
+        "CaregiverDashboard.jsx 생성",
+        "가족 구성원 모니터링 위젯",
+        "알림 센터 연동",
+        "실시간 복약 현황 표시"
+      ]
+    },
+    {
+      "id": "05",
+      "name": "약_관리",
+      "figma_name": "05_약_관리",
+      "feature": "medication",
+      "component_path": "src/features/medication/pages/MedicationList.jsx",
+      "status": "in_progress",
+      "progress": 50,
+      "next_actions": [
+        "필터링 기능 (복용 중/중단/전체)",
+        "정렬 기능 (이름/날짜)",
+        "검색 기능",
+        "페이지네이션"
+      ]
+    },
+    {
+      "id": "06",
+      "name": "약_등록",
+      "figma_name": "06_약_등록",
+      "feature": "medication",
+      "component_path": "src/features/medication/pages/MedicationForm.jsx",
+      "status": "completed",
+      "related_components": [
+        "src/features/ocr/pages/PrescriptionScan.jsx (in_progress)",
+        "src/features/ocr/components/ImageUploader.jsx (in_progress)"
+      ],
+      "implementation_date": "2025-11-16",
+      "notes": "수동 입력 완료, OCR 연동 진행 중"
+    },
+    {
+      "id": "07",
+      "name": "가족_관리",
+      "figma_name": "07_가족_관리",
+      "feature": "family",
+      "component_path": "src/features/family/pages/FamilyManagement.jsx",
+      "status": "in_progress",
+      "progress": 60,
+      "next_actions": [
+        "가족 구성원 목록 UI 완성",
+        "구성원별 약 현황 모달",
+        "초대/삭제 기능 완성",
+        "실시간 동기화 (WebSocket)"
+      ]
+    },
+    {
+      "id": "08",
+      "name": "설정",
+      "figma_name": "08_설정",
+      "feature": "settings",
+      "component_path": "src/features/settings/pages/Settings.jsx",
+      "status": "completed",
+      "implementation_date": "2025-11-17",
+      "notes": "프로필 설정, 알림 설정 완료"
+    },
+    {
+      "id": "09",
+      "name": "약사_채팅_목록",
+      "figma_name": "09_약사_채팅_목록",
+      "feature": "chat",
+      "component_path": "src/features/chat/pages/ChatList.jsx",
+      "status": "not_started",
+      "priority": "high",
+      "next_actions": [
+        "ChatList.jsx 생성",
+        "채팅방 목록 UI",
+        "미읽음 메시지 배지",
+        "검색 기능"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "약사_1대1_대화",
+      "figma_name": "10_약사_1대1_대화",
+      "feature": "chat",
+      "component_path": "src/features/chat/pages/ChatRoom.jsx",
+      "status": "not_started",
+      "priority": "high",
+      "next_actions": [
+        "ChatRoom.jsx 생성",
+        "메시지 목록 컴포넌트",
+        "메시지 입력 컴포넌트",
+        "STOMP/WebSocket 연동",
+        "이미지 전송 기능"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "증상_검색",
+      "figma_name": "11_증상_검색",
+      "feature": "search",
+      "component_path": "src/features/search/pages/SymptomSearch.jsx",
+      "status": "not_started",
+      "priority": "medium",
+      "next_actions": [
+        "SymptomSearch.jsx 생성",
+        "증상 선택 UI (다중 선택)",
+        "검색 API 연동",
+        "결과 표시 페이지 연결"
+      ]
+    },
+    {
+      "id": "12",
+      "name": "의심_질환_결과",
+      "figma_name": "12_의심_질환_결과",
+      "feature": "search",
+      "component_path": "src/features/search/pages/SearchResult.jsx",
+      "status": "not_started",
+      "priority": "medium",
+      "next_actions": [
+        "SearchResult.jsx 생성",
+        "질환 목록 카드 UI",
+        "확률/심각도 표시",
+        "약국 상담 연결 버튼"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "약국_상담_추천",
+      "figma_name": "13_약국_상담_추천",
+      "feature": "counsel",
+      "component_path": "src/features/counsel/pages/CounselRecommendation.jsx",
+      "status": "not_started",
+      "priority": "low",
+      "next_actions": [
+        "CounselRecommendation.jsx 생성",
+        "주변 약국 지도 표시",
+        "약국 목록 및 필터",
+        "약국 상세 정보"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "내_질병_관리",
+      "figma_name": "14_내_질병_관리",
+      "feature": "disease",
+      "component_path": "src/features/disease/pages/DiseaseManagement.jsx",
+      "status": "completed",
+      "implementation_date": "2025-11-17",
+      "notes": "질병 목록 및 등록 완료"
+    },
+    {
+      "id": "15",
+      "name": "질병_제한사항_상세",
+      "figma_name": "15_질병_제한사항_상세",
+      "feature": "disease",
+      "component_path": "src/features/disease/pages/DiseaseDetail.jsx",
+      "status": "in_progress",
+      "progress": 80,
+      "next_actions": [
+        "제한사항 상세 UI 완성",
+        "약-질병 충돌 경고",
+        "음식-질병 충돌 경고"
+      ]
+    },
+    {
+      "id": "16",
+      "name": "병원_식단_자료",
+      "figma_name": "16_병원_식단_자료",
+      "feature": "diet",
+      "component_path": "src/features/diet/pages/DietLog.jsx",
+      "status": "completed",
+      "implementation_date": "2025-11-17",
+      "notes": "식단 기록 및 약-음식 충돌 경고 완료"
+    },
+    {
+      "id": "17",
+      "name": "약_리뷰_게시판",
+      "figma_name": "17_약_리뷰_게시판",
+      "feature": "medication",
+      "component_path": "src/features/medication/pages/MedicationReview.jsx",
+      "status": "not_started",
+      "priority": "medium",
+      "next_actions": [
+        "MedicationReview.jsx 생성",
+        "리뷰 목록 UI",
+        "리뷰 작성 폼",
+        "평점 시스템",
+        "댓글 기능"
+      ]
+    },
+    {
+      "id": "18",
+      "name": "약_상세_정보",
+      "figma_name": "18_약_상세_정보",
+      "feature": "medication",
+      "component_path": "src/features/medication/pages/MedicationDetail.jsx",
+      "status": "in_progress",
+      "progress": 60,
+      "next_actions": [
+        "약 정보 상세 표시",
+        "복용 기록 표시",
+        "부작용 정보",
+        "관련 리뷰 연결"
+      ]
+    },
+    {
+      "id": "19",
+      "name": "설정_내_약_관리",
+      "figma_name": "19_설정_내_약_관리",
+      "feature": "settings",
+      "component_path": "src/features/settings/pages/MedicationSettings.jsx",
+      "status": "not_started",
+      "priority": "low",
+      "next_actions": [
+        "MedicationSettings.jsx 생성",
+        "약 알림 설정",
+        "자동 재주문 설정"
+      ]
+    },
+    {
+      "id": "20",
+      "name": "설정_내_질병_관리",
+      "figma_name": "20_설정_내_질병_관리",
+      "feature": "settings",
+      "component_path": "src/features/settings/pages/DiseaseSettings.jsx",
+      "status": "not_started",
+      "priority": "low",
+      "next_actions": [
+        "DiseaseSettings.jsx 생성",
+        "질병 알림 설정",
+        "건강 데이터 동기화 설정"
+      ]
+    },
+    {
+      "id": "21",
+      "name": "복약_순응도_리포트",
+      "figma_name": "21_복약_순응도_리포트",
+      "feature": "report",
+      "component_path": "src/features/report/pages/ComplianceReport.jsx",
+      "status": "not_started",
+      "priority": "medium",
+      "next_actions": [
+        "ComplianceReport.jsx 생성",
+        "Chart.js/Recharts 연동",
+        "주/월/년 통계 표시",
+        "PDF 다운로드 기능"
+      ]
+    }
+  ],
+  "summary": {
+    "completed": 6,
+    "in_progress": 5,
+    "not_started": 10,
+    "by_priority": {
+      "critical": 2,
+      "high": 2,
+      "medium": 4,
+      "low": 2
+    }
+  }
+}

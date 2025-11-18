@@ -1,0 +1,570 @@
+{
+  "version": "3.0.0",
+  "generated_at": "2025-11-18T09:21:18.544529",
+  "repository": "KOSA2025-FINAL-PROJECT-TEAM3/Front",
+  "branch": "dev",
+  "base_version": "v0.1.0",
+  "summary": {
+    "overall_progress": 56,
+    "total_features": 13,
+    "total_files": 60,
+    "completed_files": 33,
+    "in_progress_files": 14,
+    "not_started_files": 13,
+    "features_by_status": {
+      "completed": 4,
+      "in_progress": 4,
+      "not_started": 5
+    }
+  },
+  "features": [
+    {
+      "id": "auth",
+      "name": "인증 (Authentication)",
+      "path": "src/features/auth",
+      "progress": 100,
+      "status": "completed",
+      "status_emoji": "✅",
+      "priority": "critical",
+      "priority_emoji": "🔴",
+      "weight": 10,
+      "total_files": 7,
+      "completed_files": 7,
+      "in_progress_files": 0,
+      "not_started_files": 0,
+      "figma_screens": [
+        "01_카카오_로그인",
+        "02_역할_선택"
+      ],
+      "files": [
+        {
+          "name": "Login.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "Signup.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "RoleSelection.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "KakaoCallback.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "KakaoLoginButton.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "authStore.js",
+          "status": "completed"
+        },
+        {
+          "name": "useAuth.js",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "dashboard",
+      "name": "대시보드 (Dashboard)",
+      "path": "src/features/dashboard",
+      "progress": 40,
+      "status": "in_progress",
+      "status_emoji": "🔄",
+      "priority": "critical",
+      "priority_emoji": "🔴",
+      "weight": 10,
+      "total_files": 5,
+      "completed_files": 0,
+      "in_progress_files": 3,
+      "not_started_files": 2,
+      "figma_screens": [
+        "03_시니어_대시보드",
+        "04_보호자_대시보드"
+      ],
+      "files": [
+        {
+          "name": "Dashboard.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "StatCard.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "MedicationSummary.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "SeniorDashboard.jsx",
+          "status": "not_started"
+        },
+        {
+          "name": "CaregiverDashboard.jsx",
+          "status": "not_started"
+        }
+      ]
+    },
+    {
+      "id": "medication",
+      "name": "약 관리 (Medication Management)",
+      "path": "src/features/medication",
+      "progress": 70,
+      "status": "in_progress",
+      "status_emoji": "🔄",
+      "priority": "critical",
+      "priority_emoji": "🔴",
+      "weight": 15,
+      "total_files": 8,
+      "completed_files": 4,
+      "in_progress_files": 4,
+      "not_started_files": 0,
+      "figma_screens": [
+        "05_약_관리",
+        "06_약_등록",
+        "17_약_리뷰_게시판",
+        "18_약_상세_정보"
+      ],
+      "files": [
+        {
+          "name": "MedicationList.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "MedicationForm.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "MedicationDetail.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "MedicationCard.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "ScheduleCalendar.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "IntakeCheckbox.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "medicationStore.js",
+          "status": "completed"
+        },
+        {
+          "name": "useMedication.js",
+          "status": "in_progress"
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "name": "가족 관리 (Family Management)",
+      "path": "src/features/family",
+      "progress": 60,
+      "status": "in_progress",
+      "status_emoji": "🔄",
+      "priority": "critical",
+      "priority_emoji": "🔴",
+      "weight": 15,
+      "total_files": 9,
+      "completed_files": 7,
+      "in_progress_files": 2,
+      "not_started_files": 0,
+      "figma_screens": [
+        "07_가족_관리"
+      ],
+      "files": [
+        {
+          "name": "FamilyManagement.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "InviteMember.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "FamilyMemberCard.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "InvitationList.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "MemberMedicationView.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "familyStore.js",
+          "status": "completed"
+        },
+        {
+          "name": "FamilyContext.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "familyService.js",
+          "status": "completed"
+        },
+        {
+          "name": "useFamily.js",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "diet",
+      "name": "식단 관리 (Diet Management)",
+      "path": "src/features/diet",
+      "progress": 90,
+      "status": "completed",
+      "status_emoji": "✅",
+      "priority": "high",
+      "priority_emoji": "🟠",
+      "weight": 5,
+      "total_files": 6,
+      "completed_files": 6,
+      "in_progress_files": 0,
+      "not_started_files": 0,
+      "figma_screens": [
+        "16_병원_식단_자료"
+      ],
+      "files": [
+        {
+          "name": "DietLog.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "FoodInteractionWarning.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "DietForm.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "FoodCard.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "InteractionBadge.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "useDiet.js",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "disease",
+      "name": "질병 관리 (Disease Management)",
+      "path": "src/features/disease",
+      "progress": 90,
+      "status": "completed",
+      "status_emoji": "✅",
+      "priority": "high",
+      "priority_emoji": "🟠",
+      "weight": 5,
+      "total_files": 4,
+      "completed_files": 3,
+      "in_progress_files": 1,
+      "not_started_files": 0,
+      "figma_screens": [
+        "14_내_질병_관리",
+        "15_질병_제한사항_상세"
+      ],
+      "files": [
+        {
+          "name": "DiseaseManagement.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "DiseaseDetail.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "DiseaseCard.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "useDisease.js",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "name": "설정 (Settings)",
+      "path": "src/features/settings",
+      "progress": 90,
+      "status": "completed",
+      "status_emoji": "✅",
+      "priority": "high",
+      "priority_emoji": "🟠",
+      "weight": 5,
+      "total_files": 6,
+      "completed_files": 6,
+      "in_progress_files": 0,
+      "not_started_files": 0,
+      "figma_screens": [
+        "08_설정",
+        "19_설정_내_약_관리",
+        "20_설정_내_질병_관리"
+      ],
+      "files": [
+        {
+          "name": "Settings.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "ProfileSettings.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "NotificationSettings.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "SettingsMenu.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "ProfileForm.jsx",
+          "status": "completed"
+        },
+        {
+          "name": "NotificationToggle.jsx",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "id": "notification",
+      "name": "알림 (Notification)",
+      "path": "src/features/notification",
+      "progress": 20,
+      "status": "not_started",
+      "status_emoji": "❌",
+      "priority": "high",
+      "priority_emoji": "🟠",
+      "weight": 5,
+      "total_files": 2,
+      "completed_files": 0,
+      "in_progress_files": 1,
+      "not_started_files": 1,
+      "figma_screens": [],
+      "files": [
+        {
+          "name": "NotificationList.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "NotificationItem.jsx",
+          "status": "not_started"
+        }
+      ]
+    },
+    {
+      "id": "ocr",
+      "name": "OCR (처방전 스캔)",
+      "path": "src/features/ocr",
+      "progress": 30,
+      "status": "in_progress",
+      "status_emoji": "🔄",
+      "priority": "high",
+      "priority_emoji": "🟠",
+      "weight": 10,
+      "total_files": 5,
+      "completed_files": 0,
+      "in_progress_files": 3,
+      "not_started_files": 2,
+      "figma_screens": [
+        "06_약_등록"
+      ],
+      "files": [
+        {
+          "name": "PrescriptionScan.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "OCRResult.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "ImageUploader.jsx",
+          "status": "in_progress"
+        },
+        {
+          "name": "OCRPreview.jsx",
+          "status": "not_started"
+        },
+        {
+          "name": "ManualCorrection.jsx",
+          "status": "not_started"
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "name": "채팅 (Pharmacist Chat)",
+      "path": "src/features/chat",
+      "progress": 10,
+      "status": "not_started",
+      "status_emoji": "❌",
+      "priority": "medium",
+      "priority_emoji": "🟡",
+      "weight": 5,
+      "total_files": 4,
+      "completed_files": 0,
+      "in_progress_files": 0,
+      "not_started_files": 4,
+      "figma_screens": [
+        "09_약사_채팅_목록",
+        "10_약사_1대1_대화"
+      ],
+      "files": [
+        {
+          "name": "ChatRoom.jsx",
+          "status": "not_started"
+        },
+        {
+          "name": "MessageList.jsx",
+          "status": "not_started"
+        },
+        {
+          "name": "MessageInput.jsx",
+          "status": "not_started"
+        },
+        {
+          "name": "ChatBubble.jsx",
+          "status": "not_started"
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "name": "검색 (Search)",
+      "path": "src/features/search",
+      "progress": 10,
+      "status": "not_started",
+      "status_emoji": "❌",
+      "priority": "medium",
+      "priority_emoji": "🟡",
+      "weight": 3,
+      "total_files": 2,
+      "completed_files": 0,
+      "in_progress_files": 0,
+      "not_started_files": 2,
+      "figma_screens": [
+        "11_증상_검색",
+        "12_의심_질환_결과"
+      ],
+      "files": [
+        {
+          "name": "PillSearch.jsx",
+          "status": "not_started"
+        },
+        {
+          "name": "SymptomSearch.jsx",
+          "status": "not_started"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "name": "리포트 (Compliance Report)",
+      "path": "src/features/report",
+      "progress": 10,
+      "status": "not_started",
+      "status_emoji": "❌",
+      "priority": "medium",
+      "priority_emoji": "🟡",
+      "weight": 3,
+      "total_files": 1,
+      "completed_files": 0,
+      "in_progress_files": 0,
+      "not_started_files": 1,
+      "figma_screens": [
+        "21_복약_순응도_리포트"
+      ],
+      "files": [
+        {
+          "name": "ComplianceReport.jsx",
+          "status": "not_started"
+        }
+      ]
+    },
+    {
+      "id": "counsel",
+      "name": "약국 상담 (Counsel)",
+      "path": "src/features/counsel",
+      "progress": 5,
+      "status": "not_started",
+      "status_emoji": "❌",
+      "priority": "low",
+      "priority_emoji": "🟢",
+      "weight": 2,
+      "total_files": 1,
+      "completed_files": 0,
+      "in_progress_files": 0,
+      "not_started_files": 1,
+      "figma_screens": [
+        "13_약국_상담_추천"
+      ],
+      "files": [
+        {
+          "name": "CounselRecommendation.jsx",
+          "status": "not_started"
+        }
+      ]
+    }
+  ],
+  "priority_groups": {
+    "critical": [
+      "auth",
+      "dashboard",
+      "medication",
+      "family"
+    ],
+    "high": [
+      "diet",
+      "disease",
+      "settings",
+      "notification",
+      "ocr"
+    ],
+    "medium": [
+      "chat",
+      "search",
+      "report"
+    ],
+    "low": [
+      "counsel"
+    ]
+  },
+  "next_actions": {
+    "week_4_critical": [
+      "Dashboard - SeniorDashboard.jsx 구현",
+      "Dashboard - CaregiverDashboard.jsx 구현",
+      "Medication - MedicationList.jsx 완성",
+      "Family - FamilyManagement.jsx 완성"
+    ],
+    "week_5_high": [
+      "Notification - NotificationList.jsx 완성",
+      "OCR - Google Vision API 연동",
+      "Chat - 기본 채팅 UI 구현"
+    ],
+    "week_6_medium": [
+      "Search - 알약/증상 검색 UI",
+      "Report - 복약 순응도 차트"
+    ]
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "version": "3.0.0",
+  "description": "AI 어시스턴트를 위한 컴포넌트 개발 템플릿 및 가이드",
+  "last_updated": "2025-11-18",
+  "design_system": {
+    "colors": {
+      "primary": "#2563eb",
+      "success": "#22c55e",
+      "danger": "#ef4444",
+      "warning": "#f97316",
+      "caregiver": "#a5b4fc",
+      "senior": "#f9a8d4",
+      "ocr_background": "#0f172a",
+      "ocr_accent": "#22d3ee",
+      "text_primary": "#1f2937",
+      "text_secondary": "#6b7280",
+      "border": "#e5e7eb",
+      "background": "#f9fafb"
+    },
+    "spacing": {
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "2xl": "3rem"
+    },
+    "borderRadius": {
+      "card": "0.75rem",
+      "button": "0.5rem",
+      "input": "0.5rem"
+    },
+    "fonts": {
+      "family": "Inter, system-ui, sans-serif",
+      "sizes": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem"
+      }
+    }
+  },
+  "templates": {
+    "page_component": {
+      "description": "기본 페이지 컴포넌트 템플릿",
+      "imports": [
+        "import React, { useState, useEffect } from 'react';",
+        "import { useNavigate } from 'react-router-dom';",
+        "import './PageName.scss';"
+      ],
+      "structure": {
+        "state_management": "Zustand store 사용 (필요시)",
+        "api_calls": "useEffect에서 데이터 로드",
+        "error_handling": "try-catch + 에러 토스트",
+        "loading_state": "로딩 스피너 표시"
+      },
+      "example_file": "src/features/auth/pages/Login.jsx"
+    },
+    "card_component": {
+      "description": "카드 UI 컴포넌트",
+      "style_properties": {
+        "background": "white",
+        "border_radius": "0.75rem",
+        "shadow": "0 8px 25px rgba(0, 0, 0, 0.08)",
+        "padding": "1.5rem",
+        "hover_effect": "transform: translateY(-2px)"
+      },
+      "example_files": [
+        "src/features/medication/components/MedicationCard.jsx",
+        "src/features/family/components/FamilyMemberCard.jsx",
+        "src/features/disease/components/DiseaseCard.jsx"
+      ]
+    },
+    "form_component": {
+      "description": "폼 입력 컴포넌트",
+      "validation": "React Hook Form 또는 커스텀 validation",
+      "submit_handling": "async/await + API 호출",
+      "error_display": "필드별 에러 메시지",
+      "example_files": [
+        "src/features/medication/pages/MedicationForm.jsx",
+        "src/features/diet/components/DietForm.jsx",
+        "src/features/settings/components/ProfileForm.jsx"
+      ]
+    },
+    "list_component": {
+      "description": "목록 표시 컴포넌트",
+      "features": [
+        "필터링 (상태별, 날짜별)",
+        "정렬 (이름, 날짜)",
+        "검색 (키워드)",
+        "페이지네이션 또는 무한 스크롤"
+      ],
+      "example_files": [
+        "src/features/medication/pages/MedicationList.jsx (in_progress)",
+        "src/features/family/components/InvitationList.jsx"
+      ]
+    },
+    "modal_component": {
+      "description": "모달 컴포넌트",
+      "accessibility": "aria-modal, role=dialog, 포커스 트랩",
+      "backdrop": "backdrop-filter: blur(10px)",
+      "animation": "fade-in, slide-up",
+      "close_handling": "ESC 키, 백드롭 클릭"
+    },
+    "dashboard_widget": {
+      "description": "대시보드 위젯 컴포넌트",
+      "layout": "Grid 또는 Flexbox 레이아웃",
+      "data_visualization": "통계 카드, 차트",
+      "real_time_update": "WebSocket 연동 고려",
+      "example_files": [
+        "src/features/dashboard/components/StatCard.jsx (in_progress)",
+        "src/features/dashboard/components/MedicationSummary.jsx (in_progress)"
+      ]
+    }
+  },
+  "coding_conventions": {
+    "naming": {
+      "components": "PascalCase (e.g., MedicationCard.jsx)",
+      "functions": "camelCase (e.g., handleSubmit)",
+      "constants": "UPPER_SNAKE_CASE (e.g., USER_ROLES)",
+      "css_classes": "kebab-case (e.g., medication-card)"
+    },
+    "file_structure": {
+      "pages": "src/features/{feature}/pages/",
+      "components": "src/features/{feature}/components/",
+      "hooks": "src/features/{feature}/hooks/",
+      "store": "src/features/{feature}/store/",
+      "services": "src/features/{feature}/services/",
+      "styles": "같은 폴더에 .scss 파일"
+    },
+    "imports_order": [
+      "1. React 관련",
+      "2. 외부 라이브러리",
+      "3. 내부 컴포넌트",
+      "4. Hooks/Utils",
+      "5. 스타일"
+    ],
+    "state_management": {
+      "local_state": "useState (컴포넌트 내부 상태)",
+      "global_state": "Zustand store (Feature별 전역 상태)",
+      "server_state": "React Query 또는 직접 관리"
+    }
+  },
+  "api_integration": {
+    "base_setup": {
+      "client": "src/core/api/apiClient.js",
+      "auth_header": "Authorization: Bearer {token}",
+      "error_handling": "통합 에러 핸들러 사용"
+    },
+    "endpoints_structure": {
+      "auth": "/api/auth/*",
+      "medication": "/api/medication/*",
+      "family": "/api/family/*",
+      "disease": "/api/disease/*",
+      "diet": "/api/diet/*",
+      "chat": "/api/chat/* (WebSocket: /ws/chat)",
+      "ocr": "/api/ocr/*",
+      "notification": "/api/notification/* (WebSocket: /ws/notification)"
+    },
+    "request_example": {
+      "get": "await apiClient.get('/medication/list')",
+      "post": "await apiClient.post('/medication', data)",
+      "put": "await apiClient.put('/medication/:id', data)",
+      "delete": "await apiClient.delete('/medication/:id')"
+    }
+  },
+  "testing_guidelines": {
+    "unit_tests": "Jest + React Testing Library",
+    "component_tests": "화면 렌더링, 사용자 인터랙션",
+    "integration_tests": "API 연동 테스트 (Mock API)",
+    "e2e_tests": "Cypress (선택사항)"
+  },
+  "accessibility": {
+    "semantic_html": "header, nav, main, section, article 사용",
+    "aria_labels": "버튼, 링크에 명확한 라벨",
+    "keyboard_navigation": "Tab, Enter, ESC 키 지원",
+    "color_contrast": "WCAG AA 기준 (4.5:1 이상)"
+  },
+  "performance": {
+    "code_splitting": "React.lazy + Suspense",
+    "memoization": "React.memo, useMemo, useCallback",
+    "image_optimization": "WebP 포맷, lazy loading",
+    "bundle_size": "webpack-bundle-analyzer로 모니터링"
+  },
+  "next_steps_by_priority": {
+    "critical_this_week": [
+      {
+        "feature": "dashboard",
+        "task": "SeniorDashboard.jsx 구현",
+        "template": "page_component + dashboard_widget",
+        "api_needed": "/api/medication/today, /api/notification/unread"
+      },
+      {
+        "feature": "dashboard",
+        "task": "CaregiverDashboard.jsx 구현",
+        "template": "page_component + dashboard_widget",
+        "api_needed": "/api/family/members, /api/medication/summary"
+      },
+      {
+        "feature": "medication",
+        "task": "MedicationList.jsx 완성",
+        "template": "list_component",
+        "api_needed": "/api/medication/list (filter, sort, search)"
+      },
+      {
+        "feature": "family",
+        "task": "FamilyManagement.jsx 완성",
+        "template": "page_component + card_component",
+        "api_needed": "/api/family/members, /api/family/invite"
+      }
+    ],
+    "high_next_week": [
+      {
+        "feature": "notification",
+        "task": "NotificationList.jsx 구현",
+        "template": "list_component",
+        "api_needed": "/api/notification/list, WebSocket: /ws/notification"
+      },
+      {
+        "feature": "ocr",
+        "task": "OCR 기능 완성",
+        "template": "form_component + modal_component",
+        "api_needed": "/api/ocr/scan, /api/ocr/correct"
+      },
+      {
+        "feature": "chat",
+        "task": "ChatRoom.jsx 구현",
+        "template": "page_component + list_component",
+        "api_needed": "WebSocket: /ws/chat"
+      }
+    ],
+    "medium_week_6": [
+      {
+        "feature": "search",
+        "task": "증상 검색 UI",
+        "template": "page_component + form_component",
+        "api_needed": "/api/search/symptom"
+      },
+      {
+        "feature": "report",
+        "task": "복약 순응도 리포트",
+        "template": "page_component + chart_component",
+        "api_needed": "/api/report/compliance"
+      }
+    ]
+  },
+  "common_issues_and_solutions": {
+    "api_cors_error": {
+      "problem": "CORS 에러 발생",
+      "solution": "Backend에서 CORS 설정 확인, 개발 시 proxy 사용"
+    },
+    "state_not_updating": {
+      "problem": "상태가 업데이트되지 않음",
+      "solution": "불변성 확인, setState의 비동기 특성 고려"
+    },
+    "infinite_loop": {
+      "problem": "useEffect 무한 루프",
+      "solution": "dependency array 올바르게 설정"
+    },
+    "style_not_applying": {
+      "problem": "스타일이 적용되지 않음",
+      "solution": "SCSS import 확인, className 오타 확인"
+    },
+    "websocket_connection_failed": {
+      "problem": "WebSocket 연결 실패",
+      "solution": "URL 확인, Backend WebSocket 설정 확인, STOMP 버전 확인"
+    }
+  },
+  "useful_libraries": {
+    "ui_components": [
+      "react-icons - 아이콘",
+      "react-modal - 모달",
+      "react-toastify - 알림 토스트"
+    ],
+    "forms": [
+      "react-hook-form - 폼 관리",
+      "yup - 스키마 validation"
+    ],
+    "charts": [
+      "chart.js + react-chartjs-2 - 차트",
+      "recharts - React 전용 차트 라이브러리"
+    ],
+    "date_time": [
+      "date-fns - 날짜 포맷팅",
+      "react-datepicker - 날짜 선택"
+    ],
+    "utils": [
+      "axios - HTTP 클라이언트",
+      "lodash - 유틸리티 함수",
+      "classnames - 조건부 className"
+    ]
+  }
+}
