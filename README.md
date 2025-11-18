@@ -198,9 +198,26 @@ npm run dev
 
 ## 🎯 개발 현황
 
-### 완료된 작업
+### 📊 전체 진행률 대시보드
 
-#### 프로젝트 기획 및 설계
+| 영역 | 진행률 | 상태 | 상세 |
+|------|--------|------|------|
+| **Backend** | ![40%](https://progress-bar.dev/40) | 🟡 진행 중 | [상세 보기 →](./documents/IMPLEMENTATION_STATUS.md#-backend-구현-상태) |
+| **Frontend** | ![75%](https://progress-bar.dev/75) | 🟢 양호 | [상세 보기 →](./documents/IMPLEMENTATION_STATUS.md#-frontend-구현-상태) |
+| **DevOps** | ![10%](https://progress-bar.dev/10) | 🔴 시작 | [상세 보기 →](./documents/DEVELOPMENT_CHECKLIST.md#milestone-8-devops--10-시작-단계) |
+| **Testing** | ![5%](https://progress-bar.dev/5) | 🔴 시작 | [상세 보기 →](./documents/DEVELOPMENT_CHECKLIST.md#milestone-6-testing--5-시작-단계) |
+
+**📋 상세 추적 문서**
+- 🎯 [**개발 체크리스트**](./documents/DEVELOPMENT_CHECKLIST.md) - 주차별 계획, 마일스톤, Critical Issues
+- 📊 [**구현 상태 추적**](./documents/IMPLEMENTATION_STATUS.md) - 모듈별 상세 진행률, 우선순위별 작업 가이드
+- 📝 [**Backend 변경이력**](./documents/CHANGELOG_BACKEND.md) - Backend 업데이트 히스토리
+- 🎨 [**Frontend 변경이력**](./documents/CHANGELOG_FRONTEND.md) - Frontend 업데이트 히스토리
+
+---
+
+### ✅ 완료된 작업
+
+#### 프로젝트 기획 및 설계 (100%)
 - ✅ 프로젝트 기획 및 명세 작성
 - ✅ 시스템 아키텍처 설계
 - ✅ 데이터베이스 스키마 설계 (ERD, DDL)
@@ -208,57 +225,74 @@ npm run dev
 - ✅ 와이어프레임 제작 (34개 화면)
 - ✅ 기술 스택 확정
 
-#### Backend 개발 (v1.0.0 - 98% 완성)
-- ✅ **Core Service 구현** (Spring Boot 3.4.7 + Java 21 + MyBatis)
+#### Backend 기반 구조 (100%)
+- ✅ **프로젝트 구조**
   - ✅ Clean Architecture 4계층 구조 (180개 파일)
   - ✅ Domain Layer: 17 Entity + 9 Repository (100%)
   - ✅ Application Layer: 42 DTO + 14 Service Interface (100%)
-  - ✅ Infrastructure Layer: 15 Service Impl (100%)
-  - ✅ Presentation Layer: 11 REST Controller + 2 WebSocket (100%)
 - ✅ **인증/인가 시스템**
   - ✅ Kakao OAuth 2.0 로그인
   - ✅ JWT Access/Refresh Token
-  - ✅ Spring Security 설정
-- ✅ **핵심 비즈니스 로직**
+  - ✅ Spring Security 기본 설정
+- ✅ **완료된 서비스** (Family, Auth)
   - ✅ 가족 네트워크 관리 (그룹, 초대, 권한)
-  - ✅ 약 관리 CRUD + 복약 스케줄
-  - ✅ 식단 기록 + 약-음식 충돌 검사
-  - ✅ 질병 관리
-  - ✅ 알림 시스템
-  - ✅ OCR 처방전 인식 (Google Vision API)
-  - ✅ 알약 역검색 (식약처 API)
-  - ✅ 복약 순응도 리포트 생성
-  - ✅ 실시간 채팅 (WebSocket/STOMP)
-- ✅ **API 문서화**: Swagger/OpenAPI 3.x
-- ✅ 마이크로서비스 아키텍처 설계 (6개 서비스)
+  - ✅ 사용자 관리 및 인증
+- ✅ **API 문서화**: Swagger/OpenAPI 3.x 기본 설정
 
-#### Frontend 개발 (v0.1.0)
+#### Frontend 핵심 인프라 (90%)
 - ✅ React 19 + Vite 개발 환경 구축
 - ✅ 인증 시스템 구현 (로그인/회원가입, JWT, RBAC)
 - ✅ 역할 기반 네비게이션 구현 (노인/보호자)
-- ✅ 핵심 페이지 구현 (Diet, Disease, Settings)
+- ✅ 핵심 페이지 구현 (Diet, Disease, Settings, Auth)
 - ✅ Wireframe 페이지 스켈레톤 (34개 화면 구조)
-- ✅ 마이크로서비스 API 클라이언트 인프라
+- ✅ 마이크로서비스 API 클라이언트 인프라 (8개 API Client)
 - ✅ Zustand 상태 관리 설정
 - ✅ Tailwind CSS 디자인 시스템
 
-### 진행 중
-- 🔄 **Frontend**: Medication, Family, Dashboard 페이지 구현
-- 🔄 **Backend**: 품질 보증 (GlobalExceptionHandler, 보안 강화)
-- 🔄 **통합**: Frontend ↔ Backend API 연동 테스트
+---
 
-### 진행 예정
-- [ ] **Backend**: 단위/통합 테스트 작성
+### 🚧 진행 중 (이번 주 우선순위)
+
+#### 🔴 CRITICAL (Week 4-5)
+- [ ] **Backend**: Medication 서비스 구현 (MedicationServiceImpl, ScheduleServiceImpl, LogServiceImpl)
+- [ ] **Backend**: OCR 서비스 구현 (Google Vision API 연동)
+- [ ] **Backend**: GlobalExceptionHandler 구현
 - [ ] **Backend**: 보안 정보 환경 변수화
-- [ ] **Backend**: N+1 쿼리 최적화 및 캐싱 (Redis)
+- [ ] **Frontend**: Medication, Family, Dashboard 페이지 완성
+- [ ] **통합**: Frontend ↔ Backend API 연동 테스트
+
+#### 🟡 MEDIUM (Week 5-6)
+- [ ] **Backend**: Diet, Interaction, Notification 서비스 구현
+- [ ] **Backend**: 알약 검색 (MFDS API 연동)
+- [ ] **Backend**: 리포트 생성 (PDF)
+- [ ] **Frontend**: AOP Aspects 구현 (ErrorBoundary, PerformanceMonitor)
 - [ ] **Frontend**: WebSocket 실시간 알림
+
+---
+
+### 📅 진행 예정 (Week 6+)
+
+#### 🟢 LOW Priority
+- [ ] **Backend**: Kafka 이벤트 시스템
+- [ ] **Backend**: Redis 캐싱 및 스케줄러
+- [ ] **Backend**: 단위/통합 테스트 작성
+- [ ] **Frontend**: 고급 컴포넌트 (차트, 리포트 등)
 - [ ] **DevOps**: Docker 컨테이너화 + CI/CD 파이프라인
 - [ ] **QA**: 통합 테스트 및 성능 테스트
 - [ ] **배포**: AWS/GCP 프로덕션 배포
 
-**상세 변경내역**:
-- Frontend: [CHANGELOG_FRONTEND.md](./documents/CHANGELOG_FRONTEND.md)
-- Backend: [CHANGELOG_BACKEND.md](./documents/CHANGELOG_BACKEND.md)
+---
+
+### 📈 주차별 진행 계획
+
+자세한 내용은 [DEVELOPMENT_CHECKLIST.md](./documents/DEVELOPMENT_CHECKLIST.md#-주차별-계획) 참조
+
+| 주차 | 목표 | 상태 |
+|------|------|------|
+| Week 4 (현재) | Medication 서비스, GlobalExceptionHandler | 🔄 진행 중 |
+| Week 5 | SecurityConfig, API 연동 테스트 | 📅 예정 |
+| Week 6 | WebSocket 알림, Docker Compose | 📅 예정 |
+| Week 7 | 통합 테스트, 스테이징 배포, 발표 준비 | 📅 예정 |
 
 ---
 
