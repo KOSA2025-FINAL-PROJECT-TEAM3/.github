@@ -208,8 +208,28 @@ npm run dev
 - ✅ 와이어프레임 제작 (34개 화면)
 - ✅ 기술 스택 확정
 
-#### Backend 개발
-- ✅ **Auth Service 구현 완료** (Spring Boot 3.4.7, Kakao OAuth 2.0, JWT, CI/CD)
+#### Backend 개발 (v1.0.0 - 98% 완성)
+- ✅ **Core Service 구현** (Spring Boot 3.4.7 + Java 21 + MyBatis)
+  - ✅ Clean Architecture 4계층 구조 (180개 파일)
+  - ✅ Domain Layer: 17 Entity + 9 Repository (100%)
+  - ✅ Application Layer: 42 DTO + 14 Service Interface (100%)
+  - ✅ Infrastructure Layer: 15 Service Impl (100%)
+  - ✅ Presentation Layer: 11 REST Controller + 2 WebSocket (100%)
+- ✅ **인증/인가 시스템**
+  - ✅ Kakao OAuth 2.0 로그인
+  - ✅ JWT Access/Refresh Token
+  - ✅ Spring Security 설정
+- ✅ **핵심 비즈니스 로직**
+  - ✅ 가족 네트워크 관리 (그룹, 초대, 권한)
+  - ✅ 약 관리 CRUD + 복약 스케줄
+  - ✅ 식단 기록 + 약-음식 충돌 검사
+  - ✅ 질병 관리
+  - ✅ 알림 시스템
+  - ✅ OCR 처방전 인식 (Google Vision API)
+  - ✅ 알약 역검색 (식약처 API)
+  - ✅ 복약 순응도 리포트 생성
+  - ✅ 실시간 채팅 (WebSocket/STOMP)
+- ✅ **API 문서화**: Swagger/OpenAPI 3.x
 - ✅ 마이크로서비스 아키텍처 설계 (6개 서비스)
 
 #### Frontend 개발 (v0.1.0)
@@ -223,18 +243,22 @@ npm run dev
 - ✅ Tailwind CSS 디자인 시스템
 
 ### 진행 중
-- 🔄 Frontend: Medication, Family, Dashboard 페이지 구현
-- 🔄 Backend: Medication, Family, Diet, Notification, OCR Services
-- 🔄 실시간 동기화 준비 (WebSocket)
+- 🔄 **Frontend**: Medication, Family, Dashboard 페이지 구현
+- 🔄 **Backend**: 품질 보증 (GlobalExceptionHandler, 보안 강화)
+- 🔄 **통합**: Frontend ↔ Backend API 연동 테스트
 
 ### 진행 예정
-- [ ] WebSocket 실시간 알림 시스템
-- [ ] OCR 연동 (Google Vision API)
-- [ ] 약-음식 충돌 룰 엔진 구현
-- [ ] 복약 순응도 리포트 생성
-- [ ] 통합 테스트 및 배포
+- [ ] **Backend**: 단위/통합 테스트 작성
+- [ ] **Backend**: 보안 정보 환경 변수화
+- [ ] **Backend**: N+1 쿼리 최적화 및 캐싱 (Redis)
+- [ ] **Frontend**: WebSocket 실시간 알림
+- [ ] **DevOps**: Docker 컨테이너화 + CI/CD 파이프라인
+- [ ] **QA**: 통합 테스트 및 성능 테스트
+- [ ] **배포**: AWS/GCP 프로덕션 배포
 
-**상세 변경내역**: [CHANGELOG_FRONTEND.md](./documents/CHANGELOG_FRONTEND.md)
+**상세 변경내역**:
+- Frontend: [CHANGELOG_FRONTEND.md](./documents/CHANGELOG_FRONTEND.md)
+- Backend: [CHANGELOG_BACKEND.md](./documents/CHANGELOG_BACKEND.md)
 
 ---
 
