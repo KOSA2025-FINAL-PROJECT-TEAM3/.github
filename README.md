@@ -205,10 +205,11 @@ npm run dev
 - ✅ API 엔드포인트 및 DTO 정의
 - ✅ 와이어프레임 제작 (10개 화면)
 - ✅ 기술 스택 확정
+- ✅ **Auth Service 구현 완료** (Spring Boot 3.4.7, Kakao OAuth 2.0, JWT, CI/CD)
 
 ### 진행 예정
 - [ ] Frontend 개발 (React)
-- [ ] Backend 개발 (Spring Boot)
+- [ ] Backend 개발 (Medication, Family, Diet, Notification, OCR Services)
 - [ ] 실시간 동기화 구현 (Hocuspocus)
 - [ ] OCR 연동 (Google Vision)
 - [ ] 약-음식 충돌 룰 엔진 구현
@@ -246,8 +247,11 @@ npm run dev
 
 ## 📞 연락처
 
-- **GitHub Repository**: [KOSA2025-FINAL-PROJECT-TEAM3/Front](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front)
-- **Backend Repository**: [KOSA2025-FINAL-PROJECT-TEAM3/spring-boot](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot)
+- **GitHub Organization**: [KOSA2025-FINAL-PROJECT-TEAM3](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3)
+- **Frontend Repository**: [Front](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front)
+- **Backend Repositories**:
+  - [auth-service](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/auth-service) - 인증/인가 서비스 (완료 ✅)
+  - [spring-boot](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot) - 기타 마이크로서비스
 
 ---
 

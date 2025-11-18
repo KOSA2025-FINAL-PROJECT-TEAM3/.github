@@ -149,18 +149,44 @@ npm install && npm run dev
 
 **역할**: 인증 및 권한 관리
 
+**Repository**: [auth-service](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/auth-service)
+
 ```yaml
 # 주요 API
-POST /api/auth/register   # 회원가입
-POST /api/auth/login      # 로그인 (JWT 발급)
-POST /api/auth/refresh    # Access Token 갱신
-POST /api/auth/logout     # 로그아웃 (Redis 토큰 무효화)
-GET  /api/auth/me         # 현재 사용자 정보
+POST /api/auth/kakao/login   # 카카오 OAuth 로그인 (JWT 발급)
+POST /api/auth/refresh       # Access Token 갱신
+POST /api/auth/logout        # 로그아웃 (Refresh Token 삭제)
+GET  /api/users/me           # 내 프로필 조회
+PUT  /api/users/me           # 내 프로필 수정
+DELETE /api/users/me         # 계정 비활성화
+
+# OAuth 2.0 Flow
+1. Frontend → Kakao 인가 서버: 인가 코드 요청
+2. Kakao → Frontend: 인가 코드 (code) 반환
+3. Frontend → Auth Service: code + redirectUri 전송
+4. Auth Service → Kakao: code로 액세스 토큰 요청
+5. Kakao → Auth Service: 사용자 정보 반환
+6. Auth Service: JWT 생성 및 사용자 DB 저장/업데이트
+7. Auth Service → Frontend: JWT 토큰 반환
 
 # 기술 스택
-- Spring Security + JWT
-- BCrypt (비밀번호 해싱)
-- Redis (Refresh Token 저장)
+- Spring Boot 3.4.7, Java 21 LTS
+- Spring Security 6.x
+- Kakao OAuth 2.0 (소셜 로그인)
+- JWT (JJWT 0.12.3, Access Token 15분, Refresh Token 7일)
+- MySQL 8.0 (사용자 정보, Refresh Token 저장)
+- Spring Data JPA (Hibernate)
+
+# CI/CD
+- GitHub Actions (Maven 빌드, 테스트, Docker 이미지 빌드)
+- GitHub Container Registry (GHCR)
+- GitOps: k8s-manifests 자동 업데이트 → ArgoCD 배포
+
+# 보안
+- JWT 기반 Stateless 인증
+- Refresh Token DB 저장 (무효화 가능)
+- Spring Security Filter Chain
+- CORS 설정
 ```
 
 ### 5. Medication Service (8082)
