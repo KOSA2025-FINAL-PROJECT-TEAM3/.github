@@ -54,26 +54,63 @@ Front 리포지토리의 **실제 구현 상태**를 반영하여:
 ```
 v3/
 ├── README.md                          # 이 파일 (V3 개요)
-├── IMPLEMENTATION_STATUS.md           # 전체 구현 현황 대시보드
 ├── PHASE_2_PLAN.md                    # Phase 2 작업 계획
-├── features/                          # Feature별 상세 명세
-│   ├── 01-auth.md                     # 인증 (100% 완료)
-│   ├── 02-dashboard.md                # 대시보드 (40% 완료)
-│   ├── 03-medication.md               # 약 관리 (70% 완료)
-│   ├── 04-family.md                   # 가족 관리 (60% 완료)
-│   ├── 05-diet.md                     # 식단 관리 (90% 완료)
-│   ├── 06-disease.md                  # 질병 관리 (90% 완료)
-│   ├── 07-settings.md                 # 설정 (90% 완료)
-│   ├── 08-notification.md             # 알림 (20% 완료)
-│   ├── 09-ocr.md                      # OCR (30% 완료)
-│   ├── 10-chat.md                     # 채팅 (10% 완료)
-│   ├── 11-search.md                   # 검색 (10% 완료)
-│   └── 12-report.md                   # 리포트 (10% 완료)
-└── components/                        # 컴포넌트별 상세 명세
-    ├── pages-implemented.md           # 구현 완료 페이지 목록
-    ├── pages-in-progress.md           # 진행 중 페이지 목록
-    └── pages-not-started.md           # 미착수 페이지 목록
+├── generate_implementation_tracker.py # 구현 상태 추적 JSON 생성 스크립트
+├── implementation-status.json         # 전체 구현 현황 데이터 (자동 생성)
+├── figma-screen-mapping.json          # Figma 화면 ↔ Front 컴포넌트 매핑
+└── component-templates.json           # AI 어시스턴트용 컴포넌트 템플릿
 ```
+
+---
+
+## 📦 생성된 파일 설명
+
+### 1. `generate_implementation_tracker.py` (525 lines)
+**목적**: Front 프로젝트의 실제 구현 상태를 추적하는 JSON 자동 생성
+
+**주요 기능**:
+- 13개 Feature별 구현 현황 정의
+- 파일별 상태 추적 (completed, in_progress, not_started)
+- 가중치 기반 전체 진행률 자동 계산
+- 우선순위 그룹 생성 (Critical, High, Medium, Low)
+- 다음 작업 항목 제안
+
+**사용법**:
+```bash
+cd /home/user/.github/figma-exports/v3
+python3 generate_implementation_tracker.py
+```
+
+### 2. `implementation-status.json` (자동 생성)
+**목적**: 실시간 구현 현황 데이터 (AI 어시스턴트 참고용)
+
+**포함 정보**:
+- 전체 진행률 (56%)
+- Feature별 상세 정보 (파일 수, 상태, Figma 화면 매핑)
+- 우선순위별 Feature 그룹
+- 주차별 다음 작업 항목
+
+### 3. `figma-screen-mapping.json`
+**목적**: 21개 Figma 화면과 Front 컴포넌트 1:1 매핑
+
+**포함 정보**:
+- 각 Figma 화면의 구현 상태
+- 연결된 컴포넌트 파일 경로
+- 구현 날짜 및 진행률
+- 다음 작업 항목 (미완성 화면)
+
+### 4. `component-templates.json`
+**목적**: AI 어시스턴트를 위한 컴포넌트 개발 가이드
+
+**포함 정보**:
+- 디자인 시스템 (색상, 간격, 폰트)
+- 컴포넌트 템플릿 (Page, Card, Form, List, Modal, Dashboard)
+- 코딩 컨벤션 (네이밍, 파일 구조, import 순서)
+- API 연동 가이드
+- 테스팅 가이드라인
+- 접근성 & 성능 최적화
+- 일반적인 문제 해결 방법
+- 유용한 라이브러리 목록
 
 ---
 
