@@ -101,6 +101,18 @@
 
 ---
 
+## 📊 개발 현황
+
+### [CHANGELOG_FRONTEND.md](./CHANGELOG_FRONTEND.md)
+**프론트엔드 개발 변경사항 추적**
+
+- 버전별 변경내역 (Added, Changed, Fixed, Documentation)
+- 완료된 마일스톤 및 현재 진행 상황
+- 기술 부채 및 개선 계획
+- 다음 스프린트 계획
+
+---
+
 ## 👥 페르소나
 
 ### [페르소나설정.md](./페르소나설정.md)

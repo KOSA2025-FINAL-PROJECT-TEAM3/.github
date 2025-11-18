@@ -199,21 +199,42 @@ npm run dev
 ## 🎯 개발 현황
 
 ### 완료된 작업
+
+#### 프로젝트 기획 및 설계
 - ✅ 프로젝트 기획 및 명세 작성
 - ✅ 시스템 아키텍처 설계
 - ✅ 데이터베이스 스키마 설계 (ERD, DDL)
-- ✅ API 엔드포인트 및 DTO 정의
-- ✅ 와이어프레임 제작 (10개 화면)
+- ✅ API 엔드포인트 및 DTO 정의 (40개+)
+- ✅ 와이어프레임 제작 (34개 화면)
 - ✅ 기술 스택 확정
+
+#### Backend 개발
 - ✅ **Auth Service 구현 완료** (Spring Boot 3.4.7, Kakao OAuth 2.0, JWT, CI/CD)
+- ✅ 마이크로서비스 아키텍처 설계 (6개 서비스)
+
+#### Frontend 개발 (v0.1.0)
+- ✅ React 19 + Vite 개발 환경 구축
+- ✅ 인증 시스템 구현 (로그인/회원가입, JWT, RBAC)
+- ✅ 역할 기반 네비게이션 구현 (노인/보호자)
+- ✅ 핵심 페이지 구현 (Diet, Disease, Settings)
+- ✅ Wireframe 페이지 스켈레톤 (34개 화면 구조)
+- ✅ 마이크로서비스 API 클라이언트 인프라
+- ✅ Zustand 상태 관리 설정
+- ✅ Tailwind CSS 디자인 시스템
+
+### 진행 중
+- 🔄 Frontend: Medication, Family, Dashboard 페이지 구현
+- 🔄 Backend: Medication, Family, Diet, Notification, OCR Services
+- 🔄 실시간 동기화 준비 (WebSocket)
 
 ### 진행 예정
-- [ ] Frontend 개발 (React)
-- [ ] Backend 개발 (Medication, Family, Diet, Notification, OCR Services)
-- [ ] 실시간 동기화 구현 (Hocuspocus)
-- [ ] OCR 연동 (Google Vision)
+- [ ] WebSocket 실시간 알림 시스템
+- [ ] OCR 연동 (Google Vision API)
 - [ ] 약-음식 충돌 룰 엔진 구현
+- [ ] 복약 순응도 리포트 생성
 - [ ] 통합 테스트 및 배포
+
+**상세 변경내역**: [CHANGELOG_FRONTEND.md](./documents/CHANGELOG_FRONTEND.md)
 
 ---
 
