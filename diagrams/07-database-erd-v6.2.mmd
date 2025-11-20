@@ -1,4 +1,7 @@
 erDiagram
+    %% ---------------------------------------------------------
+    %% Relationships
+    %% ---------------------------------------------------------
     USERS ||--o{ ADHERENCE_REPORTS : "user_id"
     USERS ||--o{ AUDIT_LOGS : "user_id"
     USERS ||--o{ CHAT_ROOMS : "user_id"
@@ -14,6 +17,8 @@ erDiagram
     USERS ||--o{ USER_ROLES : "user_id"
     USERS ||--o{ DISEASES : "user_id"
     USERS ||--o{ FAMILY_GROUPS : "owner_user_id"
+    USERS ||--o{ FAMILY_INVITES : "issued_by_user_id"
+    USERS ||--o{ FAMILY_INVITES : "used_by_user_id"
 
     CHAT_ROOMS ||--o{ CHAT_MESSAGES : "room_id"
     CHAT_ROOMS ||--o{ CHAT_ROOM_MEMBERS : "room_id"
@@ -21,6 +26,7 @@ erDiagram
     FAMILY_GROUPS ||--o{ FAMILY_MEMBERS : "group_id"
     FAMILY_MEMBERS ||--o{ CHAT_ROOM_MEMBERS : "member_id"
     FAMILY_MEMBERS ||--o{ FAMILY_NOTIFICATIONS : "member_id"
+    FAMILY_GROUPS ||--o{ FAMILY_INVITES : "group_id"
 
     MEDICATIONS ||--o{ MEDICATION_SCHEDULES : "medication_id"
     MEDICATIONS ||--o{ DIET_WARNINGS : "medication_id"
@@ -35,6 +41,12 @@ erDiagram
     ROLES ||--o{ USER_ROLES : "role_id"
 
     DIET_WARNINGS ||--o{ DISEASES : "warning_id"
+
+    FAMILY_INVITES ||..o{ JOBS : "cleanup (batch)"
+
+    %% ---------------------------------------------------------
+    %% Entity Definitions
+    %% ---------------------------------------------------------
 
     USERS {
         bigint user_id PK "사용자 아이디"
@@ -88,21 +100,34 @@ erDiagram
     FAMILY_GROUPS {
         bigint group_id PK "그룹 아이디"
         string name "이름"
-        string invite_code "초대코드"
         bigint owner_user_id FK "그룹장 사용자 아이디"
-        string status "상태(ACTIVE/INACTIVE)"
+        string status "상태(ACTIVE/INACTIVE/ENUM)"
         timestamp created_at "생성일시"
+        timestamp updated_at "수정일시"
     }
 
     FAMILY_MEMBERS {
         bigint member_id PK "구성원 아이디"
         bigint group_id FK "가족그룹 아이디"
         bigint user_id FK "사용자 아이디"
-        string role "역할(CAREGIVER|SENIOR)"
+        string role "역할(CAREGIVER/SENIOR/ENUM)"
         timestamp joined_at "가입일시"
         timestamp created_at "생성일시"
     }
 
+    FAMILY_INVITES {
+        bigint invite_id PK "초대 아이디"
+        bigint group_id FK "그룹 아이디"
+        bigint issued_by_user_id FK "초대 발송자 user_id"
+        string invite_token "1회용 보안토큰(UNIQUE)"
+        string role "역할(CAREGIVER/SENIOR/ENUM)"
+        timestamp expires_at "만료시각(1일)"
+        timestamp used_at "사용시각"
+        bigint used_by_user_id FK "사용자 user_id"
+        timestamp created_at "생성일시"
+        timestamp updated_at "수정일시"
+    }
+    
     CHAT_ROOM_MEMBERS {
         bigint room_member_id PK "채팅방참여자 아이디"
         bigint room_id FK "채팅방 아이디"
