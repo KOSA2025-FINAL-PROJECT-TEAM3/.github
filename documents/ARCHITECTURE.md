@@ -260,7 +260,7 @@ graph TB
 #### Database Layer
 - **MySQL 8.0**: 메인 데이터베이스 (트랜잭션 데이터)
 - **PostgreSQL 16**: 실시간 동기화 (Hocuspocus Y.js CRDT - 선택)
-- **Redis 7+**: 세션, 캐시, WebSocket 세션 관리
+- **Redis 7+**: 세션, 캐시, WebSocket 세션 관리, **Refresh Token 저장**
 
 **데이터베이스 분리 전략**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-데이터베이스-분리-전략) 참조
 
@@ -1007,6 +1007,8 @@ Mermaid 코드 블록을 복사해서 붙여넣기
 - **AI/Vector**: Spring AI 1.0.3 (Redis Vector Store)
 - **인프라**: Nginx Gateway + Docker Compose
 - **MSA 인증**: Nginx auth_request → X-User-* 헤더 전달 → SecurityUtil 추출
+- **Auth Service 빌드**: Gradle 8.x (Maven에서 변경)
+- **Refresh Token**: Redis에 저장 (MySQL refresh_tokens 테이블 제거)
 
 ---
 

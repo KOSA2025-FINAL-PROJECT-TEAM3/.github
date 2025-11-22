@@ -42,12 +42,18 @@
 
 ### 비즈니스 서비스 레이어 (2개 - 통합 구조)
 
-| 서비스 | 포트 | 주요 기능 | 데이터베이스 | ORM |
-|--------|------|-----------|--------------|-----|
-| **Auth Service** | 8081 | 회원가입, 로그인, JWT 발급, 사용자 관리 | MySQL + Redis | JPA |
-| **Core Service** | 8082 | 약/가족/식단/알림/OCR 통합 서비스 | MySQL | **MyBatis 3.0.3** |
+| 서비스 | 포트 | 주요 기능 | 데이터베이스 | ORM | 빌드 도구 |
+|--------|------|-----------|--------------|-----|----------|
+| **Auth Service** | 8081 | 회원가입, 로그인, JWT 발급, 사용자 관리 | MySQL + **Redis** | JPA | **Gradle** |
+| **Core Service** | 8082 | 약/가족/식단/알림/OCR 통합 서비스 | MySQL | **MyBatis 3.0.3** | Gradle |
 
 > **아키텍처 변경**: 기존 6개 마이크로서비스에서 2개(Auth + Core)로 통합. Core Service는 Clean Architecture + MyBatis 기반으로 구현.
+>
+> **Auth Service 변경사항 (v2.0)**:
+> - 빌드 도구: Maven → **Gradle**
+> - RefreshToken 저장소: MySQL → **Redis**
+> - API 경로: `/api/auth/*` → `/auth/*`, `/api/users/*` → `/users/*`
+> - User Entity: `role` → `userRole` + `customerRole`
 
 ### 실시간 동기화 레이어 (1개)
 
@@ -150,13 +156,16 @@ npm install && npm run dev
 **Repository**: [auth-service](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/auth-service)
 
 ```yaml
-# 주요 API
-POST /api/auth/kakao/login   # 카카오 OAuth 로그인 (JWT 발급)
-POST /api/auth/refresh       # Access Token 갱신
-POST /api/auth/logout        # 로그아웃 (Refresh Token 삭제)
-GET  /api/users/me           # 내 프로필 조회
-PUT  /api/users/me           # 내 프로필 수정
-DELETE /api/users/me         # 계정 비활성화
+# 주요 API (경로 변경: /api/auth/* → /auth/*)
+POST /auth/login             # 일반 로그인 (이메일/비밀번호)
+POST /auth/signup            # 회원가입 (자동 로그인)
+POST /auth/kakao-login       # 카카오 OAuth 로그인
+POST /auth/select-role       # 역할 선택 (시니어/케어기버)
+POST /auth/refresh           # Access Token 갱신
+POST /auth/logout            # 로그아웃 (Refresh Token 삭제)
+GET  /users/me               # 내 프로필 조회
+PUT  /users/me               # 내 프로필 수정
+DELETE /users/me             # 계정 비활성화
 
 # OAuth 2.0 Flow
 1. Frontend → Kakao 인가 서버: 인가 코드 요청
@@ -167,22 +176,39 @@ DELETE /api/users/me         # 계정 비활성화
 6. Auth Service: JWT 생성 및 사용자 DB 저장/업데이트
 7. Auth Service → Frontend: JWT 토큰 반환
 
-# 기술 스택
+# 기술 스택 (변경됨)
 - Spring Boot 3.4.7, Java 21 LTS
 - Spring Security 6.x
 - Kakao OAuth 2.0 (소셜 로그인)
 - JWT (JJWT 0.12.3, Access Token 15분, Refresh Token 7일)
-- MySQL 8.0 (사용자 정보, Refresh Token 저장)
+- MySQL 8.0 (사용자 정보)
+- Redis 6.0+ (Refresh Token 저장) ← 변경됨
 - Spring Data JPA (Hibernate)
+- Spring Data Redis ← 추가됨
+- Gradle 8.x ← Maven에서 변경됨
 
-# CI/CD
-- GitHub Actions (Maven 빌드, 테스트, Docker 이미지 빌드)
+# User Entity 필드 변경
+- role → userRole (시스템 역할: ROLE_USER, ROLE_ADMIN)
+- customerRole 추가 (고객 역할: SENIOR, CAREGIVER)
+- passwordHash 추가 (일반 로그인용)
+
+# JWT Claims 변경
+- userId, name, email, profileImage
+- userRole (기존 role에서 변경)
+- customerRole (신규)
+- type (ACCESS/REFRESH)
+
+# CI/CD (Gradle로 변경)
+- GitHub Actions (Gradle 빌드, 테스트, Docker 이미지 빌드)
+- 빌드 명령어: ./gradlew clean build -x test --no-daemon
+- 테스트 명령어: ./gradlew test --no-daemon
+- JAR 경로: build/libs/auth-service-1.0.0.jar
 - GitHub Container Registry (GHCR)
 - GitOps: k8s-manifests 자동 업데이트 → ArgoCD 배포
 
 # 보안
 - JWT 기반 Stateless 인증
-- Refresh Token DB 저장 (무효화 가능)
+- Refresh Token Redis 저장 (무효화 가능)
 - Spring Security Filter Chain
 - CORS 설정
 ```
