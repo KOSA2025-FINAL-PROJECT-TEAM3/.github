@@ -34,20 +34,26 @@
 
 ### 인프라 레이어 (3개)
 
-| 서비스 | 포트 | 역할 | 기술 스택 |
-|--------|------|------|-----------|
-| **API Gateway** | 8080 | 단일 진입점, 라우팅, 인증 | Spring Cloud Gateway |
-| **Eureka Server** | 8761 | 서비스 디스커버리 | Spring Cloud Netflix Eureka |
-| **Config Server** | 8888 | 중앙 설정 관리 | Spring Cloud Config |
+| 서비스 | 포트 | 역할 | 기술 스택 | 상태 |
+|--------|------|------|-----------|------|
+| **API Gateway** | 8080 | JWT 인증, 11개 서비스 라우팅, Circuit Breaker | Spring Cloud Gateway, Resilience4j, Redis, Kafka | ✅ 구현 완료 |
+| **Eureka Server** | 8761 | 서비스 디스커버리 | Spring Cloud Netflix Eureka | ⚠️ 예정 |
+| **Config Server** | 8888 | 중앙 설정 관리 | Spring Cloud Config | ⚠️ 예정 |
 
 ### 비즈니스 서비스 레이어 (2개 - 통합 구조)
 
-| 서비스 | 포트 | 주요 기능 | 데이터베이스 | ORM |
-|--------|------|-----------|--------------|-----|
-| **Auth Service** | 8081 | 회원가입, 로그인, JWT 발급, 사용자 관리 | MySQL + Redis | JPA |
-| **Core Service** | 8082 | 약/가족/식단/알림/OCR 통합 서비스 | MySQL | **MyBatis 3.0.3** |
+| 서비스 | 포트 | 주요 기능 | 데이터베이스 | ORM | 빌드 도구 |
+|--------|------|-----------|--------------|-----|----------|
+| **Auth Service** | 8081 | 회원가입, 로그인, JWT 발급, 사용자 관리 | MySQL + **Redis** | JPA | **Gradle** |
+| **Core Service** | 8082 | 약/가족/식단/알림/OCR 통합 서비스 | MySQL | **MyBatis 3.0.3** | Gradle |
 
 > **아키텍처 변경**: 기존 6개 마이크로서비스에서 2개(Auth + Core)로 통합. Core Service는 Clean Architecture + MyBatis 기반으로 구현.
+>
+> **Auth Service 변경사항 (v2.0)**:
+> - 빌드 도구: Maven → **Gradle**
+> - RefreshToken 저장소: MySQL → **Redis**
+> - API 경로: `/api/auth/*` → `/auth/*`, `/api/users/*` → `/users/*`
+> - User Entity: `role` → `userRole` + `customerRole`
 
 ### 실시간 동기화 레이어 (1개)
 
@@ -141,6 +147,92 @@ npm install && npm run dev
 
 ---
 
+### API Gateway (8080) - 구현 완료
+
+**역할**: JWT 인증, 마이크로서비스 라우팅, 장애 격리
+
+**Repository**: [spring-cloud-api-gateway](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-cloud-api-gateway)
+
+```yaml
+# 기술 스택
+- Java 21
+- Spring Boot 3.4.7
+- Spring Cloud 2024.0.2
+- Spring Cloud Gateway (WebFlux 기반)
+- Redis 7 (Reactive 캐싱)
+- Kafka (이벤트 발행)
+- Resilience4j 2.1.0 (Circuit Breaker)
+- JJWT 0.12.6 (JWT 검증)
+- Gradle 8.7
+
+# 프로젝트 구조
+src/main/java/com/amapill/gateway/
+├── GatewayApplication.java
+├── config/
+│   ├── CircuitBreakerConfig.java
+│   └── KafkaConfig.java
+├── controller/
+│   └── FallbackController.java
+├── event/
+│   ├── GatewayRequestEvent.java
+│   └── GatewayEventProducer.java
+├── filter/
+│   ├── GatewayJwtAuthenticationFilter.java
+│   ├── KafkaLoggingFilter.java
+│   └── CacheableResponseFilter.java
+└── service/
+    └── JwtService.java
+
+# 마이크로서비스 라우팅 (11개)
+/api/auth/**         → Auth Service (8081)
+/api/family/**       → Core Service (8082)
+/ws/**               → Core Service WebSocket (8082)
+/api/medications/**  → Core Service (8082)
+/api/diet/**         → Core Service (8082)
+/api/ocr/**          → Core Service (8082)
+/api/chat/**         → Core Service (8082)
+/api/search/**       → Core Service (8082)
+/api/disease/**      → Core Service (8082)
+/api/counsel/**      → Core Service (8082)
+/api/notifications/**→ Core Service (8082)
+/api/reports/**      → Core Service (8082)
+
+# 인증 제외 경로
+- /api/auth/login, /api/auth/signup, /api/auth/kakao-login, /api/auth/refresh
+- /actuator/health, /health
+
+# X-User-* 헤더 주입 (9개)
+- X-User-Id, X-User-Email, X-User-Name, X-User-Profile-Image
+- X-User-Role, X-Customer-Role
+- X-Token-Subject, X-Token-Type, X-Request-Id
+
+# Circuit Breaker 설정
+| 서비스 | Failure Rate | Wait Duration |
+|--------|--------------|---------------|
+| 기본 (10개) | 50% | 10초 |
+| ocr-service | 60% | 15초 |
+
+# 환경 변수
+JWT_SECRET: JWT 서명 시크릿 (Base64)
+KAFKA_BOOTSTRAP: Kafka 부트스트랩 서버 (localhost:9092)
+REDIS_HOST: Redis 호스트 (localhost)
+REDIS_PORT: Redis 포트 (6379)
+REDIS_PASSWORD: Redis 비밀번호 (redis123)
+
+# 구현 완료 항목
+✅ JWT 인증 필터 (GatewayJwtAuthenticationFilter)
+✅ JWT 토큰 검증 서비스 (JwtService)
+✅ 11개 마이크로서비스 라우팅 설정
+✅ Circuit Breaker 설정 (Resilience4j)
+✅ Fallback 컨트롤러
+✅ Kafka 이벤트 발행 (요청/응답/에러)
+✅ Redis 응답 캐싱
+✅ CORS 설정
+✅ Actuator 메트릭 (Prometheus)
+```
+
+---
+
 ### 비즈니스 서비스
 
 ### 1. Auth Service (8081)
@@ -150,13 +242,16 @@ npm install && npm run dev
 **Repository**: [auth-service](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/auth-service)
 
 ```yaml
-# 주요 API
-POST /api/auth/kakao/login   # 카카오 OAuth 로그인 (JWT 발급)
-POST /api/auth/refresh       # Access Token 갱신
-POST /api/auth/logout        # 로그아웃 (Refresh Token 삭제)
-GET  /api/users/me           # 내 프로필 조회
-PUT  /api/users/me           # 내 프로필 수정
-DELETE /api/users/me         # 계정 비활성화
+# 주요 API (경로 변경: /api/auth/* → /auth/*)
+POST /auth/login             # 일반 로그인 (이메일/비밀번호)
+POST /auth/signup            # 회원가입 (자동 로그인)
+POST /auth/kakao-login       # 카카오 OAuth 로그인
+POST /auth/select-role       # 역할 선택 (시니어/케어기버)
+POST /auth/refresh           # Access Token 갱신
+POST /auth/logout            # 로그아웃 (Refresh Token 삭제)
+GET  /users/me               # 내 프로필 조회
+PUT  /users/me               # 내 프로필 수정
+DELETE /users/me             # 계정 비활성화
 
 # OAuth 2.0 Flow
 1. Frontend → Kakao 인가 서버: 인가 코드 요청
@@ -167,22 +262,39 @@ DELETE /api/users/me         # 계정 비활성화
 6. Auth Service: JWT 생성 및 사용자 DB 저장/업데이트
 7. Auth Service → Frontend: JWT 토큰 반환
 
-# 기술 스택
+# 기술 스택 (변경됨)
 - Spring Boot 3.4.7, Java 21 LTS
 - Spring Security 6.x
 - Kakao OAuth 2.0 (소셜 로그인)
 - JWT (JJWT 0.12.3, Access Token 15분, Refresh Token 7일)
-- MySQL 8.0 (사용자 정보, Refresh Token 저장)
+- MySQL 8.0 (사용자 정보)
+- Redis 6.0+ (Refresh Token 저장) ← 변경됨
 - Spring Data JPA (Hibernate)
+- Spring Data Redis ← 추가됨
+- Gradle 8.x ← Maven에서 변경됨
 
-# CI/CD
-- GitHub Actions (Maven 빌드, 테스트, Docker 이미지 빌드)
+# User Entity 필드 변경
+- role → userRole (시스템 역할: ROLE_USER, ROLE_ADMIN)
+- customerRole 추가 (고객 역할: SENIOR, CAREGIVER)
+- passwordHash 추가 (일반 로그인용)
+
+# JWT Claims 변경
+- userId, name, email, profileImage
+- userRole (기존 role에서 변경)
+- customerRole (신규)
+- type (ACCESS/REFRESH)
+
+# CI/CD (Gradle로 변경)
+- GitHub Actions (Gradle 빌드, 테스트, Docker 이미지 빌드)
+- 빌드 명령어: ./gradlew clean build -x test --no-daemon
+- 테스트 명령어: ./gradlew test --no-daemon
+- JAR 경로: build/libs/auth-service-1.0.0.jar
 - GitHub Container Registry (GHCR)
 - GitOps: k8s-manifests 자동 업데이트 → ArgoCD 배포
 
 # 보안
 - JWT 기반 Stateless 인증
-- Refresh Token DB 저장 (무효화 가능)
+- Refresh Token Redis 저장 (무효화 가능)
 - Spring Security Filter Chain
 - CORS 설정
 ```

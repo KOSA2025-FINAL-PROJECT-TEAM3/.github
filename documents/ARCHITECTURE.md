@@ -45,12 +45,16 @@
 4. Nginx → Core Service: `X-User-*` 헤더로 사용자 정보 전달
 5. Core Service: `SecurityUtil`로 헤더에서 사용자 정보 추출
 
-**전달되는 헤더**:
+**전달되는 헤더 (9개)**:
 - `X-User-Id`: 사용자 PK
 - `X-User-Email`: 이메일
 - `X-User-Name`: 이름
-- `X-User-Role`: 시스템 역할
-- `X-Customer-Role`: 고객 역할
+- `X-User-Profile-Image`: 프로필 이미지 URL
+- `X-User-Role`: 시스템 역할 (ROLE_USER, ROLE_ADMIN)
+- `X-Customer-Role`: 고객 역할 (SENIOR, CAREGIVER)
+- `X-Token-Subject`: 토큰 subject
+- `X-Token-Type`: 토큰 타입 (ACCESS)
+- `X-Request-Id`: 요청 추적 ID
 
 ### SecurityUtil 사용법
 
@@ -260,7 +264,7 @@ graph TB
 #### Database Layer
 - **MySQL 8.0**: 메인 데이터베이스 (트랜잭션 데이터)
 - **PostgreSQL 16**: 실시간 동기화 (Hocuspocus Y.js CRDT - 선택)
-- **Redis 7+**: 세션, 캐시, WebSocket 세션 관리
+- **Redis 7+**: 세션, 캐시, WebSocket 세션 관리, **Refresh Token 저장**
 
 **데이터베이스 분리 전략**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-데이터베이스-분리-전략) 참조
 
@@ -709,34 +713,56 @@ mindmap
 
 ## 🏗️ Spring Cloud 컴포넌트 상세 설명
 
-### 1. API Gateway (Spring Cloud Gateway)
+### 1. API Gateway (Spring Cloud Gateway) - 구현 완료
 
 #### 역할
 - **단일 진입점**: 모든 클라이언트 요청의 단일 엔드포인트
-- **라우팅**: 요청 경로에 따라 적절한 마이크로서비스로 전달
-- **인증/인가**: JWT 토큰 검증 (Auth Service와 연동)
-- **로드 밸런싱**: Eureka와 통합하여 서비스 인스턴스 간 부하 분산
-- **Rate Limiting**: API 호출 제한
+- **JWT 인증**: Gateway에서 직접 HS512 알고리즘 기반 Access 토큰 검증
+- **마이크로서비스 라우팅**: 11개 백엔드 서비스로의 동적 라우팅
+- **Circuit Breaker**: Resilience4j 기반 서비스별 장애 격리
+- **응답 캐싱**: Redis 기반 GET 요청 응답 캐싱
+- **이벤트 로깅**: Kafka를 통한 요청/응답/에러 이벤트 발행
+- **CORS 지원**
+- **모니터링**: Actuator 및 Prometheus 메트릭
 
-#### 라우팅 규칙 예시
-```yaml
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: auth-service
-          uri: lb://AUTH-SERVICE
-          predicates:
-            - Path=/api/auth/**
-        - id: medication-service
-          uri: lb://MEDICATION-SERVICE
-          predicates:
-            - Path=/api/medications/**
-        - id: family-service
-          uri: lb://FAMILY-SERVICE
-          predicates:
-            - Path=/api/families/**
-```
+#### 기술 스택
+- Spring Cloud Gateway (WebFlux 기반)
+- Redis 7 (Reactive 캐싱)
+- Kafka (이벤트 발행)
+- Resilience4j 2.1.0 (Circuit Breaker)
+- JJWT 0.12.6 (JWT 검증)
+
+#### 마이크로서비스 라우팅 (11개)
+| 경로 | 대상 서비스 | 포트 |
+|------|-------------|------|
+| `/api/auth/**` | Auth Service | 8081 |
+| `/api/family/**` | Family Service (Core) | 8082 |
+| `/ws/**` | Family Service (WebSocket) | 8082 |
+| `/api/medications/**` | Medication Service (Core) | 8082 |
+| `/api/diet/**` | Diet Service (Core) | 8082 |
+| `/api/ocr/**` | OCR Service (Core) | 8082 |
+| `/api/chat/**` | Chat Service (Core) | 8082 |
+| `/api/search/**` | Search Service (Core) | 8082 |
+| `/api/disease/**` | Disease Service (Core) | 8082 |
+| `/api/counsel/**` | Counsel Service (Core) | 8082 |
+| `/api/notifications/**` | Notification Service (Core) | 8082 |
+| `/api/reports/**` | Report Service (Core) | 8082 |
+
+#### X-User-* 헤더 주입 (9개)
+Gateway에서 JWT 검증 후 백엔드 서비스로 전달하는 헤더:
+- `X-User-Id`: 사용자 PK
+- `X-User-Email`: 이메일
+- `X-User-Name`: 이름
+- `X-User-Profile-Image`: 프로필 이미지 URL
+- `X-User-Role`: 시스템 역할 (ROLE_USER, ROLE_ADMIN)
+- `X-Customer-Role`: 고객 역할 (SENIOR, CAREGIVER)
+- `X-Token-Subject`: 토큰 subject
+- `X-Token-Type`: 토큰 타입 (ACCESS)
+- `X-Request-Id`: 요청 추적 ID
+
+#### 인증 제외 경로
+- `/api/auth/login`, `/api/auth/signup`, `/api/auth/kakao-login`, `/api/auth/refresh`
+- `/actuator/health`, `/health`
 
 #### 포트 구성
 **전체 포트 목록**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-9-stack-구성) 참조
@@ -1005,8 +1031,11 @@ Mermaid 코드 블록을 복사해서 붙여넣기
 - **React Native 금지**: 웹 앱만 사용
 - **ORM**: MyBatis 3.0.3 (JPA 대신 사용, 동적 SQL 지원)
 - **AI/Vector**: Spring AI 1.0.3 (Redis Vector Store)
-- **인프라**: Nginx Gateway + Docker Compose
-- **MSA 인증**: Nginx auth_request → X-User-* 헤더 전달 → SecurityUtil 추출
+- **인프라**: Spring Cloud Gateway + Docker Compose
+- **MSA 인증**: Gateway JWT 검증 → X-User-* 헤더 주입 (9개) → SecurityUtil 추출
+- **API Gateway**: 구현 완료 (11개 라우팅, Circuit Breaker, Redis 캐싱, Kafka 이벤트)
+- **Auth Service 빌드**: Gradle 8.x (Maven에서 변경)
+- **Refresh Token**: Redis에 저장 (MySQL refresh_tokens 테이블 제거)
 
 ---
 

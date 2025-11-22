@@ -266,6 +266,63 @@ git commit -m "✏️ Comment: MedicationCard 컴포넌트 주석 추가"
   ❌ const clickButton = () => { };
   ```
 
+#### 9. Zustand Store
+- **규칙**: camelCase + `Store` 접미사 + `.js`
+- **예시**:
+  ```javascript
+  ✅ authStore.js
+  ✅ medicationStore.js
+  ✅ toastStore.js
+
+  ❌ AuthStore.js  // PascalCase 사용
+  ❌ auth.store.js  // 점 사용
+  ```
+
+#### 10. Context
+- **규칙**: PascalCase + `Context` 접미사 + `.jsx`
+- **예시**:
+  ```javascript
+  ✅ FamilyContext.jsx
+  ✅ ThemeContext.jsx
+
+  ❌ familyContext.jsx  // camelCase 사용
+  ```
+
+#### 11. API Client
+- **규칙**: camelCase + `ApiClient` 접미사 + `.js`
+- **예시**:
+  ```javascript
+  ✅ authApiClient.js
+  ✅ medicationApiClient.js
+  ✅ ocrApiClient.js
+
+  ❌ AuthApiClient.js  // PascalCase 사용
+  ❌ auth-api-client.js  // kebab-case 사용
+  ```
+
+#### 12. Service
+- **규칙**: camelCase + `Service` 접미사 + `.js`
+- **예시**:
+  ```javascript
+  ✅ familyService.js
+  ✅ notificationService.js
+
+  ❌ FamilyService.js  // PascalCase 사용
+  ```
+
+#### Frontend 파일 네이밍 요약표
+
+| 대상 | 규칙 | 예시 |
+|------|------|------|
+| 컴포넌트 | PascalCase + `.jsx` | `MedicationCard.jsx` |
+| Hooks | camelCase + `use` prefix + `.js` | `useMedications.js` |
+| Zustand Store | camelCase + `Store` suffix + `.js` | `authStore.js` |
+| Context | PascalCase + `Context` suffix + `.jsx` | `FamilyContext.jsx` |
+| Service | camelCase + `Service` suffix + `.js` | `familyService.js` |
+| API Client | camelCase + `ApiClient` suffix + `.js` | `authApiClient.js` |
+| Utils | camelCase + `.js` | `formatting.js` |
+| Constants | UPPER_SNAKE_CASE | `API_ENDPOINTS` |
+
 ---
 
 ### Backend (Java)

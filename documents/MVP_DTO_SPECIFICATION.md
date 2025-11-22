@@ -56,16 +56,20 @@
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|
-| POST | `/api/auth/login` | 일반 로그인 (이메일/비밀번호) | ✅ |
-| POST | `/api/auth/signup` | 일반 회원가입 | ✅ |
-| POST | `/api/auth/kakao-login` | 카카오 OAuth 로그인 | ✅ |
-| POST | `/api/auth/select-role` | 역할 선택 (시니어/케어기버) | ✅ |
-| POST | `/api/auth/logout` | 로그아웃 | ✅ |
-| POST | `/api/auth/refresh` | 토큰 갱신 | ⚠️ 예정 |
+| POST | `/auth/login` | 일반 로그인 (이메일/비밀번호) | ✅ |
+| POST | `/auth/signup` | 일반 회원가입 (자동 로그인) | ✅ |
+| POST | `/auth/kakao-login` | 카카오 OAuth 로그인 | ✅ |
+| POST | `/auth/select-role` | 역할 선택 (시니어/케어기버) | ✅ |
+| POST | `/auth/logout` | 로그아웃 | ✅ |
+| POST | `/auth/refresh` | 토큰 갱신 | ✅ |
+| GET | `/users/me` | 내 프로필 조회 | ✅ |
+| PUT | `/users/me` | 내 프로필 수정 | ✅ |
+| DELETE | `/users/me` | 계정 비활성화 | ⚠️ 예정 |
 
 **참고**:
-- 사용자 정보는 Zustand authStore에서 관리 (별도 조회 불필요)
-- `/api/users/me` 엔드포인트는 authStore.user 사용으로 대체
+- **API 경로 변경**: `/api/auth/*` → `/auth/*`, `/api/users/*` → `/users/*`
+- RefreshToken은 **Redis**에 저장 (MySQL refresh_tokens 테이블 제거)
+- JWT Claims에 `userRole`, `customerRole`, `profileImage` 추가
 
 ### 2. Family (가족 관리) - MVP 1순위
 
@@ -73,7 +77,7 @@
 |--------|----------|------|-----|
 | GET | `/api/family/` | 가족 그룹 & 멤버 조회 (통합) | ✅ |
 | POST | `/api/family/invite` | 가족 구성원 초대 | ✅ |
-| DELETE | `/api/family/members/{memberId}` | 가족 구성원 제거 | ✅ |
+| DELETE | `/api/family/members/{id}` | 가족 구성원 제거 | ✅ |
 
 **참고**: Zustand store 최적화를 위해 그룹과 멤버 정보를 한 번의 API 호출로 통합 제공
 
@@ -210,17 +214,34 @@
     "id": 1,
     "email": "senior@example.com",
     "name": "김시니어",
-    "role": "senior"
+    "profileImage": "https://k.kakaocdn.net/...",
+    "userRole": "ROLE_USER",
+    "customerRole": "SENIOR"
   }
 }
 ```
 
 **필드 설명**
 - `accessToken` (string): JWT 액세스 토큰 (유효기간 15분)
-- `refreshToken` (string): JWT 리프레시 토큰 (유효기간 7일)
+- `refreshToken` (string): JWT 리프레시 토큰 (유효기간 7일, **Redis 저장**)
 - `tokenType` (string): 토큰 타입 ("Bearer")
 - `expiresIn` (number): 만료 시간(초)
 - `user` (object): 사용자 정보
+  - `userRole` (string): 시스템 역할 (`ROLE_USER`, `ROLE_ADMIN`)
+  - `customerRole` (string): 고객 역할 (`SENIOR`, `CAREGIVER`)
+
+**JWT Access Token Claims**:
+```json
+{
+  "userId": 1,
+  "name": "김시니어",
+  "email": "senior@example.com",
+  "profileImage": "https://k.kakaocdn.net/...",
+  "userRole": "ROLE_USER",
+  "customerRole": "SENIOR",
+  "type": "ACCESS"
+}
+```
 
 ---
 
@@ -264,10 +285,16 @@
   "email": "senior@example.com",
   "name": "김시니어",
   "phone": "010-9876-5432",
-  "role": "senior",
+  "profileImage": "https://k.kakaocdn.net/...",
+  "userRole": "ROLE_USER",
+  "customerRole": "SENIOR",
   "createdAt": "2025-11-05T10:00:00Z"
 }
 ```
+
+**필드 변경 사항** (auth-service v2.0):
+- `role` → `userRole` + `customerRole`로 분리
+- `profileImage` 필드 추가
 
 ---
 
@@ -884,9 +911,26 @@ image: [File]
 Authorization: Bearer <accessToken>
 ```
 
-- Access Token: 15분 유효
-- Refresh Token: 7일 유효
-- Redis에 블랙리스트 관리
+- **Access Token**: 15분 유효
+- **Refresh Token**: 7일 유효, **Redis에 저장** (MySQL에서 이관)
+- **블랙리스트**: Redis에서 관리
+
+#### JWT Claims 구조 (변경됨)
+```json
+{
+  "userId": 1,
+  "name": "김시니어",
+  "email": "senior@example.com",
+  "profileImage": "https://k.kakaocdn.net/...",
+  "userRole": "ROLE_USER",
+  "customerRole": "SENIOR",
+  "type": "ACCESS",
+  "iat": 1700000000,
+  "exp": 1700000900
+}
+```
+
+> **주의**: 기존 `role` 필드가 `userRole` + `customerRole`로 분리됨
 
 ### 에러 코드
 
@@ -909,11 +953,13 @@ Authorization: Bearer <accessToken>
 |------|------|----------|
 | 1.0 | 2025-11-05 | 초안 작성 |
 | 2.0 | 2025-11-14 | 프론트엔드 실제 구현 기준으로 업데이트 (Zustand 아키텍처 반영) |
+| 2.1 | 2025-11-22 | auth-service 변경 반영 (API 경로, JWT Claims, Redis RefreshToken) |
+| 2.2 | 2025-11-22 | Family API 경로 일관성 수정 ({memberId} → {id}) |
 
 ---
 
-**문서 버전**: 2.0
-**최종 수정일**: 2025-11-14
+**문서 버전**: 2.2
+**최종 수정일**: 2025-11-22
 **작성자**: AMApill 개발팀 (구 뭐냑?)
 **프로젝트명**: AMApill (구 SilverCare)
 **노션 복사 가능**: ✅
