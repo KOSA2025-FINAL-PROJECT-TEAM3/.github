@@ -77,7 +77,7 @@
 |--------|----------|------|-----|
 | GET | `/api/family/` | 가족 그룹 & 멤버 조회 (통합) | ✅ |
 | POST | `/api/family/invite` | 가족 구성원 초대 | ✅ |
-| DELETE | `/api/family/members/{memberId}` | 가족 구성원 제거 | ✅ |
+| DELETE | `/api/family/members/{id}` | 가족 구성원 제거 | ✅ |
 
 **참고**: Zustand store 최적화를 위해 그룹과 멤버 정보를 한 번의 API 호출로 통합 제공
 
@@ -954,10 +954,11 @@ Authorization: Bearer <accessToken>
 | 1.0 | 2025-11-05 | 초안 작성 |
 | 2.0 | 2025-11-14 | 프론트엔드 실제 구현 기준으로 업데이트 (Zustand 아키텍처 반영) |
 | 2.1 | 2025-11-22 | auth-service 변경 반영 (API 경로, JWT Claims, Redis RefreshToken) |
+| 2.2 | 2025-11-22 | Family API 경로 일관성 수정 ({memberId} → {id}) |
 
 ---
 
-**문서 버전**: 2.1
+**문서 버전**: 2.2
 **최종 수정일**: 2025-11-22
 **작성자**: AMApill 개발팀 (구 뭐냑?)
 **프로젝트명**: AMApill (구 SilverCare)
