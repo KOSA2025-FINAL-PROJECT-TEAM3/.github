@@ -28,8 +28,8 @@
 
 | 역할 | 담당 기술 | GitHub |
 |------|----------|--------|
-| **Frontend Lead** | React 19, Vite, Hocuspocus, Y.js CRDT | [@팀원1](https://github.com/팀원1) |
-| **Backend Lead + AI** | Spring Boot 3, Microservices, OCR, Kafka | [@팀원2](https://github.com/팀원2) |
+| **Frontend Lead** | React 19, Vite, Hocuspocus (공동편집), Y.js CRDT | [@팀원1](https://github.com/팀원1) |
+| **Backend Lead + AI** | Spring Boot 3, Auth/Core Service, OCR, Kafka | [@팀원2](https://github.com/팀원2) |
 | **Database + DevOps** | MySQL 8.0, PostgreSQL 16, Redis, Docker | [@팀원3](https://github.com/팀원3) |
 
 ---
@@ -89,7 +89,8 @@
 
 ### Frontend
 - **Framework**: React 19 + Vite (JSX only)
-- **실시간 동기화**: Hocuspocus + TipTap + Y.js CRDT
+- **실시간 통신**: STOMP WebSocket Client (알림, 상태 동기화)
+- **공동편집**: Hocuspocus (공동편집) + TipTap + Y.js CRDT
 - **스타일링**: SCSS / CSS Modules
 
 ### Backend (Microservices Architecture)
@@ -100,23 +101,23 @@
 - **메시징**: Apache Kafka
 
 #### Spring Cloud Components
-- **API Gateway**: Spring Cloud Gateway (라우팅, 인증, 로드 밸런싱)
-- **Service Discovery**: Eureka Server (서비스 등록/조회)
-- **Config Server**: 중앙 설정 관리 (Git 기반)
-- **Service Communication**: OpenFeign (마이크로서비스 간 통신)
+- **API Gateway (8080)**: Spring Cloud Gateway - JWT 검증, 라우팅, Circuit Breaker
+- **Eureka Server / Config Server**: 미사용
 
-#### Microservices
-1. **Auth Service** (8081): 인증/인가, JWT 토큰 관리
-2. **Medication Service** (8082): 약 관리, 복용 일정
-3. **Family Service** (8083): 가족 네트워크, 권한 관리
-4. **Diet Service** (8084): 식단 관리, 약-음식 충돌 검사
-5. **Notification Service** (8085): 알림 발송
-6. **OCR Service** (8086): 약봉지 OCR 처리
+#### Microservices (2개 서비스)
+1. **Auth Service** (8081): 인증/인가, JWT 토큰 관리, 카카오 OAuth
+2. **Core Service** (8082): 통합 비즈니스 로직 (가족, 약물, 식단, OCR, 채팅, 검색, 질병, 상담, 알림, 리포트)
+
+### 실시간 통신
+| 용도 | 기술 | 설명 |
+|------|------|------|
+| 알림/상태 동기화 | Spring WebSocket/STOMP + Kafka | 서버 → 클라이언트 푸시 |
+| 공동편집 (게시글 편집) | Hocuspocus + Y.js CRDT | 실시간 문서 동기화, 충돌 자동 해결 |
 
 ### Database (이중화 구조)
 - **트랜잭션 DB**: MySQL 8.0 (사용자, 약, 가족, 식단)
-- **실시간 동기화 DB**: PostgreSQL 16 (Hocuspocus Y.js CRDT)
-- **캐싱**: Redis 7+
+- **실시간 동기화 DB**: PostgreSQL 16 (Hocuspocus Y.js CRDT - 공동편집용)
+- **캐싱**: Redis 7+ (세션, Refresh Token)
 
 ### External API
 - **OCR**: Google Vision API / Tesseract.js

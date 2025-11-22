@@ -18,27 +18,28 @@
 
 ## 🎯 아키텍처 개요
 
-뭐냑?는 **9개의 독립적인 서비스**로 구성된 마이크로서비스 아키텍처를 채택합니다.
+뭐냑?는 **2개의 핵심 서비스 (Auth + Core)**로 구성된 마이크로서비스 아키텍처를 채택합니다.
 
 ### 핵심 원칙
 
-1. **단일 책임 원칙**: 각 서비스는 하나의 비즈니스 도메인만 담당
-2. **데이터베이스 분리**: MySQL(트랜잭션) + PostgreSQL(실시간 동기화)
+1. **통합 서비스 구조**: Auth Service (인증) + Core Service (비즈니스 로직)
+2. **데이터베이스 분리**: MySQL(트랜잭션) + PostgreSQL(공동편집 동기화)
 3. **이벤트 기반 통신**: Kafka를 통한 비동기 메시징
 4. **독립 배포**: 각 서비스는 독립적으로 배포 가능
 5. **수평 확장**: 부하에 따라 개별 서비스 스케일 아웃
+6. **Eureka/Config Server 미사용**: 직접 라우팅 방식 채택
 
 ---
 
 ## 📦 9-Stack 구성
 
-### 인프라 레이어 (3개)
+### 인프라 레이어 (1개)
 
 | 서비스 | 포트 | 역할 | 기술 스택 | 상태 |
 |--------|------|------|-----------|------|
 | **API Gateway** | 8080 | JWT 인증, 11개 서비스 라우팅, Circuit Breaker | Spring Cloud Gateway, Resilience4j, Redis, Kafka | ✅ 구현 완료 |
-| **Eureka Server** | 8761 | 서비스 디스커버리 | Spring Cloud Netflix Eureka | ⚠️ 예정 |
-| **Config Server** | 8888 | 중앙 설정 관리 | Spring Cloud Config | ⚠️ 예정 |
+| **Eureka Server** | - | 서비스 디스커버리 | - | ❌ 미사용 |
+| **Config Server** | - | 중앙 설정 관리 | - | ❌ 미사용 |
 
 ### 비즈니스 서비스 레이어 (2개 - 통합 구조)
 
@@ -55,11 +56,12 @@
 > - API 경로: `/api/auth/*` → `/auth/*`, `/api/users/*` → `/users/*`
 > - User Entity: `role` → `userRole` + `customerRole`
 
-### 실시간 동기화 레이어 (1개)
+### 실시간 동기화 레이어
 
-| 서비스 | 포트 | 역할 | 데이터베이스 |
-|--------|------|------|--------------|
-| **Hocuspocus Server** | 1234 | WebSocket 기반 실시간 동기화 | PostgreSQL |
+| 서비스 | 포트 | 역할 | 데이터베이스 | 용도 |
+|--------|------|------|--------------|------|
+| **Core Service (WebSocket)** | 8082 | Spring WebSocket/STOMP | MySQL | 알림, 상태 동기화 |
+| **Hocuspocus Server** | 1234 | Y.js CRDT 기반 실시간 동기화 | PostgreSQL | 공동편집 (게시글 편집) |
 
 ---
 
@@ -357,10 +359,13 @@ POST /api/ocr/parse                  # 텍스트 → 약 정보 파싱
 
 ### Hocuspocus Server (1234)
 
-**역할**: 실시간 협업 동기화 (게시글 공동편집 - 선택 기능)
+**역할**: 실시간 협업 동기화 (게시글 공동편집 전용)
+
+> **주의**: Hocuspocus는 공동편집 기능에만 사용됩니다.
+> 일반 실시간 통신 (알림, 복약 상태 동기화)은 Core Service의 Spring WebSocket/STOMP를 사용합니다.
 
 **상세 아키텍처**:
-[ARCHITECTURE.md](./ARCHITECTURE.md#5️⃣-실시간-동기화-아키텍처) 참조
+[ARCHITECTURE.md](./ARCHITECTURE.md#4-실시간-동기화-아키텍처) 참조
 
 ---
 

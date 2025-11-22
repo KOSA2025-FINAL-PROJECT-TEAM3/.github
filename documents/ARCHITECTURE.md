@@ -79,183 +79,89 @@ public class MedicationController {
 
 **파일**: `diagrams/01-system-architecture.mmd`
 
-```mermaid
-graph TB
-    subgraph "Frontend Layer"
-        A[React Web App]
-        A1[Auth Components]
-        A2[Family Components]
-        A3[Medication Components]
-        A4[Diet Components]
-        A5[Dashboard]
+### 아키텍처 다이어그램
 
-        A --> A1
-        A --> A2
-        A --> A3
-        A --> A4
-        A --> A5
-    end
-
-    subgraph "Spring Cloud Infrastructure"
-        GW[API Gateway<br/>Spring Cloud Gateway]
-        EUR[Eureka Server<br/>Service Discovery]
-        CFG[Config Server<br/>중앙 설정 관리]
-    end
-
-    subgraph "Microservices"
-        AUTH[Auth Service<br/>인증/인가/JWT]
-        MED[Medication Service<br/>약 관리]
-        FAM[Family Service<br/>가족 네트워크]
-        DIET[Diet Service<br/>식단 관리]
-        NOTI[Notification Service<br/>알림]
-        OCR[OCR Service<br/>약봉지 인식]
-    end
-
-    subgraph "Real-time Sync Layer"
-        WS[Spring WebSocket/STOMP<br/>실시간 채팅]
-        H[Hocuspocus Server (선택)<br/>공동편집 에디터]
-        H1[Y.js CRDT<br/>Conflict Resolution]
-        H --> H1
-    end
-
-    subgraph "Event Processing"
-        K[Apache Kafka]
-        K1[Medication Events]
-        K2[Notification Events]
-        K3[Family Events]
-        K4[Sync Events]
-
-        K --> K1
-        K --> K2
-        K --> K3
-        K --> K4
-    end
-
-    subgraph "Database Layer"
-        DB[(MySQL 8.0<br/>Main DB)]
-        R[(Redis<br/>Cache/Session)]
-        SYNC[(Hocuspocus DB<br/>Sync Storage)]
-    end
-
-    subgraph "External Services"
-        E1[식약처 API<br/>의약품안전나라]
-        E2[Google Vision OCR<br/>약봉지 인식]
-        E3[카카오톡 API<br/>알림톡]
-        E4[n8n Workflow<br/>자동화]
-    end
-
-    %% Frontend connections
-    A -->|HTTP/REST| GW
-    A -->|WebSocket (채팅)| WS
-    A -->|WebSocket (편집)| H
-
-    %% API Gateway connections
-    GW --> EUR
-    GW --> AUTH
-    GW --> MED
-    GW --> FAM
-    GW --> DIET
-    GW --> NOTI
-    GW --> OCR
-
-    %% Service Discovery
-    EUR -.->|Register| AUTH
-    EUR -.->|Register| MED
-    EUR -.->|Register| FAM
-    EUR -.->|Register| DIET
-    EUR -.->|Register| NOTI
-    EUR -.->|Register| OCR
-
-    %% Config Server
-    CFG -.->|Config| AUTH
-    CFG -.->|Config| MED
-    CFG -.->|Config| FAM
-    CFG -.->|Config| DIET
-    CFG -.->|Config| NOTI
-    CFG -.->|Config| OCR
-
-    %% Microservices to Database
-    AUTH --> DB
-    AUTH --> R
-    MED --> DB
-    MED --> R
-    FAM --> DB
-    FAM --> R
-    DIET --> DB
-    NOTI --> DB
-    OCR --> DB
-
-    %% Microservices to Kafka
-    MED -->|Publish| K1
-    FAM -->|Publish| K3
-    DIET -->|Publish| K1
-    NOTI -->|Consume| K2
-
-    %% Kafka to Hocuspocus (Real-time Sync)
-    K1 -->|Sync Events| H
-    K3 -->|Family Events| H
-    K4 -->|State Changes| H
-
-    %% Hocuspocus connections
-    H <-->|Persist| SYNC
-    H -->|Read/Write| DB
-
-    %% External API connections
-    MED --> E1
-    OCR --> E2
-    NOTI --> E3
-    K --> E4
-
-    %% Service-to-Service communication
-    MED -.->|Feign Client| FAM
-    DIET -.->|Feign Client| MED
-    NOTI -.->|Feign Client| FAM
-
-    %% Styling
-    style A fill:#61dafb,stroke:#333,stroke-width:2px
-    style GW fill:#68bc00,stroke:#333,stroke-width:3px
-    style EUR fill:#68bc00,stroke:#333,stroke-width:2px
-    style CFG fill:#68bc00,stroke:#333,stroke-width:2px
-
-    style AUTH fill:#6db33f,stroke:#333,stroke-width:2px
-    style MED fill:#6db33f,stroke:#333,stroke-width:2px
-    style FAM fill:#6db33f,stroke:#333,stroke-width:2px
-    style DIET fill:#6db33f,stroke:#333,stroke-width:2px
-    style NOTI fill:#6db33f,stroke:#333,stroke-width:2px
-    style OCR fill:#6db33f,stroke:#333,stroke-width:2px
-
-    style H fill:#ff6b35,stroke:#333,stroke-width:3px
-    style H1 fill:#ff6b35,stroke:#333,stroke-width:2px
-
-    style K fill:#231f20,color:#fff,stroke:#fff,stroke-width:2px
-    style DB fill:#4479a1,stroke:#333,stroke-width:2px
-    style R fill:#dc382d,stroke:#333,stroke-width:2px
-    style SYNC fill:#ff9500,stroke:#333,stroke-width:2px
 ```
+┌─────────────────────────────────────────────────────────────┐
+│                    Frontend (React 19 + Vite)               │
+│                    + Hocuspocus Client (공동편집용)          │
+└──────────────┬──────────────────────────────┬───────────────┘
+               │ HTTPS                        │ WebSocket
+               ▼                              ▼
+┌──────────────────────────┐      ┌──────────────────────────┐
+│         Nginx            │      │   Hocuspocus Server      │
+│    (Reverse Proxy)       │      │   (공동편집 - 게시글)     │
+└──────────────┬───────────┘      │   + Y.js CRDT            │
+               │                  └──────────────────────────┘
+               ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Spring Cloud Gateway (Port 8080)               │
+│  • JWT 검증, X-User-* 헤더 주입                             │
+│  • Circuit Breaker, Redis 캐싱, Kafka 로깅                  │
+└──────────────┬────────────────────────────┬─────────────────┘
+               │                            │
+               ▼                            ▼
+┌──────────────────────────┐  ┌──────────────────────────────┐
+│   Auth Service (8081)    │  │    Core Service (8082)       │
+│  • 로그인/회원가입        │  │  • /api/family/**            │
+│  • JWT 발급              │  │  • /api/medications/**       │
+│  • 카카오 OAuth          │  │  • /api/diet/**              │
+└──────────────────────────┘  │  • /api/ocr/**               │
+                              │  • /api/chat/**              │
+                              │  • /api/search/**            │
+                              │  • /api/disease/**           │
+                              │  • /api/counsel/**           │
+                              │  • /api/notifications/**     │
+                              │  • /api/reports/**           │
+                              │  • /ws/** (Spring WebSocket) │
+                              └──────────────────────────────┘
+                                           │
+                              ┌────────────┴────────────┐
+                              ▼                         ▼
+                     ┌──────────────┐          ┌──────────────┐
+                     │    Kafka     │          │    Redis     │
+                     │ (이벤트 버스) │          │   (캐시)     │
+                     └──────────────┘          └──────────────┘
+```
+
+### 계층 구성
+
+- **마이크로서비스**: 2개 서비스
+  - **Auth Service (8081)**: 인증/인가
+  - **Core Service (8082)**: 통합 비즈니스 로직 (가족, 약물, 식단, OCR, 채팅, 검색, 질병, 상담, 알림, 리포트)
+- **실시간 동기화**:
+  - **일반 실시간 통신 (알림, 상태 동기화)**: Spring WebSocket/STOMP + Kafka
+  - **공동편집 (게시글 편집)**: Hocuspocus + Y.js CRDT
 
 ### 주요 구성 요소
 
 #### Frontend Layer
 - **React 19 + Vite**: JSX only (React Native 사용 금지)
-- **STOMP WebSocket Client**: 실시간 양방향 통신
+- **STOMP WebSocket Client**: 실시간 양방향 통신 (알림, 상태 동기화)
+- **Hocuspocus Client**: 공동편집 게시글용 (Y.js CRDT)
 - **TipTap Editor**: 리치 텍스트 편집기
 
-#### Spring Cloud Infrastructure (🆕 추가)
-- **API Gateway (Spring Cloud Gateway)**: 단일 진입점, 라우팅, 인증/인가
-- **Eureka Server**: 서비스 디스커버리, 동적 서비스 등록/조회
-- **Config Server**: 중앙 설정 관리, Git 기반 외부 설정
+#### Spring Cloud Infrastructure
+- **API Gateway (Spring Cloud Gateway)**: 단일 진입점, JWT 검증, 라우팅, Circuit Breaker
+- **Eureka Server / Config Server**: 미사용
 
-#### Microservices (도메인별 분리)
-6개의 독립적인 마이크로서비스로 구성됩니다.
+#### Microservices (2개 서비스)
+- **Auth Service (8081)**: 인증/인가, JWT 토큰 관리
+- **Core Service (8082)**: 통합 비즈니스 로직
 
 **상세 내용**: [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md#-9-stack-구성) 참조
 
 #### Real-time Sync Layer (🔥 핵심 차별점)
-- **Spring WebSocket/STOMP**: WebSocket 기반 실시간 양방향 통신 (실시간 채팅용)
+
+**일반 실시간 통신 (알림, 복약 상태 등)**:
+- **Spring WebSocket/STOMP**: WebSocket 기반 실시간 양방향 통신
 - **Message Broker**: In-Memory SimpleBroker 사용
-- **Kafka 연동**: 백엔드 이벤트 → Kafka → WebSocket → Frontend Push
+- **Kafka 연동**: 백엔드 이벤트 → Kafka → Spring WebSocket → Frontend Push
 - **Session Management**: Redis 기반 WebSocket 세션 관리
-- **Hocuspocus (선택)**: 공동편집 게시글 에디터 전용 (Y.js CRDT 지원)
+
+**공동편집 (게시글 편집)**:
+- **Hocuspocus Server**: 실시간 문서 동기화
+- **Y.js CRDT**: 충돌 자동 해결
 
 #### Event Processing
 - **Apache Kafka**: 이벤트 기반 비동기 처리
@@ -280,103 +186,37 @@ graph TB
 
 **파일**: `diagrams/02-data-flow.mmd`
 
-```mermaid
-sequenceDiagram
-    participant Senior as 👴 시니어
-    participant SeniorWeb as 시니어 웹
-    participant Gateway as API Gateway
-    participant Eureka as Eureka Server
-    participant MedService as Medication Service
-    participant FamService as Family Service
-    participant Kafka as Kafka
-    participant DB as Database
-    participant Hocuspocus as Hocuspocus Server
-    participant CaregiverWeb as 자녀 웹
-    participant Caregiver as 👨‍👩‍👧 자녀
-
-    Note over Senior,Caregiver: 시나리오 1: 약 복용 체크 (실시간 동기화)
-
-    Senior->>SeniorWeb: ✅ 약 복용 체크
-    SeniorWeb->>Gateway: POST /api/medications/logs
-    Gateway->>Eureka: Service Discovery<br/>Medication Service 조회
-    Eureka-->>Gateway: Service Location
-    Gateway->>MedService: Forward Request
-    MedService->>DB: 복용 기록 저장
-    MedService->>Kafka: Publish MedicationLogEvent
-    MedService-->>Gateway: 200 OK
-    Gateway-->>SeniorWeb: Success Response
-
-    Note over Kafka,Hocuspocus: 실시간 동기화 레이어
-
-    Kafka->>Hocuspocus: Consume MedicationLogEvent
-    Hocuspocus->>CaregiverWeb: WebSocket Push<br/>(실시간 업데이트)
-    CaregiverWeb->>Caregiver: 🔔 알림: 부모님이 약 드셨어요! ✅
-
-    Note over Senior,Caregiver: 시나리오 2: 자녀가 원격으로 약 등록
-
-    Caregiver->>CaregiverWeb: 부모님 약 등록
-    CaregiverWeb->>Gateway: POST /api/medications
-    Gateway->>Eureka: Service Discovery<br/>Medication Service 조회
-    Eureka-->>Gateway: Service Location
-    Gateway->>MedService: Forward Request
-
-    Note over MedService,FamService: 서비스 간 통신 (Feign Client)
-
-    MedService->>FamService: 가족 권한 확인<br/>GET /families/verify
-    FamService->>DB: 권한 조회
-    FamService-->>MedService: ✅ Authorized
-
-    MedService->>DB: 약 정보 저장
-    MedService->>Kafka: Publish MedicationCreatedEvent
-    MedService-->>Gateway: 201 Created
-    Gateway-->>CaregiverWeb: Success Response
-
-    Kafka->>Hocuspocus: Consume MedicationCreatedEvent
-    Hocuspocus->>SeniorWeb: WebSocket Push<br/>(실시간 업데이트)
-    SeniorWeb->>Senior: 📋 새로운 약이 등록되었습니다
-
-    Note over Senior,Caregiver: 시나리오 3: 약-음식 충돌 경고
-
-    Senior->>SeniorWeb: 식단 입력 (자몽 주스)
-    SeniorWeb->>Gateway: POST /api/diets
-    Gateway->>Eureka: Service Discovery<br/>Diet Service 조회
-    Eureka-->>Gateway: Service Location
-    Gateway->>MedService: Forward to Diet Service
-
-    MedService->>DB: 식단 저장
-    MedService->>MedService: 약-음식 충돌 검사<br/>(Rule Engine)
-
-    alt 충돌 발견
-        MedService->>Kafka: Publish DrugFoodWarningEvent
-        MedService-->>Gateway: 200 OK + Warning
-        Gateway-->>SeniorWeb: ⚠️ 경고 메시지
-        SeniorWeb->>Senior: 🚨 자몽과 혈압약 충돌!
-
-        Kafka->>Hocuspocus: Consume WarningEvent
-        Hocuspocus->>CaregiverWeb: WebSocket Push
-        CaregiverWeb->>Caregiver: 🔔 부모님께 약-음식 충돌 경고 발생
-    else 충돌 없음
-        MedService-->>Gateway: 200 OK
-        Gateway-->>SeniorWeb: ✅ 안전한 식단
-    end
-```
-
 ### 핵심 시나리오
 
-#### 1. 약 복용 체크 (시니어 → 자녀)
-- **흐름**: 시니어 웹 → API Gateway → Eureka Discovery → Medication Service → Kafka → Hocuspocus → 자녀 웹
-- **핵심 기술**: Service Discovery, 이벤트 기반 아키텍처, WebSocket Push
-- **실시간성**: Kafka Consumer가 즉시 Hocuspocus로 이벤트 전달
+#### 시나리오 1: 시니어가 약 복용을 체크하면 자녀에게 실시간 알림
+- **흐름**: 웹 → Nginx → Gateway → Core Service → Kafka → Spring WebSocket → 자녀 앱
 
-#### 2. 원격 약 등록 (자녀 → 시니어)
-- **서비스 간 통신**: Medication Service ↔ Family Service (Feign Client)
-- **권한 확인**: 자녀가 부모님 데이터를 수정할 권한이 있는지 검증
-- **양방향 동기화**: Kafka → Hocuspocus → 시니어 웹 (즉시 반영)
+```
+시니어 웹 ─→ Nginx ─→ API Gateway ─→ Core Service ─→ DB 저장
+                                          │
+                                          ▼
+                                       Kafka
+                                          │
+                                          ▼
+                                Spring WebSocket ─→ 자녀 웹 (🔔 알림)
+```
 
-#### 3. 약-음식 충돌 경고 (실시간 경고)
+#### 시나리오 2: 자녀가 원격으로 약 등록 (시니어에게 실시간 알림)
+- **흐름**: 웹 → Nginx → Gateway → Core Service (권한 확인) → Kafka → Spring WebSocket → 시니어 앱
+
+#### 시나리오 3: 약-음식 충돌 경고 (실시간 경고)
 - **Rule Engine**: 복용 중인 약과 식단 자동 비교
 - **심각도 분석**: 높음/중간/낮음 등급 분류
-- **가족 알림**: 충돌 발견 시 자녀에게도 즉시 알림
+- **가족 알림**: 충돌 발견 시 Spring WebSocket으로 자녀에게도 즉시 알림
+
+#### 시나리오 (공동편집): 가족이 함께 게시글 편집
+- **흐름**: 웹 → Hocuspocus Server → Y.js CRDT 동기화 → 실시간 공동편집
+
+```
+사용자 A (편집) ─┐
+                 │─→ Hocuspocus Server ─→ Y.js CRDT 동기화 ─→ 모든 참여자에게 실시간 반영
+사용자 B (편집) ─┘
+```
 
 ---
 
@@ -465,10 +305,11 @@ graph LR
 ### 핵심 가치
 
 - 떨어져 있어도 부모님 건강 관리 가능
-- 실시간 양방향 통신 (Spring WebSocket/STOMP + Kafka)
 - 권한 관리 (읽기/쓰기 분리 가능)
-- Kafka 이벤트 기반 실시간 알림
-- 공동편집 (선택): Hocuspocus Y.js CRDT (게시글 작성 시)
+
+**기술**:
+- **실시간 알림/상태 동기화**: Spring WebSocket/STOMP + Kafka
+- **공동편집 (게시글 편집)**: Hocuspocus + Y.js CRDT
 
 ---
 
@@ -769,57 +610,14 @@ Gateway에서 JWT 검증 후 백엔드 서비스로 전달하는 헤더:
 
 ---
 
-### 2. Eureka Server (Service Discovery)
+### 2. Eureka Server / Config Server
 
-#### 역할
-- **서비스 등록**: 각 마이크로서비스가 시작 시 Eureka에 자동 등록
-- **서비스 조회**: API Gateway가 서비스 위치 동적 조회
-- **Health Check**: 서비스 상태 모니터링, 장애 서비스 자동 제외
-- **클라이언트 측 로드 밸런싱**: Ribbon/LoadBalancer와 통합
-
-#### 포트
-- Eureka Server: `8761`
-
-#### 서비스 등록 예시
-각 마이크로서비스의 `application.yml`:
-```yaml
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-  instance:
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 10
-```
+> **미사용**: 현재 아키텍처에서는 Eureka Server와 Config Server를 사용하지 않습니다.
+> Auth Service (8081)와 Core Service (8082)로 통합된 2개 서비스 구조로 운영됩니다.
 
 ---
 
-### 3. Config Server (중앙 설정 관리)
-
-#### 역할
-- **중앙 집중식 설정**: 모든 마이크로서비스의 설정을 Git 저장소에서 관리
-- **환경별 설정**: dev, staging, production 환경 분리
-- **동적 갱신**: `@RefreshScope`로 재시작 없이 설정 변경
-- **보안 정보 관리**: DB 비밀번호, API Key 등 암호화 저장
-
-#### 포트
-- Config Server: `8888`
-
-#### Git 저장소 구조 예시
-```
-config-repo/
-├── application.yml          # 공통 설정
-├── auth-service.yml        # Auth Service 설정
-├── medication-service.yml  # Medication Service 설정
-├── family-service.yml      # Family Service 설정
-└── application-prod.yml    # Production 환경 설정
-```
-
----
-
-### 4. 서비스 간 통신 (OpenFeign)
+### 3. 서비스 간 통신 (OpenFeign)
 
 #### Feign Client 예시
 Medication Service에서 Family Service 호출:
@@ -861,121 +659,76 @@ public class MedicationService {
 
 ---
 
-### 5. 실시간 동기화 아키텍처
+### 4. 실시간 동기화 아키텍처
 
-#### Kafka → Hocuspocus 연동
+#### 일반 실시간 통신 (알림, 복약 상태 등)
 
 ```
-Backend Services → Kafka Topic → Hocuspocus Kafka Consumer → Y.js Document → WebSocket → Frontend
+Backend Services → Kafka Topic → Spring WebSocket/STOMP → 클라이언트
 ```
 
-#### Hocuspocus Kafka Consumer 구현 예시 (Node.js)
-```javascript
-const { Kafka } = require('kafkajs');
-const { Server } = require('@hocuspocus/server');
+- **Kafka 토픽**: gateway-events, medication-events, family-events, notification-events
+- **Spring WebSocket/STOMP**: Core Service 내 `/ws/**` 엔드포인트로 실시간 푸시
+- **용도**: 복약 알림, 가족 이벤트 알림, 상태 동기화
 
-const kafka = new Kafka({
-  clientId: 'hocuspocus-server',
-  brokers: ['localhost:9092']
-});
+#### 공동편집 (게시글 편집)
 
-const consumer = kafka.consumer({ groupId: 'hocuspocus-group' });
-
-// Hocuspocus Server
-const server = Server.configure({
-  port: 1234,
-  async onLoadDocument(data) {
-    // Y.js 문서 로드
-  },
-  async onStoreDocument(data) {
-    // Y.js 문서 저장
-  }
-});
-
-// Kafka Consumer
-consumer.connect();
-consumer.subscribe({ topic: 'medication-events' });
-consumer.run({
-  eachMessage: async ({ topic, partition, message }) => {
-    const event = JSON.parse(message.value.toString());
-
-    // Y.js 문서 업데이트
-    server.documents.forEach((doc) => {
-      doc.broadcastStateless(JSON.stringify(event));
-    });
-  }
-});
 ```
+Frontend (TipTap Editor) ←→ Hocuspocus Server ←→ Y.js CRDT ←→ PostgreSQL
+```
+
+- **Hocuspocus Server**: 실시간 문서 동기화 서버
+- **Y.js CRDT**: 충돌 자동 해결 (Conflict-free Replicated Data Type)
+- **용도**: 게시글 공동편집 기능
 
 #### Kafka Topics
+- `gateway-events`: API Gateway 요청/응답 이벤트
 - `medication-events`: 약 관련 이벤트
 - `family-events`: 가족 네트워크 이벤트
 - `notification-events`: 알림 이벤트
-- `sync-events`: 실시간 동기화 이벤트
 
 ---
 
-### 6. 마이크로서비스 배포 구조
+### 5. 마이크로서비스 배포 구조
 
 #### Docker Compose 예시
 ```yaml
 version: '3.8'
 
 services:
-  eureka-server:
-    image: amapill/eureka-server:latest
-    ports:
-      - "8761:8761"
-
-  config-server:
-    image: amapill/config-server:latest
-    ports:
-      - "8888:8888"
-    depends_on:
-      - eureka-server
-
   api-gateway:
     image: amapill/api-gateway:latest
     ports:
       - "8080:8080"
     depends_on:
-      - eureka-server
-      - config-server
+      - auth-service
+      - core-service
+      - redis
+      - kafka
 
   auth-service:
     image: amapill/auth-service:latest
     ports:
       - "8081:8081"
     depends_on:
-      - eureka-server
-      - config-server
       - mysql
+      - redis
 
-  medication-service:
-    image: amapill/medication-service:latest
+  core-service:
+    image: amapill/core-service:latest
     ports:
       - "8082:8082"
     depends_on:
-      - eureka-server
-      - config-server
       - mysql
+      - redis
       - kafka
-
-  family-service:
-    image: amapill/family-service:latest
-    ports:
-      - "8083:8083"
-    depends_on:
-      - eureka-server
-      - config-server
-      - mysql
 
   hocuspocus-server:
     image: amapill/hocuspocus-server:latest
     ports:
       - "1234:1234"
     depends_on:
-      - kafka
+      - postgresql
 
   mysql:
     image: mysql:8.0
@@ -984,6 +737,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: amapill
+
+  postgresql:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: amapill_sync
+      POSTGRES_PASSWORD: postgres
 
   redis:
     image: redis:7
@@ -1022,8 +783,19 @@ Mermaid 코드 블록을 복사해서 붙여넣기
 
 ## 📝 참고 사항
 
-- **실시간 통신**: Spring WebSocket/STOMP (메인 채팅) + Kafka (이벤트 기반)
-- **공동편집 (선택)**: Hocuspocus + Y.js CRDT (게시글 작성용)
+### 서비스 구조
+- **마이크로서비스**: 2개 서비스 (Auth Service 8081 + Core Service 8082)
+- **Eureka Server / Config Server**: 미사용
+
+### 실시간 통신 정리
+
+| 용도 | 기술 | 설명 |
+|------|------|------|
+| 알림 (복약, 가족 이벤트) | Spring WebSocket/STOMP + Kafka | 서버 → 클라이언트 푸시 |
+| 상태 동기화 (복약 체크 등) | Spring WebSocket/STOMP + Kafka | 실시간 상태 브로드캐스트 |
+| 공동편집 (게시글 편집) | Hocuspocus + Y.js CRDT | 실시간 문서 동기화, 충돌 자동 해결 |
+
+### 기술 스택
 - **메시지 브로커**: In-Memory SimpleBroker (RabbitMQ 사용 안 함)
 - **OCR**: Google Vision → Tesseract Fallback
 - **약-음식 충돌**: 룰 베이스 시스템
