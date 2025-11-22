@@ -34,11 +34,11 @@
 
 ### 인프라 레이어 (3개)
 
-| 서비스 | 포트 | 역할 | 기술 스택 |
-|--------|------|------|-----------|
-| **API Gateway** | 8080 | 단일 진입점, 라우팅, 인증 | Spring Cloud Gateway |
-| **Eureka Server** | 8761 | 서비스 디스커버리 | Spring Cloud Netflix Eureka |
-| **Config Server** | 8888 | 중앙 설정 관리 | Spring Cloud Config |
+| 서비스 | 포트 | 역할 | 기술 스택 | 상태 |
+|--------|------|------|-----------|------|
+| **API Gateway** | 8080 | JWT 인증, 11개 서비스 라우팅, Circuit Breaker | Spring Cloud Gateway, Resilience4j, Redis, Kafka | ✅ 구현 완료 |
+| **Eureka Server** | 8761 | 서비스 디스커버리 | Spring Cloud Netflix Eureka | ⚠️ 예정 |
+| **Config Server** | 8888 | 중앙 설정 관리 | Spring Cloud Config | ⚠️ 예정 |
 
 ### 비즈니스 서비스 레이어 (2개 - 통합 구조)
 
@@ -144,6 +144,92 @@ npm install && npm run dev
 
 **API Gateway, Eureka Server, Config Server 상세 설명**:
 [ARCHITECTURE.md](./ARCHITECTURE.md#-spring-cloud-컴포넌트-상세-설명) 참조
+
+---
+
+### API Gateway (8080) - 구현 완료
+
+**역할**: JWT 인증, 마이크로서비스 라우팅, 장애 격리
+
+**Repository**: [spring-cloud-api-gateway](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-cloud-api-gateway)
+
+```yaml
+# 기술 스택
+- Java 21
+- Spring Boot 3.4.7
+- Spring Cloud 2024.0.2
+- Spring Cloud Gateway (WebFlux 기반)
+- Redis 7 (Reactive 캐싱)
+- Kafka (이벤트 발행)
+- Resilience4j 2.1.0 (Circuit Breaker)
+- JJWT 0.12.6 (JWT 검증)
+- Gradle 8.7
+
+# 프로젝트 구조
+src/main/java/com/amapill/gateway/
+├── GatewayApplication.java
+├── config/
+│   ├── CircuitBreakerConfig.java
+│   └── KafkaConfig.java
+├── controller/
+│   └── FallbackController.java
+├── event/
+│   ├── GatewayRequestEvent.java
+│   └── GatewayEventProducer.java
+├── filter/
+│   ├── GatewayJwtAuthenticationFilter.java
+│   ├── KafkaLoggingFilter.java
+│   └── CacheableResponseFilter.java
+└── service/
+    └── JwtService.java
+
+# 마이크로서비스 라우팅 (11개)
+/api/auth/**         → Auth Service (8081)
+/api/family/**       → Core Service (8082)
+/ws/**               → Core Service WebSocket (8082)
+/api/medications/**  → Core Service (8082)
+/api/diet/**         → Core Service (8082)
+/api/ocr/**          → Core Service (8082)
+/api/chat/**         → Core Service (8082)
+/api/search/**       → Core Service (8082)
+/api/disease/**      → Core Service (8082)
+/api/counsel/**      → Core Service (8082)
+/api/notifications/**→ Core Service (8082)
+/api/reports/**      → Core Service (8082)
+
+# 인증 제외 경로
+- /api/auth/login, /api/auth/signup, /api/auth/kakao-login, /api/auth/refresh
+- /actuator/health, /health
+
+# X-User-* 헤더 주입 (9개)
+- X-User-Id, X-User-Email, X-User-Name, X-User-Profile-Image
+- X-User-Role, X-Customer-Role
+- X-Token-Subject, X-Token-Type, X-Request-Id
+
+# Circuit Breaker 설정
+| 서비스 | Failure Rate | Wait Duration |
+|--------|--------------|---------------|
+| 기본 (10개) | 50% | 10초 |
+| ocr-service | 60% | 15초 |
+
+# 환경 변수
+JWT_SECRET: JWT 서명 시크릿 (Base64)
+KAFKA_BOOTSTRAP: Kafka 부트스트랩 서버 (localhost:9092)
+REDIS_HOST: Redis 호스트 (localhost)
+REDIS_PORT: Redis 포트 (6379)
+REDIS_PASSWORD: Redis 비밀번호 (redis123)
+
+# 구현 완료 항목
+✅ JWT 인증 필터 (GatewayJwtAuthenticationFilter)
+✅ JWT 토큰 검증 서비스 (JwtService)
+✅ 11개 마이크로서비스 라우팅 설정
+✅ Circuit Breaker 설정 (Resilience4j)
+✅ Fallback 컨트롤러
+✅ Kafka 이벤트 발행 (요청/응답/에러)
+✅ Redis 응답 캐싱
+✅ CORS 설정
+✅ Actuator 메트릭 (Prometheus)
+```
 
 ---
 
