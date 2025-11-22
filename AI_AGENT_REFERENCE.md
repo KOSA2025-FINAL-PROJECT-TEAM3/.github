@@ -1,7 +1,8 @@
 # 🤖 AI Agent Quick Reference
 
 > Claude Code, Cursor, Windsurf, Cline 등 MCP Agent를 위한 핵심 정보
-> **Last Updated**: 2025-11-12
+> **Last Updated**: 2025-11-22
+> **Architecture**: MSA + Clean Architecture
 
 ---
 
@@ -41,16 +42,20 @@ KOSA2025-FINAL-PROJECT-TEAM3/
 #### Backend (Microservices)
 - **언어**: Java 21 LTS (Virtual Threads, ZGC)
 - **프레임워크**: Spring Boot 3.4.7 + Spring Cloud 2024.0.2 (Moorgate)
-- **6개 마이크로서비스**:
-  1. **Auth Service** (8081) - JWT 인증
-  2. **Medication Service** (8082) - 복약 일정 관리
-  3. **Family Service** (8083) - 가족 네트워크
-  4. **Diet Service** (8084) - 약물-음식 상호작용
-  5. **Notification Service** (8085) - 이벤트 기반 알림
-  6. **OCR Service** (8086) - 처방전 인식
-- **인프라**: Spring Cloud Gateway, Eureka, Config Server
+- **ORM**: MyBatis 3.0.3 (JPA 대신 사용)
+- **AI/Vector**: Spring AI 1.0.3 (Redis Vector Store)
+- **MSA 구조**:
+  1. **Auth Service** (8081) - JWT 인증, 사용자 관리
+  2. **Core Service** (8082) - 약/가족/식단/알림 통합 서비스
+- **MSA 인증 흐름**:
+  ```
+  Client → Nginx Gateway → Auth Service (JWT 검증)
+                        → Core Service (X-User-* 헤더로 사용자 정보 전달)
+  ```
+- **전달 헤더**: X-User-Id, X-User-Email, X-User-Name, X-User-Role, X-Customer-Role
+- **인프라**: Nginx Gateway, Spring Cloud (선택)
 - **메시징**: Apache Kafka
-- **서비스 통신**: OpenFeign
+- **서비스 통신**: OpenFeign / REST
 
 #### Database & Cache
 - **MySQL 8.0**: 트랜잭션 데이터 (사용자, 복약, 가족)
@@ -88,7 +93,7 @@ AI Agent가 프로젝트를 이해하기 위한 **필수 문서 읽기 순서**�
 | 7️⃣ | `/documents/ARCHITECTURE.md` | **필독** - 시스템 설계 및 9개 Mermaid 다이어그램 참조 (27KB) |
 | 8️⃣ | `/diagrams/01-system-architecture.mmd` | 전체 마이크로서비스 토폴로지 |
 | 9️⃣ | `/diagrams/02-data-flow.mmd` | 실시간 동기화 시퀀스 (시니어 ↔ 보호자) |
-| 🔟 | `/diagrams/07-database-erd-v5.mmd` | **최신 ERD** (v5) |
+| 🔟 | `/diagrams/07-database-erd-v6.2.mmd` | **최신 ERD** (v6.2) |
 
 ### 4단계: API 및 데이터 구조 (15분)
 | 순서 | 문서 경로 | 설명 |
@@ -260,7 +265,7 @@ redis-cli -h localhost -p 6379
 │   ├── 04-family-network.mmd           # 가족 네트워크
 │   ├── 05-ocr-pipeline.mmd             # OCR 파이프라인
 │   ├── 06-notification-system.mmd      # Kafka 알림
-│   ├── 07-database-erd-v5.mmd          # ⭐ 최신 ERD (v5)
+│   ├── 07-database-erd-v6.2.mmd        # ⭐ 최신 ERD (v6.2)
 │   ├── 08-development-timeline.mmd     # Gantt 차트
 │   └── 09-tech-stack.mmd               # 기술 스택
 │
@@ -290,11 +295,13 @@ redis-cli -h localhost -p 6379
 
 ### ✅ 해야 할 것
 1. **문서 우선 읽기**: 코드 작성 전 `PROJECT_SPECIFICATION.md`, `ARCHITECTURE.md`, `CONVENTIONS.md` 필독
-2. **ERD 참조**: DB 스키마 변경 시 `diagrams/07-database-erd-v5.mmd` 확인
+2. **ERD 참조**: DB 스키마 변경 시 `diagrams/07-database-erd-v6.2.mmd` 확인
 3. **API 명세 준수**: 새 엔드포인트는 `MVP_DTO_SPECIFICATION.md` 형식 따르기
 4. **보안 가이드 준수**: `SECURITY_GUIDELINES.md`의 KISA 보안 코딩 표준 적용
 5. **커밋 규칙 준수**: 이모지 + Type 형식 사용
 6. **브랜치 전략 준수**: `feature/#이슈-설명-개발자` 형식
+7. **MyBatis 규칙 준수**: Model은 POJO로 생성 (@Entity 사용 안 함), Repository는 @Mapper 인터페이스
+8. **MSA 인증 사용**: Controller에서 `SecurityUtil`로 X-User-* 헤더에서 사용자 정보 추출
 
 ### ❌ 하지 말아야 할 것
 1. **문서 경로 변경 금지**: 외부에서 참조 중 (링크 깨짐 방지)

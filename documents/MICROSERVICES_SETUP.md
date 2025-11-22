@@ -40,16 +40,14 @@
 | **Eureka Server** | 8761 | 서비스 디스커버리 | Spring Cloud Netflix Eureka |
 | **Config Server** | 8888 | 중앙 설정 관리 | Spring Cloud Config |
 
-### 비즈니스 서비스 레이어 (6개)
+### 비즈니스 서비스 레이어 (2개 - 통합 구조)
 
-| 서비스 | 포트 | 주요 기능 | 데이터베이스 |
-|--------|------|-----------|--------------|
-| **Auth Service** | 8081 | 회원가입, 로그인, JWT 발급 | MySQL + Redis |
-| **Medication Service** | 8082 | 약 관리, 복용 일정 | MySQL |
-| **Family Service** | 8083 | 가족 네트워크, 권한 관리 | MySQL |
-| **Diet Service** | 8084 | 식단 관리, 약-음식 충돌 | MySQL |
-| **Notification Service** | 8085 | 알림 발송 (웹/모바일) | MySQL |
-| **OCR Service** | 8086 | 약봉지 이미지 인식 | - |
+| 서비스 | 포트 | 주요 기능 | 데이터베이스 | ORM |
+|--------|------|-----------|--------------|-----|
+| **Auth Service** | 8081 | 회원가입, 로그인, JWT 발급, 사용자 관리 | MySQL + Redis | JPA |
+| **Core Service** | 8082 | 약/가족/식단/알림/OCR 통합 서비스 | MySQL | **MyBatis 3.0.3** |
+
+> **아키텍처 변경**: 기존 6개 마이크로서비스에서 2개(Auth + Core)로 통합. Core Service는 Clean Architecture + MyBatis 기반으로 구현.
 
 ### 실시간 동기화 레이어 (1개)
 
@@ -189,98 +187,60 @@ DELETE /api/users/me         # 계정 비활성화
 - CORS 설정
 ```
 
-### 5. Medication Service (8082)
+### 2. Core Service (8082) - 통합 서비스
 
-**역할**: 약 관리 및 복용 일정
+**역할**: 약 관리, 가족 네트워크, 식단, 알림, OCR 통합
+
+**Repository**: [spring-boot](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot)
 
 ```yaml
-# 주요 API
+# 기술 스택
+- Spring Boot 3.4.7, Java 21 LTS
+- MyBatis 3.0.3 (JPA 대신 사용)
+- Spring AI 1.0.3 (Redis Vector Store)
+- Apache Kafka
+- Clean Architecture 4계층
+
+# MSA 인증
+- Nginx Gateway에서 X-User-* 헤더로 사용자 정보 전달
+- SecurityUtil로 헤더에서 사용자 정보 추출
+- 전달 헤더: X-User-Id, X-User-Email, X-User-Name, X-User-Role
+
+# 주요 API - 약 관리
 GET    /api/medications              # 약 목록
 POST   /api/medications              # 약 등록
 PUT    /api/medications/{id}         # 약 수정
 DELETE /api/medications/{id}         # 약 삭제
 POST   /api/medications/{id}/check   # 복용 체크
-GET    /api/medications/schedule     # 오늘 일정
 
-# 이벤트 발행 (Kafka)
-- medication.created
-- medication.taken
-- medication.missed
-```
-
-### 6. Family Service (8083)
-
-**역할**: 가족 네트워크 관리
-
-```yaml
-# 주요 API
+# 주요 API - 가족 관리
 POST /api/family/groups              # 그룹 생성
 POST /api/family/groups/{id}/invite  # 가족 초대
 GET  /api/family/members             # 가족 구성원 조회
-GET  /api/family/{userId}/medications # 가족 약 조회
 
-# 권한 관리
-- parent: 약 복용만 가능
-- child: 약 등록/수정/삭제 가능
-```
-
-### 7. Diet Service (8084)
-
-**역할**: 식단 관리 및 약-음식 충돌 검사
-
-```yaml
-# 주요 API
+# 주요 API - 식단/상호작용
 POST /api/diet/logs                  # 식단 기록
 GET  /api/diet/warnings              # 충돌 경고 조회
 POST /api/diet/check                 # 실시간 충돌 검사
 
-# 룰 베이스 시스템
-1. 사용자가 음식 입력
-2. 현재 복용 중인 약 조회
-3. drug_food_interactions 테이블 검색
-4. 충돌 발견 시 경고 생성
-5. 대체 음식 추천
-```
-
-### 8. Notification Service (8085)
-
-**역할**: 알림 발송 및 관리
-
-```yaml
-# 주요 API
+# 주요 API - 알림
 GET  /api/notifications              # 알림 목록
 PUT  /api/notifications/{id}/read    # 읽음 처리
-POST /api/notifications/send         # 수동 알림 발송
 
-# 알림 트리거 (Kafka Consumer)
-- medication.missed → "자녀에게 미복용 알림"
-- medication.low_stock → "재고 부족 알림"
-- diet.warning → "약-음식 충돌 경고"
+# 주요 API - OCR
+POST /api/ocr/extract                # 이미지 → 텍스트 추출
+POST /api/ocr/parse                  # 텍스트 → 약 정보 파싱
 
-# 발송 채널
-- Phase 1: 웹 알림 (DB 저장)
-- Phase 2: 카카오톡 알림톡 (계획)
-```
+# Kafka 이벤트
+- medication.created, medication.taken, medication.missed
+- diet.warning
+- notification.send
 
-### 9. OCR Service (8086)
-
-**역할**: 약봉지 이미지 인식
-
-```yaml
-# 주요 API
-POST /api/ocr/extract    # 이미지 업로드 → 텍스트 추출
-POST /api/ocr/parse      # 텍스트 → 약 정보 파싱
-
-# OCR 엔진
-- 1순위: Google Cloud Vision API
-- 2순위: Tesseract.js (Fallback)
-
-# 파싱 로직
-1. 이미지 수신
-2. 텍스트 추출
-3. 정규표현식으로 약 이름, 용량, 복용법 파싱
-4. 식약처 API로 약 정보 검증
-5. Medication Service로 자동 등록
+# Clean Architecture 레이어
+- Domain: model/ (POJO), repository/ (@Mapper)
+- Application: dto/, service/ (인터페이스)
+- Infrastructure: service/ (구현체), external/, messaging/
+- Presentation: controller/, websocket/
 ```
 
 ### Hocuspocus Server (1234)
@@ -498,6 +458,6 @@ http://localhost:5601
 
 ---
 
-**최종 수정일**: 2025-11-06
-**버전**: 1.0
+**최종 수정일**: 2025-11-22
+**버전**: 2.0 (MSA 통합 구조 반영)
 **작성자**: 뭐냑? 개발팀

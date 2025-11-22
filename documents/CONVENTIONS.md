@@ -375,11 +375,87 @@ git commit -m "✏️ Comment: MedicationCard 컴포넌트 주석 추가"
 
 #### 9. MyBatis 매퍼 명명 규칙 (MyBatis Mapper Naming Convention)
 
-**배경:** 프로젝트의 `build.gradle`은 MyBatis를 사용하지만, 기존 명세서에는 관련 규칙이 명시되어 있지 않아 컨벤션을 새로 정의합니다.
+**배경:** Core Service는 JPA 대신 **MyBatis 3.0.3**을 사용합니다.
 
-*   **생성 (Creation):** 데이터 생성을 위한 메소드명은 `insert`를 사용합니다. (예: `void insert(User user)`) 이는 실제 실행되는 SQL 구문(`INSERT`)과의 명확한 일치를 위함입니다.
-*   **ID 기반 삭제 (Deletion by ID):** ID를 이용한 데이터 삭제는 `delete(long id)`를 사용합니다. (예: `void delete(long userId)`) 이는 간결하면서도 ID 기반 삭제임을 명확히 합니다.
-*   **기타 (Others):** 수정은 `update`, 단일 조사는 `findById`, 목록 조사는 `findBy...` 등 기존의 명확한 동사 기반 명명 규칙을 따릅니다.
+##### Repository 인터페이스 규칙
+```java
+// @Mapper 어노테이션 필수 (@Repository 아님)
+@Mapper
+public interface MedicationRepository {
+    int insert(Medication medication);       // 생성 (INSERT)
+    int update(Medication medication);       // 수정 (UPDATE)
+    int deleteById(Long id);                 // 삭제 (DELETE)
+    Medication findById(Long id);            // 단일 조회
+    List<Medication> findByUserId(Long userId);  // 목록 조회
+    List<Medication> findActiveByUserId(Long userId);  // 조건 조회
+    long countByUserId(Long userId);         // 카운트
+}
+```
+
+##### Model (POJO) 규칙
+```java
+// @Entity 사용하지 않음 (MyBatis용 POJO)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Medication {
+    private Long id;
+    private Long userId;
+    private String name;
+    private LocalDateTime createdAt;
+}
+```
+
+##### XML 매퍼 파일 위치
+```
+src/main/resources/mappers/
+├── family/
+│   ├── FamilyGroupMapper.xml
+│   └── FamilyMemberMapper.xml
+├── medication/
+│   ├── MedicationMapper.xml
+│   └── MedicationScheduleMapper.xml
+└── notification/
+    └── NotificationMapper.xml
+```
+
+##### XML 매퍼 예시
+```xml
+<mapper namespace="com.amapill.backend.domain.repository.MedicationRepository">
+    <resultMap id="MedicationResultMap" type="Medication">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="name" column="name"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO medications (user_id, name, created_at)
+        VALUES (#{userId}, #{name}, NOW())
+    </insert>
+
+    <select id="findById" resultMap="MedicationResultMap">
+        SELECT * FROM medications WHERE id = #{id}
+    </select>
+</mapper>
+```
+
+##### application.properties 설정
+```properties
+mybatis.mapper-locations=classpath:mappers/**/*.xml
+mybatis.type-aliases-package=com.amapill.backend.domain.model
+mybatis.configuration.map-underscore-to-camel-case=true
+```
+
+##### 메서드 명명 규칙 요약
+*   **생성 (Creation):** `insert` (예: `int insert(User user)`)
+*   **수정 (Update):** `update` (예: `int update(User user)`)
+*   **삭제 (Deletion):** `deleteById` (예: `int deleteById(Long id)`)
+*   **단일 조회:** `findById` (예: `User findById(Long id)`)
+*   **목록 조회:** `findBy...` (예: `List<User> findByRole(String role)`)
+*   **카운트:** `countBy...` (예: `long countByUserId(Long userId)`)
 
 ---
 
@@ -517,6 +593,7 @@ git commit -m "✏️ Comment: MedicationCard 컴포넌트 주석 추가"
 ---
 
 **작성일**: 2025-11-07
-**버전**: 1.0
+**최종 수정일**: 2025-11-22
+**버전**: 2.0 (MyBatis 규칙 보강)
 **작성자**: 뭐냑? 개발팀
-**적용 범위**: Frontend, Backend, Database, Git
+**적용 범위**: Frontend, Backend (MyBatis), Database, Git
