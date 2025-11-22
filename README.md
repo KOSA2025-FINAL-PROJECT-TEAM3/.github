@@ -84,11 +84,13 @@
 ### Backend (Microservices Architecture)
 - **Language**: Java 21 LTS
 - **Framework**: Spring Boot 3.4.7
-- **Cloud**: Spring Cloud 2024.0.2 (API Gateway, Eureka, Config Server)
+- **Cloud**: Spring Cloud 2024.0.2 (API Gateway)
 - **보안**: Spring Security (JWT)
 - **메시징**: Apache Kafka
 
-**6개 마이크로서비스**: Auth, Medication, Family, Diet, Notification, OCR
+**2개 마이크로서비스**:
+- **Auth Service (8081)**: 인증/인가, JWT, 카카오 OAuth
+- **Core Service (8082)**: 통합 비즈니스 로직 (가족, 약물, 식단, OCR, 알림 등)
 
 ### Database
 - **메인 DB**: MySQL 8.0 (트랜잭션 데이터)
@@ -318,8 +320,8 @@ npm run dev
 
 ### 역할 분담
 
-- **팀원 1**: Frontend Lead (React, Hocuspocus)
-- **팀원 2**: Backend Lead + AI (Spring Boot, OCR, Kafka)
+- **팀원 1**: Frontend Lead (React, Hocuspocus - 공동편집)
+- **팀원 2**: Backend Lead + AI (Spring Boot, Auth/Core Service, OCR, Kafka)
 - **팀원 3**: Database + DevOps (MySQL, Redis, CI/CD)
 
 ---

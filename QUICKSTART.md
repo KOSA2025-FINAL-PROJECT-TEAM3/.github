@@ -20,7 +20,7 @@ cp .env.example .env
 ### 2단계: Docker Compose로 전체 스택 실행
 
 ```bash
-# 모든 서비스 시작 (MySQL, PostgreSQL, Redis, Kafka, 9개 마이크로서비스)
+# 모든 서비스 시작 (MySQL, PostgreSQL, Redis, Kafka, API Gateway, Auth Service, Core Service)
 docker-compose up -d
 
 # 서비스 상태 확인
@@ -44,7 +44,8 @@ npm run dev
 
 - **Frontend**: http://localhost:5173
 - **API Gateway**: http://localhost:8080
-- **Eureka Dashboard**: http://localhost:8761
+- **Auth Service**: http://localhost:8081
+- **Core Service**: http://localhost:8082
 
 ---
 
@@ -84,11 +85,8 @@ curl http://localhost:8080/actuator/health
 # Auth Service
 curl http://localhost:8081/actuator/health
 
-# Medication Service
+# Core Service
 curl http://localhost:8082/actuator/health
-
-# Eureka 등록 확인
-curl http://localhost:8761/eureka/apps
 ```
 
 ### 데이터베이스 연결 테스트
@@ -132,10 +130,10 @@ docker-compose up -d mysql postgresql redis
 docker-compose up -d zookeeper kafka
 ```
 
-### Spring Cloud 인프라만 실행
+### API Gateway와 서비스만 실행
 
 ```bash
-docker-compose up -d config-server eureka-server api-gateway
+docker-compose up -d api-gateway auth-service core-service
 ```
 
 ---
