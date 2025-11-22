@@ -20,6 +20,57 @@
 
 ---
 
+## 🔐 MSA 인증 아키텍처 (Core Service)
+
+### 인증 흐름
+
+이 프로젝트는 **MSA(Microservice Architecture)** 구조의 **Core Service**입니다.
+
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   Client App    │────▶│  Nginx Gateway  │────▶│  Auth Service   │
+└─────────────────┘     └────────┬────────┘     └─────────────────┘
+                                 │ (JWT 검증 후)
+                                 ▼
+                        ┌─────────────────┐
+                        │  Core Service   │ ← 이 프로젝트
+                        │   (Port 8082)   │
+                        └─────────────────┘
+```
+
+**MSA 인증 흐름**:
+1. Client → Nginx Gateway: JWT 포함 요청
+2. Nginx → Auth Service: `auth_request`로 JWT 검증
+3. Auth Service → Nginx: 검증 결과 + 사용자 정보 헤더 설정
+4. Nginx → Core Service: `X-User-*` 헤더로 사용자 정보 전달
+5. Core Service: `SecurityUtil`로 헤더에서 사용자 정보 추출
+
+**전달되는 헤더**:
+- `X-User-Id`: 사용자 PK
+- `X-User-Email`: 이메일
+- `X-User-Name`: 이름
+- `X-User-Role`: 시스템 역할
+- `X-Customer-Role`: 고객 역할
+
+### SecurityUtil 사용법
+
+```java
+// Controller에서 사용자 정보 추출
+@RestController
+@RequiredArgsConstructor
+public class MedicationController {
+    private final HttpServletRequest request;
+
+    @GetMapping("/medications")
+    public ResponseEntity<List<MedicationResponse>> getMyMedications() {
+        Long userId = SecurityUtil.getCurrentUserId(request);
+        return ResponseEntity.ok(medicationService.getMyMedications(userId));
+    }
+}
+```
+
+---
+
 ## 1️⃣ 전체 시스템 구조 (마이크로서비스 아키텍처)
 
 **파일**: `diagrams/01-system-architecture.mmd`
@@ -952,8 +1003,10 @@ Mermaid 코드 블록을 복사해서 붙여넣기
 - **약-음식 충돌**: 룰 베이스 시스템
 - **알림**: Phase 1 필수, Phase 2 선택
 - **React Native 금지**: 웹 앱만 사용
-- **ORM**: MyBatis (동적 SQL 지원)
-- **인프라**: Kubernetes + Docker Compose
+- **ORM**: MyBatis 3.0.3 (JPA 대신 사용, 동적 SQL 지원)
+- **AI/Vector**: Spring AI 1.0.3 (Redis Vector Store)
+- **인프라**: Nginx Gateway + Docker Compose
+- **MSA 인증**: Nginx auth_request → X-User-* 헤더 전달 → SecurityUtil 추출
 
 ---
 
