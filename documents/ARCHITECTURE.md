@@ -511,23 +511,23 @@ mindmap
     Frontend
       React 19
       Vite
-      TipTap
-      Hocuspocus Provider
+      MUI 7.3.5
+      Zustand
     Backend
       Java 21 LTS
-      Spring Boot 3.4.7
-      Spring Cloud 2024.0.2
+      Spring Boot 3.5.8
+      Spring Cloud 2025.0.0
       Spring Security
-      Spring AI
+      Spring AI 1.1.0
       Kafka
     Database
       MySQL/PostgreSQL
       Redis
     External
-      Google Vision OCR
+      Google Cloud Vision
+      OpenAI GPT-5
       식약처 API
-      카카오톡 API
-      n8n
+      AWS S3
 ```
 
 ### 백엔드 기술 스택 선정 이유
@@ -538,16 +538,15 @@ mindmap
 - **ZGC**: 저지연 가비지 컬렉션
 - **프로덕션 검증**: 충분히 안정화된 LTS 버전
 
-#### Spring Boot 3.4.7 (2025년 6월)
-- **안정성**: 6개월 이상 검증된 안정 버전
-- **버그 수정**: 49개 버그 수정 및 의존성 업그레이드
-- **프로덕션 준비**: 실무 환경에서 충분히 검증됨
-- **3.5.0 제외 이유**: 너무 최신 (2025년 5월 출시, 검증 부족)
+#### Spring Boot 3.5.8 (2025년 최신)
+- **안정성**: 충분히 검증된 최신 버전
+- **Spring AI 1.1.0 호환**: GPT-5 지원
+- **Virtual Threads**: Java 21 동시성 최적화
 
-#### Spring Cloud 2024.0.2 (Moorgate)
-- **Spring Boot 3.4.x 완벽 호환**
-- **Spring Framework 6.2.0 통합**
-- **Eureka Server 최신 기능 지원**
+#### Spring Cloud 2025.0.0
+- **Spring Boot 3.5.x 완벽 호환**
+- **Spring Framework 6.2.x 통합**
+- **Gateway WebFlux 의존성 변경**: `spring-cloud-starter-gateway-server-webflux`
 - **마이크로서비스 아키텍처 대비**
 
 ---
@@ -588,6 +587,7 @@ mindmap
 | `/api/counsel/**` | Counsel Service (Core) | 8082 |
 | `/api/notifications/**` | Notification Service (Core) | 8082 |
 | `/api/reports/**` | Report Service (Core) | 8082 |
+| `/api/voice/**` | Voice Service (Core) | 8082 |
 
 #### X-User-* 헤더 주입 (9개)
 Gateway에서 JWT 검증 후 백엔드 서비스로 전달하는 헤더:

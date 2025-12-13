@@ -6,9 +6,9 @@
 
 ### 기술 스택
 - **Framework**: React 19 (JSX only, NO TypeScript)
-- **번들러**: Vite
+- **번들러**: Vite 5
 - **상태 관리**: Zustand (전역 상태) + React Query (서버 상태)
-- **스타일링**: SCSS Modules
+- **스타일링**: **MUI 7.3.5** (SCSS/Tailwind에서 점진적 전환 중)
 - **HTTP 클라이언트**: Axios
 - **폼 관리**: React Hook Form
 - **날짜 처리**: date-fns
@@ -58,7 +58,7 @@ src/
 │       ├── errorHandler.js         # 에러 핸들링
 │       └── stringUtils.js          # 문자열 유틸
 │
-├── features/                        # Feature-based modules (13개)
+├── features/                        # Feature-based modules (14개)
 │   │
 │   ├── auth/                        # 인증 (Login, Signup, RoleSelection, KakaoCallback)
 │   │   ├── components/
@@ -287,7 +287,7 @@ src/
 
 ---
 
-## 📦 API 클라이언트 목록 (12개)
+## 📦 API 클라이언트 목록 (19개)
 
 | 파일명 | 담당 기능 |
 |--------|----------|
@@ -341,9 +341,10 @@ src/
 | `ocr` | 처방전 스캔 | PrescriptionScan |
 | `chat` | 채팅 | PharmacistChatList, ChatConversation |
 | `counsel` | 상담 | CounselBooking |
-| `notification` | 알림 | NotificationList |
+| `notification` | 알림 | NotificationList, SSE 연동 |
 | `report` | 리포트 | AdherenceReport |
 | `settings` | 설정 | Settings, ProfileEdit, NotificationSettings |
+| `voice` | 음성 명령 **(NEW)** | VoiceAssistant, useVoiceRecognition |
 
 ---
 
@@ -376,6 +377,6 @@ src/
 
 ---
 
-**Version**: 2.0
-**Last Updated**: 2025-11-22
+**Version**: 3.0
+**Last Updated**: 2025-12-13
 **Author**: AMApill Development Team

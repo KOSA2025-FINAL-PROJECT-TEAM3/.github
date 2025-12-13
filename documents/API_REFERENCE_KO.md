@@ -55,8 +55,8 @@
 ### Public Invite (No Auth / Partial Auth) (`/family/public/invites`)
 | Method | URI | 설명 | 비고 |
 | :--- | :--- | :--- | :--- |
-| `GET` | `/family/public/invites/start` | 초대 수락 프로세스 시작 | `token` 파라미터 필요. 쿠키(Short Code) 설정 |
-| `POST` | `/family/public/invites/accept` | 초대 수락 (최종) | `AcceptInviteRequest` (Short Code 포함) |
+| `GET` | `/family/public/invites/start` | 초대 수락 프로세스 시작 (공개) | `token` 필요, `invite_short_code` 쿠키(HttpOnly) 설정, 응답: `StartInviteResponse {shortCode, suggestedRole}` |
+| `POST` | `/family/public/invites/accept` | 초대 수락 (공개) | `AcceptInviteRequest` (Short Code 포함), 응답: `AcceptInviteResponse {memberId, groupId, role}` |
 
 ---
 

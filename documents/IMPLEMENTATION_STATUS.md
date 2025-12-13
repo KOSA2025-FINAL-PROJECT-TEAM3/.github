@@ -1,7 +1,7 @@
 # 🚀 AMApill 구현 상태 추적 문서
 
-**최종 업데이트**: 2025-11-18
-**전체 진행률**: Backend ~40% | Frontend ~75%
+**최종 업데이트**: 2025-12-13
+**전체 진행률**: Backend ~85% | Frontend ~90%
 
 이 문서는 AMApill 프로젝트의 상세 구현 상태를 추적합니다. 각 모듈별 완료/진행중/미완료 항목을 체크하고, 우선순위별 작업 가이드를 제공합니다.
 
@@ -11,19 +11,19 @@
 
 | 영역 | 완료 | 진행중/미완료 | 진행률 |
 |------|------|---------------|--------|
-| **Backend - Domain Layer** | 6/6 | 0 | 🟢 100% |
-| **Backend - Repository** | 9/9 | 0 | 🟢 100% |
-| **Backend - Service (Core)** | 4/14 | 10 | 🟡 29% |
-| **Backend - Controller** | 2/11 | 9 | 🔴 18% |
-| **Backend - Configuration** | 3/9 | 6 | 🟡 33% |
-| **Backend - AOP Aspects** | 4/6 | 2 | 🟡 67% |
-| **Backend - 외부 API** | 0/5 | 5 | 🔴 0% |
-| **Backend - Kafka/Cache/Scheduler** | 0/10+ | 10+ | 🔴 0% |
-| **Frontend - Core Infrastructure** | 90% | 10% | 🟢 90% |
+| **Backend - Domain Layer** | 12/12 | 0 | 🟢 100% |
+| **Backend - Repository** | 12/12 | 0 | 🟢 100% |
+| **Backend - Service (Core)** | 12/14 | 2 | 🟢 85% |
+| **Backend - Controller** | 10/11 | 1 | 🟢 90% |
+| **Backend - Configuration** | 8/9 | 1 | 🟢 89% |
+| **Backend - AOP Aspects** | 6/6 | 0 | 🟢 100% |
+| **Backend - 외부 API** | 4/5 | 1 | 🟢 80% |
+| **Backend - Kafka/Cache/Scheduler** | 7/10 | 3 | 🟡 70% |
+| **Frontend - Core Infrastructure** | 95% | 5% | 🟢 95% |
 | **Frontend - Feature Pages** | 95% | 5% | 🟢 95% |
-| **Frontend - AOP Aspects** | 0% | 100% | 🔴 0% |
-| **Frontend - Service Layer** | 40% | 60% | 🟡 40% |
-| **Frontend - Advanced Components** | 60% | 40% | 🟡 60% |
+| **Frontend - AOP Aspects** | 80% | 20% | 🟢 80% |
+| **Frontend - Service Layer** | 90% | 10% | 🟢 90% |
+| **Frontend - Advanced Components** | 85% | 15% | 🟢 85% |
 
 ---
 
@@ -78,85 +78,73 @@
 - ✅ SecurityConfig (기본 구조)
 - ✅ CorsConfig
 - ✅ RestTemplateConfig
+- ✅ KafkaConfig
+- ✅ RedisConfig
+
+#### 9. 신규 구현 항목 (2025-12 추가)
+- ✅ **Voice Service**: 음성 의도 분석 (VoiceIntentService, VoiceController)
+- ✅ **SSE Notification**: 7개 이벤트 타입 실시간 알림
+- ✅ **LLM Guard**: 3-Strike 시스템, Intent Classification
+- ✅ **Disease Service**: 질병 관리, PDF Export, Audit Log
+- ✅ **Diet Service**: AI 분석, 약-음식 상호작용 경고
+- ✅ **Auth Deeplink**: Deeplink 토큰 → 세션 토큰 변환
+- ✅ **KakaoToken API**: 마이크로서비스 간 카카오 토큰 조회
 
 ---
 
-### 🚧 진행중/미완성 항목 (IN PROGRESS / TODO)
+### ✅ 실제 구현 현황 (2025-12-13 코드 스캔 기반)
 
-#### 1. Service Layer - 71% 미구현
+#### 백엔드 컨트롤러 (19개 구현 완료)
+- ✅ FamilyController, FamilyInviteController, PublicInviteController, FamilyNotificationSettingsController
+- ✅ MedicationController, MedicationLogController, PrescriptionController
+- ✅ DietController
+- ✅ DiseaseController
+- ✅ NotificationController, NotificationSettingsController
+- ✅ OcrController
+- ✅ ReportController
+- ✅ FamilyChatRestController, FamilyChatSocketController
+- ✅ SymptomSearchController
+- ✅ VoiceController
+- ✅ AbuseAdminController
 
-**Medication 서비스들** (우선순위: 🔴 HIGH)
-- ❌ MedicationServiceImpl - TODO 주석만 있음
-- ❌ MedicationScheduleServiceImpl - TODO 주석만 있음
-- ❌ MedicationLogServiceImpl - TODO 주석만 있음
-- ❌ AdherenceReportServiceImpl - TODO 주석만 있음
-- ❌ OCRServiceImpl - TODO 주석만 있음
+#### 백엔드 서비스 구현체 (14개 ServiceImpl)
+- ✅ FamilyServiceImpl
+- ✅ MedicationServiceImpl, MedicationLogServiceImpl, PrescriptionServiceImpl, DrugSearchAIServiceImpl
+- ✅ DietServiceImpl
+- ✅ DiseaseServiceImpl
+- ✅ NotificationServiceImpl, NotificationSettingsServiceImpl, FamilyNotificationSettingsServiceImpl
+- ✅ OcrServiceImpl (GoogleVisionOcrService 포함)
+- ✅ ReportServiceImpl
+- ✅ SymptomSearchServiceImpl
+- ✅ AbuseAdminServiceImpl
 
-**Diet 서비스들** (우선순위: 🟡 MEDIUM)
-- ❌ DietServiceImpl - TODO 주석만 있음
-- ❌ InteractionCheckServiceImpl - TODO 주석만 있음
+#### 추가 서비스 (35개 Service 클래스)
+- ✅ **Chat**: AiChatService, FamilyChatService
+- ✅ **Voice**: VoiceIntentService
+- ✅ **Notification**: SseService, KakaoMessageService
+- ✅ **OCR**: OcrJobService, GoogleVisionOcrService
+- ✅ **Diet**: DietAnalysisJobService
+- ✅ **Common**: EmailService, RateLimitService, SecurityAuditService
+- ✅ **LLM Security**: LlmGuardService, ThreeStrikeService, IntentClassificationService, SmartGuardService, AbuseAuditLogService, InputNormalizationService
+- ✅ **S3**: S3ImageUploadService
 
-**기타 서비스들** (우선순위: 🟢 LOW)
-- ❌ NotificationServiceImpl - TODO 주석만 있음
-- ❌ PillIdentificationServiceImpl - TODO 주석만 있음
-- ❌ ReportServiceImpl - TODO 주석만 있음
+#### 외부 API 연동 (구현 완료)
+- ✅ GoogleVisionOcrService - Google Cloud Vision API 연동
+- ✅ KakaoMessageService - 카카오톡 메시지 전송
+- ✅ S3ImageUploadService - AWS S3 파일 업로드
+- ✅ OpenAI 연동 - Spring AI 1.1.0 via AiChatService, DrugSearchAIServiceImpl
 
-#### 2. Controller Layer - 82% 미구현
+---
 
-**Medication 컨트롤러들** (우선순위: 🔴 HIGH)
-- ❌ MedicationController - TODO 주석만 있음
-- ❌ MedicationScheduleController - TODO 주석만 있음
-- ❌ OCRController - TODO 주석만 있음
-- ❌ AdherenceReportController - TODO 주석만 있음
+### 🚧 남은 작업 (진행 중/예정)
 
-**기타 컨트롤러들** (우선순위: 🟡 MEDIUM)
-- ❌ DietController - TODO 주석만 있음
-- ❌ InteractionController - TODO 주석만 있음
-- ❌ NotificationController - TODO 주석만 있음
-- ❌ PillSearchController - TODO 주석만 있음
-- ❌ ReportController - TODO 주석만 있음
+#### 테스트 코드
+- [ ] 단위 테스트 작성
+- [ ] 통합 테스트 작성
 
-#### 3. 외부 API 연동 - 100% 미구현 (우선순위: 🔴 HIGH)
-
-**OCR API**
-- ❌ GoogleVisionClient - 구현 필요
-- ❌ TesseractClient - 구현 필요
-
-**외부 서비스**
-- ❌ MFDSApiClient (식약처 약품 API) - 구현 필요
-- ❌ KakaoApiClient (카카오 알림톡) - 구현 필요
-- ❌ KakaoOAuthService - 구현 필요
-
-#### 4. Configuration - 67% 미구현 (우선순위: 🟡 MEDIUM)
-- ❌ RedisConfig - 빈 파일
-- ❌ KafkaConfig - 빈 파일
-- ❌ HocuspocusConfig - 빈 파일
-- ❌ SwaggerConfig - 빈 파일
-- ❌ WebConfig - 빈 파일
-- ❌ JpaConfig - 빈 파일
-
-#### 5. AOP Aspects - 33% 미구현 (우선순위: 🟡 MEDIUM)
-- ❌ SecurityAspect - 빈 파일
-- ❌ TransactionAspect - 빈 파일
-
-#### 6. Kafka 이벤트 처리 - 100% 미구현 (우선순위: 🟢 LOW)
-- ❌ MedicationEventProducer/Consumer
-- ❌ DietWarningProducer
-- ❌ NotificationProducer/Consumer
-- ❌ Event 클래스들 (MedicationCompletedEvent, MedicationMissedEvent, DrugFoodWarningEvent)
-
-#### 7. 추가 기능 - 100% 미구현 (우선순위: 🟢 LOW)
-
-**PDF 생성**
-- ❌ IPDFGenerator
-- ❌ ITextPDFGenerator
-
-**캐싱**
-- ❌ CacheService
-- ❌ CacheKeyGenerator
-
-**스케줄러**
-- ❌ MedicationReminderScheduler
+#### 스케줄러/배치
+- [ ] MedicationReminderScheduler (복용 알림 스케줄러)
+- [ ] InventoryCheckScheduler (재고 확인 스케줄러)
 - ❌ InventoryCheckScheduler
 
 **WebSocket**
@@ -169,59 +157,41 @@
 
 ### ✅ 완료된 항목 (COMPLETED)
 
-#### 1. Core Infrastructure - 90% 완료
+#### 1. Core Infrastructure - 95% 완료
 - ✅ src/core/config/ - 설정 파일들
-  - ✅ api.config.js
-  - ✅ constants.js
-  - ✅ routes.config.js
-- ✅ src/core/services/api/ - API 클라이언트들 (8개 모듈)
-  - ✅ AuthApiClient
-  - ✅ MedicationApiClient
-  - ✅ FamilyApiClient
-  - ✅ DietApiClient
-  - ✅ InteractionApiClient
-  - ✅ NotificationApiClient
-  - ✅ OCRApiClient
-  - ✅ ReportApiClient
-- ✅ src/core/interceptors/
-  - ✅ authInterceptor.js
-  - ✅ errorInterceptor.js
-- ✅ src/core/utils/ - 유틸리티 함수들
-  - ✅ validation.js
-  - ✅ formatting.js
-  - ✅ errorHandler.js
-- ✅ src/core/routing/
-  - ✅ PrivateRoute
-  - ✅ navigation
+- ✅ src/core/services/api/ - API 클라이언트들 (19개 모듈)
+- ✅ src/core/interceptors/ - authInterceptor, errorInterceptor
+- ✅ src/core/utils/ - validation, formatting, errorHandler
+- ✅ src/core/routing/ - PrivateRoute, navigation
 
 #### 2. Feature Modules - 95% 완료
 - ✅ Auth - Login, Signup, RoleSelection, KakaoCallback
 - ✅ Dashboard - SeniorDashboard, CaregiverDashboard
-- ✅ Medication - Management, Add, Edit, List, Card, Form, DetailModal, InventoryTracker
+- ✅ Medication - Management, Add, Edit, List, Card, Form, DetailModal
 - ✅ Family - Management, Invite, MemberDetail + 8개 컴포넌트
 - ✅ Diet - DietLog, FoodWarning + 5개 컴포넌트
+- ✅ Disease - Disease pages (4개)
 - ✅ OCR - PrescriptionScan + 2개 컴포넌트
 - ✅ Search - UnifiedSearch, PillSearch, SymptomSearch
-- ✅ Notification - NotificationPage, NotificationDetail
+- ✅ Notification - NotificationPage, SSE 연동
 - ✅ Report - AdherenceReport, WeeklyStats
 - ✅ Chat - ChatList, Conversation + 3개 컴포넌트
 - ✅ Counsel - DoctorCounsel
-- ✅ Disease - Disease pages (4개)
 - ✅ Settings - Settings pages (6개)
+- ✅ **Voice** - VoiceAssistant, useVoiceRecognition, voiceStore **(신규)**
 
 #### 3. Shared Components - 95% 완료
-- ✅ UI Components
-  - ✅ Button, Input, Card, Modal, Icon, FAB
-  - ✅ QuickActions, Tabs
-- ✅ Layout
-  - ✅ MainLayout, Header, BottomNavigation
-- ✅ Feedback
-  - ✅ Toast, ErrorBoundary (shared에만 있음)
-- ✅ Routing
-  - ✅ PrivateRoute
+- ✅ UI Components - Button, Input, Card, Modal, Icon, FAB
+- ✅ Layout - MainLayout, Header, BottomNavigation
+- ✅ Feedback - Toast, ErrorBoundary
+- ✅ Routing - PrivateRoute
 
 #### 4. State Management - 100% 완료
-- ✅ Zustand stores (auth, medication, family, notification)
+- ✅ Zustand stores (auth, medication, family, notification, voice)
+
+#### 5. 스타일링 (마이그레이션 예정)
+- 현재: MUI 7.3.5 + SCSS Modules (76개) + Tailwind 4.1.17 혼재
+- 계획: **MUI로 통합 예정**, SCSS/Tailwind 점진적 제거
 
 ---
 

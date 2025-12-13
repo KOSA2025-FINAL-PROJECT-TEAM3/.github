@@ -5,7 +5,8 @@
 > 떨어져 있어도 부모님 건강을 지킬 수 있습니다
 
 [![React](https://img.shields.io/badge/React-19-61dafb?logo=react)](https://react.dev/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.7-6db33f?logo=springboot)](https://spring.io/projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.8-6db33f?logo=springboot)](https://spring.io/projects/spring-boot)
+[![Spring AI](https://img.shields.io/badge/Spring%20AI-1.1.0-6db33f)](https://spring.io/projects/spring-ai)
 [![Java](https://img.shields.io/badge/Java-21%20LTS-orange?logo=openjdk)](https://openjdk.org/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479a1?logo=mysql)](https://www.mysql.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql)](https://www.postgresql.org/)
@@ -72,25 +73,37 @@
 - PDF 리포트 생성
 - 의료진 공유 가능
 
+### 6. 🆕 음성 명령 시스템 (Voice)
+- AI 기반 음성 의도 분석
+- 내비게이션 및 액션 자동 실행
+- Web Speech API 통합
+
+### 7. 🆕 실시간 SSE 알림
+- 7가지 이벤트 타입 지원
+- 복약/식단/OCR/초대 알림
+- 실시간 푸시 알림
+
 ---
 
 ## 🛠 기술 스택
 
 ### Frontend
 - **Framework**: React 19 + Vite (JSX only)
-- **실시간 통신**: STOMP WebSocket Client
-- **스타일링**: SCSS / CSS Modules
+- **실시간 통신**: STOMP WebSocket Client, SSE
+- **스타일링**: MUI 7.3.5 (점진적 전환 중, SCSS/Tailwind 제거 예정)
+- **상태 관리**: Zustand
 
 ### Backend (Microservices Architecture)
 - **Language**: Java 21 LTS
-- **Framework**: Spring Boot 3.4.7
-- **Cloud**: Spring Cloud 2024.0.2 (API Gateway)
+- **Framework**: Spring Boot 3.5.8
+- **Cloud**: Spring Cloud 2025.0.0 (API Gateway)
+- **AI**: Spring AI 1.1.0 (OpenAI GPT-5 nano/mini/5 지원)
 - **보안**: Spring Security (JWT)
 - **메시징**: Apache Kafka
 
 **2개 마이크로서비스**:
-- **Auth Service (8081)**: 인증/인가, JWT, 카카오 OAuth
-- **Core Service (8082)**: 통합 비즈니스 로직 (가족, 약물, 식단, OCR, 알림 등)
+- **Auth Service (8081)**: 인증/인가, JWT, 카카오 OAuth, Deeplink Resolve
+- **Core Service (8082)**: 통합 비즈니스 로직 (가족, 약물, 식단, OCR, 알림, Voice 등)
 
 ### Database
 - **메인 DB**: MySQL 8.0 (트랜잭션 데이터)
@@ -98,8 +111,10 @@
 - **캐싱**: Redis 7+ (세션, 토큰)
 
 ### External API
-- **OCR**: Google Vision API / Tesseract.js
+- **OCR**: Google Cloud Vision API
 - **약 정보**: 식약처 의약품안전나라 API
+- **AI**: OpenAI via Spring AI 1.1.0
+- **파일**: AWS S3 (v2)
 
 **상세 정보**: [ARCHITECTURE.md](./documents/ARCHITECTURE.md) | [MICROSERVICES_SETUP.md](./documents/MICROSERVICES_SETUP.md)
 
@@ -204,10 +219,68 @@ npm run dev
 
 | 영역 | 진행률 | 상태 | 상세 |
 |------|--------|------|------|
-| **Backend** | ![40%](https://progress-bar.dev/40) | 🟡 진행 중 | [상세 보기 →](./documents/IMPLEMENTATION_STATUS.md#-backend-구현-상태) |
-| **Frontend** | ![75%](https://progress-bar.dev/75) | 🟢 양호 | [상세 보기 →](./documents/IMPLEMENTATION_STATUS.md#-frontend-구현-상태) |
-| **DevOps** | ![10%](https://progress-bar.dev/10) | 🔴 시작 | [상세 보기 →](./documents/DEVELOPMENT_CHECKLIST.md#milestone-8-devops--10-시작-단계) |
-| **Testing** | ![5%](https://progress-bar.dev/5) | 🔴 시작 | [상세 보기 →](./documents/DEVELOPMENT_CHECKLIST.md#milestone-6-testing--5-시작-단계) |
+| **Backend** | ![85%](https://progress-bar.dev/85) | 🟢 양호 | 대부분 구현 완료 |
+| **Frontend** | ![90%](https://progress-bar.dev/90) | 🟢 양호 | Voice, Dashboard, Notification 구현 완료 |
+| **DevOps** | ![30%](https://progress-bar.dev/30) | 🟡 진행 중 | Docker Compose 구성 완료 |
+| **Testing** | ![20%](https://progress-bar.dev/20) | 🟡 진행 중 | 기본 테스트 작성 중 |
+
+---
+
+### ✅ 완료된 작업
+
+#### 프로젝트 기획 및 설계 (100%)
+- ✅ 프로젝트 기획 및 명세 작성
+- ✅ 시스템 아키텍처 설계
+- ✅ 데이터베이스 스키마 설계 (ERD, DDL)
+- ✅ API 엔드포인트 및 DTO 정의 (40개+)
+- ✅ 와이어프레임 제작 (34개 화면)
+- ✅ 기술 스택 확정
+
+#### Backend 기반 구조 (100%)
+- ✅ Clean Architecture 4계층 구조
+- ✅ Domain Layer: Entity + Repository
+- ✅ Application Layer: DTO + Service Interface
+- ✅ JWT 인증/인가 시스템
+- ✅ Kakao OAuth 2.0 로그인
+
+#### Backend 비즈니스 로직 (85%)
+- ✅ **Family Service**: 그룹 관리, 초대, 구성원 관리
+- ✅ **Medication Service**: 약물 등록, 스케줄, 복용 로그
+- ✅ **Diet Service**: 식단 기록, AI 분석, 약-음식 상호작용 경고
+- ✅ **Disease Service**: 질병 관리, PDF Export
+- ✅ **OCR Service**: Google Cloud Vision 연동
+- ✅ **Notification Service**: SSE 실시간 알림 (7개 이벤트)
+- ✅ **Voice Service**: 음성 의도 분석
+- ✅ **Chat Service**: 가족 채팅, AI 채팅
+- ✅ **Report Service**: 복약 순응도 리포트
+- ✅ **LLM Guard**: 3-Strike 시스템, Intent Classification
+
+#### Frontend 핵심 인프라 (90%)
+- ✅ React 19 + Vite 개발 환경 구축
+- ✅ 인증 시스템 구현 (로그인/회원가입, JWT, RBAC)
+- ✅ 역할 기반 네비게이션 구현 (노인/보호자)
+- ✅ Dashboard 구현 (SeniorDashboard, CaregiverDashboard)
+- ✅ Voice Assistant 구현 (Web Speech API)
+- ✅ SSE Notification 구현
+- ✅ Zustand 상태 관리 설정
+- ✅ API 클라이언트 인프라 (19개 모듈)
+
+---
+
+### 🚧 진행 중
+
+#### 🟡 Frontend 스타일링 마이그레이션
+- [ ] MUI 컴포넌트로 점진적 전환
+- [ ] SCSS Modules 제거
+- [ ] Tailwind CSS 제거
+
+#### 🟡 DevOps
+- [ ] CI/CD 파이프라인 구성
+- [ ] 프로덕션 배포 준비
+
+#### 🟡 Testing
+- [ ] 단위 테스트 작성
+- [ ] 통합 테스트 작성
 
 **📋 상세 추적 문서**
 - 🎯 [**개발 체크리스트**](./documents/DEVELOPMENT_CHECKLIST.md) - 주차별 계획, 마일스톤, Critical Issues
@@ -351,6 +424,6 @@ npm run dev
 
 ---
 
-**최종 수정일**: 2025-11-05
-**문서 버전**: 2.0
-**작성자**: 뭐냑? 개발팀
+**최종 수정일**: 2025-12-13
+**문서 버전**: 3.0
+**작성자**: 볰녕? 개발팀

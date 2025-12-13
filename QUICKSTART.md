@@ -1,8 +1,8 @@
 # 🚀 뭐냑? 빠른 시작 가이드
 
 > 5분 안에 뭐냑? 개발 환경 구축하기
-
----
+>
+> **최종 수정일**: 2025-12-13 | Spring Boot 3.5.8 | Spring AI 1.1.0
 
 ## ⚡ 빠른 실행 (Docker Compose 추천)
 
@@ -149,12 +149,16 @@ npm run dev
 # http://localhost:5173
 ```
 
-### Backend 개발 (Spring Boot)
+### Backend 개발 (Spring Boot 3.5.8)
 
 ```bash
 # 각 마이크로서비스 디렉토리에서
 cd auth-service
-mvn spring-boot:run
+./gradlew bootRun
+
+# 또는 Core Service
+cd spring-boot
+./gradlew bootRun
 
 # 또는 IDE에서 실행
 # IntelliJ IDEA: Run → Edit Configurations → Spring Boot
@@ -247,5 +251,5 @@ npm install
 
 ---
 
-**최종 수정일**: 2025-11-06
+**최종 수정일**: 2025-12-13
 **작성자**: 뭐냑? 개발팀

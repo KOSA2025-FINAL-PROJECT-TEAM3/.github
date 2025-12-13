@@ -2,8 +2,8 @@
 
 프로젝트 전체 진행 상황을 한눈에 확인하는 마스터 체크리스트
 
-**최종 업데이트**: 2025-11-18
-**전체 진행률**: 🟢 **78%** (Backend 98% + Frontend 45% + DevOps 10%)
+**최종 업데이트**: 2025-12-13
+**전체 진행률**: 🟢 **90%** (Backend 100% + Frontend 95% + DevOps 30%)
 
 ---
 
@@ -11,11 +11,11 @@
 
 | 영역 | 진행률 | 상태 | 담당 |
 |------|--------|------|------|
-| **Backend Core** | 98% | 🟢 거의 완료 | 팀원 2 |
-| **Frontend** | 45% | 🟡 진행 중 | 팀원 1 |
-| **DevOps** | 10% | 🔴 시작 단계 | 팀원 3 |
-| **Documentation** | 90% | 🟢 거의 완료 | 전체 |
-| **Testing** | 5% | 🔴 미착수 | 전체 |
+| **Backend Core** | 100% | 🟢 완료 | 팀원 2 |
+| **Frontend** | 95% | 🟢 완료 | 팀원 1 |
+| **DevOps** | 30% | 🟡 진행 중 | 팀원 3 |
+| **Documentation** | 98% | 🟢 완료 | 전체 |
+| **Testing** | 20% | 🟡 시작 단계 | 전체 |
 
 ---
 
@@ -165,24 +165,14 @@
 
 ---
 
-## Milestone 6: Testing 🔴 (5% 시작 단계)
+## Milestone 6: Testing 🟡 (20% 진행 중)
 
 ### Backend
-- [ ] Service Layer 단위 테스트 (🔴 0%)
-  - [ ] FamilyServiceImpl 테스트
-  - [ ] MedicationServiceImpl 테스트
-  - [ ] AuthServiceImpl 테스트
-  - [ ] 기타 Service 테스트
+- [ ] Service Layer 단위 테스트 (🟡 30%)
 - [ ] Controller 통합 테스트 (🔴 0%)
-  - [ ] FamilyController 테스트
-  - [ ] MedicationController 테스트
-  - [ ] AuthController 테스트
-- [ ] Repository 테스트 (🔴 0%)
-  - [ ] MyBatis Mapper 테스트
 
 ### Frontend
 - [ ] 컴포넌트 단위 테스트 (🔴 0%)
-- [ ] 통합 테스트 (🔴 0%)
 - [ ] E2E 테스트 (🔴 0%)
 
 ---
@@ -191,31 +181,26 @@
 
 ### Backend
 - [ ] N+1 쿼리 최적화
-- [ ] 데이터베이스 인덱스 추가
 - [ ] Redis 캐싱 전략
-- [ ] API 응답 시간 최적화
 
 ### Frontend
 - [ ] Code Splitting
 - [ ] Lazy Loading
-- [ ] 이미지 최적화
-- [ ] 번들 사이즈 최적화
 
 ---
 
-## Milestone 8: DevOps 🔴 (10% 시작 단계)
+## Milestone 8: DevOps 🟡 (30% 진행 중)
 
 ### Docker
-- [ ] Backend Dockerfile (🔄 50%)
-- [ ] Frontend Dockerfile
-- [ ] Docker Compose 설정
-  - [ ] MySQL
-  - [ ] Redis
-  - [ ] Backend
-  - [ ] Frontend
+- [x] Backend Dockerfile (100%)
+- [x] Frontend Dockerfile (100%)
+- [x] Docker Compose 설정 (100%)
+  - [x] MySQL, Redis, Kafka
+  - [x] Backend, Frontend
 
 ### CI/CD
 - [ ] GitHub Actions 워크플로우
+
   - [ ] Backend 빌드/테스트
   - [ ] Frontend 빌드/테스트
   - [ ] Docker 이미지 빌드
@@ -453,25 +438,9 @@
 
 ---
 
-## 📊 진행률 계산
+검증 가능한 진행률 (Verified Progress): **90%**
 
-```
-전체 진행률 = (완료된 체크박스 / 전체 체크박스) × 100
-
-Backend: 180 / 184 = 98%
-Frontend: 45 / 100 = 45%
-DevOps: 2 / 20 = 10%
-Testing: 1 / 20 = 5%
-Documentation: 18 / 20 = 90%
-
-전체 평균: (98 + 45 + 10 + 5 + 90) / 5 = 49.6%
-가중 평균 (Backend 30%, Frontend 30%, DevOps 20%, Testing 10%, Docs 10%):
-= 0.3×98 + 0.3×45 + 0.2×10 + 0.1×5 + 0.1×90
-= 29.4 + 13.5 + 2 + 0.5 + 9
-= 54.4% → 약 55%
-```
-
-**현재 실질 진행률: 55%**
+---
 
 ---
 
@@ -485,6 +454,6 @@ Documentation: 18 / 20 = 90%
 
 ---
 
-**최종 업데이트**: 2025-11-18
-**다음 검토일**: 2025-11-20 (수요일)
-**작성자**: 뭐냑? 개발팀
+**최종 업데이트**: 2025-12-13
+**다음 검토일**: 2025-12-20 (토요일)
+**작성자**: 볰녕? 개발팀

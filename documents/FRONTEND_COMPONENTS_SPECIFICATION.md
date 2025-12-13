@@ -25,7 +25,7 @@
 - **Framework**: React 19 (JSX only, NO TypeScript)
 - **번들러**: Vite
 - **상태 관리**: Zustand (전역 상태) + React Query (서버 상태)
-- **스타일링**: SCSS Modules
+- **스타일링**: **MUI 7.3.5** (SCSS/Tailwind에서 점진적 전환 중)
 - **폼 관리**: React Hook Form
 - **날짜 처리**: date-fns
 - **HTTP 클라이언트**: Axios
@@ -53,7 +53,7 @@ src/
 │   │   ├── constants.js
 │   │   └── environment.config.js
 │   │
-│   ├── services/api/             # API 클라이언트 (12개)
+│   ├── services/api/             # API 클라이언트 (19개)
 │   │   ├── ApiClient.js          # 추상 클래스 (Mock 지원)
 │   │   ├── httpClient.js         # Axios 래퍼
 │   │   ├── authApiClient.js      # 로그인/회원가입/Kakao OAuth
@@ -66,7 +66,8 @@ src/
 │   │   ├── chatApiClient.js
 │   │   ├── counselApiClient.js
 │   │   ├── reportApiClient.js
-│   │   └── notificationApiClient.js
+│   │   ├── notificationApiClient.js
+│   │   └── voiceApiClient.js     # 음성 명령 API
 │   │
 │   ├── interceptors/
 │   │   ├── authInterceptor.js
@@ -82,7 +83,7 @@ src/
 │       ├── errorHandler.js
 │       └── stringUtils.js
 │
-├── features/                     # Feature modules (13개)
+├── features/                     # Feature modules (14개)
 │   ├── auth/
 │   │   ├── components/
 │   │   │   ├── KakaoLoginButton.jsx
@@ -239,6 +240,15 @@ src/
 │       │   └── useNotifications.js
 │       └── pages/
 │           └── NotificationListPage.jsx
+│
+├── features/voice/               # 음성 명령 (신규)
+│   ├── components/
+│   │   ├── VoiceAssistant.jsx
+│   │   └── VoiceVisualizer.jsx
+│   ├── hooks/
+│   │   └── useVoiceRecognition.js
+│   └── store/
+│       └── voiceStore.js
 │
 ├── shared/                       # Shared components
 │   └── components/
@@ -599,6 +609,20 @@ SettingsPage
     │   ├── MenuItem (이용약관)
     │   └── MenuItem (로그아웃)
     └── BottomNavigation
+```
+
+---
+
+---
+
+### 12. 음성 명령 (Voice)
+
+#### 99. 음성 비서 (Global Overlay)
+```
+VoiceAssistant (App.jsx Level)
+├── MicrophoneButton (FAB)
+├── VoiceVisualizer (Listening State)
+└── ResultFeedback (Toast/Modal)
 ```
 
 ---

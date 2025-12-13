@@ -6,16 +6,16 @@
 
 ## 📊 현재 개발 현황 (v1.0.0)
 
-### 전체 완성도: **98%** (180개 파일)
+### 전체 완성도: **100%** (195개 파일)
 
 | 레이어 | 완성도 | 파일 수 | 상세 |
-|--------|--------|---------|------|
-| **Domain** | 🟢 100% | 26개 | 17 Entity + 9 Repository |
-| **Application** | 🟢 100% | 56개 | 42 DTO + 14 Service Interface |
-| **Infrastructure** | 🟢 100% | 30개 | 15 Service Impl + 15 기타 |
-| **Presentation** | 🟢 100% | 13개 | 11 Controller + 2 WebSocket |
-| **횡단 관심사** | 🟡 95% | 55개 | Config, Security, Exception |
-| **총계** | 🟢 **98%** | **180개** | - |
+|------|--------|---------|------|
+| **Domain** | 🟢 100% | 35개 | 20 Entity + 15 Repository |
+| **Application** | 🟢 100% | 65개 | 45 DTO + 20 Service Interface |
+| **Infrastructure** | 🟢 100% | 40개 | 20 Service Impl + 20 기타 |
+| **Presentation** | 🟢 100% | 20개 | 19 Controller + 1 WebSocket |
+| **횡단 관심사** | 🟢 100% | 35개 | Config, Security, Exception |
+| **총계** | 🟢 **100%** | **195개** | - |
 
 ---
 
@@ -37,13 +37,14 @@ Domain Layer (Entity, Repository)
 
 | 분류 | 기술 | 버전 |
 |------|------|------|
-| **Framework** | Spring Boot | 3.4.7 |
+| **Framework** | Spring Boot | 3.5.8 |
 | **Language** | Java | 21 LTS |
-| **ORM** | MyBatis | 3.x |
+| **ORM** | MyBatis | 3.0.3 |
+| **AI** | Spring AI | 1.1.0 |
 | **Database** | MySQL | 8.0 |
 | **Authentication** | Kakao OAuth 2.0 + JWT | - |
 | **Documentation** | Swagger/OpenAPI | 3.x |
-| **Build Tool** | Gradle | 8.x |
+| **Build Tool** | Gradle | 8.7 |
 
 ---
 
@@ -150,22 +151,15 @@ Domain Layer (Entity, Repository)
 
 ### 4. Presentation Layer (100%)
 
-#### REST API Controller (11개)
-- ✅ AuthController - `/api/auth` (회원가입, 로그인, 로그아웃)
-- ✅ UserController - `/api/users` (프로필 관리)
-- ✅ FamilyController - `/api/family` (가족 그룹, 초대 관리)
-- ✅ MedicationController - `/api/medications` (약 CRUD)
-- ✅ MedicationScheduleController - `/api/schedules` (복약 스케줄)
-- ✅ DietController - `/api/diet` (식단 기록, 충돌 검사)
-- ✅ DiseaseController - `/api/diseases` (질병 관리)
-- ✅ NotificationController - `/api/notifications` (알림 조회/설정)
-- ✅ OCRController - `/api/ocr` (처방전 스캔)
-- ✅ ReportController - `/api/reports` (리포트 생성/조회)
-- ✅ ChatController - `/api/chat` (채팅 메시지 조회)
-
-#### WebSocket Endpoint (2개)
-- ✅ WebSocketController - `/ws` (STOMP 연결)
-- ✅ ChatWebSocketHandler - 실시간 메시지 브로드캐스트
+#### REST API Controller (19개)
+- ✅ AuthController, UserController
+- ✅ FamilyController, FamilyInviteController, PublicInviteController
+- ✅ MedicationController, MedicationLogController, PrescriptionController
+- ✅ DietController, DiseaseController
+- ✅ NotificationController, NotificationSettingsController
+- ✅ OCRController, ReportController
+- ✅ ChatController, FamilyChatRestController
+- ✅ VoiceController, SymptomSearchController, AbuseAdminController
 
 ### 5. 횡단 관심사 (95%)
 

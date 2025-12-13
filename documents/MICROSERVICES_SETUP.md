@@ -158,9 +158,9 @@ npm install && npm run dev
 ```yaml
 # 기술 스택
 - Java 21
-- Spring Boot 3.4.7
-- Spring Cloud 2024.0.2
-- Spring Cloud Gateway (WebFlux 기반)
+- Spring Boot 3.5.8
+- Spring Cloud 2025.0.0
+- Spring Cloud Gateway WebFlux (`spring-cloud-starter-gateway-server-webflux`)
 - Redis 7 (Reactive 캐싱)
 - Kafka (이벤트 발행)
 - Resilience4j 2.1.0 (Circuit Breaker)
@@ -185,7 +185,7 @@ src/main/java/com/amapill/gateway/
 └── service/
     └── JwtService.java
 
-# 마이크로서비스 라우팅 (11개)
+# 마이크로서비스 라우팅 (12개)
 /api/auth/**         → Auth Service (8081)
 /api/family/**       → Core Service (8082)
 /ws/**               → Core Service WebSocket (8082)
@@ -198,6 +198,7 @@ src/main/java/com/amapill/gateway/
 /api/counsel/**      → Core Service (8082)
 /api/notifications/**→ Core Service (8082)
 /api/reports/**      → Core Service (8082)
+/api/voice/**        → Core Service (8082)
 
 # 인증 제외 경로
 - /api/auth/login, /api/auth/signup, /api/auth/kakao-login, /api/auth/refresh
@@ -309,11 +310,13 @@ DELETE /users/me             # 계정 비활성화
 
 ```yaml
 # 기술 스택
-- Spring Boot 3.4.7, Java 21 LTS
+- Spring Boot 3.5.8, Java 21 LTS
 - MyBatis 3.0.3 (JPA 대신 사용)
-- Spring AI 1.0.3 (Redis Vector Store)
+- Spring AI 1.1.0 (OpenAI GPT-5 nano/mini/5)
 - Apache Kafka
 - Clean Architecture 4계층
+- AWS S3 (v2)
+- Google Cloud Vision
 
 # MSA 인증
 - Nginx Gateway에서 X-User-* 헤더로 사용자 정보 전달
@@ -575,6 +578,6 @@ http://localhost:5601
 
 ---
 
-**최종 수정일**: 2025-11-22
-**버전**: 2.0 (MSA 통합 구조 반영)
+**최종 수정일**: 2025-12-13
+**버전**: 3.0 (MSA 통합 구조 + Voice API + Spring Boot 3.5.8)
 **작성자**: 뭐냑? 개발팀
