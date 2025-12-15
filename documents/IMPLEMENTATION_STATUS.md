@@ -1,6 +1,6 @@
 # 🚀 AMApill 구현 상태 추적 문서
 
-**최종 업데이트**: 2025-12-13
+**최종 업데이트**: 2025-12-15
 **전체 진행률**: Backend ~85% | Frontend ~90%
 
 이 문서는 AMApill 프로젝트의 상세 구현 상태를 추적합니다. 각 모듈별 완료/진행중/미완료 항목을 체크하고, 우선순위별 작업 가이드를 제공합니다.
@@ -148,8 +148,9 @@
 - ❌ InventoryCheckScheduler
 
 **WebSocket**
-- ❌ FamilySyncWebSocket - 구조만 있음
-- ❌ NotificationWebSocket - 미생성
+- ✅ Chat WebSocket (STOMP) - 가족 채팅 실시간 메시징
+- ❌ FamilySyncWebSocket - (선택) 공동편집/동기화용, 미적용
+- ❌ NotificationWebSocket - SSE(EventSource)로 대체
 
 ---
 
@@ -189,9 +190,9 @@
 #### 4. State Management - 100% 완료
 - ✅ Zustand stores (auth, medication, family, notification, voice)
 
-#### 5. 스타일링 (마이그레이션 예정)
-- 현재: MUI 7.3.5 + SCSS Modules (76개) + Tailwind 4.1.17 혼재
-- 계획: **MUI로 통합 예정**, SCSS/Tailwind 점진적 제거
+#### 5. 스타일링 (현행)
+- 현재: **MUI 7.3.5 + Emotion** 기반으로 통일 (Tailwind/Sass 제거됨)
+- 전역 스타일: `src/styles/base.css` 최소 유지
 
 ---
 
@@ -213,9 +214,9 @@
 - ❌ TesseractOCR.js - Tesseract 구현
 - ❌ OCRServiceFactory.js - Factory Pattern (OCP)
 
-**src/core/services/realtime/** (실시간 동기화)
-- ❌ HocuspocusProvider.js - Hocuspocus Provider wrapper
-- ❌ FamilySyncService.js - 가족 실시간 동기화
+**src/core/services/realtime/** (선택: 공동편집/동기화)
+- ❌ HocuspocusProvider.js - (선택) Hocuspocus Provider wrapper
+- ❌ FamilySyncService.js - (선택) 가족 실시간 동기화
 
 **src/core/services/storage/** (스토리지 추상화 - DIP)
 - ❌ IStorageService.js - Storage 인터페이스

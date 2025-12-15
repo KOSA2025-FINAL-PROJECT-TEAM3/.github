@@ -58,7 +58,7 @@
 - [x] React 19 + Vite 개발 환경
 - [x] Zustand 상태 관리 설정
 - [x] React Router 라우팅 설정
-- [x] Tailwind CSS 디자인 시스템
+- [x] MUI + Emotion 디자인 시스템 (Tailwind/Sass 제거)
 - [x] 기본 프로젝트 구조
 
 ---

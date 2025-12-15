@@ -25,8 +25,9 @@
 - **Framework**: React 19 (JSX only, NO TypeScript)
 - **번들러**: Vite
 - **상태 관리**: Zustand (전역 상태) + React Query (서버 상태)
-- **스타일링**: **MUI 7.3.5** (SCSS/Tailwind에서 점진적 전환 중)
-- **폼 관리**: React Hook Form
+- **스타일링**: **MUI 7.3.5 + Emotion** (Tailwind/Sass 제거됨)
+- **실시간 통신**: STOMP WebSocket (채팅) + SSE(EventSource, 알림)
+- **폼 관리**: React Hook Form + Zod
 - **날짜 처리**: date-fns
 - **HTTP 클라이언트**: Axios
 
@@ -1220,7 +1221,7 @@ Card.defaultProps = {
 
 ## 🎨 스타일링 가이드
 
-### SCSS Variables
+### (Legacy) SCSS Variables
 ```scss
 // src/styles/variables.scss
 

@@ -90,7 +90,7 @@
 ### Frontend
 - **Framework**: React 19 + Vite (JSX only)
 - **실시간 통신**: STOMP WebSocket Client, SSE
-- **스타일링**: MUI 7.3.5 (점진적 전환 중, SCSS/Tailwind 제거 예정)
+- **스타일링**: MUI 7.3.5 + Emotion (Tailwind/Sass 제거됨)
 - **상태 관리**: Zustand
 
 ### Backend (Microservices Architecture)
@@ -263,16 +263,16 @@ npm run dev
 - ✅ Voice Assistant 구현 (Web Speech API)
 - ✅ SSE Notification 구현
 - ✅ Zustand 상태 관리 설정
-- ✅ API 클라이언트 인프라 (19개 모듈)
+- ✅ API 클라이언트 인프라 (16개 도메인 + 공통 모듈)
 
 ---
 
 ### 🚧 진행 중
 
 #### 🟡 Frontend 스타일링 마이그레이션
-- [ ] MUI 컴포넌트로 점진적 전환
-- [ ] SCSS Modules 제거
-- [ ] Tailwind CSS 제거
+- [x] MUI 컴포넌트로 전환
+- [x] SCSS/Sass 제거
+- [x] Tailwind 제거
 
 #### 🟡 DevOps
 - [ ] CI/CD 파이프라인 구성
@@ -320,9 +320,9 @@ npm run dev
 - ✅ 역할 기반 네비게이션 구현 (노인/보호자)
 - ✅ 핵심 페이지 구현 (Diet, Disease, Settings, Auth)
 - ✅ Wireframe 페이지 스켈레톤 (34개 화면 구조)
-- ✅ 마이크로서비스 API 클라이언트 인프라 (8개 API Client)
+- ✅ 마이크로서비스 API 클라이언트 인프라 (16개 도메인 + 공통 모듈)
 - ✅ Zustand 상태 관리 설정
-- ✅ Tailwind CSS 디자인 시스템
+- ✅ MUI Theme 기반 디자인 시스템 (Tailwind/Sass 제거)
 
 ---
 
@@ -393,7 +393,7 @@ npm run dev
 
 ### 역할 분담
 
-- **팀원 1**: Frontend Lead (React, Hocuspocus - 공동편집)
+- **팀원 1**: Frontend Lead (React, STOMP WebSocket, SSE, MUI)
 - **팀원 2**: Backend Lead + AI (Spring Boot, Auth/Core Service, OCR, Kafka)
 - **팀원 3**: Database + DevOps (MySQL, Redis, CI/CD)
 

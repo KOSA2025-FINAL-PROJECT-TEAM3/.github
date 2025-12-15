@@ -124,7 +124,7 @@ git push -u origin feature/#10-medication-list-junsu
 
 - 체크박스 클릭 시 복용 완료 처리
 - 실시간으로 가족 구성원에게 알림 전송
-- Hocuspocus로 실시간 동기화
+- STOMP/SSE로 실시간 알림/동기화
 ```
 
 #### 나쁜 예시 ❌

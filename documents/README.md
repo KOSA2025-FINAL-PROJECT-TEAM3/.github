@@ -63,10 +63,16 @@
 ### [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md)
 **마이크로서비스 설정 및 구성**
 
-- 6개 마이크로서비스 구성
-- MySQL/PostgreSQL 분리 전략
-- Docker Compose 설정
-- 서비스별 API 게이트웨이 라우팅
+- Dev 기준 서비스 구성(Gateway/Auth/Core + Infra)
+- 프로필별 라우팅(dev/docker) 차이 정리
+- 헤더 주입 기반 인증 흐름 요약
+
+### [REPOSITORIES.md](./REPOSITORIES.md)
+**레포지토리별 최신 분석(Dev 기준)**
+
+- 4개 레포지토리의 “현 구현” 정리
+- 포트/라우팅/인증 헤더/DB init scripts 근거 명시
+- 문서 업데이트 시 기준점 역할
 
 ### [SRC_STRUCTURE.md](./SRC_STRUCTURE.md)
 **소스 코드 구조 가이드**

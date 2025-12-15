@@ -8,9 +8,10 @@
 - **Framework**: React 19 (JSX only, NO TypeScript)
 - **번들러**: Vite 5
 - **상태 관리**: Zustand (전역 상태) + React Query (서버 상태)
-- **스타일링**: **MUI 7.3.5** (SCSS/Tailwind에서 점진적 전환 중)
+- **스타일링**: **MUI 7.3.5 + Emotion** (Tailwind/Sass 제거됨)
 - **HTTP 클라이언트**: Axios
-- **폼 관리**: React Hook Form
+- **실시간 통신**: STOMP WebSocket (채팅) + SSE(EventSource, 알림)
+- **폼 관리**: React Hook Form + Zod
 - **날짜 처리**: date-fns
 
 ---
@@ -29,20 +30,25 @@ src/
 │   │   ├── constants.js            # Global constants
 │   │   └── environment.config.js   # Environment settings
 │   │
-│   ├── services/api/               # API 클라이언트 (12개)
+│   ├── services/api/               # API 클라이언트 (16개 도메인 + 공통)
 │   │   ├── ApiClient.js            # 추상 클래스 (Mock 지원)
 │   │   ├── httpClient.js           # Axios 래퍼
 │   │   ├── authApiClient.js        # 로그인/회원가입/Kakao OAuth
 │   │   ├── medicationApiClient.js  # 약 CRUD
+│   │   ├── medicationLogApiClient.js # 복용 로그
+│   │   ├── prescriptionApiClient.js # 처방전
 │   │   ├── familyApiClient.js      # 가족 관리
+│   │   ├── publicInviteApiClient.js # 공개 초대/수락
+│   │   ├── familyChatApiClient.js  # 가족 채팅(REST)
 │   │   ├── dietApiClient.js        # 식단 관리
 │   │   ├── diseaseApiClient.js     # 질병 관리
 │   │   ├── searchApiClient.js      # 약/증상 검색
 │   │   ├── ocrApiClient.js         # 처방전 OCR
 │   │   ├── chatApiClient.js        # 채팅
-│   │   ├── counselApiClient.js     # 상담 예약
 │   │   ├── reportApiClient.js      # 순응도 리포트
-│   │   └── notificationApiClient.js # 알림
+│   │   ├── notificationApiClient.js # 알림(SSE)
+│   │   ├── notificationSettingsApiClient.js # 알림 설정
+│   │   └── voiceApiClient.js       # Voice
 │   │
 │   ├── interceptors/               # Request/Response interceptors
 │   │   ├── authInterceptor.js      # JWT token injection

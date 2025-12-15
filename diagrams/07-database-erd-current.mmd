@@ -1,0 +1,192 @@
+erDiagram
+  %% Dev init scripts 기준(docker-compose/init-scripts/mysql, postgresql)
+  %% user_id는 Auth Service users.id를 의미(서비스 간 FK는 일부 생략될 수 있음)
+
+  USERS ||--o{ KAKAO_TOKENS : "user_id"
+
+  USERS ||--o{ PRESCRIPTIONS : "user_id"
+  PRESCRIPTIONS ||--o{ MEDICATIONS : "prescription_id"
+  MEDICATIONS ||--o{ MEDICATION_SCHEDULES : "medication_id"
+  MEDICATIONS ||--o{ MEDICATION_LOGS : "medication_id"
+  MEDICATION_SCHEDULES ||--o{ MEDICATION_LOGS : "medication_schedule_id"
+
+  USERS ||--o{ FAMILY_GROUPS : "created_by/owner_id"
+  FAMILY_GROUPS ||--o{ FAMILY_MEMBERS : "family_group_id"
+  FAMILY_GROUPS ||--o{ FAMILY_INVITES : "group_id"
+  FAMILY_GROUPS ||--o{ FAMILY_NOTIFICATION_SETTINGS : "family_group_id"
+
+  USERS ||--o{ DIET_LOGS : "user_id"
+  DIET_LOGS ||--o{ DIET_WARNINGS : "diet_log_id"
+  MEDICATIONS ||--o{ DIET_WARNINGS : "medication_id"
+
+  USERS ||--o{ DISEASES : "user_id"
+  DISEASES ||--o{ DISEASE_AUDIT_LOGS : "disease_id"
+  DISEASES ||--o{ DISEASE_MEDICATION_RELATIONS : "disease_id"
+  MEDICATIONS ||--o{ DISEASE_MEDICATION_RELATIONS : "medication_id"
+  DIET_WARNINGS ||--o{ DISEASE_WARNING_RELATIONS : "warning_id"
+  DISEASES ||--o{ DISEASE_WARNING_RELATIONS : "disease_id"
+
+  USERS ||--o{ NOTIFICATIONS : "user_id"
+  USERS ||--|| NOTIFICATION_SETTINGS : "user_id"
+
+  FAMILY_MEMBERS ||--o{ FAMILY_CHAT_MESSAGE : "family_member_id"
+  FAMILY_GROUPS ||--o{ FAMILY_CHAT_MESSAGE : "family_group_id"
+
+  USERS {
+    BIGINT id PK
+    VARCHAR email
+    VARCHAR name
+    VARCHAR user_role
+    VARCHAR customer_role
+    BOOLEAN active
+    TIMESTAMP created_at
+  }
+
+  KAKAO_TOKENS {
+    BIGINT id PK
+    BIGINT user_id FK
+    VARCHAR access_token
+    TIMESTAMP expires_at
+  }
+
+  PRESCRIPTIONS {
+    BIGINT id PK
+    BIGINT user_id
+    DATE start_date
+    DATE end_date
+    BOOLEAN active
+  }
+
+  MEDICATIONS {
+    BIGINT id PK
+    BIGINT user_id
+    BIGINT prescription_id FK
+    VARCHAR name
+    BOOLEAN active
+  }
+
+  MEDICATION_SCHEDULES {
+    BIGINT id PK
+    BIGINT medication_id FK
+    TIME time
+    VARCHAR days_of_week
+    BOOLEAN active
+  }
+
+  MEDICATION_LOGS {
+    BIGINT id PK
+    BIGINT medication_id FK
+    BIGINT medication_schedule_id FK
+    BIGINT user_id
+    DATETIME scheduled_time
+    DATETIME completed_time
+    BOOLEAN completed
+  }
+
+  MEDICATION_ADHERENCE_DAILY {
+    DATE stat_date PK
+    BIGINT user_id PK
+    BIGINT medication_id PK
+    INT scheduled_count
+    INT completed_count
+  }
+
+  FAMILY_GROUPS {
+    BIGINT id PK
+    BIGINT created_by
+    BIGINT owner_id
+    VARCHAR name
+  }
+
+  FAMILY_MEMBERS {
+    BIGINT id PK
+    BIGINT family_group_id FK
+    BIGINT user_id
+    VARCHAR family_role
+  }
+
+  FAMILY_INVITES {
+    BIGINT id PK
+    BIGINT group_id FK
+    BIGINT inviter_id
+    BIGINT used_by_user_id
+    VARCHAR short_code
+    DATETIME expires_at
+    VARCHAR status
+  }
+
+  FAMILY_NOTIFICATION_SETTINGS {
+    BIGINT family_group_id PK
+    BIGINT target_user_id PK
+    BOOLEAN kakao_enabled
+    BOOLEAN diet_warning_enabled
+    BOOLEAN medication_missed_enabled
+  }
+
+  DIET_LOGS {
+    BIGINT id PK
+    BIGINT user_id
+    VARCHAR meal_type
+    VARCHAR food_name
+    DATETIME recorded_at
+  }
+
+  DIET_WARNINGS {
+    BIGINT id PK
+    BIGINT user_id
+    BIGINT diet_log_id
+    BIGINT medication_id FK
+    VARCHAR severity
+  }
+
+  DISEASES {
+    BIGINT id PK
+    BIGINT user_id
+    BIGINT created_by
+    VARCHAR name
+    VARCHAR status
+    DATETIME deleted_at
+  }
+
+  DISEASE_AUDIT_LOGS {
+    BIGINT id PK
+    BIGINT disease_id FK
+    BIGINT actor_id
+    VARCHAR action
+    DATETIME created_at
+  }
+
+  DISEASE_MEDICATION_RELATIONS {
+    BIGINT id PK
+    BIGINT disease_id FK
+    BIGINT medication_id FK
+  }
+
+  DISEASE_WARNING_RELATIONS {
+    BIGINT id PK
+    BIGINT disease_id FK
+    BIGINT warning_id FK
+  }
+
+  NOTIFICATIONS {
+    BIGINT id PK
+    BIGINT user_id
+    VARCHAR type
+    BOOLEAN read
+    TIMESTAMP created_at
+  }
+
+  NOTIFICATION_SETTINGS {
+    BIGINT user_id PK
+    BOOLEAN push_enabled
+    BOOLEAN kakao_deeplink_enabled
+  }
+
+  FAMILY_CHAT_MESSAGE {
+    BIGINT id PK
+    BIGINT family_group_id FK
+    BIGINT family_member_id FK
+    VARCHAR type
+    TEXT content
+    TIMESTAMP created_at
+  }

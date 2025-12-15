@@ -25,9 +25,11 @@
 ### Frontend
 - **Framework**: React (JavaScript + JSX) ⭐ **React Native 사용 금지**
 - **번들러**: Vite
-- **실시간 동기화**: Hocuspocus + TipTap (가족 간 데이터 공유)
-- **상태 관리**: Context API / Redux (선택)
-- **스타일링**: SCSS / CSS Modules
+- **실시간 통신**: STOMP WebSocket (채팅) + SSE(EventSource, 알림)
+- **상태 관리**: Zustand + React Query
+- **스타일링**: MUI + Emotion (Tailwind/Sass 제거됨)
+- **폼**: React Hook Form + Zod
+- **(선택)** 공동편집/동기화: Hocuspocus + Y.js (현재 Front 미적용)
 
 ### Backend
 - **Language**: Java 21 LTS (2029년까지 지원, Virtual Threads, ZGC)
@@ -39,9 +41,9 @@
 - **워크플로우 자동화**: n8n (알림 스케줄링)
 
 ### Database
-- **관계형 DB**: MySQL / PostgreSQL (결정 필요)
+- **관계형 DB**: MySQL 8.0 (트랜잭션), PostgreSQL 16 (pgvector/vector_store)
 - **캐싱/세션**: Redis
-- **실시간 동기화**: Hocuspocus (WebSocket 기반)
+- **(선택)** 공동편집/동기화: Hocuspocus (WebSocket 기반)
 
 ### 외부 API 및 서비스
 - **OCR**: Google Cloud Vision API (무료 한도 1,000건/월) / Tesseract.js (무료, 보조용)
@@ -82,7 +84,7 @@
    └──────────────────────────┘
 
 3. 부모님이 체크박스 클릭 → 복용 완료
-   → Hocuspocus로 실시간 동기화
+   → STOMP/SSE로 실시간 반영
 
 4. 자녀 앱에 즉시 알림:
    "어머니가 오후 2시 혈압약을 복용 완료했습니다 ✓"
@@ -94,7 +96,10 @@
 
 #### 기술 구현
 ```javascript
-// Hocuspocus Provider로 실시간 동기화
+// 참고: 공동편집/CRDT(Hocuspocus)는 선택 사항이며, 현재 Front 구현은 STOMP/SSE 기반입니다.
+// (아래 코드는 아이디어 스케치)
+//
+// Hocuspocus Provider로 실시간 동기화(선택)
 const provider = new HocuspocusProvider({
   url: 'ws://your-server.com',
   name: 'family-group-{family_id}', // 가족 그룹별 독립 공간
@@ -118,7 +123,7 @@ const completeMedication = (medId) => {
 
 #### 차별점
 - ✅ **기존 앱 없음**: 약 관리 앱은 모두 개인용
-- ✅ **Hocuspocus 활용**: 이미 사용 중인 기술 스택과 완벽 매치
+- ✅ **(선택) Hocuspocus 활용**: 공동편집/CRDT 필요 시 적용 (현재 Front 미적용)
 - ✅ **양면 시장**: 시니어(사용자) + 자녀(케어기버) 동시 공략
 - ✅ **실용성**: 실제 페인포인트 해결
 
@@ -1787,7 +1792,7 @@ Progressive Web App 기능은 iOS Safari 지원 제한적이므로 **보류**
 
 | Phase | 구현 방식 | 필수 여부 | 개발 시간 |
 |-------|----------|----------|----------|
-| Phase 1 | 웹 기반 수동 체크 + Hocuspocus | ✅ 필수 | 3일 |
+| Phase 1 | 웹 기반 수동 체크 + SSE/STOMP | ✅ 필수 | 3일 |
 | Phase 2 | 카카오톡 알림톡 | ⚠️ 선택 | 1주 |
 | Phase 3 | PWA 알림 | ❌ 보류 | - |
 
@@ -1805,8 +1810,9 @@ Progressive Web App 기능은 iOS Safari 지원 제한적이므로 **보류**
 ┌─────────────────────────────────────────────────────────┐
 │                Frontend (React Web Only)                │
 │  - React + Vite (JSX)                                   │
-│  - Hocuspocus Provider (가족 간 실시간 동기화)           │
-│  - TipTap (메모/커뮤니케이션)                            │
+│  - STOMP WebSocket (채팅) + SSE(EventSource, 알림)       │
+│  - MUI + Emotion                                         │
+│  - (선택) Hocuspocus Provider (공동편집/동기화)           │
 └─────────────────┬───────────────────────────────────────┘
                   │ REST API / WebSocket
 ┌─────────────────▼───────────────────────────────────────┐

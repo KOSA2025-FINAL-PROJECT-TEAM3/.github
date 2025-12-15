@@ -44,8 +44,12 @@ Week 7: 테스트 & 배포 & 발표 준비
 
 ```bash
 # 이미 있는 프로젝트 활용
-npm install axios react-router-dom sass
-npm install @tiptap/react @hocuspocus/provider
+npm install axios react-router-dom
+npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
+npm install zustand @tanstack/react-query react-hook-form zod
+npm install @stomp/stompjs sockjs-client
+# (선택) E2E
+npm install -D @playwright/test
 ```
 
 #### 📁 폴더 구조 생성
@@ -61,7 +65,7 @@ backend/src/main/java/com/amapill/
 └── security/        # JWT
 
 # Frontend (src-structure.md 참고)
-frontend/src/
+Front/src/
 ├── core/            # API, Utils
 ├── features/        # 기능 모듈
 └── shared/          # 공통 컴포넌트
@@ -428,8 +432,8 @@ public class Medication {
 ```
 
 **통합 담당자:**
-- Hocuspocus 서버 설정
-- 실시간 동기화 테스트
+- (선택) Hocuspocus 서버 설정
+- STOMP(WebSocket) / SSE 연동 테스트
 
 ---
 
@@ -492,7 +496,7 @@ public class Medication {
 Week 1 완료 후:
 - **Backend 담당자**: API 개발 (Controller, Service)
 - **Frontend 담당자**: UI 개발 (Component, Page)
-- **통합 담당자**: 인프라 (Kafka, Hocuspocus, 배포)
+- **통합 담당자**: 인프라 (Kafka, (선택) Hocuspocus, 배포)
 
 ### 2. **Mock Data 활용**
 
@@ -570,7 +574,7 @@ git push origin feature/medication-crud
 
 ### 팀원 3 (Full-stack/인프라)
 - Week 1: 프로젝트 초기 설정
-- Week 2-3: Hocuspocus, Kafka
+- Week 2-3: Kafka, (선택) Hocuspocus
 - Week 4-6: 통합 테스트, 배포
 
 ---

@@ -5,7 +5,7 @@
 > 떨어져 있어도 부모님 건강을 지킬 수 있습니다
 
 [![React](https://img.shields.io/badge/React-19-61dafb?logo=react)](https://react.dev/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.7-6db33f?logo=springboot)](https://spring.io/projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.8-6db33f?logo=springboot)](https://spring.io/projects/spring-boot)
 [![Java](https://img.shields.io/badge/Java-21%20LTS-orange?logo=openjdk)](https://openjdk.org/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479a1?logo=mysql)](https://www.mysql.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791?logo=postgresql)](https://www.postgresql.org/)
@@ -28,7 +28,7 @@
 
 | 역할 | 담당 기술 | GitHub |
 |------|----------|--------|
-| **Frontend Lead** | React 19, Vite, Hocuspocus (공동편집), Y.js CRDT | [@팀원1](https://github.com/팀원1) |
+| **Frontend Lead** | React 19, Vite, MUI, STOMP WebSocket, SSE | [@팀원1](https://github.com/팀원1) |
 | **Backend Lead + AI** | Spring Boot 3, Auth/Core Service, OCR, Kafka | [@팀원2](https://github.com/팀원2) |
 | **Database + DevOps** | MySQL 8.0, PostgreSQL 16, Redis, Docker | [@팀원3](https://github.com/팀원3) |
 
@@ -61,7 +61,7 @@
 
 ### 1. 가족 돌봄 네트워크 (MVP 1순위)
 - 자녀가 원격으로 부모님 약 스케줄 등록
-- 실시간 복용 현황 모니터링 (Hocuspocus WebSocket)
+- 실시간 복용 현황 모니터링 (Spring WebSocket/STOMP + SSE)
 - 약 미복용 시 자녀에게 즉시 알림
 
 ### 2. 약-음식 충돌 경고 (MVP 2순위)
@@ -89,14 +89,13 @@
 
 ### Frontend
 - **Framework**: React 19 + Vite (JSX only)
-- **실시간 통신**: STOMP WebSocket Client (알림, 상태 동기화)
-- **공동편집**: Hocuspocus (공동편집) + TipTap + Y.js CRDT
-- **스타일링**: SCSS / CSS Modules
+- **실시간 통신**: STOMP WebSocket Client (채팅) + SSE(EventSource, 알림)
+- **스타일링**: MUI + Emotion (Tailwind/Sass 제거됨)
 
 ### Backend (Microservices Architecture)
 - **Language**: Java 21 LTS (Virtual Threads, ZGC)
-- **Framework**: Spring Boot 3.4.7
-- **Cloud**: Spring Cloud 2024.0.2 (Moorgate)
+- **Framework**: Spring Boot 3.5.8
+- **Cloud**: Spring Cloud 2025.0.0
 - **보안**: Spring Security (JWT)
 - **메시징**: Apache Kafka
 
@@ -108,15 +107,23 @@
 1. **Auth Service** (8081): 인증/인가, JWT 토큰 관리, 카카오 OAuth
 2. **Core Service** (8082): 통합 비즈니스 로직 (가족, 약물, 식단, OCR, 채팅, 검색, 질병, 상담, 알림, 리포트)
 
+#### 문서(Dev 기준)
+
+- 빠른 시작: [QUICKSTART.md](../QUICKSTART.md)
+- 레포별 분석: [documents/REPOSITORIES.md](../documents/REPOSITORIES.md)
+- 아키텍처: [documents/ARCHITECTURE.md](../documents/ARCHITECTURE.md)
+- 라우팅/프로필: [documents/MICROSERVICES_SETUP.md](../documents/MICROSERVICES_SETUP.md)
+
 ### 실시간 통신
 | 용도 | 기술 | 설명 |
 |------|------|------|
-| 알림/상태 동기화 | Spring WebSocket/STOMP + Kafka | 서버 → 클라이언트 푸시 |
-| 공동편집 (게시글 편집) | Hocuspocus + Y.js CRDT | 실시간 문서 동기화, 충돌 자동 해결 |
+| 채팅 | Spring WebSocket/STOMP | 서버 ↔ 클라이언트 실시간 메시징 |
+| 알림/상태 동기화 | SSE (EventSource) | 서버 → 클라이언트 푸시 |
+| 공동편집 (선택) | Hocuspocus + Y.js CRDT | 실시간 문서 동기화(현재 Front 미적용) |
 
 ### Database (이중화 구조)
 - **트랜잭션 DB**: MySQL 8.0 (사용자, 약, 가족, 식단)
-- **실시간 동기화 DB**: PostgreSQL 16 (Hocuspocus Y.js CRDT - 공동편집용)
+- **PostgreSQL 16**: pgvector/vector_store (+ 선택: 공동편집 저장소)
 - **캐싱**: Redis 7+ (세션, Refresh Token)
 
 ### External API
@@ -167,7 +174,7 @@
 ### Phase 2: 개발 (Week 3-5) 🚧 진행 예정
 - [ ] Frontend 개발 (React)
 - [ ] Backend 개발 (Spring Boot)
-- [ ] 실시간 동기화 구현 (Hocuspocus)
+- [ ] 공동편집(선택) 구현 (Hocuspocus)
 - [ ] OCR 연동 (Google Vision)
 - [ ] 약-음식 충돌 룰 엔진 구현
 

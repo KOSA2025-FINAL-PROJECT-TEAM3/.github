@@ -578,24 +578,24 @@ GROUP BY batch_name;
 
 **기술 스택**:
 ```
-Hocuspocus Server (WebSocket)
+SSE (EventSource) - 실시간 알림(복약/식단/OCR/초대 등)
+    +
+Spring WebSocket/STOMP - 실시간 채팅
     ↓
-Y.js CRDT (충돌 없는 실시간 동기화)
-    ↓
-PostgreSQL (실시간 데이터 저장)
+(주요 상태 저장) MySQL 트랜잭션 데이터
+
+(선택) 공동편집/CRDT가 필요한 경우에만 Hocuspocus + Y.js 도입
 ```
 
 **데이터 흐름**:
 ```
 부모님 앱: 약 복용 버튼 클릭
     ↓
-Frontend → Hocuspocus Server (WebSocket)
+Frontend → Backend API (복용 로그 기록)
     ↓
-Y.js CRDT 업데이트 → PostgreSQL 저장
+Backend → 알림 이벤트 생성
     ↓
-Hocuspocus → 모든 연결된 가족 구성원에게 Push
-    ↓
-자녀 앱: 실시간 알림 표시
+SSE Push → 자녀 앱: 실시간 알림 표시
 ```
 
 ---
@@ -644,11 +644,9 @@ WebSocket Push → Frontend
 
 **기술 스택**:
 ```
-Hocuspocus WebSocket (채팅 전용 Room)
+Spring WebSocket/STOMP (채팅)
     ↓
-Y.js Text 타입 (메시지 동기화)
-    ↓
-PostgreSQL 저장
+MySQL 저장 + (선택) Kafka 이벤트
 ```
 
 ---
@@ -716,9 +714,9 @@ WebSocket Push → Frontend (실시간 알림)
 | 미복용 체크 | - | 가능 | ✅ | ✅ | - | **@Scheduled** |
 | 주간 통계 | - | 가능 | ✅ | - | - | **Spring Batch** |
 | 만료 알림 | - | 가능 | - | ✅ | - | **@Scheduled** |
-| 복약 알림 | - | - | - | - | ✅ | **Hocuspocus** |
+| 복약 알림 | - | - | - | - | ✅ | **SSE** |
 | 약-음식 충돌 | - | - | - | - | ✅ | **Kafka + WebSocket** |
-| 약사 채팅 | - | - | - | - | ✅ | **Hocuspocus** |
+| 약사 채팅 | - | - | - | - | ✅ | **WebSocket/STOMP** |
 | OCR 진행률 | - | - | - | - | ✅ | **SSE** |
 
 ---
@@ -839,13 +837,14 @@ public class ReportBatchConfig {
 1. **트리거**: 통계 자동 갱신, 감사 로그만 사용
 2. **커서**: 가급적 사용 안 함 (Set-based 쿼리로 대체)
 3. **배치**: Spring @Scheduled로 구현 (DB Event보다 유연)
-4. **실시간**: Hocuspocus + Kafka + WebSocket 조합
+4. **실시간**: SSE + WebSocket/STOMP (+ Kafka 이벤트) 조합
 
 **핵심 원칙**:
 - ✅ 간단한 작업 → DB 트리거
 - ✅ 주기 작업 → Spring @Scheduled
 - ✅ 대용량 처리 → Spring Batch
-- ✅ 실시간 동기화 → Hocuspocus + Y.js
+- ✅ 실시간 알림/채팅 → SSE + WebSocket/STOMP
+- ✅ (선택) 공동편집/CRDT → Hocuspocus + Y.js
 - ✅ 이벤트 기반 → Kafka
 
 ---

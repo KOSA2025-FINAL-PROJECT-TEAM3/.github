@@ -1,78 +1,40 @@
 sequenceDiagram
-    participant Senior as 👴 시니어
-    participant SeniorWeb as 시니어 웹
-    participant Gateway as API Gateway
-    participant Eureka as Eureka Server
-    participant MedService as Medication Service
-    participant FamService as Family Service
-    participant Kafka as Kafka
-    participant DB as Database
-    participant Hocuspocus as Hocuspocus Server
-    participant CaregiverWeb as 자녀 웹
-    participant Caregiver as 👨‍👩‍👧 자녀
+  autonumber
 
-    Note over Senior,Caregiver: 시나리오 1: 약 복용 체크 (실시간 동기화)
+  participant Client as Client
+  participant Nginx as Nginx(:80)
+  participant GW as API Gateway(:8080)
+  participant Auth as Auth Service(:8081)
+  participant Core as Core Service(:8082)
+  participant DB as MySQL
+  participant Redis as Redis
+  participant Kafka as Kafka
 
-    Senior->>SeniorWeb: ✅ 약 복용 체크
-    SeniorWeb->>Gateway: POST /api/medications/logs
-    Gateway->>Eureka: Service Discovery<br/>Medication Service 조회
-    Eureka-->>Gateway: Service Location
-    Gateway->>MedService: Forward Request
-    MedService->>DB: 복용 기록 저장
-    MedService->>Kafka: Publish MedicationLogEvent
-    MedService-->>Gateway: 200 OK
-    Gateway-->>SeniorWeb: Success Response
+  Note over Client,Auth: 1) 로그인(토큰 발급)
+  Client->>Nginx: POST /api/auth/login
+  Nginx->>GW: POST /api/auth/login
+  GW->>Auth: POST /auth/login (StripPrefix=1)
+  Auth->>DB: users 조회/검증
+  Auth->>Redis: Refresh Token 저장(선택)
+  Auth-->>GW: 200 + Access/Refresh Token
+  GW-->>Client: 200 + Token
 
-    Note over Kafka,Hocuspocus: 실시간 동기화 레이어
+  Note over Client,Core: 2) 인증된 API 호출(헤더 주입)
+  Client->>Nginx: GET /api/medications/
+  Nginx->>GW: GET /api/medications/ (Authorization: Bearer ...)
+  GW->>GW: JWT 검증 + X-User-* 주입
+  GW->>Core: GET /medications/ (StripPrefix=1)
+  Core->>DB: medications 조회(user_id 기준)
+  Core-->>GW: 200 OK
+  GW-->>Client: 200 OK
 
-    Kafka->>Hocuspocus: Consume MedicationLogEvent
-    Hocuspocus->>CaregiverWeb: WebSocket Push<br/>(실시간 업데이트)
-    CaregiverWeb->>Caregiver: 🔔 알림: 부모님이 약 드셨어요! ✅
+  Note over Client,Core: 3) SSE 구독(Notifications)
+  Client->>Nginx: GET /api/notifications/subscribe?token=...
+  Nginx->>GW: GET /api/notifications/subscribe?token=...
+  GW->>GW: token(query)로 JWT 검증 + X-User-* 주입
+  GW->>Core: GET /notifications/subscribe
+  Core-->>Client: text/event-stream (연결 유지)
 
-    Note over Senior,Caregiver: 시나리오 2: 자녀가 원격으로 약 등록
-
-    Caregiver->>CaregiverWeb: 부모님 약 등록
-    CaregiverWeb->>Gateway: POST /api/medications
-    Gateway->>Eureka: Service Discovery<br/>Medication Service 조회
-    Eureka-->>Gateway: Service Location
-    Gateway->>MedService: Forward Request
-
-    Note over MedService,FamService: 서비스 간 통신 (Feign Client)
-
-    MedService->>FamService: 가족 권한 확인<br/>GET /families/verify
-    FamService->>DB: 권한 조회
-    FamService-->>MedService: ✅ Authorized
-
-    MedService->>DB: 약 정보 저장
-    MedService->>Kafka: Publish MedicationCreatedEvent
-    MedService-->>Gateway: 201 Created
-    Gateway-->>CaregiverWeb: Success Response
-
-    Kafka->>Hocuspocus: Consume MedicationCreatedEvent
-    Hocuspocus->>SeniorWeb: WebSocket Push<br/>(실시간 업데이트)
-    SeniorWeb->>Senior: 📋 새로운 약이 등록되었습니다
-
-    Note over Senior,Caregiver: 시나리오 3: 약-음식 충돌 경고
-
-    Senior->>SeniorWeb: 식단 입력 (자몽 주스)
-    SeniorWeb->>Gateway: POST /api/diets
-    Gateway->>Eureka: Service Discovery<br/>Diet Service 조회
-    Eureka-->>Gateway: Service Location
-    Gateway->>MedService: Forward to Diet Service
-
-    MedService->>DB: 식단 저장
-    MedService->>MedService: 약-음식 충돌 검사<br/>(Rule Engine)
-
-    alt 충돌 발견
-        MedService->>Kafka: Publish DrugFoodWarningEvent
-        MedService-->>Gateway: 200 OK + Warning
-        Gateway-->>SeniorWeb: ⚠️ 경고 메시지
-        SeniorWeb->>Senior: 🚨 자몽과 혈압약 충돌!
-
-        Kafka->>Hocuspocus: Consume WarningEvent
-        Hocuspocus->>CaregiverWeb: WebSocket Push
-        CaregiverWeb->>Caregiver: 🔔 부모님께 약-음식 충돌 경고 발생
-    else 충돌 없음
-        MedService-->>Gateway: 200 OK
-        Gateway-->>SeniorWeb: ✅ 안전한 식단
-    end
+  Note over Client,Kafka: 4) 이벤트 기반(예: 채팅/알림)
+  Core->>Kafka: Publish domain event
+  Kafka-->>Core: Consume(필요 시)

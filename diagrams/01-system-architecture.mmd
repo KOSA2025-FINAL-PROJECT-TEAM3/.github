@@ -1,127 +1,47 @@
-graph TB
-%% ===== FRONTEND =====
-subgraph FRONTEND["🖥️ Frontend Layer"]
-    A[React Web App]
-    A1[Auth Components]
-    A2[Family Components]
-    A3[Medication Components]
-    A4[Diet Components]
-    A5[Dashboard]
+flowchart TB
+  %% Dev 기준(실제 레포 구성: Gateway + Auth + Core + docker-compose)
 
-    A --> A1 & A2 & A3 & A4 & A5
-end
+  subgraph Client["Client"]
+    Web["Web / App (Frontend)"]
+  end
 
-%% ===== CLOUD INFRA =====
-subgraph CLOUD["☁️ Spring Cloud Infrastructure"]
-    GW[API Gateway<br/>Spring Cloud Gateway]
-    EUR[Eureka Server<br/>Service Discovery]
-    CFG[Config Server<br/>Central Config]
-end
+  subgraph Edge["Edge / Local Proxy (docker-compose)"]
+    Nginx["Nginx :80\n- /api/** → Gateway\n- /ws/** → Gateway"]
+  end
 
-%% ===== MICROSERVICES =====
-subgraph MS["🧩 Microservices"]
-    AUTH[Auth Service<br/>인증/인가/JWT]
-    MED[Medication Service<br/>약 관리]
-    FAM[Family Service<br/>가족 네트워크]
-    DIET[Diet Service<br/>식단 관리]
-    NOTI[Notification Service<br/>알림]
-    OCR[OCR Service<br/>약봉지 인식]
-end
+  subgraph Backend["Backend Services"]
+    GW["API Gateway :8080\n(Spring Cloud Gateway)\nJWT 검증 + X-User-* 주입\nRedis 캐싱 + CB + Kafka 로깅"]
+    AUTH["Auth Service :8081\n/login, /signup, Kakao OAuth\nJWT 발급/갱신 + 프로필"]
+    CORE["Core Service :8082\n가족/약/식단/OCR/알림/리포트/질병/채팅/Voice"]
+  end
 
-%% ===== REALTIME =====
-subgraph REALTIME["⚡ Real-time Sync Layer"]
-    WS[WebSocket/STOMP<br/>실시간 메시징]
-    MSG[Message Broker<br/>Redis PubSub / RabbitMQ]
-    WS --> MSG
-end
+  subgraph Infra["Infra (docker-compose)"]
+    MySQL[("MySQL :3306\nDomain Data")]
+    Redis[("Redis :6379\nCache / Token Store")]
+    Kafka[("Kafka :9092\nEvent Stream")]
+    Postgres[("PostgreSQL+pgvector :5432\nvector_store")]
+  end
 
-%% ===== EVENT PROCESSING =====
-subgraph EVENT["🌀 Event Processing (Kafka)"]
-    K[Apache Kafka]
-    K1[Medication Events]
-    K2[Notification Events]
-    K3[Family Events]
-    K4[Sync Events]
-    K --> K1 & K2 & K3 & K4
-end
+  Web -->|"HTTP / WebSocket"| Nginx
+  Nginx -->|"/api/**"| GW
+  Nginx -->|"/ws/**"| GW
 
-%% ===== DATABASE =====
-subgraph DBLAYER["🗄️ Database Layer"]
-    DB[(MySQL 8.0<br/>Main DB)]
-    R[(Redis<br/>Cache / Session)]
-end
+  GW -->|"/api/auth/**"| AUTH
+  GW -->|"/api/**"| CORE
+  GW -->|"/ws/**"| CORE
 
-%% ===== EXTERNAL =====
-subgraph EXT["🌍 External Services"]
-    E1[식약처 API<br/>의약품안전나라]
-    E2[Google Vision OCR<br/>약봉지 인식]
-    E3[카카오톡 API<br/>알림톡]
-    E4[n8n Workflow<br/>자동화]
-end
+  AUTH --> MySQL
+  AUTH --> Redis
 
-%% ===== CONNECTIONS =====
-A -->|HTTP/REST| GW
-A -->|WebSocket| WS
+  CORE --> MySQL
+  CORE --> Redis
+  CORE --> Kafka
+  CORE --> Postgres
 
-GW --> EUR & CFG
-GW --> AUTH & MED & FAM & DIET & NOTI & OCR
+  subgraph Optional["Optional (docker-compose profiles)"]
+    N8N["n8n :5678\n(워크플로우 자동화)"]
+    Hocus["Hocuspocus :1234\n(공동편집/실시간)"]
+  end
 
-EUR -.->|Service Register| AUTH & MED & FAM & DIET & NOTI & OCR
-CFG -.->|Load Config| AUTH & MED & FAM & DIET & NOTI & OCR
-
-%% DB & CACHE
-AUTH --> DB & R
-MED --> DB & R
-FAM --> DB & R
-DIET --> DB
-NOTI --> DB
-OCR --> DB
-
-%% KAFKA
-MED -->|Publish| K
-FAM -->|Publish| K
-DIET -->|Publish| K
-NOTI -->|Consume| K
-K -->|Event Stream| WS
-
-%% REALTIME
-WS -->|Session| R
-MED -->|Push Events| WS
-FAM -->|Push Events| WS
-DIET -->|Push Events| WS
-
-%% EXTERNAL
-MED --> E1
-OCR --> E2
-NOTI --> E3
-K --> E4
-
-%% FEIGN CLIENTS
-MED -.->|Feign| FAM
-DIET -.->|Feign| MED
-NOTI -.->|Feign| FAM
-
-%% ===== STYLING =====
-style A fill:#61dafb,stroke:#333,stroke-width:2px,font-weight:bold
-style GW fill:#68bc00,stroke:#333,stroke-width:3px
-style EUR fill:#68bc00,stroke:#333,stroke-width:2px
-style CFG fill:#68bc00,stroke:#333,stroke-width:2px
-
-style AUTH fill:#6db33f,stroke:#333,stroke-width:2px
-style MED fill:#6db33f,stroke:#333,stroke-width:2px
-style FAM fill:#6db33f,stroke:#333,stroke-width:2px
-style DIET fill:#6db33f,stroke:#333,stroke-width:2px
-style NOTI fill:#6db33f,stroke:#333,stroke-width:2px
-style OCR fill:#6db33f,stroke:#333,stroke-width:2px
-
-style WS fill:#ff6b35,stroke:#333,stroke-width:3px,color:#fff
-style MSG fill:#ff6b35,stroke:#333,stroke-width:2px,color:#fff
-
-style K fill:#231f20,stroke:#fff,stroke-width:2px,color:#fff
-style DB fill:#4479a1,stroke:#333,stroke-width:2px,color:#fff
-style R fill:#dc382d,stroke:#333,stroke-width:2px,color:#fff
-
-style E1 fill:#b0b0b0,stroke:#333,stroke-width:2px
-style E2 fill:#b0b0b0,stroke:#333,stroke-width:2px
-style E3 fill:#b0b0b0,stroke:#333,stroke-width:2px
-style E4 fill:#b0b0b0,stroke:#333,stroke-width:2px
+  Redis -.-> Hocus
+  Postgres -.-> N8N

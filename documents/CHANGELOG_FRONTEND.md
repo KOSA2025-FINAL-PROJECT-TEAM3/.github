@@ -119,7 +119,7 @@
 ### Changed ♻️
 
 #### 스타일링
-- **MUI Migration 시작**: 기존 SCSS/Tailwind 컴포넌트를 MUI로 전환 중
+- **MUI 통일 완료**: Tailwind/Sass 제거, MUI + Emotion 기반으로 정리
 - **테마 시스템**: MUI ThemeProvider 적용
 
 ---
@@ -132,7 +132,7 @@
 - React 19 + Vite 개발 환경 구축
 - Zustand 상태 관리 설정
 - React Router 라우팅 설정
-- Tailwind CSS 스타일링 시스템
+- MUI + Emotion 스타일링 시스템
 
 #### Stage 2: 인증 시스템 ✅
 - 로그인/회원가입 페이지
@@ -169,7 +169,7 @@
 
 ### 우선순위: 높음
 - [ ] 실제 백엔드 API 연동 (Mock → Real API)
-- [ ] WebSocket 실시간 동기화 구현
+- [ ] (선택) 공동편집/상태 동기화 고도화
 - [ ] 에러 바운더리 및 폴백 UI
 
 ### 우선순위: 중간
@@ -179,7 +179,7 @@
 
 ### 우선순위: 낮음
 - [ ] Storybook 도입 (컴포넌트 문서화)
-- [ ] E2E 테스트 (Playwright)
+- [ ] E2E 테스트 케이스 확장 (Playwright 설정은 완료)
 - [ ] PWA 지원
 
 ---

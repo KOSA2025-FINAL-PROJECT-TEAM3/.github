@@ -23,8 +23,8 @@
 ### Repository 구조
 ```
 KOSA2025-FINAL-PROJECT-TEAM3/
-├── Front/          # React 19 + Vite + Hocuspocus (실시간 동기화)
-├── Back/           # Spring Boot 3.4 Microservices (6개 서비스)
+├── Front/          # React 19 + Vite (STOMP WebSocket + SSE)
+├── Back/           # Spring Boot Microservices (Gateway/Auth/Core)
 └── .github/        # 📍 현재 위치 - 통합 문서 및 다이어그램 저장소
 ```
 
@@ -32,18 +32,19 @@ KOSA2025-FINAL-PROJECT-TEAM3/
 
 #### Frontend
 - **프레임워크**: React 19 + Vite
-- **상태 관리**: Zustand
-- **실시간 동기화**: Hocuspocus + Y.js CRDT
+- **상태 관리**: Zustand + React Query
 - **라우팅**: React Router v6
-- **스타일링**: SCSS/CSS Modules, Tailwind CSS (선택 사항)
-- **WebSocket**: STOMP (가족 네트워크 채팅)
+- **스타일링**: MUI + Emotion (Tailwind/Sass 제거됨)
+- **실시간 통신**: STOMP WebSocket (가족 채팅) + SSE(EventSource, 알림)
+- **폼**: React Hook Form + Zod
+- **E2E**: Playwright
 - **개발 서버**: `npm run dev` → `http://localhost:5173`
 
 #### Backend (Microservices)
 - **언어**: Java 21 LTS (Virtual Threads, ZGC)
-- **프레임워크**: Spring Boot 3.4.7 + Spring Cloud 2024.0.2 (Moorgate)
+- **프레임워크**: Spring Boot 3.5.8 + Spring Cloud 2025.0.0
 - **ORM**: MyBatis 3.0.3 (JPA 대신 사용)
-- **AI/Vector**: Spring AI 1.0.3 (Redis Vector Store)
+- **AI/Vector**: Spring AI 1.1.0
 - **MSA 구조**:
   1. **Auth Service** (8081) - JWT 인증, 사용자 관리
   2. **Core Service** (8082) - 약/가족/식단/알림 통합 서비스
@@ -59,7 +60,7 @@ KOSA2025-FINAL-PROJECT-TEAM3/
 
 #### Database & Cache
 - **MySQL 8.0**: 트랜잭션 데이터 (사용자, 복약, 가족)
-- **PostgreSQL 16**: 실시간 동기화 상태 (Hocuspocus Y.js)
+- **PostgreSQL 16**: pgvector/vector_store (+ 선택: 공동편집 저장소)
 - **Redis 7+**: 세션 토큰 및 캐싱
 
 #### 외부 API
@@ -180,10 +181,10 @@ Relates: #이슈번호
 
 ### 커밋 예시
 ```bash
-git commit -m "✨ Feat: Add real-time medication sync with Hocuspocus
+git commit -m "✨ Feat: Add real-time notification stream (SSE)
 
-Implement Y.js CRDT integration for conflict-free
-collaborative editing between senior and caregiver.
+Add EventSource subscription, store integration,
+and graceful reconnect/backoff strategy.
 
 Relates: #45"
 ```
@@ -312,8 +313,8 @@ redis-cli -h localhost -p 6379
 
 ### 🔍 디버깅 체크리스트
 - [ ] 서비스 간 통신 실패 → Eureka Discovery 등록 확인
-- [ ] WebSocket 연결 실패 → STOMP/Hocuspocus 엔드포인트 확인
-- [ ] 실시간 동기화 안 됨 → Y.js 상태 및 PostgreSQL 연결 확인
+- [ ] WebSocket 연결 실패 → STOMP(`/ws`) 엔드포인트 확인
+- [ ] 알림 실시간 수신 실패 → SSE(`/api/notifications/subscribe`) 및 토큰 확인
 - [ ] 약물-음식 상호작용 안 됨 → 식약처 API 키 및 Diet Service 로그 확인
 - [ ] OCR 실패 → Google Vision API 할당량 및 Tesseract 폴백 로직 확인
 
@@ -358,9 +359,10 @@ GitHub 이슈/PR에서 사용하는 라벨:
 ### 핵심 기술 스택 공식 문서
 - [React 19 공식 문서](https://react.dev/)
 - [Vite 공식 문서](https://vitejs.dev/)
-- [Hocuspocus (Y.js WebSocket Server)](https://tiptap.dev/hocuspocus)
-- [Spring Boot 3.4 문서](https://spring.io/projects/spring-boot)
-- [Spring Cloud 2024.0.2 (Moorgate)](https://spring.io/projects/spring-cloud)
+- [MUI 공식 문서](https://mui.com/)
+- [Playwright 공식 문서](https://playwright.dev/)
+- [Spring Boot 문서](https://spring.io/projects/spring-boot)
+- [Spring Cloud 문서](https://spring.io/projects/spring-cloud)
 - [Apache Kafka 공식 문서](https://kafka.apache.org/documentation/)
 
 ### 아키텍처 패턴
