@@ -1,7 +1,7 @@
 # 🚀 AMApill 구현 상태 추적 문서
 
-**최종 업데이트**: 2025-12-15
-**전체 진행률**: Backend ~85% | Frontend ~90%
+**최종 업데이트**: 2025-12-21
+**전체 진행률**: Backend ~85% | Frontend ~95%
 
 이 문서는 AMApill 프로젝트의 상세 구현 상태를 추적합니다. 각 모듈별 완료/진행중/미완료 항목을 체크하고, 우선순위별 작업 가이드를 제공합니다.
 
@@ -11,19 +11,17 @@
 
 | 영역 | 완료 | 진행중/미완료 | 진행률 |
 |------|------|---------------|--------|
-| **Backend - Domain Layer** | 12/12 | 0 | 🟢 100% |
-| **Backend - Repository** | 12/12 | 0 | 🟢 100% |
-| **Backend - Service (Core)** | 12/14 | 2 | 🟢 85% |
-| **Backend - Controller** | 10/11 | 1 | 🟢 90% |
-| **Backend - Configuration** | 8/9 | 1 | 🟢 89% |
-| **Backend - AOP Aspects** | 6/6 | 0 | 🟢 100% |
-| **Backend - 외부 API** | 4/5 | 1 | 🟢 80% |
-| **Backend - Kafka/Cache/Scheduler** | 7/10 | 3 | 🟡 70% |
+| **Backend - Domain Layer** | 6/6 | 0 | 🟢 100% |
+| **Backend - Repository** | 9/9 | 0 | 🟢 100% |
+| **Backend - Service (Core)** | 12/14 | 2 | � 85% |
+| **Backend - Controller** | 9/11 | 2 | � 82% |
+| **Backend - Configuration** | 9/9 | 0 | � 100% |
+| **Backend - AOP Aspects** | 6/6 | 0 | � 100% |
+| **Backend - 외부 API** | 3/5 | 2 | � 60% |
+| **Backend - Kafka/Cache** | 10/10 | 0 | � 100% |
 | **Frontend - Core Infrastructure** | 95% | 5% | 🟢 95% |
 | **Frontend - Feature Pages** | 95% | 5% | 🟢 95% |
-| **Frontend - AOP Aspects** | 80% | 20% | 🟢 80% |
-| **Frontend - Service Layer** | 90% | 10% | 🟢 90% |
-| **Frontend - Advanced Components** | 85% | 15% | 🟢 85% |
+| **Frontend - State Management** | 100% | 0 | � 100% |
 
 ---
 
@@ -33,18 +31,18 @@
 
 #### 1. 프로젝트 기본 구조
 - ✅ Clean Architecture 4-Layer 구조
-- ✅ 패키지 구조 (family, medication, diet, pill, notification)
+- ✅ 패키지 구조 (family, medication, diet, pill, notification, ocr, report)
 - ✅ 횡단 관심사 패키지 (config, security, exception, validation, aspect, util)
 
-#### 2. Domain Layer (도메인 모델) - 100%
+#### 2. Domain Layer (도메인 모델)
 - ✅ User 도메인 (User, Role, UserRole)
 - ✅ Family 도메인 (FamilyGroup, FamilyMember, MemberRole)
 - ✅ Medication 도메인 (Medication, MedicationSchedule, MedicationLog)
 - ✅ Diet 도메인 (DietLog, DietWarning, MealType)
-- ✅ Interaction 도메인 (DrugFoodInteraction, InteractionSeverity)
-- ✅ Notification 도메인 (Notification, NotificationType)
+- ✅ Interaction 도메인 (DrugFoodInteraction)
+- ✅ Notification 도메인 (Notification)
 
-#### 3. Repository Layer - 100%
+#### 3. Repository Layer
 - ✅ UserRepository
 - ✅ FamilyGroupRepository, FamilyMemberRepository
 - ✅ MedicationRepository, MedicationLogRepository
@@ -52,105 +50,57 @@
 - ✅ NotificationRepository
 - ✅ RefreshTokenRepository
 
-#### 4. Service Layer - 29% (4/14 완료)
-- ✅ FamilyServiceImpl
-- ✅ FamilySyncServiceImpl
-- ✅ UserServiceImpl
-- ✅ AuthServiceImpl
+#### 4. Service Layer
+- ✅ **Family**: FamilyServiceImpl, InvitationServiceImpl
+- ✅ **User/Auth**: UserServiceImpl, AuthServiceImpl
+- ✅ **Medication**: MedicationServiceImpl, MedicationLogServiceImpl
+- ✅ **Report**: AdherenceServiceImpl (구 AdherenceReportService), ReportServiceImpl
+- ✅ **Diet**: DietServiceImpl
+- ✅ **OCR**: OcrServiceImpl (Google Vision 통합)
+- ✅ **Notification**: NotificationServiceImpl, NotificationFilterService
 
-#### 5. Controller Layer - 18% (2/11 완료)
-- ✅ FamilyController
+#### 5. Controller Layer
+- ✅ FamilyController, FamilyInviteController
 - ✅ AuthController
-
-#### 6. AOP Aspects - 67% (4/6 완료)
-- ✅ LoggingAspect
-- ✅ PerformanceAspect
-- ✅ ExceptionAspect
-- ✅ JwtAuthAspect
-
-#### 7. 데이터베이스
-- ✅ schema.sql (테이블 스키마 정의)
-- ✅ sample_data.sql (샘플 데이터)
-- ✅ MyBatis 설정
-
-#### 8. 기본 설정
-- ✅ application.properties (기본 설정)
-- ✅ SecurityConfig (기본 구조)
-- ✅ CorsConfig
-- ✅ RestTemplateConfig
-- ✅ KafkaConfig
-- ✅ RedisConfig
-
-#### 9. 신규 구현 항목 (2025-12 추가)
-- ✅ **Voice Service**: 음성 의도 분석 (VoiceIntentService, VoiceController)
-- ✅ **SSE Notification**: 7개 이벤트 타입 실시간 알림
-- ✅ **LLM Guard**: 3-Strike 시스템, Intent Classification
-- ✅ **Disease Service**: 질병 관리, PDF Export, Audit Log
-- ✅ **Diet Service**: AI 분석, 약-음식 상호작용 경고
-- ✅ **Auth Deeplink**: Deeplink 토큰 → 세션 토큰 변환
-- ✅ **KakaoToken API**: 마이크로서비스 간 카카오 토큰 조회
-
----
-
-### ✅ 실제 구현 현황 (2025-12-13 코드 스캔 기반)
-
-#### 백엔드 컨트롤러 (19개 구현 완료)
-- ✅ FamilyController, FamilyInviteController, PublicInviteController, FamilyNotificationSettingsController
-- ✅ MedicationController, MedicationLogController, PrescriptionController
+- ✅ MedicationController, MedicationLogController
 - ✅ DietController
-- ✅ DiseaseController
-- ✅ NotificationController, NotificationSettingsController
+- ✅ NotificationController
 - ✅ OcrController
 - ✅ ReportController
-- ✅ FamilyChatRestController, FamilyChatSocketController
 - ✅ SymptomSearchController
-- ✅ VoiceController
-- ✅ AbuseAdminController
 
-#### 백엔드 서비스 구현체 (14개 ServiceImpl)
-- ✅ FamilyServiceImpl
-- ✅ MedicationServiceImpl, MedicationLogServiceImpl, PrescriptionServiceImpl, DrugSearchAIServiceImpl
-- ✅ DietServiceImpl
-- ✅ DiseaseServiceImpl
-- ✅ NotificationServiceImpl, NotificationSettingsServiceImpl, FamilyNotificationSettingsServiceImpl
-- ✅ OcrServiceImpl (GoogleVisionOcrService 포함)
-- ✅ ReportServiceImpl
-- ✅ SymptomSearchServiceImpl
-- ✅ AbuseAdminServiceImpl
+#### 6. Configuration & Infrastructure
+- ✅ RedisConfig
+- ✅ KafkaConfig
+- ✅ SecurityConfig (LlmGuard 포함)
+- ✅ WebConfig
+- ✅ GoogleVisionConfig
+- ✅ CacheConfig
 
-#### 추가 서비스 (35개 Service 클래스)
-- ✅ **Chat**: AiChatService, FamilyChatService
-- ✅ **Voice**: VoiceIntentService
-- ✅ **Notification**: SseService, KakaoMessageService
-- ✅ **OCR**: OcrJobService, GoogleVisionOcrService
-- ✅ **Diet**: DietAnalysisJobService
-- ✅ **Common**: EmailService, RateLimitService, SecurityAuditService
-- ✅ **LLM Security**: LlmGuardService, ThreeStrikeService, IntentClassificationService, SmartGuardService, AbuseAuditLogService, InputNormalizationService
-- ✅ **S3**: S3ImageUploadService
+#### 7. Kafka & Event System
+- ✅ NotificationEventListener (Kafka Consumer)
+- ✅ MedicationLoggedEvent, MedicationMissedEvent 처리
+- ✅ SSE 실시간 알림 전송
 
-#### 외부 API 연동 (구현 완료)
-- ✅ GoogleVisionOcrService - Google Cloud Vision API 연동
-- ✅ KakaoMessageService - 카카오톡 메시지 전송
-- ✅ S3ImageUploadService - AWS S3 파일 업로드
-- ✅ OpenAI 연동 - Spring AI 1.1.0 via AiChatService, DrugSearchAIServiceImpl
+#### 8. PDF Generation
+- ✅ DiseasePdfGenerator
+- ✅ AdherencePdfGenerator
 
 ---
 
-### 🚧 남은 작업 (진행 중/예정)
+### 🚧 진행중/미완성 항목 (IN PROGRESS / TODO)
 
-#### 테스트 코드
-- [ ] 단위 테스트 작성
-- [ ] 통합 테스트 작성
+#### 1. Service Layer
+- ✅ **Interaction**: DietServiceImpl 내 통합 구현 (LLM 기반 상호작용 분석)
+- ❌ PillIdentificationServiceImpl - 미구현 (우선순위: � LOW)
 
-#### 스케줄러/배치
-- [ ] MedicationReminderScheduler (복용 알림 스케줄러)
-- [ ] InventoryCheckScheduler (재고 확인 스케줄러)
-- ❌ InventoryCheckScheduler
+#### 2. Controller Layer
+- ✅ **Interaction**: DietController 내 통합 구현
+- ❌ PillSearchController - 미구현 (우선순위: � LOW)
 
-**WebSocket**
-- ✅ Chat WebSocket (STOMP) - 가족 채팅 실시간 메시징
-- ❌ FamilySyncWebSocket - (선택) 공동편집/동기화용, 미적용
-- ❌ NotificationWebSocket - SSE(EventSource)로 대체
+#### 3. 외부 API 연동
+- ❌ KakaoApiClient (알림톡) - 현재 SSE로 대체됨 (우선순위: 🟢 LOW)
+- ❌ MFDSApiClient - 일부 구현됨 (우선순위: 🟡 MEDIUM)
 
 ---
 
@@ -159,567 +109,29 @@
 ### ✅ 완료된 항목 (COMPLETED)
 
 #### 1. Core Infrastructure - 95% 완료
-- ✅ src/core/config/ - 설정 파일들
-- ✅ src/core/services/api/ - API 클라이언트들 (19개 모듈)
-- ✅ src/core/interceptors/ - authInterceptor, errorInterceptor
-- ✅ src/core/utils/ - validation, formatting, errorHandler
-- ✅ src/core/routing/ - PrivateRoute, navigation
+- ✅ API Clients (Auth, Medication, Family, Diet, Notification, OCR, Report)
+- ✅ Interceptors (Auth, Error)
+- ✅ Utils (Date, Validation, Formatting)
+- ✅ Routing (PrivateRoute, Layouts)
 
 #### 2. Feature Modules - 95% 완료
-- ✅ Auth - Login, Signup, RoleSelection, KakaoCallback
-- ✅ Dashboard - SeniorDashboard, CaregiverDashboard
-- ✅ Medication - Management, Add, Edit, List, Card, Form, DetailModal
-- ✅ Family - Management, Invite, MemberDetail + 8개 컴포넌트
-- ✅ Diet - DietLog, FoodWarning + 5개 컴포넌트
-- ✅ Disease - Disease pages (4개)
-- ✅ OCR - PrescriptionScan + 2개 컴포넌트
-- ✅ Search - UnifiedSearch, PillSearch, SymptomSearch
-- ✅ Notification - NotificationPage, SSE 연동
-- ✅ Report - AdherenceReport, WeeklyStats
-- ✅ Chat - ChatList, Conversation + 3개 컴포넌트
-- ✅ Counsel - DoctorCounsel
-- ✅ Settings - Settings pages (6개)
-- ✅ **Voice** - VoiceAssistant, useVoiceRecognition, voiceStore **(신규)**
+- ✅ **Auth**: Login, Signup, Role Check
+- ✅ **Dashboard**: Senior/Caregiver Dashboard (Real-time data)
+- ✅ **Medication**: CRUD, Schedule, Logs, Detailed Modal
+- ✅ **Family**: Group Management, Invite System (Deep Link)
+- ✅ **Diet**: Logging, Warning UI
+- ✅ **OCR**: Prescription Scan & Auto-fill
+- ✅ **Notification**: List, Read/Unread, Real-time Alerts (SSE)
+- ✅ **Report**: Weekly/Monthly Adherence Charts
+- ✅ **Chat**: Family Chat (WebSocket/Kafka)
+- ✅ **AI Search**: Symptom AI Search
 
-#### 3. Shared Components - 95% 완료
-- ✅ UI Components - Button, Input, Card, Modal, Icon, FAB
-- ✅ Layout - MainLayout, Header, BottomNavigation
-- ✅ Feedback - Toast, ErrorBoundary
-- ✅ Routing - PrivateRoute
-
-#### 4. State Management - 100% 완료
-- ✅ Zustand stores (auth, medication, family, notification, voice)
-
-#### 5. 스타일링 (현행)
-- 현재: **MUI 7.3.5 + Emotion** 기반으로 통일 (Tailwind/Sass 제거됨)
-- 전역 스타일: `src/styles/base.css` 최소 유지
+#### 3. State Management
+- ✅ Zustand Stores (User, Family, Medication, Notification)
 
 ---
 
-### 🚧 미완료/누락된 항목 (AOP + SOLID 기준)
-
-#### 🔴 Priority 1: AOP Cross-Cutting Concerns - 0% 완료
-
-**src/aspects/** (전체 누락)
-- ❌ ErrorBoundary.jsx - 전역 에러 바운더리 (shared에만 있음)
-- ❌ PerformanceMonitor.jsx - 성능 모니터링 HOC
-- ❌ AnalyticsTracker.jsx - 분석 추적
-- ❌ AccessibilityWrapper.jsx - 접근성 래퍼
-
-#### 🟠 Priority 2: Core Services (Service Layer - SOLID 원칙) - 40% 완료
-
-**src/core/services/ocr/** (OCR 서비스 레이어)
-- ❌ IOCRService.js - OCR 인터페이스 (ISP)
-- ❌ GoogleVisionOCR.js - Google Vision 구현
-- ❌ TesseractOCR.js - Tesseract 구현
-- ❌ OCRServiceFactory.js - Factory Pattern (OCP)
-
-**src/core/services/realtime/** (선택: 공동편집/동기화)
-- ❌ HocuspocusProvider.js - (선택) Hocuspocus Provider wrapper
-- ❌ FamilySyncService.js - (선택) 가족 실시간 동기화
-
-**src/core/services/storage/** (스토리지 추상화 - DIP)
-- ❌ IStorageService.js - Storage 인터페이스
-- ❌ LocalStorageService.js - LocalStorage 구현
-- ❌ SessionStorageService.js - SessionStorage 구현
-
-#### 🟡 Priority 3: Interceptors & Utils (AOP) - 50% 완료
-
-**src/core/interceptors/**
-- ❌ loggingInterceptor.js - 요청/응답 로깅 (AOP)
-- ✅ authInterceptor.js - 완료
-- ✅ errorInterceptor.js - 완료
-
-**src/core/utils/**
-- ❌ dateUtils.js - 날짜 유틸리티
-- ❌ imageUtils.js - 이미지 처리
-- ❌ formatUtils.js - 포맷팅 유틸리티
-- ✅ validation.js - 완료
-- ✅ formatting.js - 완료
-
-#### 🟢 Priority 4: Feature-Specific Components - 40% 완료
-
-**Medication Feature - 고급 컴포넌트**
-
-**src/features/medication/components/schedule/**
-- ❌ MedicationCheckList.jsx - 복약 체크리스트 (부모 뷰)
-- ❌ MedicationCheckItem.jsx - 체크리스트 아이템
-- ❌ CompletionButton.jsx - 복약 완료 버튼
-
-**src/features/medication/components/monitoring/**
-- ❌ FamilyMonitorDashboard.jsx - 가족 모니터링 (자녀 뷰)
-- ❌ RealTimeStatus.jsx - 실시간 상태
-- ❌ MissedDoseAlert.jsx - 놓친 복약 알림
-
-**src/features/medication/components/search/**
-- ❌ PillSearchForm.jsx - 알약 검색 폼
-- ❌ PillSearchResult.jsx - 검색 결과
-- ❌ PillDetailModal.jsx - 알약 상세 모달
-- ❌ ColorShapePicker.jsx - 색상/모양 선택기
-
-**src/features/medication/components/report/**
-- ❌ AdherenceReportGenerator.jsx - 복약 리포트 생성기
-- ❌ AdherenceChart.jsx - 준수율 차트
-- ❌ WeeklyTrendChart.jsx - 주간 트렌드 차트
-- ❌ PDFDownloadButton.jsx - PDF 다운로드 버튼
-
-**Diet Feature - 인터랙션 컴포넌트**
-
-**src/features/diet/components/**
-- ❌ InteractionWarning.jsx - 상호작용 경고 UI
-- ❌ WarningCard.jsx - 경고 카드
-- ❌ AlternativeSuggestion.jsx - 대체 음식 제안
-- ⚠️ FoodConflictWarning.jsx - 있지만 개선 필요할 수 있음
-
-#### 🔵 Priority 5: Hooks & Services (Business Logic) - 0% 완료
-
-**Medication Hooks**
-
-**src/features/medication/hooks/**
-- ❌ useMedicationSync.js - 실시간 동기화 hook
-- ❌ useOCR.js - OCR hook
-- ❌ usePillSearch.js - 알약 검색 hook
-- ❌ useAdherenceReport.js - 준수율 리포트 hook
-
-**Medication Services**
-
-**src/features/medication/services/**
-- ❌ medicationService.js - 비즈니스 로직 (SRP)
-- ❌ ocrExtractionService.js - OCR 추출 서비스
-- ❌ pillIdentificationService.js - 알약 식별 서비스
-- ❌ adherenceCalculationService.js - 준수율 계산 서비스
-
-**Diet Services**
-
-**src/features/diet/services/**
-- ❌ dietService.js - 식단 서비스
-- ❌ interactionCheckService.js - 상호작용 체크 서비스
-
----
-
-## 🎯 우선순위별 작업 가이드
-
-### Phase 1: 핵심 기능 구현 (MVP) - 🔴 CRITICAL
-
-#### 1-1. Medication 기능 완성
-
-**Backend 작업**
-```bash
-# GitHub Issue에 다음과 같이 요청:
-
-제목: [Backend] Medication 서비스 및 컨트롤러 구현
-
-설명:
-다음 Medication 관련 서비스와 컨트롤러를 구현해주세요:
-
-1. MedicationServiceImpl 구현
-   - 약 등록, 조회, 수정, 삭제 기능
-   - CLAUDE.md의 코딩 규칙 준수
-   - API 명세서 확인 후 정확히 일치하도록 구현
-
-2. MedicationScheduleServiceImpl 구현
-   - 복용 일정 생성, 조회, 수정, 삭제
-   - 반복 일정 처리 로직
-
-3. MedicationLogServiceImpl 구현
-   - 복용 기록 저장 및 조회
-   - 복용 완료 처리
-
-4. 해당 Controller 구현
-   - MedicationController
-   - MedicationScheduleController
-
-참고:
-- /home/user/spring-boot/CLAUDE.md 반드시 확인
-- Family API 구현 예시 참고
-- ErrorCode 먼저 정의 후 사용
-- DTO Validation 추가
-- Swagger 문서화 포함
-
-우선순위: 🔴 CRITICAL
-예상 소요 시간: 2-3일
-```
-
-#### 1-2. OCR 기능 구현
-
-**Backend 작업**
-```bash
-제목: [Backend] OCR 서비스 구현
-
-설명:
-다음 OCR 기능을 구현해주세요:
-
-1. OCRServiceImpl 구현
-   - 처방전 이미지 → 약 정보 추출
-   - GoogleVisionClient 또는 TesseractClient 활용
-
-2. GoogleVisionClient 구현
-   - Google Vision API 연동
-   - 이미지 전처리 및 텍스트 추출
-   - 에러 처리
-
-3. TesseractClient 구현 (Fallback)
-   - Tesseract OCR 연동
-   - 로컬 처리
-
-4. OCRController 구현
-   - 이미지 업로드 엔드포인트
-   - 추출 결과 반환
-
-참고:
-- 외부 API 호출 시 timeout 설정
-- ExternalApiException 사용
-- 결과 검증 로직 포함
-
-우선순위: 🔴 HIGH
-예상 소요 시간: 2일
-```
-
-#### 1-3. Diet & Interaction 기능 구현
-
-**Backend 작업**
-```bash
-제목: [Backend] 식단 및 상호작용 체크 기능 구현
-
-설명:
-다음 식단 및 상호작용 체크 기능을 구현해주세요:
-
-1. DietServiceImpl 구현
-   - 식사 기록 저장, 조회
-
-2. InteractionCheckServiceImpl 구현
-   - 약-음식 상호작용 체크 로직
-   - DrugFoodInteraction 데이터 활용
-   - 경고 생성 및 저장
-
-3. 해당 Controller 구현
-   - DietController
-   - InteractionController
-
-참고:
-- src/main/resources/data/drug-food-interactions.json 데이터 활용
-- 심각도별 경고 메시지 차별화
-
-우선순위: 🟡 MEDIUM
-예상 소요 시간: 1-2일
-```
-
----
-
-### Phase 2: 부가 기능 구현 - 🟡 MEDIUM
-
-#### 2-1. Notification 시스템
-
-**Backend 작업**
-```bash
-제목: [Backend] 알림 시스템 구현
-
-설명:
-다음 알림 기능을 구현해주세요:
-
-1. NotificationServiceImpl 구현
-   - 알림 생성, 조회, 읽음 처리
-
-2. KakaoApiClient 구현
-   - 카카오 알림톡 전송
-   - API 키 관리 (환경변수)
-
-3. NotificationController 구현
-
-4. WebSocket 실시간 알림
-   - NotificationWebSocket 구현
-   - 실시간 푸시 알림
-
-우선순위: 🟡 MEDIUM
-예상 소요 시간: 2일
-```
-
-#### 2-2. Report 생성
-
-**Backend 작업**
-```bash
-제목: [Backend] 리포트 생성 기능 구현
-
-설명:
-다음 리포트 생성 기능을 구현해주세요:
-
-1. AdherenceReportServiceImpl 구현
-   - 복용 순응도 계산
-   - 주간/월간 리포트 생성
-
-2. ITextPDFGenerator 구현
-   - PDF 생성 로직
-   - 템플릿 활용 (templates/adherence-report-template.html)
-
-3. AdherenceReportController 구현
-   - PDF 다운로드 엔드포인트
-
-우선순위: 🟡 MEDIUM
-예상 소요 시간: 1-2일
-```
-
-#### 2-3. Pill Identification
-
-**Backend 작업**
-```bash
-제목: [Backend] 알약 검색 기능 구현
-
-설명:
-다음 알약 검색 기능을 구현해주세요:
-
-1. PillIdentificationServiceImpl 구현
-   - MFDS API 연동
-   - 모양, 색상, 각인으로 검색
-
-2. MFDSApiClient 구현
-   - 식약처 의약품안전나라 API 연동
-
-3. PillSearchController 구현
-
-우선순위: 🟡 MEDIUM
-예상 소요 시간: 1일
-```
-
----
-
-### Phase 3: 인프라 설정 - 🟢 LOW
-
-#### 3-1. 미들웨어 설정
-
-**Backend 작업**
-```bash
-제목: [Backend] Configuration 클래스 완성
-
-설명:
-다음 설정 파일들을 완성해주세요:
-
-1. RedisConfig
-   - Redis 연결 설정
-   - CacheManager 설정
-
-2. KafkaConfig
-   - Kafka Producer/Consumer 설정
-   - Topic 정의
-
-3. HocuspocusConfig
-   - WebSocket 실시간 동기화 설정
-   - Family 데이터 동기화용
-
-4. SwaggerConfig
-   - Swagger UI 설정
-   - API 문서 자동화
-
-5. WebConfig
-   - Interceptor 설정
-   - CORS 추가 설정 (필요시)
-
-6. JpaConfig
-   - JPA Auditing 설정
-   - QueryDSL 설정 (선택)
-
-우선순위: 🟢 LOW
-예상 소요 시간: 1일
-```
-
-#### 3-2. AOP Aspects 완성
-
-**Backend 작업**
-```bash
-제목: [Backend] AOP Aspects 구현
-
-설명:
-다음 AOP Aspect를 구현해주세요:
-
-1. SecurityAspect
-   - @RequireAuth 어노테이션 처리
-   - 권한 체크 로직
-
-2. TransactionAspect
-   - 트랜잭션 로깅
-   - 성공/실패 모니터링
-
-우선순위: 🟢 LOW
-예상 소요 시간: 반일
-```
-
-#### 3-3. Kafka 이벤트 시스템
-
-**Backend 작업**
-```bash
-제목: [Backend] Kafka 이벤트 처리 구현
-
-설명:
-다음 Kafka 이벤트 처리를 구현해주세요:
-
-1. Event 클래스
-   - MedicationCompletedEvent
-   - MedicationMissedEvent
-   - DrugFoodWarningEvent
-
-2. Producer
-   - MedicationEventProducer
-   - DietWarningProducer
-   - NotificationProducer
-
-3. Consumer
-   - MedicationEventConsumer
-   - NotificationConsumer
-
-참고:
-- 비동기 처리로 성능 향상
-- 이벤트 소싱 패턴 적용
-
-우선순위: 🟢 LOW
-예상 소요 시간: 2일
-```
-
----
-
-### Phase 4: Frontend 고급 기능 - 🟡 MEDIUM
-
-#### 4-1. AOP Cross-Cutting Concerns
-
-**Frontend 작업**
-```bash
-제목: [Frontend] AOP 횡단 관심사 구현
-
-설명:
-다음 AOP 관련 컴포넌트를 구현해주세요:
-
-1. aspects/ErrorBoundary.jsx
-   - 전역 에러 바운더리
-   - 에러 로깅 및 리포팅
-
-2. aspects/PerformanceMonitor.jsx
-   - 성능 모니터링 HOC
-   - 렌더링 시간 추적
-
-3. aspects/AnalyticsTracker.jsx
-   - 사용자 행동 분석
-   - 페이지 뷰 추적
-
-4. aspects/AccessibilityWrapper.jsx
-   - 접근성 개선
-   - 키보드 네비게이션 지원
-
-우선순위: 🟡 MEDIUM
-예상 소요 시간: 1일
-```
-
-#### 4-2. Core Services (SOLID)
-
-**Frontend 작업**
-```bash
-제목: [Frontend] 코어 서비스 레이어 구현
-
-설명:
-다음 서비스 레이어를 SOLID 원칙에 맞게 구현해주세요:
-
-1. OCR 서비스
-   - IOCRService.js (인터페이스)
-   - GoogleVisionOCR.js
-   - TesseractOCR.js
-   - OCRServiceFactory.js
-
-2. 실시간 동기화
-   - HocuspocusProvider.js
-   - FamilySyncService.js
-
-3. 스토리지 추상화
-   - IStorageService.js (인터페이스)
-   - LocalStorageService.js
-   - SessionStorageService.js
-
-참고:
-- Interface Segregation Principle (ISP) 준수
-- Dependency Inversion Principle (DIP) 적용
-
-우선순위: 🟡 MEDIUM
-예상 소요 시간: 1-2일
-```
-
-#### 4-3. Advanced Components
-
-**Frontend 작업**
-```bash
-제목: [Frontend] 고급 컴포넌트 구현
-
-설명:
-다음 고급 컴포넌트를 구현해주세요:
-
-1. Medication 고급 컴포넌트
-   - MedicationCheckList.jsx
-   - FamilyMonitorDashboard.jsx
-   - PillSearchForm.jsx
-   - AdherenceReportGenerator.jsx
-
-2. Diet 인터랙션 컴포넌트
-   - InteractionWarning.jsx
-   - WarningCard.jsx
-   - AlternativeSuggestion.jsx
-
-3. Hooks
-   - useMedicationSync.js
-   - useOCR.js
-   - usePillSearch.js
-   - useAdherenceReport.js
-
-우선순위: 🟡 MEDIUM
-예상 소요 시간: 2-3일
-```
-
----
-
-### Phase 5: 스케줄러 & 캐싱 - 🟢 LOW
-
-#### 5-1. 스케줄러
-
-**Backend 작업**
-```bash
-제목: [Backend] 스케줄러 구현
-
-설명:
-다음 스케줄러를 구현해주세요:
-
-1. MedicationReminderScheduler
-   - 복용 시간 도래 시 알림 발송
-   - Cron 표현식 활용
-
-2. InventoryCheckScheduler
-   - 약 재고 확인
-   - 부족 시 알림
-
-우선순위: 🟢 LOW
-예상 소요 시간: 반일
-```
-
-#### 5-2. 캐싱
-
-**Backend 작업**
-```bash
-제목: [Backend] 캐시 서비스 구현
-
-설명:
-다음 캐시 서비스를 구현해주세요:
-
-1. CacheService
-   - Redis 기반 캐싱
-   - 자주 조회되는 데이터 캐싱
-
-2. CacheKeyGenerator
-   - 캐시 키 생성 유틸
-
-참고:
-- 약 정보, 상호작용 데이터 등 캐싱
-- TTL 설정
-
-우선순위: 🟢 LOW
-예상 소요 시간: 반일
-```
-
----
-
-## 📋 GitHub Issue Template
+## � GitHub Issue Template (참조용)
 
 GitHub에서 새 Issue를 만들 때 다음 템플릿 사용:
 
@@ -729,30 +141,8 @@ GitHub에서 새 Issue를 만들 때 다음 템플릿 사용:
 ### 구현할 기능
 - [ ] [기능명] - [간단한 설명]
 
-### 참고 사항
-- CLAUDE.md 규칙 준수
-- API 명세서 확인 후 정확히 일치
-- Family API 구현 예시 참고
-
-### 체크리스트
-- [ ] Service Interface 정의
-- [ ] ServiceImpl 구현
-- [ ] Controller 구현
-- [ ] DTO 정의 (Request, Response)
-- [ ] ErrorCode 추가
-- [ ] Validation 추가
-- [ ] Swagger 문서화
-- [ ] 테스트 작성 (선택)
-
-### 관련 파일
-- 참고: [기존 구현 파일 경로]
-- 작업 대상: [구현할 파일 경로]
-
 ### 우선순위
 🔴 CRITICAL / 🟡 HIGH / 🟢 MEDIUM / ⚪ LOW
-
-### 예상 소요 시간
-[예: 1일, 2-3일]
 ```
 
 ---
@@ -765,10 +155,8 @@ GitHub에서 새 Issue를 만들 때 다음 템플릿 사용:
 |---------|------|-------------|--------|
 | Domain Layer | 6/6 | 0 | 🟢 100% |
 | Repository | 9/9 | 0 | 🟢 100% |
-| Service (Family/Auth) | 4/4 | 0 | 🟢 100% |
-| Service (기타) | 0 | 10 | 🔴 0% |
-| Controller (Family/Auth) | 2/2 | 0 | 🟢 100% |
-| Controller (기타) | 0 | 9 | 🔴 0% |
+| Service (Core) | 12/14 | 2 | 🟢 85% |
+| Controller | 9/11 | 2 | � 82% |
 | 외부 API 연동 | 0 | 5 | 🔴 0% |
 | Configuration | 3/9 | 6 | 🟡 33% |
 | AOP Aspects | 4/6 | 2 | 🟡 67% |
@@ -799,80 +187,39 @@ GitHub에서 새 Issue를 만들 때 다음 템플릿 사용:
 1. MedicationServiceImpl
 2. MedicationScheduleServiceImpl
 3. MedicationLogServiceImpl
-4. MedicationController
-5. MedicationScheduleController
+#### 1. Core Services (Service Layer Refactoring) - 🟡 MEDIUM
+- **Note**: 현재 기능은 정상 동작하나 SOLID 원칙에 따른 엄격한 레이어 분리는 되어 있지 않음 (Store/Hook 혼합 패턴).
+- ❌ IOCRService.js (Interface) - 미구현
+- ❌ IStorageService.js (Abstraction) - 직접 localStorage 사용 중
 
-# Backend: OCR 서비스 구현
-1. OCRServiceImpl
-2. GoogleVisionClient
-3. OCRController
-
-# Frontend: AOP Aspects 구현
-1. ErrorBoundary (전역)
-2. PerformanceMonitor
-3. AnalyticsTracker
-```
-
-**🟡 MEDIUM (다음 주)**
-```bash
-# Backend: Diet & Interaction 구현
-1. DietServiceImpl
-2. InteractionCheckServiceImpl
-3. DietController
-4. InteractionController
-
-# Backend: Notification 시스템
-1. NotificationServiceImpl
-2. KakaoApiClient
-3. NotificationController
-4. NotificationWebSocket
-
-# Frontend: Core Services 구현
-1. OCR 서비스 레이어
-2. 실시간 동기화
-3. 스토리지 추상화
-```
-
-**🟢 LOW (추후)**
-```bash
-# Backend: 인프라 설정
-1. RedisConfig, KafkaConfig
-2. SecurityAspect, TransactionAspect
-3. Kafka 이벤트 시스템
-4. 스케줄러 & 캐싱
-
-# Frontend: Advanced Components
-1. Medication 고급 컴포넌트
-2. Diet 인터랙션 컴포넌트
-3. Custom Hooks
-```
+#### 2. AOP Cross-Cutting Concerns - � LOW
+- ✅ ErrorBoundary.jsx - `shared/components/feedback/ErrorBoundary.jsx`로 구현됨
+- ❌ PerformanceMonitor.jsx - 미구현
+- ❌ AnalyticsTracker.jsx - 미구현
 
 ---
 
-## 📞 팀원 역할 분담
+## 🎯 향후 개선 계획 (Future Improvements)
 
-| 팀원 | 주 담당 | 현재 작업 | 다음 작업 |
-|------|---------|-----------|-----------|
-| **Backend 1** | Service Layer | Family/Auth 완료 | Medication 서비스 |
-| **Backend 2** | Controller & API | Family/Auth 완료 | Medication 컨트롤러 |
-| **Backend 3** | 외부 API & 인프라 | 대기 | OCR, MFDS API |
-| **Frontend 1** | Core & Features | Pages 95% 완료 | AOP Aspects |
-| **Frontend 2** | Components | Shared 95% 완료 | Advanced Components |
-| **Frontend 3** | Services & Hooks | API Clients 완료 | Service Layer |
+### 1. Backend
+- **Pill Identification**: 식약처 API 연동하여 알약 식별 기능 완성 (현재 우선순위 낮음)
+- **Advanced Interaction**: `DietWarning`을 누적하여 사용자 식습관 기반 장기 경고 시스템 구축
+- **Logging/Analytics**: ELK Stack 도입 고려
+
+### 2. Frontend
+- **Refactoring**: 복잡한 Store 로직을 순수 Service Class로 분리 (SOLID 적용)
+- **Performance**: 성능 모니터링 도구 도입 및 렌더링 최적화
+- **Testing**: E2E 테스트 커버리지 확대
 
 ---
 
 ## 📝 참고 문서
 
-- [SRC_STRUCTURE.md](./SRC_STRUCTURE.md) - 전체 프로젝트 구조
-- [DEVELOPMENT_CHECKLIST.md](./DEVELOPMENT_CHECKLIST.md) - 개발 체크리스트
-- [CHANGELOG_BACKEND.md](./CHANGELOG_BACKEND.md) - 백엔드 변경 이력
-- [CHANGELOG_FRONTEND.md](./CHANGELOG_FRONTEND.md) - 프론트엔드 변경 이력
-- [CLAUDE.md](../../spring-boot/CLAUDE.md) - AI 개발 가이드 (Backend)
+- [WORK_PROGRESS.md](../../spring-boot/WORK_PROGRESS.md) - 백엔드 작업 상세 기록
+- [PROJECT_STATUS.md](../../spring-boot/docs/PROJECT_STATUS.md) - 프로젝트 전체 현황
 - [API_SPECIFICATION.md](./API_SPECIFICATION.md) - API 명세서
 
 ---
 
-**최종 업데이트**: 2025-11-18
-**다음 검토일**: 2025-11-20 (수요일)
-**작성자**: AMApill Development Team
+**최종 업데이트**: 2025-12-21
+**작성자**: AMApill Development Team & SuperGemini
