@@ -44,7 +44,13 @@ Gateway에서 `StripPrefix=1`을 사용하는 경우, 외부 호출(`/api/...`)�
 
 ## 5) 데이터 저장소/인프라 의존성
 
-- MySQL: 트랜잭션 데이터(처방전/약/가족/식단/알림/질병/채팅 등)
+- MySQL(Init Scripts 기준):
+  - 처방전/약/복약: `prescriptions`, `medications`, `medication_schedules`, `medication_logs`, `medication_adherence_daily`
+  - 가족 네트워크: `family_groups`, `family_members`, `family_invites`, `family_notification_settings`
+  - 식단/경고: `diet_logs`, `diet_warnings`
+  - 질병/연관: `diseases`, `disease_medication_relations`, `disease_warning_relations`, `disease_audit_logs`
+  - 병원 예약: `hospital_appointments`, `appointment_reminders`, `appointment_reminder_deliveries`
+  - 알림/채팅: `notifications`, `notification_settings`, `family_chat_message`
 - Redis: 캐시/토큰/실시간 기능 일부(구현에 따라)
 - Kafka: 채팅/알림 등 이벤트 발행/소비
 - PostgreSQL(+pgvector): AI/보안 벡터 스토어 등(설정 기반)
@@ -57,4 +63,3 @@ Gateway에서 `StripPrefix=1`을 사용하는 경우, 외부 호출(`/api/...`)�
 - `GOOGLE_VISION_API_KEY` (OCR)
 - S3 업로드 관련 키/버킷(환경 변수로 분리 권장)
 - 공공데이터(식약처) API 키(환경 변수로 분리 권장)
-

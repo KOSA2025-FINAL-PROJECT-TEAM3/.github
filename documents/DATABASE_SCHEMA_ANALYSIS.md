@@ -26,9 +26,10 @@ Dev 기준 DB 스키마의 단일 근거는 **`docker-compose` 레포의 init sc
 - 가족 네트워크: `family_groups`, `family_members`, `family_invites`, `family_notification_settings`
 - 식단/경고: `diet_logs`, `diet_warnings`
 - 질병/연관: `diseases`, `disease_medication_relations`, `disease_warning_relations`, `disease_audit_logs`
+- 병원 예약: `hospital_appointments`, `appointment_reminders`, `appointment_reminder_deliveries`
 - 알림: `notifications`, `notification_settings`
 - 채팅: `family_chat_message`
-- 보안/감사: `security_audit_logs`, `abuse_audit_log`
+- 보안/감사: `security_audit_logs`, `abuse_audit_log`, `access_logs`
 
 ### 2.2 PostgreSQL (+pgvector)
 

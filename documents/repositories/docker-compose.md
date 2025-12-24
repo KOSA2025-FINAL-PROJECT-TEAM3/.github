@@ -28,7 +28,7 @@
 DB 스키마는 아래 init script가 **단일 근거(source of truth)** 입니다.
 
 - MySQL: `docker-compose/init-scripts/mysql/*.sql`
-  - 대표 테이블: `users`, `kakao_tokens`, `prescriptions`, `medications`, `medication_schedules`, `medication_logs`, `family_groups`, `family_members`, `diet_logs`, `diet_warnings`, `notifications` 등
+  - 대표 테이블: `users`, `kakao_tokens`, `prescriptions`, `medications`, `medication_schedules`, `medication_logs`, `medication_adherence_daily`, `family_groups`, `family_members`, `family_invites`, `diet_logs`, `diet_warnings`, `notifications`, `notification_settings`, `family_chat_message`, `diseases`, `disease_medication_relations`, `hospital_appointments`, `appointment_reminders`, `appointment_reminder_deliveries`, `security_audit_logs`, `abuse_audit_log`, `access_logs`
 - PostgreSQL: `docker-compose/init-scripts/postgresql/*.sql`
   - `vector_store` 등(LLM Guard/임베딩 용도)
 
@@ -36,4 +36,3 @@ DB 스키마는 아래 init script가 **단일 근거(source of truth)** 입니�
 
 - 인프라만 띄우고(Compose) 서비스는 IDE에서 실행: 개발 속도/디버깅에 유리
 - Nginx는 `/api/`를 `host.docker.internal:8080`으로 프록시하므로, 로컬에서 Gateway만 띄워도 브라우저 호출 흐름이 단순해집니다.
-

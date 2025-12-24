@@ -24,6 +24,13 @@
 - 법적/보안 고려사항
 - 비즈니스 모델
 
+### [PROJECT_DETAIL.md](./PROJECT_DETAIL.md)
+**현재 구현 기준 프로젝트 상세 요약**
+
+- 서비스 구성/역할 요약
+- 레포지토리/포트/실행 흐름 정리
+- DB 테이블 근거 및 배포 흐름 요약
+
 ### [MVP_DTO_SPECIFICATION.md](./MVP_DTO_SPECIFICATION.md)
 **MVP 기능 우선순위 및 API 명세**
 
@@ -48,6 +55,13 @@
 - 마일스톤 및 체크포인트
 - 리스크 관리 계획
 
+### [PRESENTATION_PLAN.md](./PRESENTATION_PLAN.md)
+**발표 PPT 구성안 및 시연 시나리오**
+
+- 40~50장 구성안(45장 기준)
+- 필요한 자료 체크리스트
+- 데모 스토리라인
+
 ---
 
 ## 🏗️ 아키텍처 및 설계
@@ -60,6 +74,13 @@
 - 기술 스택 상세 설명
 - 데이터 흐름 및 통신 방식
 
+### [DATABASE_SCHEMA_ANALYSIS.md](./DATABASE_SCHEMA_ANALYSIS.md)
+**DB 스키마 근거 및 테이블 요약(Dev 기준)**
+
+- docker-compose init scripts 기반 테이블 목록
+- MySQL/pgvector 용도 정리
+- ERD 기준점 링크
+
 ### [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md)
 **마이크로서비스 설정 및 구성**
 
@@ -70,7 +91,7 @@
 ### [REPOSITORIES.md](./REPOSITORIES.md)
 **레포지토리별 최신 분석(Dev 기준)**
 
-- 4개 레포지토리의 “현 구현” 정리
+- 5개 레포지토리의 “현 구현” 정리
 - 포트/라우팅/인증 헤더/DB init scripts 근거 명시
 - 문서 업데이트 시 기준점 역할
 

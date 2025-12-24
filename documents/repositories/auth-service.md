@@ -40,7 +40,7 @@
 
 ## 5) 데이터 저장소
 
-- MySQL: `users`, `kakao_tokens` 등
+- MySQL(Init Scripts 기준): `users`, `kakao_tokens`
 - Redis: Refresh Token 저장(구현 구조에 따라 Key/TTL)
 
 ## 6) 환경 변수(문서화 범위)
@@ -49,4 +49,3 @@
 - Redis 접속 정보(`SPRING_DATA_REDIS_*`)
 - `KAKAO_CLIENT_ID`, `KAKAO_CLIENT_SECRET`, `KAKAO_REDIRECT_URI`
 - `JWT_SECRET`(발급/검증용)
-
