@@ -31,7 +31,7 @@ erDiagram
 
     kakao_tokens {
         bigint id PK
-        bigint user_id FK UK
+        bigint user_id FK
         varchar access_token
         varchar refresh_token
         timestamp expires_at
@@ -112,6 +112,8 @@ erDiagram
     medications ||--o{ medication_schedules : "has"
     medications ||--o{ medication_logs : "tracks"
     medication_schedules ||--o{ medication_logs : "generates"
+    medications ||--o{ medication_adherence_daily : "aggregates"
+    users ||--o{ medication_adherence_daily : "stats"
 
     %% ==========================================
     %% CORE SERVICE - Family System
@@ -235,6 +237,10 @@ erDiagram
         varchar ip_address "IP 주소"
         datetime created_at
     }
+
+    users ||--o{ security_audit_logs : "audits"
+    family_groups ||--o{ security_audit_logs : "audits"
+    family_groups ||--o{ access_logs : "logs"
 
     %% ==========================================
     %% EXTENDED - Disease Management
@@ -361,3 +367,27 @@ erDiagram
 
     hospital_appointments ||--o{ appointment_reminders : "has"
     appointment_reminders ||--o{ appointment_reminder_deliveries : "delivers"
+
+    %% ==========================================
+    %% CROSS-DOMAIN RELATIONSHIPS
+    %% ==========================================
+
+    %% Users -> Core Domains
+    users ||--o{ prescriptions : "owns"
+    users ||--o{ medications : "takes"
+    users ||--o{ family_members : "joins"
+    users ||--o{ notifications : "receives"
+    users ||--o{ notification_settings : "configures"
+
+    %% Users -> Extended Domains
+    users ||--o{ diseases : "has"
+    users ||--o{ diet_logs : "records"
+    users ||--o{ hospital_appointments : "schedules"
+
+    %% Family -> Members
+    users ||--o{ family_groups : "creates"
+
+    %% Audit/Security -> Users
+    users ||--o{ abuse_audit_log : "triggers"
+    users ||--o{ access_logs : "logs"
+
