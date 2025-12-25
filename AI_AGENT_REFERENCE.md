@@ -1,7 +1,7 @@
 # 🤖 AI Agent Quick Reference
 
 > Claude Code, Cursor, Windsurf, Cline 등 MCP Agent를 위한 핵심 정보
-> **Last Updated**: 2025-11-22
+> **Last Updated**: 2025-12-25
 > **Architecture**: MSA + Clean Architecture
 
 ---

@@ -632,6 +632,6 @@ http.cors().configurationSource(request -> {
 
 ---
 
-**작성일**: 2025-11-05
+**작성일**: 2025-12-25 (Updated)
 **버전**: 1.0
 **작성자**: AMApill Development Team

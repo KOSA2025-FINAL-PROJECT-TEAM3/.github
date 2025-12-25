@@ -8,7 +8,7 @@ AMApill(뭐냑?)은 “가족 돌봄 네트워크 기반 약 관리 플랫폼”
 
 - 시스템 구성도: [`diagrams/01-system-architecture.mmd`](../diagrams/01-system-architecture.mmd)
 - 주요 데이터 흐름: [`diagrams/02-data-flow.mmd`](../diagrams/02-data-flow.mmd)
-- DB ERD(현재): [`diagrams/07-database-erd-current.mmd`](../diagrams/07-database-erd-current.mmd)
+- DB ERD(최신 v7.0): [`diagrams/07-database-erd-v7.mmd`](../diagrams/07-database-erd-v7.mmd)
 
 ---
 
