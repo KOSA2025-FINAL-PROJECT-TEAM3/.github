@@ -112,6 +112,8 @@ erDiagram
     medications ||--o{ medication_schedules : "has"
     medications ||--o{ medication_logs : "tracks"
     medication_schedules ||--o{ medication_logs : "generates"
+    medications ||--o{ medication_adherence_daily : "aggregates"
+    users ||--o{ medication_adherence_daily : "stats"
 
     %% ==========================================
     %% CORE SERVICE - Family System
