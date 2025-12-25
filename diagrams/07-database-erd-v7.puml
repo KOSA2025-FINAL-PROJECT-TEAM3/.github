@@ -330,4 +330,34 @@ package "Appointment Domain" #Lavender {
     appointment_reminders ||--o{ appointment_reminder_deliveries
 }
 
+' ==========================================
+' CROSS-DOMAIN RELATIONSHIPS
+' ==========================================
+
+' Users -> Core Domains
+users ||--o{ prescriptions
+users ||--o{ medications
+users ||--o{ family_members
+users ||--o{ notifications
+users ||--o{ notification_settings
+users ||--o{ medication_adherence_daily
+
+' Users -> Extended Domains
+users ||--o{ diseases
+users ||--o{ diet_logs
+users ||--o{ hospital_appointments
+users ||--o{ family_groups
+
+' Users -> Security/Audit
+users ||--o{ abuse_audit_log
+users ||--o{ access_logs
+users ||--o{ security_audit_logs
+
+' Family -> Related
+family_groups ||--o{ security_audit_logs
+family_groups ||--o{ access_logs
+
+' Medication -> Adherence
+medications ||--o{ medication_adherence_daily
+
 @enduml
