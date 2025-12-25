@@ -1282,12 +1282,72 @@ $font-weight-bold: 700;
 - [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) - 와이어프레임 명세
 - [MVP_DTO_SPECIFICATION.md](./MVP_DTO_SPECIFICATION.md) - API 및 DTO 명세
 - [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md) - 채팅 API 명세
+```scss
+// src/styles/variables.scss
+
+// Colors
+$color-primary: #4CAF50;      // Green
+$color-secondary: #2196F3;    // Blue
+$color-danger: #F44336;       // Red
+$color-warning: #FF9800;      // Orange
+$color-kakao: #FEE500;        // Kakao Yellow
+
+$color-gray-50: #FAFAFA;
+$color-gray-100: #F5F5F5;
+$color-gray-200: #EEEEEE;
+$color-gray-300: #E0E0E0;
+$color-gray-400: #BDBDBD;
+$color-gray-500: #9E9E9E;
+$color-gray-600: #757575;
+$color-gray-700: #616161;
+$color-gray-800: #424242;
+$color-gray-900: #212121;
+
+// Spacing (8px grid)
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 20px;
+$spacing-xl: 30px;
+$spacing-2xl: 40px;
+
+// Border Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-full: 9999px;
+
+// Typography
+$font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-2xl: 32px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+```
+
+---
+
+## 📖 참고 문서
+
+- [SRC_STRUCTURE.md](./SRC_STRUCTURE.md) - 전체 소스 구조
+- [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) - 와이어프레임 명세
+- [MVP_DTO_SPECIFICATION.md](./MVP_DTO_SPECIFICATION.md) - API 및 DTO 명세
+- [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md) - 채팅 API 명세
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - 시스템 아키텍처
 - [CONVENTIONS.md](./CONVENTIONS.md) - 프로젝트 컨벤션
 
 ---
 
 **작성일**: 2025-11-07
-**최종 수정일**: 2025-11-22
+**최종 수정일**: 2025-12-25
 **버전**: 2.0 (Zustand 상태관리, 컴포넌트 구조 업데이트)
 **작성자**: 뭐냑? 개발팀

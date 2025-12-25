@@ -650,7 +650,7 @@ mybatis.configuration.map-underscore-to-camel-case=true
 ---
 
 **작성일**: 2025-11-07
-**최종 수정일**: 2025-12-13
+**최종 수정일**: 2025-12-25
 **버전**: 3.0 (MUI 스타일링 전환 반영)
 **작성자**: 볰녕? 개발팀
 **적용 범위**: Frontend (MUI), Backend (MyBatis), Database, Git

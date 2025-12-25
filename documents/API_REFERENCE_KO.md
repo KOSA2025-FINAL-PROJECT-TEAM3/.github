@@ -137,6 +137,86 @@
 | `POST` | `/family-chat/rooms` | 채팅방 생성/수정 |
 | `GET` | `/family-chat/rooms/by-family/{familyGroupId}` | 가족 그룹별 채팅방 조회 |
 | `GET` | `/family-chat/rooms/{roomId}/messages` | 메시지 목록 조회 (Paging) |
+
+---
+
+## 3️⃣ 약 관리 (Medication)
+**Base URL**: `/medications`
+
+### Medication Core (`/medications`)
+| Method | URI | 설명 | Request |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/medications/` | 약 등록 | `MedicationRequest` |
+| `POST` | `/medications/register-from-ocr` | OCR 기반 일괄 등록 | `RegisterFromOCRRequest` |
+| `GET` | `/medications/` | 내 약 목록 조회 | |
+| `PATCH` | `/medications/{id}` | 약 정보 수정 | `MedicationRequest` |
+| `DELETE` | `/medications/{id}` | 약 삭제 | |
+
+### Medication Logs (`/medications` & `/api/medications/logs`)
+*Controller 경로가 두 곳으로 나뉘어 확인됨, 통일 필요 가능성 있음*
+
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `POST` | `/medications/logs` | 복용 체크 (기록 등록) |
+| `GET` | `/medications/logs` | 복용 기록 조회 |
+| `POST` | `/api/medications/logs` | (Alias) 복용 기록 등록 |
+| `GET` | `/api/medications/logs` | (Alias) 복용 기록 조회 |
+
+---
+
+## 4️⃣ 질병 & 식단 (Disease & Diet)
+
+### Disease (`/disease`)
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `POST` | `/disease` | 질병 등록 |
+| `GET` | `/disease/user/{userId}` | 사용자별 질병 목록 조회 |
+| `GET` | `/disease/{id}` | 질병 상세 조회 |
+| `PUT` | `/disease/{id}` | 질병 수정 |
+| `DELETE` | `/disease/{id}` | 질병 삭제 (Soft Delete) |
+| `POST` | `/disease/{diseaseId}/medications/{medicationId}` | 질병-약 연결 |
+| `DELETE` | `/disease/{diseaseId}/medications/{medicationId}` | 질병-약 연결 해제 |
+| `GET` | `/disease/user/{userId}/export/pdf` | PDF 내보내기 |
+| `GET` | `/disease/user/{userId}/trash` | 휴지통 조회 |
+| `DELETE` | `/disease/user/{userId}/trash` | 휴지통 비우기 |
+
+### Diet (`/diet`)
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `POST` | `/diet/logs` | 식단 기록 등록 |
+| `GET` | `/diet/logs` | 내 식단 내역 조회 |
+| `PATCH` | `/diet/logs/{logId}` | 식단 수정 |
+| `DELETE` | `/diet/logs/{logId}` | 식단 삭제 |
+| `GET` | `/diet/warnings` | 약-음식 충돌 경고 조회 |
+
+---
+
+## 5️⃣ 기타 기능 (Reports, OCR, Notification, Chat)
+
+### Reports (`/reports`)
+| Method | URI | 설명 | 파라미터 |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/reports/adherence` | 복약 순응도 리포트 | `startDate`, `endDate` |
+
+### OCR (`/ocr`)
+| Method | URI | 설명 | Request |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/ocr/scan` | 처방전 스캔 및 분석 | `MultipartFile file` |
+| `POST` | `/ocr/extract` | 약물 이미지 OCR | `MultipartFile file` |
+
+### Notification (`/notifications`)
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `GET` | `/notifications` | 알림 히스토리 조회 |
+| `PATCH` | `/notifications/{id}/read` | 읽음 처리 |
+| `DELETE` | `/notifications/{id}` | 알림 삭제 |
+
+### Family Chat (`/family-chat`)
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `POST` | `/family-chat/rooms` | 채팅방 생성/수정 |
+| `GET` | `/family-chat/rooms/by-family/{familyGroupId}` | 가족 그룹별 채팅방 조회 |
+| `GET` | `/family-chat/rooms/{roomId}/messages` | 메시지 목록 조회 (Paging) |
 | `POST` | `/family-chat/rooms/{roomId}/messages` | 메시지 전송 (HTTP) |
 | `GET` | `/family-chat/rooms/{roomId}/messages/search` | 메시지 검색 |
 | `POST` | `/family-chat/rooms/{roomId}/members` | 멤버 초대 |
@@ -147,3 +227,78 @@
 *   **Endpoint**: `/ws-stomp` (추정, Config 확인 필요)
 *   **Subscribe**: `/topic/family/{roomId}`
 *   **Publish**: `/app/family/{roomId}` (Controller: `FamilyChatSocketController`)
+
+---
+
+## 6️⃣ 처방전 관리 (Prescription)
+**Base URL**: `/prescriptions`
+
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `POST` | `/prescriptions` | 처방전 등록 |
+| `GET` | `/prescriptions` | 내 처방전 목록 조회 |
+| `GET` | `/prescriptions/{id}` | 처방전 상세 조회 |
+| `PUT` | `/prescriptions/{id}` | 처방전 수정 |
+| `DELETE` | `/prescriptions/{id}` | 처방전 삭제 |
+| `POST` | `/prescriptions/{id}/medications` | 처방전에 약 추가 |
+| `DELETE` | `/prescriptions/{id}/medications/{medicationId}` | 처방전에서 약 제거 |
+| `PATCH` | `/prescriptions/{id}/toggle-active` | 활성화 상태 토글 |
+
+---
+
+## 7️⃣ 병원 예약 (Appointment)
+**Base URL**: `/appointments`
+
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `POST` | `/appointments/` | 예약 등록 |
+| `GET` | `/appointments/` | 내 예약 목록 조회 |
+| `GET` | `/appointments/{id}` | 예약 상세 조회 |
+| `PUT` | `/appointments/{id}` | 예약 수정 |
+| `DELETE` | `/appointments/{id}` | 예약 삭제 |
+| `POST` | `/appointments/{id}/complete` | 예약 완료 처리 |
+| `GET` | `/appointments/calendar` | 캘린더 뷰 조회 |
+| `GET` | `/appointments/family/{groupId}` | 가족 그룹 예약 조회 |
+
+---
+
+## 8️⃣ 복약 순응도 (Adherence)
+**Base URL**: `/adherence`
+
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `GET` | `/adherence/summary` | 복약 순응도 요약 |
+
+---
+
+## 9️⃣ 알림 설정 (Notification Settings)
+
+### 개인 알림 설정 (`/notifications/settings`)
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `GET` | `/notifications/settings` | 내 알림 설정 조회 |
+| `PUT` | `/notifications/settings` | 내 알림 설정 수정 |
+
+### 가족 알림 설정 (`/family/{groupId}/members/{targetUserId}/notification-settings`)
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `GET` | `/family/{groupId}/members/{targetUserId}/notification-settings` | 가족 구성원 알림 설정 조회 |
+| `PUT` | `/family/{groupId}/members/{targetUserId}/notification-settings` | 가족 구성원 알림 설정 수정 |
+
+---
+
+## 🔟 음성 명령 (Voice)
+**Base URL**: `/voice`
+
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `POST` | `/voice/process` | 음성 명령 처리 (텍스트 → 의도 분석) |
+
+---
+
+## 1️⃣1️⃣ 증상 검색 (Symptom Search)
+**Base URL**: `/medications/search/symptoms`
+
+| Method | URI | 설명 |
+| :--- | :--- | :--- |
+| `GET` | `/medications/search/symptoms/ai` | AI 기반 증상 검색 |

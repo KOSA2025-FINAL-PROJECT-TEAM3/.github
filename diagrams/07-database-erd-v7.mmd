@@ -1,0 +1,363 @@
+%% ==========================================
+%% AMApill (뭐냑?) ERD v7.0 - Final
+%% Database: MySQL 8.0
+%% Date: 2025-12-25
+%% Tables: 26
+%% ==========================================
+
+erDiagram
+
+    %% ==========================================
+    %% AUTH SERVICE (amapill_db)
+    %% ==========================================
+    
+    users {
+        bigint id PK "사용자 ID"
+        varchar email UK "이메일"
+        varchar password_hash "비밀번호 해시"
+        varchar name "이름"
+        varchar phone "전화번호"
+        varchar profile_image "프로필 이미지"
+        varchar user_role "ROLE_USER, ROLE_ADMIN"
+        varchar customer_role "SENIOR, CAREGIVER"
+        varchar oauth_provider "OAuth 제공자"
+        varchar oauth_provider_id "OAuth ID"
+        boolean active "활성화 여부"
+        timestamp last_login_at "마지막 로그인"
+        boolean is_ai_banned "AI 차단 여부"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    kakao_tokens {
+        bigint id PK
+        bigint user_id FK UK
+        varchar access_token
+        varchar refresh_token
+        timestamp expires_at
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    users ||--o| kakao_tokens : "has"
+
+    %% ==========================================
+    %% CORE SERVICE - Prescriptions & Medications
+    %% ==========================================
+
+    prescriptions {
+        bigint id PK "처방전 ID"
+        bigint user_id FK "사용자 ID"
+        varchar pharmacy_name "약국명"
+        varchar hospital_name "병원명"
+        date start_date "시작일"
+        date end_date "종료일"
+        json intake_times "복용 시간"
+        int payment_amount "수납 금액"
+        text notes "메모"
+        boolean active
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    medications {
+        bigint id PK "약물 ID"
+        bigint user_id FK "사용자 ID"
+        bigint prescription_id FK "처방전 ID"
+        varchar name "약 이름"
+        varchar ingredient "성분"
+        varchar dosage "용량"
+        date start_date "시작일"
+        date end_date "종료일"
+        int quantity "수량"
+        int frequency "하루 횟수"
+        int remaining "잔여량"
+        date expiry_date "유효기한"
+        varchar image_url "이미지"
+        boolean active
+        timestamp created_at
+    }
+
+    medication_schedules {
+        bigint id PK
+        bigint medication_id FK
+        time time "복용 시간"
+        varchar days_of_week "요일"
+        tinyint active
+        timestamp created_at
+    }
+
+    medication_logs {
+        bigint id PK
+        bigint medication_id FK
+        bigint medication_schedule_id FK
+        bigint user_id FK
+        datetime scheduled_time "예정 시간"
+        datetime completed_time "완료 시간"
+        boolean completed "완료 여부"
+        boolean notified "알림 발송 여부"
+        timestamp created_at
+    }
+
+    medication_adherence_daily {
+        date stat_date PK "집계 일자"
+        bigint user_id PK
+        bigint medication_id PK
+        int scheduled_count "예정 횟수"
+        int completed_count "완료 횟수"
+        timestamp created_at
+    }
+
+    prescriptions ||--o{ medications : "contains"
+    medications ||--o{ medication_schedules : "has"
+    medications ||--o{ medication_logs : "tracks"
+    medication_schedules ||--o{ medication_logs : "generates"
+
+    %% ==========================================
+    %% CORE SERVICE - Family System
+    %% ==========================================
+
+    family_groups {
+        bigint id PK "그룹 ID"
+        varchar name "그룹명"
+        bigint created_by "생성자 ID"
+        bigint owner_id "소유자 ID"
+        timestamp created_at
+    }
+
+    family_members {
+        bigint id PK
+        bigint family_group_id FK
+        bigint user_id FK
+        varchar family_role "그룹 내 역할"
+        timestamp joined_at
+        varchar user_name "사용자명"
+        varchar user_email "이메일"
+    }
+
+    family_invites {
+        bigint id PK "초대 ID"
+        varchar invite_token_hash UK "토큰 해시"
+        varchar short_code UK "6자리 코드"
+        bigint group_id FK "그룹 ID"
+        bigint inviter_id FK "초대자 ID"
+        varchar suggested_role "추천 역할"
+        enum status "PENDING ACCEPTED EXPIRED CANCELLED"
+        datetime expires_at "만료 시간"
+        datetime used_at "수락 시각"
+        datetime created_at
+    }
+
+    family_chat_message {
+        bigint id PK
+        bigint family_group_id FK
+        bigint family_member_id FK
+        varchar type "메시지 타입"
+        text content "내용"
+        timestamp created_at
+    }
+
+    family_groups ||--o{ family_members : "contains"
+    family_groups ||--o{ family_invites : "creates"
+    family_members ||--o{ family_chat_message : "sends"
+
+    %% ==========================================
+    %% CORE SERVICE - Notifications
+    %% ==========================================
+
+    notifications {
+        bigint id PK
+        bigint user_id FK
+        varchar type "알림 타입"
+        varchar title "제목"
+        text message "내용"
+        varchar idempotency_key UK "중복 방지 키"
+        boolean read "읽음 여부"
+        timestamp read_at "읽은 시간"
+        text metadata "메타데이터 JSON"
+        timestamp created_at
+    }
+
+    notification_settings {
+        bigint user_id PK
+        boolean push_enabled
+        boolean kakao_deeplink_enabled
+        boolean diet_warning_enabled
+        boolean medication_missed_enabled
+        boolean appointment_reminder_enabled
+        timestamp created_at
+    }
+
+    family_notification_settings {
+        bigint family_group_id PK
+        bigint target_user_id PK
+        boolean kakao_enabled
+        boolean diet_warning_enabled
+        boolean medication_missed_enabled
+        boolean appointment_reminder_enabled
+        timestamp created_at
+    }
+
+    family_groups ||--o{ family_notification_settings : "configures"
+
+    %% ==========================================
+    %% CORE SERVICE - Security & Audit
+    %% ==========================================
+
+    security_audit_logs {
+        bigint id PK
+        varchar event_type "이벤트 타입"
+        bigint actor_id FK "행위자 ID"
+        varchar actor_ip "IP 주소"
+        varchar target_identifier "대상 식별자"
+        bigint group_id FK "그룹 ID"
+        json metadata "메타데이터"
+        datetime created_at
+    }
+
+    abuse_audit_log {
+        bigint id PK
+        bigint user_id FK
+        varchar profile "Guard Profile"
+        varchar layer "위반 계층"
+        varchar action "조치"
+        varchar reason "사유"
+        text input_snapshot "입력 스냅샷"
+        timestamp created_at
+    }
+
+    access_logs {
+        bigint id PK
+        bigint requester_id FK "요청자 ID"
+        bigint target_id FK "대상 ID"
+        bigint family_group_id FK
+        varchar resource_type "리소스 유형"
+        varchar ip_address "IP 주소"
+        datetime created_at
+    }
+
+    %% ==========================================
+    %% EXTENDED - Disease Management
+    %% ==========================================
+
+    diseases {
+        bigint id PK "질병 ID"
+        bigint user_id FK "환자 ID"
+        bigint created_by FK "등록자 ID"
+        varchar name "질병명"
+        varchar code "질병 코드 ICD-10"
+        text description "설명"
+        date diagnosed_at "진단일"
+        date cured_at "완치일"
+        varchar status "ACTIVE CURED CHRONIC"
+        boolean is_critical "중증 여부"
+        boolean is_private "비공개 여부"
+        datetime deleted_at "삭제 시각"
+        datetime created_at
+    }
+
+    disease_audit_logs {
+        bigint id PK
+        bigint disease_id FK
+        bigint actor_id FK
+        varchar action "CREATE UPDATE DELETE CURE"
+        json changes "변경 내용"
+        datetime created_at
+    }
+
+    disease_medication_relations {
+        bigint id PK
+        bigint disease_id FK
+        bigint medication_id FK
+        datetime created_at
+    }
+
+    disease_warning_relations {
+        bigint id PK
+        bigint disease_id FK
+        bigint warning_id FK
+        datetime created_at
+    }
+
+    diseases ||--o{ disease_audit_logs : "logs"
+    diseases ||--o{ disease_medication_relations : "relates"
+    medications ||--o{ disease_medication_relations : "relates"
+
+    %% ==========================================
+    %% EXTENDED - Diet Logs
+    %% ==========================================
+
+    diet_logs {
+        bigint id PK
+        bigint user_id FK
+        varchar meal_type "breakfast lunch dinner snack"
+        varchar food_name "음식명"
+        varchar amount "섭취량"
+        varchar overall_level "GOOD WARNING DANGER"
+        text summary "분석 요약"
+        varchar image_url "이미지 URL"
+        datetime recorded_at "섭취 시간"
+        text notes "메모"
+        timestamp created_at
+    }
+
+    diet_warnings {
+        bigint id PK
+        bigint user_id FK
+        bigint diet_log_id FK
+        bigint medication_id FK
+        varchar warning_message "경고 메시지"
+        varchar severity "LOW MEDIUM HIGH CRITICAL"
+        datetime created_at
+    }
+
+    diet_logs ||--o{ diet_warnings : "generates"
+    medications ||--o{ diet_warnings : "causes"
+    diet_warnings ||--o{ disease_warning_relations : "relates"
+
+    %% ==========================================
+    %% EXTENDED - Hospital Appointments
+    %% ==========================================
+
+    hospital_appointments {
+        bigint id PK
+        bigint user_id FK "어르신 ID"
+        bigint created_by FK "등록자 ID"
+        varchar hospital_name "병원명"
+        varchar department "진료과"
+        varchar doctor_name "담당의"
+        datetime visit_at "진료 예정 일시"
+        varchar address "주소"
+        varchar phone_number "전화번호"
+        text memo "메모"
+        varchar status "SCHEDULED COMPLETED EXPIRED CANCELLED"
+        datetime completed_at
+        datetime cancelled_at
+        timestamp created_at
+    }
+
+    appointment_reminders {
+        bigint id PK
+        bigint appointment_id FK
+        datetime remind_at "발송 예정 시각"
+        varchar channel "SSE KAKAO"
+        varchar time_label "전날 2시간전 30분전"
+        varchar status "PENDING PROCESSING SENT SKIPPED"
+        datetime sent_at
+        varchar idempotency_key UK
+        timestamp created_at
+    }
+
+    appointment_reminder_deliveries {
+        bigint id PK
+        bigint reminder_id FK
+        bigint recipient_user_id FK "수신자 ID"
+        varchar role "SENIOR CAREGIVER"
+        varchar status "PENDING PROCESSING SENT FAILED GIVE_UP"
+        int attempt_count
+        datetime sent_at
+        timestamp created_at
+    }
+
+    hospital_appointments ||--o{ appointment_reminders : "has"
+    appointment_reminders ||--o{ appointment_reminder_deliveries : "delivers"

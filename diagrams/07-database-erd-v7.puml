@@ -1,0 +1,333 @@
+@startuml AMApill_ERD_v7
+
+title AMApill ERD v7.0 - 26 Tables
+footer 2025-12-25 | MySQL 8.0
+
+skinparam linetype ortho
+skinparam entity {
+    BackgroundColor AliceBlue
+    BorderColor DarkSlateGray
+    ArrowColor DimGray
+}
+
+' ==========================================
+' AUTH SERVICE (amapill_db)
+' ==========================================
+package "Auth Service" #LightYellow {
+    entity users {
+        * id : BIGINT <<PK>>
+        --
+        email : VARCHAR <<UK>>
+        password_hash : VARCHAR
+        name : VARCHAR
+        phone : VARCHAR
+        profile_image : VARCHAR
+        user_role : VARCHAR
+        customer_role : VARCHAR
+        oauth_provider : VARCHAR
+        active : BOOLEAN
+        is_ai_banned : BOOLEAN
+    }
+
+    entity kakao_tokens {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK,UK>>
+        access_token : VARCHAR
+        refresh_token : VARCHAR
+        expires_at : TIMESTAMP
+    }
+
+    users ||--o| kakao_tokens
+}
+
+' ==========================================
+' CORE - Medications
+' ==========================================
+package "Medication Domain" #LightGreen {
+    entity prescriptions {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        pharmacy_name : VARCHAR
+        hospital_name : VARCHAR
+        start_date : DATE
+        end_date : DATE
+        intake_times : JSON
+        active : BOOLEAN
+    }
+
+    entity medications {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        prescription_id : BIGINT <<FK>>
+        name : VARCHAR
+        ingredient : VARCHAR
+        dosage : VARCHAR
+        frequency : INT
+        remaining : INT
+        active : BOOLEAN
+    }
+
+    entity medication_schedules {
+        * id : BIGINT <<PK>>
+        --
+        medication_id : BIGINT <<FK>>
+        time : TIME
+        days_of_week : VARCHAR
+        active : TINYINT
+    }
+
+    entity medication_logs {
+        * id : BIGINT <<PK>>
+        --
+        medication_id : BIGINT <<FK>>
+        schedule_id : BIGINT <<FK>>
+        scheduled_time : DATETIME
+        completed_time : DATETIME
+        completed : BOOLEAN
+        notified : BOOLEAN
+    }
+
+    entity medication_adherence_daily {
+        * stat_date : DATE <<PK>>
+        * user_id : BIGINT <<PK>>
+        * medication_id : BIGINT <<PK>>
+        --
+        scheduled_count : INT
+        completed_count : INT
+    }
+
+    prescriptions ||--o{ medications
+    medications ||--o{ medication_schedules
+    medications ||--o{ medication_logs
+    medication_schedules ||--o{ medication_logs
+}
+
+' ==========================================
+' CORE - Family
+' ==========================================
+package "Family Domain" #LightBlue {
+    entity family_groups {
+        * id : BIGINT <<PK>>
+        --
+        name : VARCHAR
+        created_by : BIGINT
+        owner_id : BIGINT
+    }
+
+    entity family_members {
+        * id : BIGINT <<PK>>
+        --
+        family_group_id : BIGINT <<FK>>
+        user_id : BIGINT <<FK>>
+        family_role : VARCHAR
+        joined_at : TIMESTAMP
+    }
+
+    entity family_invites {
+        * id : BIGINT <<PK>>
+        --
+        invite_token_hash : VARCHAR <<UK>>
+        short_code : VARCHAR <<UK>>
+        group_id : BIGINT <<FK>>
+        inviter_id : BIGINT <<FK>>
+        status : ENUM
+        expires_at : DATETIME
+    }
+
+    entity family_chat_message {
+        * id : BIGINT <<PK>>
+        --
+        family_group_id : BIGINT <<FK>>
+        family_member_id : BIGINT <<FK>>
+        type : VARCHAR
+        content : TEXT
+    }
+
+    family_groups ||--o{ family_members
+    family_groups ||--o{ family_invites
+    family_members ||--o{ family_chat_message
+}
+
+' ==========================================
+' CORE - Notifications
+' ==========================================
+package "Notification Domain" #LightPink {
+    entity notifications {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        type : VARCHAR
+        title : VARCHAR
+        message : TEXT
+        idempotency_key : VARCHAR <<UK>>
+        read : BOOLEAN
+    }
+
+    entity notification_settings {
+        * user_id : BIGINT <<PK>>
+        --
+        push_enabled : BOOLEAN
+        diet_warning_enabled : BOOLEAN
+        medication_missed_enabled : BOOLEAN
+        appointment_reminder_enabled : BOOLEAN
+    }
+
+    entity family_notification_settings {
+        * family_group_id : BIGINT <<PK>>
+        * target_user_id : BIGINT <<PK>>
+        --
+        kakao_enabled : BOOLEAN
+        diet_warning_enabled : BOOLEAN
+        medication_missed_enabled : BOOLEAN
+    }
+
+    family_groups ||--o{ family_notification_settings
+}
+
+' ==========================================
+' CORE - Security
+' ==========================================
+package "Security Domain" #LightGray {
+    entity security_audit_logs {
+        * id : BIGINT <<PK>>
+        --
+        event_type : VARCHAR
+        actor_id : BIGINT
+        actor_ip : VARCHAR
+        metadata : JSON
+    }
+
+    entity abuse_audit_log {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        profile : VARCHAR
+        action : VARCHAR
+        reason : VARCHAR
+    }
+
+    entity access_logs {
+        * id : BIGINT <<PK>>
+        --
+        requester_id : BIGINT <<FK>>
+        target_id : BIGINT <<FK>>
+        resource_type : VARCHAR
+    }
+}
+
+' ==========================================
+' EXTENDED - Disease
+' ==========================================
+package "Disease Domain" #Wheat {
+    entity diseases {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        created_by : BIGINT <<FK>>
+        name : VARCHAR
+        code : VARCHAR
+        status : VARCHAR
+        is_critical : BOOLEAN
+        is_private : BOOLEAN
+    }
+
+    entity disease_audit_logs {
+        * id : BIGINT <<PK>>
+        --
+        disease_id : BIGINT <<FK>>
+        action : VARCHAR
+        changes : JSON
+    }
+
+    entity disease_medication_relations {
+        * id : BIGINT <<PK>>
+        --
+        disease_id : BIGINT <<FK>>
+        medication_id : BIGINT <<FK>>
+    }
+
+    entity disease_warning_relations {
+        * id : BIGINT <<PK>>
+        --
+        disease_id : BIGINT <<FK>>
+        warning_id : BIGINT <<FK>>
+    }
+
+    diseases ||--o{ disease_audit_logs
+    diseases ||--o{ disease_medication_relations
+    medications ||--o{ disease_medication_relations
+}
+
+' ==========================================
+' EXTENDED - Diet
+' ==========================================
+package "Diet Domain" #Honeydew {
+    entity diet_logs {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        meal_type : VARCHAR
+        food_name : VARCHAR
+        overall_level : VARCHAR
+        recorded_at : DATETIME
+    }
+
+    entity diet_warnings {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        diet_log_id : BIGINT <<FK>>
+        medication_id : BIGINT <<FK>>
+        warning_message : VARCHAR
+        severity : VARCHAR
+    }
+
+    diet_logs ||--o{ diet_warnings
+    medications ||--o{ diet_warnings
+    diet_warnings ||--o{ disease_warning_relations
+}
+
+' ==========================================
+' EXTENDED - Appointment
+' ==========================================
+package "Appointment Domain" #Lavender {
+    entity hospital_appointments {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        created_by : BIGINT <<FK>>
+        hospital_name : VARCHAR
+        department : VARCHAR
+        doctor_name : VARCHAR
+        visit_at : DATETIME
+        status : VARCHAR
+    }
+
+    entity appointment_reminders {
+        * id : BIGINT <<PK>>
+        --
+        appointment_id : BIGINT <<FK>>
+        remind_at : DATETIME
+        channel : VARCHAR
+        status : VARCHAR
+        idempotency_key : VARCHAR <<UK>>
+    }
+
+    entity appointment_reminder_deliveries {
+        * id : BIGINT <<PK>>
+        --
+        reminder_id : BIGINT <<FK>>
+        recipient_user_id : BIGINT <<FK>>
+        role : VARCHAR
+        status : VARCHAR
+        attempt_count : INT
+    }
+
+    hospital_appointments ||--o{ appointment_reminders
+    appointment_reminders ||--o{ appointment_reminder_deliveries
+}
+
+@enduml

@@ -959,7 +959,7 @@ Authorization: Bearer <accessToken>
 ---
 
 **문서 버전**: 2.2
-**최종 수정일**: 2025-11-22
+**최종 수정일**: 2025-12-25
 **작성자**: AMApill 개발팀 (구 뭐냑?)
 **프로젝트명**: AMApill (구 SilverCare)
 **노션 복사 가능**: ✅
