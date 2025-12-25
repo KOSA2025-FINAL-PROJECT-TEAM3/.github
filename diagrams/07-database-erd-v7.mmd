@@ -238,6 +238,10 @@ erDiagram
         datetime created_at
     }
 
+    users ||--o{ security_audit_logs : "audits"
+    family_groups ||--o{ security_audit_logs : "audits"
+    family_groups ||--o{ access_logs : "logs"
+
     %% ==========================================
     %% EXTENDED - Disease Management
     %% ==========================================
