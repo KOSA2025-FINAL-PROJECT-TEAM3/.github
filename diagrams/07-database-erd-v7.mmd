@@ -361,3 +361,27 @@ erDiagram
 
     hospital_appointments ||--o{ appointment_reminders : "has"
     appointment_reminders ||--o{ appointment_reminder_deliveries : "delivers"
+
+    %% ==========================================
+    %% CROSS-DOMAIN RELATIONSHIPS
+    %% ==========================================
+
+    %% Users -> Core Domains
+    users ||--o{ prescriptions : "owns"
+    users ||--o{ medications : "takes"
+    users ||--o{ family_members : "joins"
+    users ||--o{ notifications : "receives"
+    users ||--o{ notification_settings : "configures"
+
+    %% Users -> Extended Domains
+    users ||--o{ diseases : "has"
+    users ||--o{ diet_logs : "records"
+    users ||--o{ hospital_appointments : "schedules"
+
+    %% Family -> Members
+    users ||--o{ family_groups : "creates"
+
+    %% Audit/Security -> Users
+    users ||--o{ abuse_audit_log : "triggers"
+    users ||--o{ access_logs : "logs"
+
