@@ -1,0 +1,127 @@
+@startuml AMApill_ERD_v7_2_Part1_Family
+
+title AMApill ERD v7.2 (Part 1: Auth & Family)
+footer 2025-12-26 | MySQL 8.0
+
+skinparam linetype ortho
+skinparam entity {
+    BackgroundColor AliceBlue
+    BorderColor DarkSlateGray
+    ArrowColor DimGray
+}
+' Standard Top-to-Bottom inside entities, but Horizontal flow for packages
+' left to right direction (REMOVED)
+
+' ==========================================
+' AUTH SERVICE
+' ==========================================
+package "Auth Service" #LightYellow {
+    entity users {
+        * id : BIGINT <<PK>>
+        --
+        email : VARCHAR(255) <<UK>>
+        password_hash : VARCHAR(255)
+        name : VARCHAR(100)
+        phone : VARCHAR(20)
+        profile_image : VARCHAR(500)
+        user_role : VARCHAR(50)
+        customer_role : VARCHAR(50)
+        oauth_provider : VARCHAR(50)
+        oauth_provider_id : VARCHAR(255)
+        active : BOOLEAN
+        last_login_at : TIMESTAMP
+        is_ai_banned : BOOLEAN
+        ai_ban_reason : VARCHAR(255)
+        ai_banned_at : DATETIME
+        created_at : TIMESTAMP
+        updated_at : TIMESTAMP
+    }
+
+    entity kakao_tokens {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK,UK>>
+        access_token : VARCHAR(512)
+        refresh_token : VARCHAR(512)
+        expires_at : TIMESTAMP
+        created_at : TIMESTAMP
+        updated_at : TIMESTAMP
+    }
+
+    users ||--|| kakao_tokens
+}
+
+' ==========================================
+' CORE - Family
+' ==========================================
+package "Family Domain" #LightBlue {
+    entity family_groups {
+        * id : BIGINT <<PK>>
+        --
+        name : VARCHAR(100)
+        created_by : BIGINT
+        owner_id : BIGINT
+        created_at : TIMESTAMP
+        updated_at : TIMESTAMP
+    }
+
+    entity family_members {
+        * id : BIGINT <<PK>>
+        --
+        family_group_id : BIGINT <<FK>>
+        user_id : BIGINT <<FK>>
+        family_role : VARCHAR(20)
+        joined_at : TIMESTAMP
+        user_name : VARCHAR(100)
+        user_email : VARCHAR(255)
+        user_role : VARCHAR(20)
+    }
+
+    entity family_invites {
+        * id : BIGINT <<PK>>
+        --
+        group_id : BIGINT <<FK>>
+        invite_token_hash : VARCHAR(88)
+        short_code : VARCHAR(6)
+        invite_url : VARCHAR(512)
+        invitee_name : VARCHAR(50)
+        intended_for_identifier : VARCHAR(255)
+        intended_for_sub : VARCHAR(36)
+        inviter_id : BIGINT
+        suggested_role : VARCHAR(20)
+        status : ENUM
+        expires_at : DATETIME
+        used_at : DATETIME
+        used_by_user_id : BIGINT
+        created_at : DATETIME
+        updated_at : DATETIME
+    }
+
+    entity family_chat_message {
+        * id : BIGINT <<PK>>
+        --
+        family_group_id : BIGINT <<FK>>
+        family_member_id : BIGINT <<FK>>
+        type : VARCHAR(20)
+        content : TEXT
+        created_at : TIMESTAMP
+    }
+
+    family_groups ||--o{ family_members
+    family_groups ||--o{ family_invites
+    family_groups ||--o{ family_chat_message
+    family_members ||--o{ family_chat_message
+}
+
+' LAYOUT: Auth (Left) - Family (Right)
+' Linking specific core entities forces the packages to align
+users -[hidden]right- family_groups
+
+
+' ==========================================
+' CROSS-DOMAIN RELATIONSHIPS
+' ==========================================
+users ||--o{ family_members
+users ||--o{ family_groups
+
+@enduml

@@ -1,0 +1,206 @@
+@startuml AMApill_ERD_v7_2_Part2_Medication_Disease
+
+title AMApill ERD v7.2 (Part 2: Auth, Medication & Disease)
+footer 2025-12-26 | MySQL 8.0
+
+skinparam linetype ortho
+skinparam entity {
+    BackgroundColor AliceBlue
+    BorderColor DarkSlateGray
+    ArrowColor DimGray
+}
+
+' Layout Control
+' [Auth]
+' [Medication] [Disease]
+
+
+' ==========================================
+' AUTH SERVICE
+' ==========================================
+package "Auth Service" #LightYellow {
+    entity users {
+        * id : BIGINT <<PK>>
+        --
+        email : VARCHAR(255) <<UK>>
+        password_hash : VARCHAR(255)
+        name : VARCHAR(100)
+        phone : VARCHAR(20)
+        profile_image : VARCHAR(500)
+        user_role : VARCHAR(50)
+        customer_role : VARCHAR(50)
+        oauth_provider : VARCHAR(50)
+        oauth_provider_id : VARCHAR(255)
+        active : BOOLEAN
+        last_login_at : TIMESTAMP
+        is_ai_banned : BOOLEAN
+        ai_ban_reason : VARCHAR(255)
+        ai_banned_at : DATETIME
+        created_at : TIMESTAMP
+        updated_at : TIMESTAMP
+    }
+}
+
+' ==========================================
+' CORE - Medications
+' ==========================================
+package "Medication Domain" #LightGreen {
+    entity prescriptions {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        pharmacy_name : VARCHAR(100)
+        hospital_name : VARCHAR(100)
+        start_date : DATE
+        end_date : DATE
+        intake_times : JSON
+        payment_amount : INT
+        notes : TEXT
+        active : BOOLEAN
+        created_at : TIMESTAMP
+        updated_at : TIMESTAMP
+    }
+
+    entity medications {
+        * id : BIGINT <<PK>>
+        --
+        prescription_id : BIGINT <<FK>>
+        user_id : BIGINT <<FK>>
+        name : VARCHAR(255)
+        ingredient : VARCHAR(255)
+        dosage : VARCHAR(100)
+        timing : VARCHAR(100)
+        start_date : DATE
+        end_date : DATE
+        quantity : INT
+        frequency : INT
+        dose_per_intake : INT
+        remaining : INT
+        expiry_date : DATE
+        notes : TEXT
+        image_url : VARCHAR(500)
+        active : BOOLEAN
+        created_at : TIMESTAMP
+        updated_at : TIMESTAMP
+    }
+
+    entity medication_schedules {
+        * id : BIGINT <<PK>>
+        --
+        medication_id : BIGINT <<FK>>
+        time : TIME
+        days_of_week : VARCHAR(50)
+        active : TINYINT(1)
+        created_at : TIMESTAMP
+    }
+
+    entity medication_logs {
+        * id : BIGINT <<PK>>
+        --
+        medication_id : BIGINT <<FK>>
+        medication_schedule_id : BIGINT <<FK>>
+        user_id : BIGINT <<FK>>
+        scheduled_time : DATETIME
+        completed_time : DATETIME
+        completed : BOOLEAN
+        notified : BOOLEAN
+        created_at : TIMESTAMP
+    }
+
+    entity medication_adherence_daily {
+        * stat_date : DATE <<PK>>
+        * user_id : BIGINT <<PK>>
+        * medication_id : BIGINT <<PK>>
+        --
+        scheduled_count : INT
+        completed_count : INT
+        created_at : TIMESTAMP
+        updated_at : TIMESTAMP
+    }
+
+    prescriptions ||--o{ medications
+    medications ||--o{ medication_schedules
+    medications ||--o{ medication_logs
+    medication_schedules ||--o{ medication_logs
+    medications ||--o{ medication_adherence_daily
+
+    ' Internal Horizontal Layout
+    prescriptions -[hidden]right- medications
+    medications -[hidden]right- medication_schedules
+    medications -[hidden]down- medication_logs
+}
+
+' FORCE LAYOUT: All Horizontal
+' Auth -> Med -> Dis
+' FORCE LAYOUT: All Horizontal
+' Auth -> Med -> Dis (Package Level is safer to create invisible layout structure)
+"Auth Service" -[hidden]right- "Medication Domain"
+"Medication Domain" -[hidden]right- "Disease Domain"
+
+
+' ==========================================
+' EXTENDED - Disease
+' ==========================================
+package "Disease Domain" #Wheat {
+    entity diseases {
+        * id : BIGINT <<PK>>
+        --
+        user_id : BIGINT <<FK>>
+        created_by : BIGINT <<FK>>
+        name : VARCHAR(255)
+        code : VARCHAR(50)
+        description : TEXT
+        diagnosed_at : DATE
+        is_diagnosed_date_unknown : BOOLEAN
+        cured_at : DATE
+        status : VARCHAR(20)
+        is_critical : BOOLEAN
+        is_private : BOOLEAN
+        deleted_at : DATETIME
+        created_at : DATETIME
+        updated_at : DATETIME
+    }
+
+    entity disease_audit_logs {
+        * id : BIGINT <<PK>>
+        --
+        disease_id : BIGINT <<FK>>
+        actor_id : BIGINT <<FK>>
+        action : VARCHAR(20)
+        changes : JSON
+        created_at : DATETIME
+    }
+
+    entity disease_medication_relations {
+        * id : BIGINT <<PK>>
+        --
+        disease_id : BIGINT <<FK>>
+        medication_id : BIGINT <<FK>>
+        created_at : DATETIME
+    }
+
+    entity disease_warning_relations {
+        * id : BIGINT <<PK>>
+        --
+        disease_id : BIGINT <<FK>>
+        warning_id : BIGINT <<FK>>
+        created_at : DATETIME
+    }
+
+    diseases ||--o{ disease_audit_logs
+    diseases ||--o{ disease_medication_relations
+    diseases ||--o{ disease_warning_relations
+    medications ||--o{ disease_medication_relations
+}
+
+' ==========================================
+' CROSS-DOMAIN RELATIONSHIPS
+' ==========================================
+users ||--o{ prescriptions
+users ||--o{ medications
+users ||--o{ medication_logs
+users ||--o{ medication_adherence_daily
+users ||--o{ diseases
+users ||--o{ disease_audit_logs
+
+@enduml

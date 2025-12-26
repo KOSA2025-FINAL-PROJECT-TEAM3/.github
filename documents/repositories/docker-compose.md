@@ -2,37 +2,58 @@
 
 ## 1) 목적
 
-로컬에서 **DB/캐시/메시징 등 인프라**를 빠르게 띄우고, 필요 시 Gateway/Auth 및 (향후) 도메인 서비스를 컨테이너로 함께 실행할 수 있는 구성입니다.
+로컬 개발에서 **DB/캐시/메시징 인프라**를 빠르게 구동하고,
+필요 시 Gateway/Auth를 컨테이너로 함께 띄우는 구성을 제공합니다.
 
-## 2) 기본 구성(항상 실행되는 서비스)
+## 2) 기본 구성(프로필 없이 실행)
 
-`docker-compose.yml`에서 profile 없이 기본으로 실행되는 인프라:
+`docker-compose/docker-compose.yml` 기준 기본 서비스:
 
-- MySQL `3306`
-- PostgreSQL(+pgvector) `5432`
-- Redis `6379`
-- Kafka(KRaft) `9092`
-- Nginx `80` (SPA 정적서빙 + `/api/`, `/ws/`를 Gateway로 프록시)
+- MySQL `3306` (mysql:8.0)
+- PostgreSQL `5432` (pgvector/pg16-trixie)
+- Redis `6379` (redis:7-alpine)
+- Kafka `9092` (Confluent 7.5, KRaft)
+- Nginx `80` (SPA 정적서빙 + `/api`, `/ws` 프록시)
 - phpMyAdmin `8888`
 - redis-commander `8889`
 
 ## 3) 선택 구성(프로필 기반)
 
-- `--profile full`: Gateway/Auth 및 (향후) 분리 서비스, n8n, hocuspocus 등을 포함한 “풀스택”
-  - `api-gateway:8080` (profile: `full`, `services`)
-  - `auth-service:8081` (profile: `full`)
-  - `family-service` 등 다수 서비스는 현재 “미구현/분리 예정” 상태로 주석/프로필로 관리
+- `--profile services` 또는 `--profile full`
+  - `api-gateway:8080`
+  - `auth-service:8081`
+- `--profile n8n`
+  - `n8n:5678`
 
-## 4) DB 초기화(근거 DDL)
+아래 서비스는 Compose에 정의되어 있지만 **현재 레포에 코드가 없습니다**.
+별도 레포가 필요합니다.
 
-DB 스키마는 아래 init script가 **단일 근거(source of truth)** 입니다.
+- `family-service`, `medication-service`, `diet-service`, `ocr-service`,
+  `chat-service`, `search-service`, `disease-service`, `counsel-service`,
+  `notification-service`, `report-service`
+
+## 4) Nginx 프록시
+
+`docker-compose/nginx.conf` 기준:
+
+- `/api/**` → `host.docker.internal:8080` (Gateway)
+- `/ws/**` → `host.docker.internal:8080` (Gateway WebSocket)
+- `/health` → `200 ok`
+
+## 5) DB 초기화
+
+DB 스키마는 init scripts가 근거입니다.
 
 - MySQL: `docker-compose/init-scripts/mysql/*.sql`
-  - 대표 테이블: `users`, `kakao_tokens`, `prescriptions`, `medications`, `medication_schedules`, `medication_logs`, `medication_adherence_daily`, `family_groups`, `family_members`, `family_invites`, `diet_logs`, `diet_warnings`, `notifications`, `notification_settings`, `family_chat_message`, `diseases`, `disease_medication_relations`, `hospital_appointments`, `appointment_reminders`, `appointment_reminder_deliveries`, `security_audit_logs`, `abuse_audit_log`, `access_logs`
 - PostgreSQL: `docker-compose/init-scripts/postgresql/*.sql`
-  - `vector_store` 등(LLM Guard/임베딩 용도)
 
-## 5) 로컬 권장 실행 시나리오
+## 6) 환경 변수(.env)
 
-- 인프라만 띄우고(Compose) 서비스는 IDE에서 실행: 개발 속도/디버깅에 유리
-- Nginx는 `/api/`를 `host.docker.internal:8080`으로 프록시하므로, 로컬에서 Gateway만 띄워도 브라우저 호출 흐름이 단순해집니다.
+`.env.example`에 정의된 키:
+
+- MySQL: `MYSQL_ROOT_PASSWORD`, `MYSQL_DATABASE`, `MYSQL_USER`, `MYSQL_PASSWORD`
+- PostgreSQL: `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`
+- Redis: `REDIS_PASSWORD`
+- JWT: `JWT_SECRET`
+- Kakao: `KAKAO_CLIENT_ID`, `KAKAO_CLIENT_SECRET`
+- 기타: `N8N_HOST`, `TZ`

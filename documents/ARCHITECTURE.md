@@ -1,6 +1,7 @@
-# 🏗️ 시스템 아키텍처 (Dev 기준)
+# 🏗️ 시스템 아키텍처 (현재 코드 기준)
 
-AMApill(뭐냑?)은 “가족 돌봄 네트워크 기반 약 관리 플랫폼”이며, Dev 기준으로 **Gateway + Auth + Core** 3개 백엔드 레포지토리와 `docker-compose` 인프라 레포지토리를 중심으로 구성됩니다.
+AMApill(뭐냑?)은 **Gateway + Auth + Core** 3개 백엔드와
+`docker-compose` 기반 인프라, 그리고 `k8s` 매니페스트로 구성됩니다.
 
 ---
 
@@ -8,7 +9,7 @@ AMApill(뭐냑?)은 “가족 돌봄 네트워크 기반 약 관리 플랫폼”
 
 - 시스템 구성도: [`diagrams/01-system-architecture.mmd`](../diagrams/01-system-architecture.mmd)
 - 주요 데이터 흐름: [`diagrams/02-data-flow.mmd`](../diagrams/02-data-flow.mmd)
-- DB ERD(최신 v7.0): [`diagrams/07-database-erd-v7.mmd`](../diagrams/07-database-erd-v7.mmd)
+- DB ERD: [`diagrams/07-database-erd-current.mmd`](../diagrams/07-database-erd-current.mmd)
 
 ---
 
@@ -17,40 +18,39 @@ AMApill(뭐냑?)은 “가족 돌봄 네트워크 기반 약 관리 플랫폼”
 ### 2.1 API Gateway (`spring-cloud-api-gateway`)
 
 - 단일 진입점(`/api/**`, `/ws/**`)
-- JWT(Access Token) 검증
-- `X-User-*` 헤더 주입(내부 서비스는 JWT를 직접 파싱하지 않음)
-- Redis 기반 GET 응답 캐싱(경로별 TTL)
-- Circuit Breaker(Resilience4j)
-- Kafka 이벤트 로깅(요청/응답/에러)
+- JWT 검증 및 `X-User-*` 헤더 주입
+- Redis GET 응답 캐싱
+- Kafka 요청/응답 로깅
+- Resilience4j Circuit Breaker
 
 ### 2.2 Auth Service (`auth-service`)
 
-- 로그인/회원가입
-- Kakao OAuth 로그인
-- JWT 발급/갱신
-- 사용자 프로필(`/users/me`)
+- 로그인/회원가입/카카오 로그인
+- JWT 발급/갱신/로그아웃
+- 사용자 프로필(`/auth/users/**`)
 - Refresh Token 저장(Redis)
 
 ### 2.3 Core Service (`spring-boot`)
 
-Auth를 제외한 도메인을 단일 서비스로 제공(현 구현 기준):
+Auth를 제외한 도메인을 단일 서비스로 제공:
 
 - 가족/초대/알림 설정
-- 처방전/약/스케줄/복용 로그/순응도
-- 식단 로그/분석/경고
-- OCR(동기 + 비동기 Job)
-- 알림(SSE 구독/히스토리)
-- 리포트(복약 순응도)
-- 질병(관리/약 연관/PDF)
-- 가족 채팅(REST + WebSocket/STOMP + Kafka)
-- Voice(음성 명령 텍스트 처리)
+- 약/처방전/복용 로그/순응도
+- 식단/경고
+- OCR
+- 알림(SSE)
+- 리포트
+- 질병
+- 가족 채팅(REST + WebSocket/STOMP)
+- Voice
+- 병원 예약
 
 ### 2.4 인프라 (`docker-compose`)
 
 - MySQL (도메인 트랜잭션 데이터)
-- Redis (캐시/토큰/실시간 기능 일부)
+- Redis (캐시/세션/실시간 기능 일부)
 - Kafka (이벤트 스트리밍)
-- PostgreSQL(+pgvector) (벡터 스토어/AI 보안 용도)
+- PostgreSQL(+pgvector) (LLM Guard 벡터 스토어)
 - Nginx (로컬 프록시: `/api`, `/ws` → Gateway)
 
 ---
@@ -70,9 +70,11 @@ Gateway는 다음 헤더를 주입합니다(대표):
 - `X-Token-Subject`, `X-Token-Type`
 - `X-Request-Id`
 
-Core는 `SecurityUtil`로 헤더를 해석하고, Auth는 `GatewayUserInjectionFilter`로 `@AuthenticationPrincipal`을 구성합니다.
+Core는 `SecurityUtil`로 헤더를 해석하고,
+Auth는 `GatewayUserInjectionFilter`로 `@AuthenticationPrincipal`을 구성합니다.
 
-> 주의: SSE는 EventSource 제약 때문에 `token` 쿼리 파라미터를 허용하지만, “검증” 자체는 Gateway에서 수행해야 합니다.
+> SSE는 EventSource 제약 때문에 `token` 쿼리 파라미터를 허용하지만,
+> “검증” 자체는 Gateway에서 수행해야 합니다.
 
 ---
 
@@ -80,54 +82,72 @@ Core는 `SecurityUtil`로 헤더를 해석하고, Auth는 `GatewayUserInjectionF
 
 ### 4.1 WebSocket/STOMP
 
-- 외부 진입: `/ws/**` (Gateway를 통해 Core로 프록시)
-- 가족 채팅/상태 동기화 등 실시간 기능에 사용
-- Kafka 연계로 메시지 브로드캐스트/확장 가능 구조를 마련
+- 외부 진입: `/ws/**` (Gateway → Core)
+- Core의 STOMP 엔드포인트: `/ws`
+- 주용도: 가족 채팅 및 상태 동기화
 
 ### 4.2 SSE (Notifications)
 
 - 외부 진입: `GET /api/notifications/subscribe?token=...`
-- 장기 연결이므로 Gateway 라우트에 `response-timeout`을 길게 설정
+- 장기 연결을 위해 Gateway 라우트에 `response-timeout` 설정
 
 ---
 
-## 5) 데이터 저장소 설계(Dev)
+## 5) 데이터 저장소 설계
 
 DB 스키마 근거는 `docker-compose/init-scripts`입니다.
 
-- MySQL: `users`, `prescriptions`, `medications`, `family_*`, `diet_*`, `notifications` 등
-- PostgreSQL(+pgvector): `vector_store`
+- MySQL: 도메인 트랜잭션 데이터
+- PostgreSQL(+pgvector): LLM Guard 벡터 스토어
 
 자세한 내용:
-
 - [`documents/DATABASE_SCHEMA_ANALYSIS.md`](./DATABASE_SCHEMA_ANALYSIS.md)
 
 ---
 
-## 6) AI/보안(현 코드 기준)
+## 6) 배포 구성 (K8s)
 
-Core 서비스에는 다음 성격의 기능이 포함됩니다.
+`k8s/` 매니페스트 기준:
 
-- Spring AI(OpenAI) 기반 의도/답변 생성
-- 입력 통제(LLM Guard): 도메인별 정책/길이 제한/캐시/벡터 기반 “스마트 가드” 등
-
-문서에는 키/토큰의 실제 값을 기록하지 않습니다(환경 변수로 관리).
+- `applications`: `auth-service`, `spring-boot`
+- `apigateway`: `spring-cloud-api-gateway`
+- `database`: MySQL/PostgreSQL/Redis + Admin 도구
+- `middleware`: Kafka
+- `core`: ingress-nginx, cloudflared, local-path storage
 
 ---
 
-## 7) 버전/기술 스택(요약)
+## 7) 운영 환경 (Production)
+
+현재 확인된 운영 환경 구성:
+
+### Backend (Production)
+- Kubernetes (K8s)
+- ArgoCD (GitOps 자동 배포)
+- Cloudflared (Secure Tunnel)
+- Ingress-NGINX (로드밸런싱/라우팅)
+- Sealed Secrets (시크릿 관리)
+
+### Frontend (Production)
+- Nginx (정적 서빙 + 리버스 프록시)
+- Docker (컨테이너 배포)
+
+---
+
+## 8) 버전/기술 스택(요약)
 
 - Java: 21
-- Spring Boot: 3.5.8 (Core/Gateway 기준)
-- Spring Cloud: 2025.0.0 (Gateway)
+- Spring Boot: 3.5.8
+- Spring Cloud: 2025.0.0
+- Spring AI: 1.1.0
 - MySQL: 8.0
 - Redis: 7
-- Kafka: KRaft 모드
-- PostgreSQL: 16 (+pgvector)
+- Kafka: 7.5 (KRaft)
+- PostgreSQL(+pgvector): 16 (docker-compose), 15 (k8s)
 
 ---
 
-## 8) 개발자 온보딩
+## 9) 개발자 온보딩
 
 - 빠른 시작: [`QUICKSTART.md`](../QUICKSTART.md)
 - 레포별 분석: [`documents/REPOSITORIES.md`](./REPOSITORIES.md)
