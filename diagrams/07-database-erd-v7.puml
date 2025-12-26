@@ -3,7 +3,7 @@
 title AMApill ERD v7.0 - 26 Tables
 footer 2025-12-25 | MySQL 8.0
 
-skinparam linetype ortho
+skinparam linetype curved
 skinparam entity {
     BackgroundColor AliceBlue
     BorderColor DarkSlateGray
@@ -84,6 +84,7 @@ package "Medication Domain" #LightGreen {
         --
         medication_id : BIGINT <<FK>>
         schedule_id : BIGINT <<FK>>
+        user_id : BIGINT <<FK>>
         scheduled_time : DATETIME
         completed_time : DATETIME
         completed : BOOLEAN
@@ -238,6 +239,7 @@ package "Disease Domain" #Wheat {
         * id : BIGINT <<PK>>
         --
         disease_id : BIGINT <<FK>>
+        actor_id : BIGINT <<FK>>
         action : VARCHAR
         changes : JSON
     }
@@ -337,6 +339,7 @@ package "Appointment Domain" #Lavender {
 ' Users -> Core Domains
 users ||--o{ prescriptions
 users ||--o{ medications
+users ||--o{ medication_logs
 users ||--o{ family_members
 users ||--o{ notifications
 users ||--o{ notification_settings
@@ -345,13 +348,16 @@ users ||--o{ medication_adherence_daily
 ' Users -> Extended Domains
 users ||--o{ diseases
 users ||--o{ diet_logs
+users ||--o{ diet_warnings
 users ||--o{ hospital_appointments
+users ||--o{ appointment_reminder_deliveries
 users ||--o{ family_groups
 
 ' Users -> Security/Audit
 users ||--o{ abuse_audit_log
 users ||--o{ access_logs
 users ||--o{ security_audit_logs
+users ||--o{ disease_audit_logs
 
 ' Family -> Related
 family_groups ||--o{ security_audit_logs

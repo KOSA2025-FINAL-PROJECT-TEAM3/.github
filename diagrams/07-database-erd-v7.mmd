@@ -1,8 +1,8 @@
 %% ==========================================
-%% AMApill (뭐냑?) ERD v7.0 - Final
-%% Database: MySQL 8.0
-%% Date: 2025-12-25
-%% Tables: 26
+%% AMApill (뭐냑?) ERD v7.1 - Final
+%% Database: MySQL 8.0 + PostgreSQL 16 (pgvector)
+%% Date: 2025-12-26
+%% Tables: 26 (MySQL) + 1 (PostgreSQL)
 %% ==========================================
 
 erDiagram
@@ -375,6 +375,7 @@ erDiagram
     %% Users -> Core Domains
     users ||--o{ prescriptions : "owns"
     users ||--o{ medications : "takes"
+    users ||--o{ medication_logs : "tracks"
     users ||--o{ family_members : "joins"
     users ||--o{ notifications : "receives"
     users ||--o{ notification_settings : "configures"
@@ -382,7 +383,9 @@ erDiagram
     %% Users -> Extended Domains
     users ||--o{ diseases : "has"
     users ||--o{ diet_logs : "records"
+    users ||--o{ diet_warnings : "receives"
     users ||--o{ hospital_appointments : "schedules"
+    users ||--o{ appointment_reminder_deliveries : "receives_reminders"
 
     %% Family -> Members
     users ||--o{ family_groups : "creates"
@@ -390,4 +393,19 @@ erDiagram
     %% Audit/Security -> Users
     users ||--o{ abuse_audit_log : "triggers"
     users ||--o{ access_logs : "logs"
+    users ||--o{ disease_audit_logs : "audits"
+
+    %% ==========================================
+    %% POSTGRESQL - AI/LLM VECTOR STORE
+    %% ==========================================
+
+    vector_store {
+        uuid id PK "Vector ID"
+        text content "텍스트 내용"
+        jsonb metadata "메타데이터 JSON"
+        vector_1536 embedding "임베딩 벡터 (1536차원)"
+    }
+
+    %% Note: vector_store는 AI/LLM 기능을 위한 독립 저장소
+    %% pgvector extension 사용 (PostgreSQL 16)
 

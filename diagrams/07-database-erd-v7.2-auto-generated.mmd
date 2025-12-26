@@ -1,0 +1,406 @@
+erDiagram
+
+    %% ========== AUTH SERVICE ==========
+
+    %% Kakao OAuth token storage
+    kakao_tokens {
+        BIGINT id PK "Primary key"
+        BIGINT user_id FK "User ID - NOT NULL - UNIQUE"
+        VARCHAR(512) access_token "Kakao Access Token - NOT NULL"
+        VARCHAR(512) refresh_token "Kakao Refresh Token"
+        TIMESTAMP expires_at "Access Token expiration time - NOT NULL"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% User authentication and authorization table
+    users {
+        BIGINT id PK "Primary key"
+        VARCHAR(255) email "User email (login identifier) - NOT NULL - UNIQUE"
+        VARCHAR(255) password_hash "BCrypt hashed password"
+        VARCHAR(100) name "User full name - NOT NULL"
+        VARCHAR(20) phone "User phone number"
+        VARCHAR(500) profile_image "User profile image URL"
+        VARCHAR(50) user_role "NOT NULL - DEFAULT ROLE_USER"
+        VARCHAR(50) customer_role "Customer-specific role"
+        VARCHAR(50) oauth_provider "OAuth provider - DEFAULT KAKAO"
+        VARCHAR(255) oauth_provider_id "OAuth provider user ID"
+        BOOLEAN active "Account active status - DEFAULT true"
+        TIMESTAMP last_login_at "Last successful login timestamp"
+        BOOLEAN is_ai_banned "AI abuse permanent ban status - NOT NULL - DEFAULT FALSE"
+        VARCHAR(255) ai_ban_reason "Reason for AI ban"
+        DATETIME ai_banned_at "Timestamp when user was permanently banned"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% ========== CORE SERVICE ==========
+
+    abuse_audit_log {
+        BIGINT id PK
+        BIGINT user_id "NOT NULL"
+        VARCHAR(50) profile "Guard Profile - NOT NULL"
+        VARCHAR(10) layer "Violated Layer - NOT NULL"
+        VARCHAR(20) action "Action taken - NOT NULL"
+        VARCHAR(255) reason "Violation reason - NOT NULL"
+        TEXT input_snapshot "User input snapshot"
+        JSON metadata "Extra metadata"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 민감 정보 접근 이력 로그
+    access_logs {
+        BIGINT id PK "NOT NULL"
+        BIGINT requester_id "요청자 유저 ID - NOT NULL"
+        BIGINT target_id "대상(피보호자) 유저 ID - NOT NULL"
+        BIGINT family_group_id "가족 그룹 ID"
+        VARCHAR(50) resource_type "접근한 리소스 유형 - NOT NULL"
+        VARCHAR(50) ip_address "요청자 IP 주소 - DEFAULT NULL"
+        DATETIME created_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    family_chat_message {
+        BIGINT id PK
+        BIGINT family_group_id FK "NOT NULL"
+        BIGINT family_member_id FK
+        VARCHAR(20) type "NOT NULL"
+        TEXT content "NOT NULL"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    family_groups {
+        BIGINT id PK
+        VARCHAR(100) name "NOT NULL"
+        BIGINT created_by "원래 생성자 - NOT NULL"
+        BIGINT owner_id "현재 소유자 ID - DEFAULT NULL"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 가족 초대 테이블
+    family_invites {
+        BIGINT id PK "초대 ID"
+        VARCHAR(88) invite_token_hash "초대 링크 토큰 해시 - NOT NULL"
+        VARCHAR(6) short_code "6자리 수동 입력 코드 - NOT NULL"
+        VARCHAR(512) invite_url "초대 URL (Frontend Base URL 포함)"
+        VARCHAR(50) invitee_name "초대 대상자 이름"
+        VARCHAR(255) intended_for_identifier "초대 대상의 정규화된 식별자"
+        VARCHAR(36) intended_for_sub "대상자 UUID"
+        BIGINT group_id FK "가족 그룹 ID - NOT NULL"
+        BIGINT inviter_id "초대 생성자 사용자 ID - NOT NULL"
+        VARCHAR(20) suggested_role "추천 역할 - NOT NULL"
+        varchar status "PENDING, ACCEPTED, EXPIRED, CANCELLED - NOT NULL - DEFAULT PENDING"
+        DATETIME expires_at "만료 시간 - NOT NULL"
+        DATETIME used_at "초대 수락 시각"
+        BIGINT used_by_user_id "초대 수락한 사용자 ID"
+        DATETIME created_at "DEFAULT CURRENT_TIMESTAMP"
+        DATETIME updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    family_members {
+        BIGINT id PK
+        BIGINT family_group_id FK "NOT NULL"
+        BIGINT user_id "Reference to user in auth-service - NOT NULL"
+        VARCHAR(20) family_role
+        TIMESTAMP joined_at "DEFAULT CURRENT_TIMESTAMP"
+        VARCHAR(100) user_name
+        VARCHAR(255) user_email
+        VARCHAR(20) user_role
+    }
+
+    family_notification_settings {
+        BIGINT family_group_id PK "NOT NULL"
+        BIGINT target_user_id PK "NOT NULL - DEFAULT 0"
+        BOOLEAN kakao_enabled "NOT NULL - DEFAULT TRUE"
+        BOOLEAN diet_warning_enabled "NOT NULL - DEFAULT TRUE"
+        BOOLEAN medication_missed_enabled "NOT NULL - DEFAULT TRUE"
+        BOOLEAN appointment_reminder_enabled "NOT NULL - DEFAULT TRUE"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 복약 순응도 일별 집계
+    medication_adherence_daily {
+        DATE stat_date PK "집계 기준 일자 - NOT NULL"
+        BIGINT user_id PK "사용자 ID - NOT NULL"
+        BIGINT medication_id PK "약물 ID - NOT NULL"
+        INT scheduled_count "해당 일자 예정 횟수 - NOT NULL - DEFAULT 0"
+        INT completed_count "완료 횟수 - NOT NULL - DEFAULT 0"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    medication_logs {
+        BIGINT id PK
+        BIGINT medication_id FK "NOT NULL"
+        BIGINT medication_schedule_id FK
+        BIGINT user_id "Reference to user in auth-service - NOT NULL"
+        DATETIME scheduled_time
+        DATETIME completed_time
+        BOOLEAN completed "DEFAULT FALSE"
+        BOOLEAN notified "미복용 알림 발송 여부 - DEFAULT FALSE"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    medication_schedules {
+        BIGINT id PK
+        BIGINT medication_id FK "NOT NULL"
+        TIME time
+        VARCHAR(50) days_of_week
+        TINYINT(1) active "DEFAULT 1"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    medications {
+        BIGINT id PK
+        BIGINT user_id "Reference to user in auth-service - NOT NULL"
+        BIGINT prescription_id FK "처방전 그룹 ID"
+        VARCHAR(255) name "NOT NULL"
+        VARCHAR(255) ingredient
+        VARCHAR(100) dosage
+        VARCHAR(100) timing
+        DATE start_date "개별 약 시작일"
+        DATE end_date "개별 약 종료일"
+        INT quantity
+        INT frequency "하루 복용 횟수 - DEFAULT 1"
+        INT dose_per_intake "1회 복용량 - DEFAULT 1"
+        INT remaining
+        DATE expiry_date
+        TEXT notes
+        VARCHAR(500) image_url "약 이미지 URL"
+        BOOLEAN active "DEFAULT TRUE"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    notification_settings {
+        BIGINT user_id PK
+        BOOLEAN push_enabled "NOT NULL - DEFAULT TRUE"
+        BOOLEAN kakao_deeplink_enabled "NOT NULL - DEFAULT TRUE"
+        BOOLEAN diet_warning_enabled "NOT NULL - DEFAULT TRUE"
+        BOOLEAN medication_missed_enabled "NOT NULL - DEFAULT TRUE"
+        BOOLEAN appointment_reminder_enabled "NOT NULL - DEFAULT TRUE"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 알림 테이블
+    notifications {
+        BIGINT id PK "알림 ID"
+        BIGINT user_id "수신자 ID - NOT NULL"
+        VARCHAR(50) type "알림 타입 - NOT NULL"
+        VARCHAR(100) title "알림 제목 - NOT NULL"
+        TEXT message "알림 내용 - NOT NULL"
+        VARCHAR(255) idempotency_key "중복 방지 키"
+        BOOLEAN read "읽음 여부 - DEFAULT FALSE"
+        TIMESTAMP read_at "읽은 시간"
+        TEXT metadata "추가 정보 (JSON)"
+        TIMESTAMP created_at "생성 시각 - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 처방전 그룹 테이블
+    prescriptions {
+        BIGINT id PK
+        BIGINT user_id "Reference to user in auth-service - NOT NULL"
+        VARCHAR(100) pharmacy_name "약국명"
+        VARCHAR(100) hospital_name "병원명"
+        DATE start_date "복용 시작일 - NOT NULL"
+        DATE end_date "복용 종료일 - NOT NULL"
+        JSON intake_times "복용 시간 목록"
+        INT payment_amount "수납 금액"
+        TEXT notes "처방전 전체 메모"
+        BOOLEAN active "DEFAULT TRUE"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 보안 감사 로그
+    security_audit_logs {
+        BIGINT id PK "감사 로그 ID"
+        VARCHAR(50) event_type "이벤트 타입 - NOT NULL"
+        BIGINT actor_id "행위자 사용자 ID"
+        VARCHAR(45) actor_ip "행위자 IP 주소 - NOT NULL"
+        VARCHAR(255) target_identifier "대상 식별자"
+        BIGINT group_id "관련 가족 그룹 ID"
+        JSON metadata "추가 정보"
+        DATETIME created_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% ========== EXTENDED SERVICE ==========
+
+    appointment_reminder_deliveries {
+        BIGINT id PK
+        BIGINT reminder_id FK "NOT NULL"
+        BIGINT recipient_user_id "수신자 ID - NOT NULL"
+        VARCHAR(20) role "NOT NULL"
+        VARCHAR(20) status "NOT NULL - DEFAULT PENDING"
+        INT attempt_count "NOT NULL - DEFAULT 0"
+        DATETIME last_attempt_at "DEFAULT NULL"
+        DATETIME next_retry_at "DEFAULT NULL"
+        DATETIME sent_at "DEFAULT NULL"
+        VARCHAR(500) error_message "DEFAULT NULL"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    appointment_reminders {
+        BIGINT id PK
+        BIGINT appointment_id FK "NOT NULL"
+        DATETIME remind_at "발송 예정 시각 - NOT NULL"
+        VARCHAR(20) channel "NOT NULL"
+        VARCHAR(20) time_label "NOT NULL"
+        VARCHAR(20) status "NOT NULL - DEFAULT PENDING"
+        DATETIME sent_at "DEFAULT NULL"
+        VARCHAR(500) error_message "DEFAULT NULL"
+        VARCHAR(64) processing_by "DEFAULT NULL"
+        DATETIME processing_at "DEFAULT NULL"
+        VARCHAR(64) idempotency_key "NOT NULL"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 식단 기록 테이블
+    diet_logs {
+        BIGINT id PK "식단 로그 ID"
+        BIGINT user_id "사용자 ID - NOT NULL"
+        VARCHAR(20) meal_type "NOT NULL"
+        VARCHAR(255) food_name "음식명 - NOT NULL"
+        VARCHAR(100) amount "섭취량"
+        VARCHAR(20) overall_level
+        TEXT summary "분석 요약"
+        TEXT drug_interactions "약물 상호작용 (JSON)"
+        TEXT disease_interactions "질병 상호작용 (JSON)"
+        VARCHAR(500) image_url "식단 이미지 URL"
+        DATETIME recorded_at "섭취 시간 - NOT NULL"
+        TEXT notes "메모"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 식단 경고
+    diet_warnings {
+        BIGINT id PK "식단 경고 ID"
+        BIGINT user_id "대상 사용자 ID - NOT NULL"
+        BIGINT diet_log_id "식단 로그 ID"
+        BIGINT medication_id FK "관련 약물 ID"
+        VARCHAR(500) warning_message "경고 메시지 - NOT NULL"
+        VARCHAR(20) severity
+        DATETIME created_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 질병 변경 이력
+    disease_audit_logs {
+        BIGINT id PK "감사 로그 ID"
+        BIGINT disease_id FK "질병 ID - NOT NULL"
+        BIGINT actor_id "변경 수행자 사용자 ID - NOT NULL"
+        VARCHAR(20) action "NOT NULL"
+        JSON changes "변경 내용 (JSON)"
+        DATETIME created_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 질병-약물 관계
+    disease_medication_relations {
+        BIGINT id PK
+        BIGINT disease_id FK "NOT NULL"
+        BIGINT medication_id FK "NOT NULL"
+        DATETIME created_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 질병-경고 관계
+    disease_warning_relations {
+        BIGINT id PK
+        BIGINT disease_id FK "NOT NULL"
+        BIGINT warning_id FK "NOT NULL"
+        DATETIME created_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% 질병 정보 테이블
+    diseases {
+        BIGINT id PK "질병 ID"
+        BIGINT user_id "환자 사용자 ID - NOT NULL"
+        BIGINT created_by "등록자 사용자 ID - NOT NULL"
+        VARCHAR(255) name "질병명 - NOT NULL"
+        VARCHAR(50) code "질병 코드 (ICD-10 등)"
+        TEXT description "질병 상세 설명"
+        DATE diagnosed_at "진단일"
+        BOOLEAN is_diagnosed_date_unknown "진단일 미상 여부 - NOT NULL - DEFAULT FALSE"
+        DATE cured_at "완치일"
+        VARCHAR(20) status "NOT NULL - DEFAULT ACTIVE"
+        BOOLEAN is_critical "중증 질병 여부 - NOT NULL - DEFAULT FALSE"
+        BOOLEAN is_private "비공개 질병 여부 - NOT NULL - DEFAULT FALSE"
+        DATETIME deleted_at "논리 삭제 시각"
+        DATETIME created_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+        DATETIME updated_at "NOT NULL - DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    hospital_appointments {
+        BIGINT id PK
+        BIGINT user_id "예약 대상 어르신 ID - NOT NULL"
+        BIGINT created_by "등록자 ID - NOT NULL"
+        VARCHAR(100) hospital_name "병원명 - NOT NULL"
+        VARCHAR(50) department "진료과 - DEFAULT NULL"
+        VARCHAR(50) doctor_name "담당의 - DEFAULT NULL"
+        DATETIME visit_at "진료 예정 일시 - NOT NULL"
+        VARCHAR(255) address "주소 - DEFAULT NULL"
+        VARCHAR(100) address_detail "상세 주소 - DEFAULT NULL"
+        DECIMAL(10 latitude "DEFAULT NULL"
+        DECIMAL(10 longitude "DEFAULT NULL"
+        VARCHAR(20) phone_number "대표 전화번호 - DEFAULT NULL"
+        TEXT memo "사용자 메모 - DEFAULT NULL"
+        VARCHAR(20) status "NOT NULL - DEFAULT SCHEDULED"
+        DATETIME completed_at "DEFAULT NULL"
+        BIGINT completed_by "DEFAULT NULL"
+        DATETIME cancelled_at "DEFAULT NULL"
+        BIGINT cancelled_by "DEFAULT NULL"
+        VARCHAR(255) cancel_reason "DEFAULT NULL"
+        TIMESTAMP created_at "DEFAULT CURRENT_TIMESTAMP"
+        TIMESTAMP updated_at "DEFAULT CURRENT_TIMESTAMP"
+    }
+
+    %% ========== POSTGRESQL SERVICE ==========
+
+    vector_store {
+        uuid id PK
+        text content
+        jsonb metadata
+        vector(1536) embedding
+    }
+
+    %% ========== RELATIONSHIPS ==========
+    %% User relationships
+    users ||--o{ prescriptions : owns
+    users ||--o{ medications : takes
+    users ||--o{ medication_logs : tracks
+    users ||--o{ medication_adherence_daily : stats
+    users ||--o{ family_members : joins
+    users ||--o{ notifications : receives
+    users ||--o{ notification_settings : configures
+    users ||--o{ diseases : has
+    users ||--o{ diet_logs : records
+    users ||--o{ diet_warnings : receives
+    users ||--o{ hospital_appointments : schedules
+    users ||--o{ appointment_reminder_deliveries : receives_reminders
+    users ||--o{ access_logs : accesses
+    users ||--o{ abuse_audit_log : triggers
+    users ||--o{ security_audit_logs : audits
+    users ||--o{ family_groups : creates
+    users ||--o{ disease_audit_logs : audits
+
+    %% Other relationships
+
+
+    appointment_reminders ||--o{ appointment_reminder_deliveries : "has"
+    diet_warnings ||--o{ disease_warning_relations : "has"
+    diseases ||--o{ disease_audit_logs : "has"
+    diseases ||--o{ disease_medication_relations : "has"
+    diseases ||--o{ disease_warning_relations : "has"
+    family_groups ||--o{ family_chat_message : "has"
+    family_groups ||--o{ family_invites : "has"
+    family_groups ||--o{ family_members : "has"
+    family_members ||--o{ family_chat_message : "has"
+    hospital_appointments ||--o{ appointment_reminders : "has"
+    medication_schedules ||--o{ medication_logs : "has"
+    medications ||--o{ diet_warnings : "has"
+    medications ||--o{ disease_medication_relations : "has"
+    medications ||--o{ medication_logs : "has"
+    medications ||--o{ medication_schedules : "has"
+    prescriptions ||--o{ medications : "has"
+    users ||--|| kakao_tokens : "has"
