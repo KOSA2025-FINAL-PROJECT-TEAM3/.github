@@ -19,7 +19,7 @@
 
 ## 📂 프로젝트 구조
 
-`readme/documents/SRC_STRUCTURE.md`의 구조 요약을 기준으로 합니다.
+[documents/SRC_STRUCTURE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/SRC_STRUCTURE.md)의 구조 요약을 기준으로 합니다.
 
 핵심 디렉토리:
 

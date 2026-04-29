@@ -3,8 +3,8 @@
 이 문서는 **Gateway/Auth/Core + docker-compose + k8s** 실제 설정을 기준으로 구성합니다.
 
 관련 문서:
-- 레포 분석 인덱스: [`documents/REPOSITORIES.md`](./REPOSITORIES.md)
-- 전체 아키텍처: [`documents/ARCHITECTURE.md`](./ARCHITECTURE.md)
+- 레포 분석 인덱스: [`documents/REPOSITORIES.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/REPOSITORIES.md)
+- 전체 아키텍처: [`documents/ARCHITECTURE.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/ARCHITECTURE.md)
 
 ---
 
@@ -80,7 +80,7 @@
 2. IDE에서 Gateway/Auth/Core를 각각 실행
 3. 호출은 `http://localhost:8080/api/...` 또는 `http://localhost/api/...` 사용
 
-빠른 시작: [`QUICKSTART.md`](../QUICKSTART.md)
+빠른 시작: [`QUICKSTART.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/QUICKSTART.md)
 
 ---
 

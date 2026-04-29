@@ -16,11 +16,11 @@
 
 ## 개별 분석 문서
 
-- [spring-cloud-api-gateway](./repositories/spring-cloud-api-gateway.md)
-- [auth-service](./repositories/auth-service.md)
-- [spring-boot(Core)](./repositories/spring-boot-core.md)
-- [docker-compose](./repositories/docker-compose.md)
-- [k8s](./repositories/k8s-manifests.md)
+- [spring-cloud-api-gateway](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/documents/repositories/spring-cloud-api-gateway.md)
+- [auth-service](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/documents/repositories/auth-service.md)
+- [spring-boot(Core)](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/documents/repositories/spring-boot-core.md)
+- [docker-compose](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/documents/repositories/docker-compose.md)
+- [k8s](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/documents/repositories/k8s-manifests.md)
 
 ## 백엔드 서비스 요약
 

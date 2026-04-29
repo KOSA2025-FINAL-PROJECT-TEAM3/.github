@@ -7,9 +7,9 @@ AMApill(뭐냑?)은 **Gateway + Auth + Core** 3개 백엔드와
 
 ## 1) 한눈에 보기
 
-- 시스템 구성도: [`diagrams/01-system-architecture.mmd`](../diagrams/01-system-architecture.mmd)
-- 주요 데이터 흐름: [`diagrams/02-data-flow.mmd`](../diagrams/02-data-flow.mmd)
-- DB ERD: [`diagrams/07-database-erd-current.mmd`](../diagrams/07-database-erd-current.mmd)
+- 시스템 구성도: [`diagrams/01-system-architecture.mmd`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/diagrams/01-system-architecture.mmd)
+- 주요 데이터 흐름: [`diagrams/02-data-flow.mmd`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/diagrams/02-data-flow.mmd)
+- DB ERD: [`diagrams/07-database-erd-current.mmd`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/diagrams/07-database-erd-current.mmd)
 
 ---
 
@@ -101,7 +101,7 @@ DB 스키마 근거는 `docker-compose/init-scripts`입니다.
 - PostgreSQL(+pgvector): LLM Guard 벡터 스토어
 
 자세한 내용:
-- [`documents/DATABASE_SCHEMA_ANALYSIS.md`](./DATABASE_SCHEMA_ANALYSIS.md)
+- [`documents/DATABASE_SCHEMA_ANALYSIS.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/DATABASE_SCHEMA_ANALYSIS.md)
 
 ---
 
@@ -132,7 +132,6 @@ DB 스키마 근거는 `docker-compose/init-scripts`입니다.
 
 ## 8) 개발자 온보딩
 
-- 빠른 시작: [`QUICKSTART.md`](../QUICKSTART.md)
-- 레포별 분석: [`documents/REPOSITORIES.md`](./REPOSITORIES.md)
-- 라우팅/프로필: [`documents/MICROSERVICES_SETUP.md`](./MICROSERVICES_SETUP.md)
-
+- 빠른 시작: [`QUICKSTART.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/QUICKSTART.md)
+- 레포별 분석: [`documents/REPOSITORIES.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/REPOSITORIES.md)
+- 라우팅/프로필: [`documents/MICROSERVICES_SETUP.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/MICROSERVICES_SETUP.md)

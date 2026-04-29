@@ -47,7 +47,7 @@ MySQL에는 일부 FK가 정의되어 있으며, 일부는 서비스 간 참조�
 
 ERD는 다음 다이어그램을 최신 기준으로 봅니다:
 
-- [`diagrams/07-database-erd-current.mmd`](../diagrams/07-database-erd-current.mmd)
+- [`diagrams/07-database-erd-current.mmd`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/diagrams/07-database-erd-current.mmd)
 
 ---
 
@@ -55,4 +55,3 @@ ERD는 다음 다이어그램을 최신 기준으로 봅니다:
 
 - 문서에는 DB 계정/패스워드/접속 문자열의 “실제 값”을 기록하지 않습니다.
 - DB 스키마 변경은 init scripts 단위로 관리하는 것을 권장합니다.
-

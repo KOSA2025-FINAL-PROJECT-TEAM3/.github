@@ -196,7 +196,7 @@ Relates: #45"
 | 저장소 | 용도 | URL |
 |--------|------|-----|
 | **Front** | React 프론트엔드 + 프로젝트 문서 | `https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front` |
-| **Back** | Spring Boot 마이크로서비스 백엔드 | `https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Back` |
+| **spring-boot** | Core Spring Boot 백엔드 | `https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot` |
 | **.github** (현재) | 조직 프로필, 문서 아카이브, 다이어그램 | `https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github` |
 
 ---

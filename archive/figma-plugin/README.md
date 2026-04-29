@@ -4,7 +4,7 @@ JSON 와이어프레임을 Figma에 Auto Layout이 적용된 프레임으로 자
 
 ## 👥 팀원과 공유하기
 
-> 💡 **빠른 설치**: 팀원들에게 [INSTALL.md](./INSTALL.md) 파일을 공유하세요!
+> 💡 **빠른 설치**: 팀원들에게 [INSTALL.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/figma-plugin/INSTALL.md) 파일을 공유하세요!
 
 ### 방법 1: 개발 플러그인으로 공유 (추천 - 빠르고 쉬움)
 

@@ -852,6 +852,6 @@ public class ReportBatchConfig {
 **문서 작성자**: 뭐냑? 개발팀
 **최종 수정일**: 2025-11-07
 **관련 문서**:
-- [ARCHITECTURE.md](./ARCHITECTURE.md)
-- [MICROSERVICES_SETUP.md](./MICROSERVICES_SETUP.md)
-- [PROJECT_SPECIFICATION.md](./PROJECT_SPECIFICATION.md)
+- [ARCHITECTURE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/ARCHITECTURE.md)
+- [MICROSERVICES_SETUP.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/MICROSERVICES_SETUP.md)
+- [PROJECT_SPECIFICATION.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/PROJECT_SPECIFICATION.md)

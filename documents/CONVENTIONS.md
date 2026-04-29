@@ -69,7 +69,7 @@
 - 공통 UI/레이아웃은 `src/shared`
 - API 클라이언트/환경 설정은 `src/core`
 
-자세한 구조는 `readme/documents/SRC_STRUCTURE.md`를 기준으로 합니다.
+자세한 구조는 [documents/SRC_STRUCTURE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/documents/SRC_STRUCTURE.md)를 기준으로 합니다.
 
 ---
 

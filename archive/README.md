@@ -71,8 +71,8 @@
 
 빠른 시작은 다음 문서를 참고하세요.
 
-- **빠른 시작**: [QUICKSTART.md](./QUICKSTART.md)
-- **마이크로서비스 설정**: [MICROSERVICES_SETUP.md](./documents/MICROSERVICES_SETUP.md)
+- **빠른 시작**: [QUICKSTART.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/QUICKSTART.md)
+- **마이크로서비스 설정**: [MICROSERVICES_SETUP.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/MICROSERVICES_SETUP.md)
 
 ---
 
@@ -82,15 +82,15 @@
 
 | 문서 | 설명 |
 |------|------|
-| [QUICKSTART.md](./QUICKSTART.md) | 로컬 실행 가이드 |
-| [FIGMA_GUIDE.md](./FIGMA_GUIDE.md) | Figma 플러그인 가이드 |
-| [WIREFRAME_SCREENS.md](./WIREFRAME_SCREENS.md) | 와이어프레임 화면 설명 |
-| [DB스킬.md](./DB스킬.md) | DB 스키마/ERD 가이드 |
-| [SECURITY_GUIDELINES.md](./SECURITY_GUIDELINES.md) | 보안 문서 가이드 |
+| [QUICKSTART.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/QUICKSTART.md) | 로컬 실행 가이드 |
+| [FIGMA_GUIDE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/FIGMA_GUIDE.md) | Figma 플러그인 가이드 |
+| [WIREFRAME_SCREENS.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/WIREFRAME_SCREENS.md) | 와이어프레임 화면 설명 |
+| [DB스킬.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/DB%EC%8A%A4%ED%82%AC.md) | DB 스키마/ERD 가이드 |
+| [SECURITY_GUIDELINES.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/SECURITY_GUIDELINES.md) | 보안 문서 가이드 |
 
 ### 📖 상세 문서
 
-- 전체 문서 인덱스: [`documents/README.md`](./documents/README.md)
+- 전체 문서 인덱스: [`documents/README.md`](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/README.md)
 
 ---
 

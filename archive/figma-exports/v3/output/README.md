@@ -172,9 +172,9 @@ python3 apply_front_design_system.py [입력_파일.json] [출력_디렉토리]
 ## 📌 참고 문서
 
 - [Front Repository](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front)
-- [component-templates.json](../component-templates.json) - 전체 디자인 시스템 명세
-- [implementation-status.json](../implementation-status.json) - 구현 현황
-- [figma-screen-mapping.json](../figma-screen-mapping.json) - 화면 매핑
+- [component-templates.json](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/figma-exports/v3/component-templates.json) - 전체 디자인 시스템 명세
+- [implementation-status.json](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/figma-exports/v3/implementation-status.json) - 구현 현황
+- [figma-screen-mapping.json](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/figma-exports/v3/figma-screen-mapping.json) - 화면 매핑
 
 ---
 

@@ -206,13 +206,13 @@ python3 generate_implementation_tracker.py
 - **Version**: v0.1.0
 
 ### 관련 .github 문서
-- [CHANGELOG_FRONTEND.md](../../documents/CHANGELOG_FRONTEND.md)
-- [FRONTEND_COMPONENTS_SPECIFICATION.md](../../documents/FRONTEND_COMPONENTS_SPECIFICATION.md)
-- [SRC_STRUCTURE.md](../../documents/SRC_STRUCTURE.md)
+- [CHANGELOG_FRONTEND.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/CHANGELOG_FRONTEND.md)
+- [FRONTEND_COMPONENTS_SPECIFICATION.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/FRONTEND_COMPONENTS_SPECIFICATION.md)
+- [SRC_STRUCTURE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/SRC_STRUCTURE.md)
 
 ### V2 문서 (참고용)
-- [V2 README](../v2/README-all-screens.md)
-- [V2 PHASE_1_PLAN](../v2/PHASE_1_UPDATE_PLAN.md)
+- [V2 README](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/figma-exports/v2/README-all-screens.md)
+- [V2 PHASE_1_PLAN](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/figma-exports/v2/PHASE_1_UPDATE_PLAN.md)
 
 ---
 

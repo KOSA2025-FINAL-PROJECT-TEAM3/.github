@@ -123,7 +123,7 @@
 
 ### 7. Chat (채팅 상담)
 
-채팅 API는 별도 문서 참조: [CHAT_API_SPECIFICATION.md](./CHAT_API_SPECIFICATION.md)
+채팅 API는 별도 문서 참조: [CHAT_API_SPECIFICATION.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/CHAT_API_SPECIFICATION.md)
 
 | Method | Endpoint | 설명 | MVP |
 |--------|----------|------|-----|

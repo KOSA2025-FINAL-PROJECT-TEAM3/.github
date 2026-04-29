@@ -109,10 +109,10 @@
 
 #### 문서(Dev 기준)
 
-- 빠른 시작: [QUICKSTART.md](../QUICKSTART.md)
-- 레포별 분석: [documents/REPOSITORIES.md](../documents/REPOSITORIES.md)
-- 아키텍처: [documents/ARCHITECTURE.md](../documents/ARCHITECTURE.md)
-- 라우팅/프로필: [documents/MICROSERVICES_SETUP.md](../documents/MICROSERVICES_SETUP.md)
+- 빠른 시작: [QUICKSTART.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/QUICKSTART.md)
+- 레포별 분석: [documents/REPOSITORIES.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/REPOSITORIES.md)
+- 아키텍처: [documents/ARCHITECTURE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/ARCHITECTURE.md)
+- 라우팅/프로필: [documents/MICROSERVICES_SETUP.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/MICROSERVICES_SETUP.md)
 
 ### 실시간 통신
 | 용도 | 기술 | 설명 |
@@ -141,23 +141,23 @@
 | 저장소 | 설명 | 링크 |
 |--------|------|------|
 | **Front** | React 프론트엔드 + 프로젝트 문서 | [KOSA2025-FINAL-PROJECT-TEAM3/Front](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front) |
-| **Back** | Spring Boot 백엔드 | [KOSA2025-FINAL-PROJECT-TEAM3/Back](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Back) |
+| **spring-boot** | Core Spring Boot 백엔드 | [KOSA2025-FINAL-PROJECT-TEAM3/spring-boot](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot) |
 | **.github** | 조직 프로필 및 문서 아카이브 | [KOSA2025-FINAL-PROJECT-TEAM3/.github](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github) |
 
 ### 문서 위치
 
 모든 프로젝트 문서와 다이어그램은 이 저장소(.github)에 보관되어 있습니다:
 
-- 📖 **프로젝트 명세**: [PROJECT_SPECIFICATION.md](../PROJECT_SPECIFICATION.md)
-- 📋 **MVP & DTO 명세**: [MVP_DTO_SPECIFICATION.md](../MVP_DTO_SPECIFICATION.md)
-- 🗓️ **개발 로드맵**: [DEVELOPMENT_ROADMAP.md](../DEVELOPMENT_ROADMAP.md)
-- 🏗️ **시스템 아키텍처**: [ARCHITECTURE.md](../ARCHITECTURE.md)
-- 🐳 **마이크로서비스 셋업**: [MICROSERVICES_SETUP.md](../MICROSERVICES_SETUP.md)
-- 📁 **소스 구조**: [SRC_STRUCTURE.md](../SRC_STRUCTURE.md)
-- 🎨 **와이어프레임 가이드**: [WIREFRAME_SCREENS.md](../WIREFRAME_SCREENS.md)
-- 📊 **다이어그램 파일**: [diagrams/](../diagrams/)
-- 🎨 **Figma 와이어프레임**: [figma-exports/](../figma-exports/)
-- 🔌 **Figma 플러그인**: [figma-plugin/](../figma-plugin/)
+- 📖 **프로젝트 명세**: [PROJECT_SPECIFICATION.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/PROJECT_SPECIFICATION.md)
+- 📋 **MVP & DTO 명세**: [MVP_DTO_SPECIFICATION.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/MVP_DTO_SPECIFICATION.md)
+- 🗓️ **개발 로드맵**: [DEVELOPMENT_ROADMAP.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/DEVELOPMENT_ROADMAP.md)
+- 🏗️ **시스템 아키텍처**: [ARCHITECTURE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/ARCHITECTURE.md)
+- 🐳 **마이크로서비스 셋업**: [MICROSERVICES_SETUP.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/MICROSERVICES_SETUP.md)
+- 📁 **소스 구조**: [SRC_STRUCTURE.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/SRC_STRUCTURE.md)
+- 🎨 **와이어프레임 가이드**: [WIREFRAME_SCREENS.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/WIREFRAME_SCREENS.md)
+- 📊 **다이어그램 파일**: [diagrams/](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/tree/dev/archive/diagrams)
+- 🎨 **Figma 와이어프레임**: [figma-exports/](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/tree/dev/archive/figma-exports)
+- 🔌 **Figma 플러그인**: [figma-plugin/](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/tree/dev/archive/figma-plugin)
 
 ---
 
@@ -194,7 +194,7 @@
 - **약사법 준수**: 약 추천 금지, 정보 제공만
 - **허위/과장 광고 금지**: 식약처 공식 정보만 표시
 
-자세한 내용은 [PROJECT_SPECIFICATION.md](../PROJECT_SPECIFICATION.md) 참조
+자세한 내용은 [PROJECT_SPECIFICATION.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/documents/PROJECT_SPECIFICATION.md) 참조
 
 ---
 
@@ -217,15 +217,15 @@ npm run dev
 ### Backend 실행
 
 ```bash
-# Back 저장소 클론
-git clone https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Back.git
-cd Back
+# Core 서비스 저장소 클론
+git clone https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot.git
+cd spring-boot
 
 # Docker Compose로 전체 스택 실행
 docker-compose up -d
 ```
 
-자세한 설정 가이드는 [QUICKSTART.md](../QUICKSTART.md) 참조
+자세한 설정 가이드는 [QUICKSTART.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/QUICKSTART.md) 참조
 
 ---
 
@@ -233,7 +233,7 @@ docker-compose up -d
 
 - **GitHub Organization**: [KOSA2025-FINAL-PROJECT-TEAM3](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3)
 - **프로젝트 이슈**: [Front Issues](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front/issues)
-- **조직 가이드라인**: [checkme.md](../checkme.md)
+- **조직 가이드라인**: [SECURITY_GUIDELINES.md](https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/.github/blob/dev/archive/SECURITY_GUIDELINES.md)
 
 ---
 

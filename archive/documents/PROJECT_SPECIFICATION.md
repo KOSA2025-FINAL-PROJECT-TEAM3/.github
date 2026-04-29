@@ -2253,7 +2253,7 @@ notifications (
 ## 📞 연락처 및 저장소
 
 - **GitHub Repository**: https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/Front
-- **Backend Repository**: (Backend 저장소 URL)
+- **Backend Repository**: https://github.com/KOSA2025-FINAL-PROJECT-TEAM3/spring-boot
 - **프로젝트 관리**: (Notion/Jira 링크)
 - **팀 커뮤니케이션**: (Slack/Discord 링크)
 
